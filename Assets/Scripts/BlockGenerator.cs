@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Collections.AllocatorManager;
 
 public class BlockGenerator : MonoBehaviour
 {
@@ -8,9 +9,13 @@ public class BlockGenerator : MonoBehaviour
 
     [SerializeField] GameObject ground;
     [SerializeField] GameObject platform;
-    PlatformBehavior platformBehavior;
 
-    [SerializeField] GameObject Block;
+    [SerializeField] int PlatDepth;
+    [SerializeField] int PlatSize;
+
+
+    [SerializeField] GameObject[] Edges;
+    [SerializeField] GameObject[] Blocks;
 
     [SerializeField] int GenerateWidth = 10;
     [SerializeField] int GenerateHeight = 10;
@@ -25,9 +30,9 @@ public class BlockGenerator : MonoBehaviour
 
     void Start()
     {
-        ground = GameObject.Find("Ground");
+        
 
-        platformBehavior = platform.GetComponent<PlatformBehavior>();
+        
     }
 
     // Update is called once per frame
@@ -40,8 +45,8 @@ public class BlockGenerator : MonoBehaviour
     {
         ResetGeneration();
 
-        float platformSize = platform.GetComponent<PlatformBehavior>().Size;
-        int platDepth = platform.GetComponent<PlatformBehavior>().Depth;
+        float platformSize = PlatSize;
+        int platDepth = PlatDepth;
 
         Debug.Log($"Unrounded (Size: {platformSize}) | Left: {-(platformSize - 1) / 2}, right: {(platformSize - 1) / 2}");
 
@@ -52,6 +57,10 @@ public class BlockGenerator : MonoBehaviour
 
         for (int y = -GenerateHeight; y <= GenerateHeight; y++)
         {
+            Instantiate(Edges[0], new Vector2(-GenerateWidth - 1, y), Edges[0].transform.rotation, ground.transform);
+            Instantiate(Edges[1], new Vector2(GenerateWidth + 1, y), Edges[0].transform.rotation, ground.transform);
+
+
             for (int x = -GenerateWidth; x <= GenerateWidth; x++)
             {
                 if (y >= platDepth)
@@ -61,8 +70,10 @@ public class BlockGenerator : MonoBehaviour
                         continue;
                     }
                 }
-                GameObject newBlock = Instantiate(Block, new Vector2(x,y),Block.transform.rotation,ground.transform);
-                RandomizeBlock(newBlock.GetComponent<BlockBehavior>());
+
+                GameObject block = RandomizeBlock();
+                Instantiate(block, new Vector2(x, y), block.transform.rotation, ground.transform);
+                
             }
         }
     }
@@ -89,74 +100,42 @@ public class BlockGenerator : MonoBehaviour
         }
     }
 
-    private void RandomizeBlock(BlockBehavior Block)
+    private GameObject RandomizeBlock()
     {
         int randomNum = Random.Range(1, 101);
 
+        GameObject spawnedBlock = Blocks[0];
+
         if(randomNum <= TreasureChance)
         {
-            Block.Type = BlockBehavior.RockType.Treasure;
+            spawnedBlock = Blocks[2];
         }
         else if(randomNum <= FuelChance)
         {
-            Block.Type = BlockBehavior.RockType.Fuel;
-        }
-        else
-        {
-            Block.Type = BlockBehavior.RockType.Normal;
+            spawnedBlock = Blocks[1];
         }
 
+
+        return spawnedBlock;
     }
 
     public void GenerateNextLevel()
     {
 
         
-        float platformSize = platform.GetComponent<PlatformBehavior>().Size;
-        int platDepth = platform.GetComponent<PlatformBehavior>().Depth;
+        float platformSize = PlatSize;
+        int platDepth = PlatDepth;
 
         int y = -GenerateHeight;
 
         for (int x = -GenerateWidth; x <= GenerateWidth; x++)
         {
-            GameObject newBlock = Instantiate(Block, new Vector2(x, y), Block.transform.rotation, ground.transform);
-            RandomizeBlock(newBlock.GetComponent<BlockBehavior>());
+            GameObject newBlock = Instantiate(RandomizeBlock(), new Vector2(x, y), RandomizeBlock().transform.rotation, ground.transform);
+            
         }
     }
 
-    public IEnumerator IncrimentLevel()
-    {
-        platform.GetComponent<PlatformBehavior>().isDecending = true;
-
-        //Debug.Log($"In BlockGen: IncrimentLevel hit");
-
-        for (int i = 0; i < 15;)
-        {
-            Vector2 scrollAmount = new Vector2(0, 0.06f);
-
-            //ground.GetComponent<Rigidbody2D>().MovePosition((Vector2)ground.transform.position + scrollAmount);
-
-            if(platformBehavior.CurrentFuel > 0)
-            {
-                platformBehavior.CurrentFuel -= platformBehavior.FuelConsumption;
-                ground.transform.position += (Vector3)scrollAmount;
-
-                i++;
-            }
-            
-            
-
-            //Debug.Log($"In BlockGen: Loop {i}, moving ground position to {ground.transform.position} ({scrollAmount})");
-
-            yield return new WaitForSeconds(ScrollDownSpeed);
-        }
-
-        ground.transform.position = new Vector2(0, Mathf.RoundToInt(ground.transform.position.y));
-
-        GenerateNextLevel();
-
-        platform.GetComponent<PlatformBehavior>().isDecending = false;
-    }
+    
 
 
 

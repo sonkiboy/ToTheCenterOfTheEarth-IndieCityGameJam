@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: addecf9d6b3d4ec45972ffdd81539c69
+guid: ce931f5f29ffe714f8eb50a98951f5ad
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -32,7 +32,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 16
@@ -71,7 +71,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 0
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -83,7 +83,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 0
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638551938504535054
+  platformSettingsDirtyTick: 638552065646240605
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: BasicGroundTiles
+  - name: Platform
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.4893617, y: -0.06666667}
     alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 6, y: 0, z: 6, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 48
-      height: 16
-    spriteID: b108a5157b361464889ebe3f85d9ffa3
+      width: 47
+      height: 15
+    spriteID: 0669cc54f8efe2447933c37c2a01748a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,83 +139,23 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  spriteSheetImportData:
-  - name: BasicTile_Sprite
-    originalName: 
-    pivot: {x: 0, y: 0}
-    alignment: 6
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 16
-      height: 16
-    spriteID: 1dc962d6fbb312a408f8d9e2b74d651f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: FuelVein_Sprite
-    originalName: 
-    pivot: {x: 0, y: 0}
-    alignment: 6
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 20
-      y: 4
-      width: 16
-      height: 16
-    spriteID: 17f8f2b3d2a7c654f986134d3f956811
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: GemTile_Sprite
-    originalName: 
-    pivot: {x: 0, y: 0}
-    alignment: 6
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 36
-      y: 4
-      width: 16
-      height: 16
-    spriteID: b454b0699e711bf47bed3f4a589fc995
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
+  spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1572717512
-    name: BasicGroundTiles
+    guid: 1866343423
+    name: Platform
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: BasicGroundTiles
+    - name: Platform
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 16
-      spriteId: b108a5157b361464889ebe3f85d9ffa3
+        x: 1
+        y: 1
+        width: 47
+        height: 15
+      spriteId: 0669cc54f8efe2447933c37c2a01748a
     linkedCells: []
     parentIndex: -1
   platformSettings:

@@ -38,6 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3344195875
+    locked: 0
+  - name: BehindRock
+    uniqueID: 205071321
+    locked: 0
+  - name: RockTiles
+    uniqueID: 3552164457
+    locked: 0
+  - name: InfrontRock
+    uniqueID: 3415670567
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1387516119
     locked: 0
