@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: BasicTile
   m_EditorClassIdentifier: 
   Health: 10
-  BrokenOverlays: []
+  BrokenOverlays:
+  - {fileID: -2411033462416485723, guid: 3711a272fef5060469fdcc79f4f5ac03, type: 3}
+  - {fileID: 5666457195211117344, guid: 3711a272fef5060469fdcc79f4f5ac03, type: 3}

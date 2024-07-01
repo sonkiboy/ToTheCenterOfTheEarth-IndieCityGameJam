@@ -8,6 +8,7 @@ public class TileBehavior : MonoBehaviour
     #region Obj and Components
 
     SpriteRenderer spriteRenderer;
+    SpriteRenderer OverlayRenderer;
 
 
     #endregion
@@ -16,7 +17,7 @@ public class TileBehavior : MonoBehaviour
     public TileConfig Config;
 
 
-    int hp = 10;
+    [SerializeField] int hp = 10;
     public int Health
     {
         get { return hp; }
@@ -30,19 +31,19 @@ public class TileBehavior : MonoBehaviour
             }
 
 
-            else if (hp <= (float)Config.Health * .3 && Config.BrokenOverlays[0] != null)
+            else if (hp <= (float)Config.Health * .3 && Config.BrokenOverlays.Length >= 1)
             {
                 if (spriteRenderer.sprite != Config.BrokenOverlays[0])
                 {
-                    spriteRenderer.sprite = Config.BrokenOverlays[0];
+                    OverlayRenderer.sprite = Config.BrokenOverlays[0];
                 }
                 
             }
-            else if (hp <= (float)Config.Health * .75 && Config.BrokenOverlays[1] != null)
+            else if (hp <= (float)Config.Health * .75 && Config.BrokenOverlays.Length >= 2)
             {
                 if (spriteRenderer.sprite != Config.BrokenOverlays[1])
                 {
-                    spriteRenderer.sprite = Config.BrokenOverlays[1];
+                    OverlayRenderer.sprite = Config.BrokenOverlays[1];
                 }
             }
 
@@ -56,6 +57,13 @@ public class TileBehavior : MonoBehaviour
     void Start()
     {
         hp = Config.Health;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if(transform.Find("Overlay") != null)
+        {
+            OverlayRenderer = transform.Find("Overlay").GetComponent<SpriteRenderer>();
+
+        }
     }
 
     // Update is called once per frame
@@ -64,10 +72,14 @@ public class TileBehavior : MonoBehaviour
 
     }
 
+
     public void BreakTile()
     {
 
 
         Destroy(gameObject);
     }
+
+
+    
 }
