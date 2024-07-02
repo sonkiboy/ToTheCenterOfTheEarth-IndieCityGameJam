@@ -15,8 +15,8 @@ TagManager:
   - Tiles
   - Boundary
   - Player
-  - 
-  - 
+  - Platform
+  - Hitbox
   - 
   - 
   - 

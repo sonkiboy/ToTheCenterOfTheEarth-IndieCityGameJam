@@ -20,7 +20,7 @@ public class BlockGenerator : MonoBehaviour
     [SerializeField] int GenerateWidth = 10;
     [SerializeField] int GenerateHeight = 10;
 
-    [Range(0, 100)]
+
     [SerializeField] int FuelChance = 30;
 
     [Range(0, 100)]
@@ -102,18 +102,46 @@ public class BlockGenerator : MonoBehaviour
 
     private GameObject RandomizeBlock()
     {
-        int randomNum = Random.Range(1, 101);
+
+        List<TileBehavior> tileBehaviors = new List<TileBehavior>();
+
+        
+        foreach (GameObject tile in Blocks)
+        {
+            tileBehaviors.Add(tile.GetComponent<TileBehavior>());
+        }
+
+        int sum = 0;
+
+        foreach(TileBehavior tile in tileBehaviors)
+        {
+            sum += tile.Config.SpawnChance;
+        }
+
 
         GameObject spawnedBlock = Blocks[0];
 
-        if(randomNum <= TreasureChance)
+        int randomNum = Random.Range(1, sum);
+
+        int count = 0;
+
+        for (int i = 0; i < Blocks.Length; i++)
         {
-            spawnedBlock = Blocks[2];
+            if (randomNum < tileBehaviors[i].Config.SpawnChance + count)
+            {
+                spawnedBlock = Blocks[i];
+                break;
+
+            }
+            else
+            {
+                count += tileBehaviors[i].Config.SpawnChance;
+            }
+
+
         }
-        else if(randomNum <= FuelChance)
-        {
-            spawnedBlock = Blocks[1];
-        }
+
+        
 
 
         return spawnedBlock;

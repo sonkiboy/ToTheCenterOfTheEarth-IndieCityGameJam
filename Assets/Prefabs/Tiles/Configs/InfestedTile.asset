@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf078535ea10aab48a4b848e215b9016, type: 3}
-  m_Name: TreasureTile
+  m_Name: InfestedTile
   m_EditorClassIdentifier: 
-  Health: 15
-  SpawnChance: 20
+  Health: 10
+  SpawnChance: 3
   ExplodeOnBreak: 0
   LayersDected:
     serializedVersion: 2
@@ -21,6 +21,4 @@ MonoBehaviour:
   ExplosionRange: 0
   ExplosionDamage: 0
   BlastForce: 1
-  BrokenOverlays:
-  - {fileID: -2411033462416485723, guid: 3711a272fef5060469fdcc79f4f5ac03, type: 3}
-  - {fileID: 5666457195211117344, guid: 3711a272fef5060469fdcc79f4f5ac03, type: 3}
+  BrokenOverlays: []

@@ -27,7 +27,7 @@ public class PlatformBehavior : MonoBehaviour
         blockGenerator = GameObject.Find("Cavern").GetComponent<BlockGenerator>();
 
 
-        StartCoroutine(Drill());
+        StartCoroutine(Drill());    
     }
 
     // Update is called once per frame

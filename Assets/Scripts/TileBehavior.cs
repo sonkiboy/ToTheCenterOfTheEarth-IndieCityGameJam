@@ -23,31 +23,33 @@ public class TileBehavior : MonoBehaviour
         get { return hp; }
         set
         {
-            hp = value;
-
-            if (hp <= 0)
+            if (hp > 0)
             {
-                BreakTile();
-            }
+                hp = value;
 
-
-            else if (hp <= (float)Config.Health * .3 && Config.BrokenOverlays.Length >= 1)
-            {
-                if (spriteRenderer.sprite != Config.BrokenOverlays[0])
+                if (hp <= 0)
                 {
-                    OverlayRenderer.sprite = Config.BrokenOverlays[0];
+                    StartCoroutine(BreakTile());
                 }
-                
-            }
-            else if (hp <= (float)Config.Health * .75 && Config.BrokenOverlays.Length >= 2)
-            {
-                if (spriteRenderer.sprite != Config.BrokenOverlays[1])
+
+
+                else if (hp <= (float)Config.Health * .3 && Config.BrokenOverlays.Length >= 1)
                 {
-                    OverlayRenderer.sprite = Config.BrokenOverlays[1];
+                    if (spriteRenderer.sprite != Config.BrokenOverlays[0])
+                    {
+                        OverlayRenderer.sprite = Config.BrokenOverlays[0];
+                    }
+
                 }
+                else if (hp <= (float)Config.Health * .75 && Config.BrokenOverlays.Length >= 2)
+                {
+                    if (spriteRenderer.sprite != Config.BrokenOverlays[1])
+                    {
+                        OverlayRenderer.sprite = Config.BrokenOverlays[1];
+                    }
+                }
+
             }
-
-
 
         }
     }
@@ -73,11 +75,47 @@ public class TileBehavior : MonoBehaviour
     }
 
 
-    public void BreakTile()
+    public IEnumerator BreakTile()
     {
+        if (Config.ExplodeOnBreak)
+        {
+            Explode();
+        }
 
+        yield return new WaitForEndOfFrame();
 
         Destroy(gameObject);
+    }
+
+    void Explode()
+    {
+        Debug.Log("Exploding");
+
+        Collider2D[] foundColliders = Physics2D.OverlapCircleAll(transform.position , Config.ExplosionRange,Config.LayersDected);
+
+        foreach (Collider2D collider in foundColliders)
+        {
+
+            if (collider.gameObject.tag == "Player")
+            {
+                Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+
+                if (rb != null)
+                {
+                    Vector2 direction = (rb.position - (Vector2)collider.transform.position);
+
+                    rb.AddForce(direction.normalized * Config.BlastForce / direction.magnitude);
+                }
+            }
+            else if (collider.gameObject.tag == "Tile")
+            {
+
+                float distance = (this.transform.position - collider.transform.position).magnitude;
+                int totalDamage = Mathf.RoundToInt((float)Config.ExplosionDamage * (Config.ExplosionRange - distance) / Config.ExplosionRange);
+
+                collider.GetComponent<TileBehavior>().Health -= totalDamage;
+            }
+        }
     }
 
 
