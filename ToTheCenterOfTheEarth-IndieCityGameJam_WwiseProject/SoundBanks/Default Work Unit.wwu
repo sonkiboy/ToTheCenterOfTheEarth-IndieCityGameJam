@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{358B8AB2-8B63-46D0-8618-D48E40B4A1CA}" SchemaVersion="119">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{358B8AB2-8B63-46D0-8618-D48E40B4A1CA}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="UrMom" ID="{C9312189-E98E-479F-8DC9-2A2FF1ED4AE5}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
