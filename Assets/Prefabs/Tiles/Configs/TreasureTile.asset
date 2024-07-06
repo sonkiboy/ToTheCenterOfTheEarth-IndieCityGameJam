@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 15
   SpawnChance: 20
+  TreasureDrop: 15
   ExplodeOnBreak: 0
   LayersDected:
     serializedVersion: 2

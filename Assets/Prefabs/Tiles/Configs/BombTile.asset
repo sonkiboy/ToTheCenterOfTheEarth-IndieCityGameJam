@@ -20,5 +20,5 @@ MonoBehaviour:
     m_Bits: 320
   ExplosionRange: 3
   ExplosionDamage: 20
-  BlastForce: 0
+  BlastForce: 30
   BrokenOverlays: []

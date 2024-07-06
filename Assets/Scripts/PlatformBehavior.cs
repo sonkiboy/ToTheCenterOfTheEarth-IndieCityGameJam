@@ -38,6 +38,9 @@ public class PlatformBehavior : MonoBehaviour
 
     IEnumerator Drill()
     {
+        // just padding to help with errors
+        yield return new WaitForSeconds(1f);
+
         while (true)
         {
             Collider2D[] foundCollisions = Physics2D.OverlapBoxAll(drillCollider.bounds.center,drillCollider.size,0f,~drillCollider.excludeLayers);

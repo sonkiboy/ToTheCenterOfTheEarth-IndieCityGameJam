@@ -82,6 +82,11 @@ public class TileBehavior : MonoBehaviour
             Explode();
         }
 
+        if (Config.TreasureDrop > 0)
+        {
+            GameManager.Instance.CurrentTreasure += Config.TreasureDrop;
+        }
+
         yield return new WaitForEndOfFrame();
 
         Destroy(gameObject);
@@ -102,9 +107,13 @@ public class TileBehavior : MonoBehaviour
 
                 if (rb != null)
                 {
-                    Vector2 direction = (rb.position - (Vector2)collider.transform.position);
+                    Vector2 direction = ((Vector2)transform.position - (Vector2)collider.transform.position);
 
-                    rb.AddForce(direction.normalized * Config.BlastForce / direction.magnitude);
+                    Vector2 force = -direction.normalized * Config.BlastForce / direction.magnitude;
+
+                    Debug.Log($"Force read as {force} and Direction as {direction}");
+
+                    rb.AddForce(force,ForceMode2D.Impulse);
                 }
             }
             else if (collider.gameObject.tag == "Tile")

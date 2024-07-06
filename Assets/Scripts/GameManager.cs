@@ -8,7 +8,32 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     // Start is called before the first frame update
 
-    public int CurrentDepth = 0;
+    public StatTracker StatTracker;
+
+
+    private int level = 0;
+    public int CurrentDepth
+    {
+        get { return level; }
+        set
+        {
+            level = value;
+            StatTracker.SetLevelScore(level);
+
+        }
+    }
+
+    private int treasure = 0;
+    public int CurrentTreasure
+    {
+        get { return treasure; }
+        set
+        {
+            treasure = value;
+            StatTracker.SetTreasureScore(treasure);
+        }
+    }
+
 
     private void Awake()
     {

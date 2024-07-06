@@ -11,6 +11,8 @@ public class TileConfig : ScriptableObject
 
     public int SpawnChance = 25;
 
+    public int TreasureDrop = 0;
+
     public bool ExplodeOnBreak = false;
     public LayerMask LayersDected;
     public float ExplosionRange = 0f;
