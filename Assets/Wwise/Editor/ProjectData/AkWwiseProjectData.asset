@@ -66,8 +66,22 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b28a8b35638bd0468618d48e40b4a1ca
     GuidInternal: 
-    m_lastTime: -8584813095585199461
-    List: []
+    m_lastTime: -8584813078468701364
+    List:
+    - name: UrMom
+      guid: 892131c98ee99f478dc92a2ff1ed4ae5
+      id: 2629167105
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b28a8b35638bd0468618d48e40b4a1ca
+      - ElementName: UrMom
+        ObjectType: 7
+        guid: 892131c98ee99f478dc92a2ff1ed4ae5
+      Path: SoundBanks\Default Work Unit\UrMom
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
