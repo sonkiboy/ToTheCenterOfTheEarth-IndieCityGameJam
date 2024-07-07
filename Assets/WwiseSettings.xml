@@ -12,7 +12,7 @@
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <WwiseInstallationPathMac />
   <WwiseInstallationPathWindows>F:\Wwise\Wwise2023.1.5.8522</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../ToTheCenterOfTheEarth-IndieCityGameJam_WwiseProject/ToTheCenterOfTheEarth-IndieCityGameJam_WwiseProject.wproj</WwiseProjectPath>
+  <WwiseProjectPath>../../ToTheCenterOfTheEarth-IndieCityGameJam/WWiseProject/ToTheCenterOfTheEarth-IndieCityGameJam_WwiseProject.wproj</WwiseProjectPath>
   <UseWaapi>true</UseWaapi>
   <WaapiPort>8080</WaapiPort>
   <WaapiIP>127.0.0.1</WaapiIP>
