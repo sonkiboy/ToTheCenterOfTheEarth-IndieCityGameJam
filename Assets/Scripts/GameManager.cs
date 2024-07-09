@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
 
     public StatTracker StatTracker;
+    public HealthTracker HealthTracker;
+
+    public PlatformBehavior Platform;
+
 
 
     private int level = 0;
@@ -33,6 +37,24 @@ public class GameManager : MonoBehaviour
             StatTracker.SetTreasureScore(treasure);
         }
     }
+
+    private int health = 3;
+    public int CurrentHealth
+    {
+        get { return health; }
+        set
+        {
+            health = value;
+
+            if(health <= 0)
+            {
+                GameOver();
+            }
+
+            HealthTracker.SetHealthUi(health);
+        }
+    }
+
 
 
     private void Awake()
@@ -60,5 +82,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void GameOver()
+    {
+
     }
 }

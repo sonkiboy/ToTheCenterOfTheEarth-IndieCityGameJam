@@ -87,6 +87,29 @@ public class TileBehavior : MonoBehaviour
             GameManager.Instance.CurrentTreasure += Config.TreasureDrop;
         }
 
+        if (Config.FuelDrop > 0)
+        {
+            GameManager.Instance.Platform.CurrentFuel += Config.FuelDrop;
+        }
+
+        if(Config.SpawnedEnemies.Length > 0)
+        {
+            foreach(GameObject enemy in Config.SpawnedEnemies)
+            {
+                Instantiate(enemy, this.transform.position + (Vector3.one * .5f), enemy.transform.rotation);
+            }
+        }
+
+        if (Config.SpawnedPowerUps.Length > 0)
+        {
+            int random = Random.Range(0,Config.SpawnedPowerUps.Length);
+
+            GameObject powerUp = Config.SpawnedPowerUps[random];
+            
+            Instantiate(powerUp, this.transform.position + (Vector3.one * .5f), powerUp.transform.rotation);
+            
+        }
+
         yield return new WaitForEndOfFrame();
 
         Destroy(gameObject);
@@ -94,7 +117,7 @@ public class TileBehavior : MonoBehaviour
 
     void Explode()
     {
-        Debug.Log("Exploding");
+        //Debug.Log("Exploding");
 
         Collider2D[] foundColliders = Physics2D.OverlapCircleAll(transform.position , Config.ExplosionRange,Config.LayersDected);
 
@@ -111,7 +134,7 @@ public class TileBehavior : MonoBehaviour
 
                     Vector2 force = -direction.normalized * Config.BlastForce / direction.magnitude;
 
-                    Debug.Log($"Force read as {force} and Direction as {direction}");
+                    //Debug.Log($"Force read as {force} and Direction as {direction}");
 
                     rb.AddForce(force,ForceMode2D.Impulse);
                 }

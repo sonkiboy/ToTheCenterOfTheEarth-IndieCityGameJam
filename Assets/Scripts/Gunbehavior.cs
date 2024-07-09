@@ -8,6 +8,8 @@ public class GunBehavior : MonoBehaviour
 
     public float FireSpeed = .5f;
 
+    public int AdditionalDamage = 0;
+
     private bool canFire = true;
 
     // Start is called before the first frame update
@@ -26,7 +28,8 @@ public class GunBehavior : MonoBehaviour
     {
         if (canFire)
         {
-            Instantiate(Bullet,this.transform.position,this.transform.rotation);
+            GameObject bullet = Instantiate(Bullet,this.transform.position,this.transform.rotation);
+            bullet.GetComponent<BulletBehavior>().ExtraDamage = AdditionalDamage;
 
             StartCoroutine(FireCoolDown());
         }

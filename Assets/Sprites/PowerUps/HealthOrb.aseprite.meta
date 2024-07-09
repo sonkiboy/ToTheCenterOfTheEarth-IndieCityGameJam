@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ccaf3a2aae83546499178f4bdadff520
+guid: b43634211830ccf49b2ac0b0abd1ccf8
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638560335189708332
+  platformSettingsDirtyTick: 638560695822379078
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Pillbug
+  - name: HealthOrb_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.54545456, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 12
-    spriteID: 5c1b2e786358dcd4cb69451e0d07bdb5
+      width: 11
+      height: 15
+    spriteID: 7f5a133cda90ab74d936692260cb0da6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,23 +139,79 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: HealthOrb_Frame_1
+    originalName: 
+    pivot: {x: 0.54545456, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 23
+      y: 4
+      width: 11
+      height: 15
+    spriteID: 008c2915f8752884d974364235a42d95
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 23, y: 4}
+  - name: HealthOrb_Frame_2
+    originalName: 
+    pivot: {x: 0.54545456, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 4
+      width: 11
+      height: 15
+    spriteID: c314764cf18036e46b626864f7657341
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1834313215
-    name: Pillbug
+    guid: 2123990599
+    name: HealthOrb
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Pillbug
+    - name: HealthOrb_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 2
         y: 0
-        width: 16
-        height: 12
-      spriteId: 5c1b2e786358dcd4cb69451e0d07bdb5
+        width: 11
+        height: 15
+      spriteId: 7f5a133cda90ab74d936692260cb0da6
+    - name: HealthOrb_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 15
+      spriteId: 008c2915f8752884d974364235a42d95
+    - name: HealthOrb_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 15
+      spriteId: c314764cf18036e46b626864f7657341
     linkedCells: []
     parentIndex: -1
   platformSettings:

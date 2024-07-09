@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ccaf3a2aae83546499178f4bdadff520
+guid: 9235023a37b3cb940b15827853dde23c
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638560335189708332
+  platformSettingsDirtyTick: 638560695737651644
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Pillbug
+  - name: DamageOrb_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.54545456, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 12
-    spriteID: 5c1b2e786358dcd4cb69451e0d07bdb5
+      width: 11
+      height: 15
+    spriteID: 30598f9a4bd60104eb6faae901c2fdba
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,23 +139,107 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: DamageOrb_Frame_1
+    originalName: 
+    pivot: {x: 0.54545456, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 27
+      width: 11
+      height: 15
+    spriteID: 0f666ba96e9770c47b6f15d35731e395
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 27}
+  - name: DamageOrb_Frame_2
+    originalName: 
+    pivot: {x: 0.54545456, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 23
+      y: 4
+      width: 11
+      height: 15
+    spriteID: 6294b8cb460a3f340936b967bd737e20
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 23, y: 4}
+  - name: DamageOrb_Frame_3
+    originalName: 
+    pivot: {x: 0.54545456, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 23
+      y: 27
+      width: 11
+      height: 15
+    spriteID: 4b0cddddb6514ce489fe69d775a5384f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 23, y: 27}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1834313215
-    name: Pillbug
+    guid: 1053425056
+    name: DamageOrb
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Pillbug
+    - name: DamageOrb_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 2
         y: 0
-        width: 16
-        height: 12
-      spriteId: 5c1b2e786358dcd4cb69451e0d07bdb5
+        width: 11
+        height: 15
+      spriteId: 30598f9a4bd60104eb6faae901c2fdba
+    - name: DamageOrb_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 15
+      spriteId: 0f666ba96e9770c47b6f15d35731e395
+    - name: DamageOrb_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 15
+      spriteId: 6294b8cb460a3f340936b967bd737e20
+    - name: DamageOrb_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 15
+      spriteId: 4b0cddddb6514ce489fe69d775a5384f
     linkedCells: []
     parentIndex: -1
   platformSettings:

@@ -13,6 +13,16 @@ MonoBehaviour:
   m_Name: FuelTile
   m_EditorClassIdentifier: 
   Health: 10
+  SpawnChance: 25
+  TreasureDrop: 0
+  FuelDrop: 15
+  ExplodeOnBreak: 0
+  LayersDected:
+    serializedVersion: 2
+    m_Bits: 0
+  ExplosionRange: 0
+  ExplosionDamage: 0
+  BlastForce: 1
   BrokenOverlays:
   - {fileID: -2411033462416485723, guid: 3711a272fef5060469fdcc79f4f5ac03, type: 3}
   - {fileID: 5666457195211117344, guid: 3711a272fef5060469fdcc79f4f5ac03, type: 3}

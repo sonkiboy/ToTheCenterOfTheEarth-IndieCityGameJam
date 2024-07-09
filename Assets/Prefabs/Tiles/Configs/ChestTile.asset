@@ -15,6 +15,7 @@ MonoBehaviour:
   Health: 10
   SpawnChance: 1
   TreasureDrop: 50
+  FuelDrop: 0
   ExplodeOnBreak: 0
   LayersDected:
     serializedVersion: 2
@@ -22,4 +23,10 @@ MonoBehaviour:
   ExplosionRange: 0
   ExplosionDamage: 0
   BlastForce: 1
+  SpawnedEnemies: []
+  SpawnedPowerUps:
+  - {fileID: 599738050225399084, guid: 92685f0e896d4ba48842c7811c7705db, type: 3}
+  - {fileID: 599738050225399084, guid: 9a641e387b830a1499e63c64c3a3a862, type: 3}
+  - {fileID: 599738050225399084, guid: 7c2a57aef2d35a545be72ac9c5c7c876, type: 3}
+  - {fileID: 599738050225399084, guid: c6016bf1f727afc439add964c4d52e2e, type: 3}
   BrokenOverlays: []

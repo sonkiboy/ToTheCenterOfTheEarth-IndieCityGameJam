@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour
 {
-
+    public int ExtraDamage = 0;
     private Rigidbody2D rb;
     public float Speed = 1;
     public int Damage = 5;
@@ -36,11 +36,19 @@ public class BulletBehavior : MonoBehaviour
 
 
         TileBehavior tb = collision.gameObject.GetComponent<TileBehavior>();
+        IEnemy enemy = collision.gameObject.GetComponent<IEnemy>();
+
 
         if (tb != null)
         {
-            tb.Health -= Damage;
+            tb.Health -= Damage + ExtraDamage;
         }
+        else if (enemy != null)
+        {
+            enemy.DealDamage(Damage);
+        }
+
+
 
         Destroy(gameObject);
     }

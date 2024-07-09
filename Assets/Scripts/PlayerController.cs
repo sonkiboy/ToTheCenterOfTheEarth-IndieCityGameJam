@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     GameObject gunObj;
     GunBehavior gunBehavior;
+    SpriteRenderer gunSprite;
 
     #endregion
 
@@ -57,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
         gunBehavior = gunObj.GetComponent<GunBehavior>();
 
+        gunSprite = gunObj.GetComponent<SpriteRenderer>();
+
     }
 
 
@@ -92,10 +95,12 @@ public class PlayerController : MonoBehaviour
         if(aimDirection.x < 0 && spriteRenderer.flipX == true)
         {
             spriteRenderer.flipX = false;
+            gunSprite.flipY = false;
         }
         else if (aimDirection.x > 0 && spriteRenderer.flipX == false)
         {
             spriteRenderer.flipX = true;
+            gunSprite.flipY = true;
         }
 
 

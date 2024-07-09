@@ -155,7 +155,7 @@ public class BlockGenerator : MonoBehaviour
         int platDepth = PlatDepth;
 
         int y = -GameManager.Instance.CurrentDepth - GenerateHeight;
-        Debug.Log($"Generating Tiles at y : {y}");
+        //Debug.Log($"Generating Tiles at y : {y}");
 
         Instantiate(Edges[0], new Vector2(-GenerateWidth - 1, y), Edges[0].transform.rotation, ground.transform);
         Instantiate(Edges[1], new Vector2(GenerateWidth + 1, y), Edges[0].transform.rotation, ground.transform);

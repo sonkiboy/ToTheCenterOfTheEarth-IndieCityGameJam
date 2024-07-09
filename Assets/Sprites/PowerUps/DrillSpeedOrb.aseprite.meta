@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ccaf3a2aae83546499178f4bdadff520
+guid: f5998953c69b47541b06092fb5b5f2d1
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638560335189708332
+  platformSettingsDirtyTick: 638560695767871114
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Pillbug
+  - name: DrillSpeedOrb_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.54545456, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 12
-    spriteID: 5c1b2e786358dcd4cb69451e0d07bdb5
+      width: 11
+      height: 15
+    spriteID: 467ce216f85f89b4dbed64b2b21d582b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,23 +139,107 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: DrillSpeedOrb_Frame_1
+    originalName: 
+    pivot: {x: 0.54545456, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 23
+      y: 27
+      width: 11
+      height: 14
+    spriteID: 028864cfb878e3043b9ea6036cc0f12c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 23, y: 27}
+  - name: DrillSpeedOrb_Frame_2
+    originalName: 
+    pivot: {x: 0.54545456, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 27
+      width: 11
+      height: 15
+    spriteID: 500a7324eb588b149950a427c11e0ccc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 27}
+  - name: DrillSpeedOrb_Frame_3
+    originalName: 
+    pivot: {x: 0.54545456, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 23
+      y: 4
+      width: 11
+      height: 15
+    spriteID: 7385f3c0716895249a5ac203fac6c7e6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 23, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1834313215
-    name: Pillbug
+    guid: -662692825
+    name: DrillSpeedOrb
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Pillbug
+    - name: DrillSpeedOrb_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 2
         y: 0
-        width: 16
-        height: 12
-      spriteId: 5c1b2e786358dcd4cb69451e0d07bdb5
+        width: 11
+        height: 15
+      spriteId: 467ce216f85f89b4dbed64b2b21d582b
+    - name: DrillSpeedOrb_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 14
+      spriteId: 028864cfb878e3043b9ea6036cc0f12c
+    - name: DrillSpeedOrb_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 15
+      spriteId: 500a7324eb588b149950a427c11e0ccc
+    - name: DrillSpeedOrb_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 15
+      spriteId: 7385f3c0716895249a5ac203fac6c7e6
     linkedCells: []
     parentIndex: -1
   platformSettings:
