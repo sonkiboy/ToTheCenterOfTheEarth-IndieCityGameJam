@@ -1,0 +1,18 @@
+Event	ID	Name			Wwise Object Path	Notes
+	13776098	Explosion			\Default Work Unit\Explosion	
+	337805159	RockBreak			\Default Work Unit\RockBreak	
+	384043239	PlatformEnd			\Default Work Unit\PlatformEnd	
+	391172934	EnemyHit			\Default Work Unit\EnemyHit	
+	846198821	PlayerLand			\Default Work Unit\PlayerLand	
+	920629373	BatScreech			\Default Work Unit\BatScreech	
+	1383918998	JetPackOn			\Default Work Unit\JetPackOn	
+	1464172559	AlarmOn			\Default Work Unit\AlarmOn	
+	1483571575	TreasureCollected			\Default Work Unit\TreasureCollected	
+	1768459107	AlarmOff			\Default Work Unit\AlarmOff	
+	2024411100	JetPackOff			\Default Work Unit\JetPackOff	
+	2538918815	PlayerShoot			\Default Work Unit\PlayerShoot	
+	3831688773	PlayerHit			\Default Work Unit\PlayerHit	
+	4008126242	PlayerJump			\Default Work Unit\PlayerJump	
+	4179333400	BulletHit			\Default Work Unit\BulletHit	
+	4276765652	PlatformStart			\Default Work Unit\PlatformStart	
+

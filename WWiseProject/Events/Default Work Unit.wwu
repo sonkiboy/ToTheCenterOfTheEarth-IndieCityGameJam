@@ -1,6 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" SchemaVersion="119">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="PlayerShoot" ID="{0D127B5A-DB36-421E-B422-D0B126A50B5A}">
+					<ChildrenList>
+						<Action Name="" ID="{E873BA1C-2D9B-4B94-897D-2014413527EB}" ShortID="889784255">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GunFire" ID="{31B5A88C-DE6C-47BB-8ED6-EC7DB6EDF5A8}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="JetPackOn" ID="{0191A4F9-44C7-4799-B422-4837B0C606B0}">
+					<ChildrenList>
+						<Action Name="" ID="{646E9C8F-0E31-4508-8B62-4748351095C5}" ShortID="945104032">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="JetPackLoop" ID="{8E4CE6FE-CCF6-4268-B47E-260150D6A735}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="JetPackOff" ID="{ECEA7DC0-DC1B-4C1A-902E-DE71F745BDD9}">
+					<ChildrenList>
+						<Action Name="" ID="{5BDB4803-28C5-4440-85BE-D39EE10BE75E}" ShortID="1063118140">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="JetPackLoop" ID="{8E4CE6FE-CCF6-4268-B47E-260150D6A735}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BulletHit" ID="{04EE6E36-7D28-4DA2-94F3-B4740373F98F}">
+					<ChildrenList>
+						<Action Name="" ID="{4B917B69-9B20-4242-B65F-F279185AE273}" ShortID="349112849">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BulletCollision" ID="{450D68AF-2580-492A-9AFA-D2BA81255871}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="RockBreak" ID="{DDE7725D-AEE1-4D0C-BA46-6F47CE9AB5DC}">
+					<ChildrenList>
+						<Action Name="" ID="{DFB2DB8C-6471-45DF-BEA3-7A48AA292426}" ShortID="189715407">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BasicRockBreak" ID="{CA9C51F4-F757-45CA-9EAF-301BF4AB835D}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="EnemyHit" ID="{8933E1CA-853B-4D34-9139-BE0B4074D6B4}">
+					<ChildrenList>
+						<Action Name="" ID="{9A88216E-DC84-42CA-AC29-208DE02B6EDB}" ShortID="422983027">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EnemyDamaged" ID="{D064BF6A-CE42-450F-B040-E7F0D61B4B0A}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Explosion" ID="{7DAC5597-D855-4D0A-BBCD-96D9EA273498}">
+					<ChildrenList>
+						<Action Name="" ID="{B85C41E7-26A9-4346-B413-4D0983FEAF48}" ShortID="980179276">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BasicExplosion" ID="{029383E3-D224-4556-BE0E-5EE9D90A812E}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayerJump" ID="{203F6B6E-9CC9-4772-A4E8-34AC000EC01F}">
+					<ChildrenList>
+						<Action Name="" ID="{5614F5CB-E826-4519-BFD4-129008AE4323}" ShortID="345477271">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Jump" ID="{E5E1FC66-F68C-469E-9C06-E723188A6CFE}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayerLand" ID="{8BAB6FC8-C315-492E-A22B-E97B9CC42139}">
+					<ChildrenList>
+						<Action Name="" ID="{7626240F-38DC-4672-B723-B54335D221DF}" ShortID="720523454">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GroundHit" ID="{796A6878-CBDA-4D95-AC04-60F0C14F7163}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="TreasureCollected" ID="{C24C24F4-77FD-45F4-A726-A8175AAAEC71}">
+					<ChildrenList>
+						<Action Name="" ID="{06C6037C-4FFF-4D06-AEDD-3407051CCE0B}" ShortID="227388173">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TreasureCounter" ID="{18F2A5A2-FF97-4345-A716-629A01A6ADE1}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="AlarmOn" ID="{2EF17D4D-2C71-4EEA-9838-1D23CDBB7AFB}">
+					<ChildrenList>
+						<Action Name="" ID="{190C13CB-1B84-49A0-82D7-2A6CF9779B8F}" ShortID="745717231">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AlarmLoop" ID="{EBB551BA-C9DE-44D9-9063-706FD0EEC21C}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="AlarmOff" ID="{1F85B488-E946-428E-B1CD-9737DBD32DC4}">
+					<ChildrenList>
+						<Action Name="" ID="{B34105D7-317E-4912-B705-D432D8FEC103}" ShortID="1029820047">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AlarmLoop" ID="{EBB551BA-C9DE-44D9-9063-706FD0EEC21C}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayerHit" ID="{83264411-28C0-417D-8834-4E6926408214}">
+					<ChildrenList>
+						<Action Name="" ID="{AE442AB9-20BD-4C9E-B7B4-E56608BD19CB}" ShortID="710484488">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlayerDamaged" ID="{B82C75B5-1883-458D-98E5-CFE89C396E08}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlatformStart" ID="{C2BC3B90-8A02-432E-BA61-5E54EC004C8D}">
+					<ChildrenList>
+						<Action Name="" ID="{CBE743DE-D0DA-47AC-AF99-0A4265A26D5E}" ShortID="983939137">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EngineStart" ID="{808522C3-E4B7-44F0-8CD6-01CF21D1DB42}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlatformEnd" ID="{44BAFD82-E586-438F-953C-9096B89C2B68}">
+					<ChildrenList>
+						<Action Name="" ID="{77C2929F-8D88-4B14-828D-DD1D26807A61}" ShortID="500648004">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EngineStop" ID="{16045D7A-EDB5-4D6B-9DEA-794EA87CB485}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BatScreech" ID="{4F28D00A-6A43-4D6D-8020-BFF32D0C1003}">
+					<ChildrenList>
+						<Action Name="" ID="{50D178A5-1F4D-4793-A426-55FC0937747C}" ShortID="606612015">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Screech" ID="{D7246126-E52A-45A5-B08A-C312DE74C728}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

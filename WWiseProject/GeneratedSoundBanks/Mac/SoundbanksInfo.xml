@@ -2,7 +2,7 @@
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
 		<ProjectRoot>../..</ProjectRoot>
-		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SourceFilesRoot>../../.cache/Mac/</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
 		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
@@ -22,10 +22,28 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{D53E2940-4ABF-BC88-5CA9-53DDDCE02813}">
+		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{2C5C4DB9-86B4-8156-336C-20DD9C3B36CE}">
 			<ShortName>UrMom</ShortName>
 			<Path>UrMom.bnk</Path>
+			<Events>
+				<Event Id="1768459107" Name="AlarmOff" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1464172559" Name="AlarmOn" DurationType="Infinite"/>
+				<Event Id="920629373" Name="BatScreech" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4179333400" Name="BulletHit" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="391172934" Name="EnemyHit" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="13776098" Name="Explosion" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2024411100" Name="JetPackOff" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1383918998" Name="JetPackOn" DurationType="Infinite"/>
+				<Event Id="384043239" Name="PlatformEnd" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4276765652" Name="PlatformStart" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3831688773" Name="PlayerHit" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4008126242" Name="PlayerJump" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="846198821" Name="PlayerLand" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2538918815" Name="PlayerShoot" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="337805159" Name="RockBreak" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1483571575" Name="TreasureCollected" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7D796E58-01FE-FC3D-1462-A09F8B6B8F3A}</FileHash>
+	<FileHash>{B8DE986A-C4EF-8C01-0922-3747A817694D}</FileHash>
 </SoundBanksInfo>
