@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{B6CBD692-12EC-CDBA-0932-48F63C40C91F}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{19673545-C2C7-46D2-6D45-11A2DF77039B}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -21,8 +21,11 @@
 			<Busses>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
+			<GameParameters>
+				<GameParameter Id="3550022565" Name="CollectedTreasure"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{2823E959-1AA7-EE72-FFCF-E127E893329E}">
+		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{25B61ACC-8F9D-26AB-1472-E49347E9EDBE}">
 			<ShortName>UrMom</ShortName>
 			<Path>UrMom.bnk</Path>
 			<Media>
@@ -40,7 +43,7 @@
 				</File>
 				<File Id="86352657" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlatformStop.wav</ShortName>
-					<CachePath>SFX/PlatformStop_723AE872.wem</CachePath>
+					<CachePath>SFX/PlatformStop_03982DF4.wem</CachePath>
 				</File>
 				<File Id="145726937" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Explosion_03.wav</ShortName>
@@ -96,7 +99,7 @@
 				</File>
 				<File Id="702155503" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>TreasureCounter.wav</ShortName>
-					<CachePath>SFX/TreasureCounter_F50D8D29.wem</CachePath>
+					<CachePath>SFX/TreasureCounter_3D0E614B.wem</CachePath>
 				</File>
 				<File Id="763462234" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>GunFire_03.wav</ShortName>
@@ -108,11 +111,11 @@
 				</File>
 				<File Id="811838532" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerDamaged.wav</ShortName>
-					<CachePath>SFX/PlayerDamaged_B6A4F5DC.wem</CachePath>
+					<CachePath>SFX/PlayerDamaged_56B5CA66.wem</CachePath>
 				</File>
 				<File Id="855419003" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BulletImpact.wav</ShortName>
-					<CachePath>SFX/BulletImpact_54CFAAD6.wem</CachePath>
+					<CachePath>SFX/BulletImpact_73CBEDD3.wem</CachePath>
 				</File>
 				<File Id="929515296" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AlarmLoop.wav</ShortName>
@@ -217,7 +220,10 @@
 					</MediaRefs>
 				</Event>
 			</Events>
+			<GameParameters>
+				<GameParameter Id="3550022565" Name="CollectedTreasure"/>
+			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{BB1D3862-4C9C-063B-3E00-57646C564983}</FileHash>
+	<FileHash>{29146A78-BC44-89D7-C9C6-3C886C32913D}</FileHash>
 </SoundBanksInfo>

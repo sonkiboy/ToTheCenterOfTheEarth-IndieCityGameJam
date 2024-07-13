@@ -16,11 +16,14 @@ Event	ID	Name			Wwise Object Path	Notes
 	4179333400	BulletHit			\Default Work Unit\BulletHit	
 	4276765652	PlatformStart			\Default Work Unit\PlatformStart	
 
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3550022565	CollectedTreasure			\Default Work Unit\CollectedTreasure	
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	23490814	RockBreak_03	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\RockBreak_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\RockBreak_03		186000
 	76099093	Bat_04	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\Bat_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_04		285484
 	76358837	RockBreak_02	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\RockBreak_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\RockBreak_02		198728
-	86352657	EngineStop	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\PlatformStop_723AE872.wem		\Actor-Mixer Hierarchy\Default Work Unit\EngineStop		1461884
+	86352657	EngineStop	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\PlatformStop_03982DF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\EngineStop		1461884
 	145726937	Explosion_03	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\Explosion_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_03		152698
 	189741029	Bat_03	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\Bat_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_03		312156
 	318650182	Bat_01	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\Bat_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_01		285484
@@ -34,11 +37,11 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	585746009	Explosion_02	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\Explosion_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_02		230910
 	589328967	GunFire_04	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\GunFire_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\GunFire_04		48014
 	669445906	EngineStart	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\PlatformStart_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\EngineStart		1396160
-	702155503	TreasureCounter	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\TreasureCounter_F50D8D29.wem		\Actor-Mixer Hierarchy\Default Work Unit\TreasureCounter		409196
+	702155503	TreasureCounter	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\TreasureCounter_3D0E614B.wem		\Actor-Mixer Hierarchy\Default Work Unit\TreasureCounter		409196
 	763462234	GunFire_03	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\GunFire_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\GunFire_03		106190
 	774887571	GroundHit	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\GroundHit_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GroundHit		33050
-	811838532	PlayerDamaged	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\PlayerDamaged_B6A4F5DC.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlayerDamaged		112032
-	855419003	BulletCollision	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\BulletImpact_54CFAAD6.wem		\Actor-Mixer Hierarchy\Default Work Unit\BulletCollision		153164
+	811838532	PlayerDamaged	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\PlayerDamaged_56B5CA66.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlayerDamaged		112032
+	855419003	BulletCollision	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\BulletImpact_73CBEDD3.wem		\Actor-Mixer Hierarchy\Default Work Unit\BulletCollision		153164
 	929515296	AlarmLoop	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\AlarmLoop_FBC78EF0.wem		\Actor-Mixer Hierarchy\Default Work Unit\AlarmLoop		658444
 	1018182414	Bat_02	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\Bat_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_02		285484
 	1032960582	GunFire_01	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Windows\SFX\GunFire_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\GunFire_01		69332
