@@ -10,6 +10,7 @@ public class TileBehavior : MonoBehaviour
     SpriteRenderer spriteRenderer;
     SpriteRenderer OverlayRenderer;
 
+    [SerializeField] GameObject explosionFX;
 
     #endregion
 
@@ -121,6 +122,8 @@ public class TileBehavior : MonoBehaviour
 
         Collider2D[] foundColliders = Physics2D.OverlapCircleAll(transform.position , Config.ExplosionRange,Config.LayersDected);
 
+        Instantiate(explosionFX, (Vector2)this.transform.position + (Vector2.one * .5f), explosionFX.transform.rotation);
+
         foreach (Collider2D collider in foundColliders)
         {
 
@@ -148,6 +151,8 @@ public class TileBehavior : MonoBehaviour
                 collider.GetComponent<TileBehavior>().Health -= totalDamage;
             }
         }
+
+        
     }
 
 

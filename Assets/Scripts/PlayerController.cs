@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
 
+    Renderer damageFlash;
+
     GameObject gunObj;
     GunBehavior gunBehavior;
     SpriteRenderer gunSprite;
@@ -35,12 +37,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float MaxRunSpeed = 10f;
     public float JetThrust = 40;
 
+    public float InvincibilityDurration = 2f;
+
     private float ThrustPower = 0f;
 
 
 
     private Vector2 moveDirection = Vector2.zero;
     private Vector2 aimDirection = Vector2.zero;
+
+    private bool isInvincible = false;
 
     private void Awake()
     {
@@ -60,6 +66,8 @@ public class PlayerController : MonoBehaviour
 
         gunSprite = gunObj.GetComponent<SpriteRenderer>();
 
+        damageFlash = transform.Find("Sprite").GetComponent<Renderer>();
+
     }
 
 
@@ -78,6 +86,10 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+
+
+
+        //damageFlash.material.SetFloat("_Intensity", 1f);
     }
 
     // Update is called once per frame
@@ -148,5 +160,73 @@ public class PlayerController : MonoBehaviour
 
         gunObj.transform.rotation = newRotation * Quaternion.Euler(0f,0f,90f);
         //Debug.Log($"Aim Direction : {aimDirection} | Rotation : {gunObj.transform.rotation}");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            if (!isInvincible)
+            {
+                GameManager.Instance.CurrentHealth--;
+
+                StartCoroutine(Invincibility(InvincibilityDurration));
+            }
+        }
+    }
+
+    IEnumerator Invincibility(float Durration)
+    {
+        isInvincible = true;
+
+        float count = Durration;
+
+        float flashRate = .25f;
+
+        bool flashOn = false;
+
+        while (count > 0)
+        {
+            if (count - flashRate > 0)
+            {
+                count -= flashRate;
+
+                if (flashOn)
+                {
+                    flashOn = false;
+                    damageFlash.material.SetFloat("_Intensity", 0f);
+                }
+                else
+                {
+                    flashOn = true;
+                    damageFlash.material.SetFloat("_Intensity", 1f);
+                }
+
+
+                yield return new WaitForSeconds(flashRate);
+            }
+            else
+            {
+                if (flashOn)
+                {
+                    flashOn = false;
+                    damageFlash.material.SetFloat("_Intensity", 0f);
+                }
+                else
+                {
+                    flashOn = true;
+                    damageFlash.material.SetFloat("_Intensity", 1f);
+                }
+
+                yield return new WaitForSeconds(count);
+                break;
+            }
+        }
+
+        damageFlash.material.SetFloat("_Intensity", 0f);
+
+        yield return new WaitForFixedUpdate();
+
+        isInvincible = false;
     }
 }

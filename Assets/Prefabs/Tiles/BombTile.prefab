@@ -228,5 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79b9dba8cc45f4086dba0d9e4271aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionFX: {fileID: 7419567945701673913, guid: d33019f8ff31be24aaa2f72997f464f9, type: 3}
   Config: {fileID: 11400000, guid: 6dcf77cd0e1326d4ba442fd8f8d78434, type: 2}
   hp: 10
