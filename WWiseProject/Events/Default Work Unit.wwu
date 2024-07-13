@@ -37,6 +37,13 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{C484A868-C533-4536-9042-D157F9DDE48D}" ShortID="395613848">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="JetPackOff" ID="{65FE6750-A48F-4962-BB3A-9476F0FEABFC}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="BulletHit" ID="{04EE6E36-7D28-4DA2-94F3-B4740373F98F}">
