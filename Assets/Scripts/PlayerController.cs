@@ -187,6 +187,12 @@ public class PlayerController : MonoBehaviour
 
         while (count > 0)
         {
+            if(GameManager.Instance.CurrentHealth <= 0)
+            {
+                damageFlash.material.SetFloat("_Intensity", 1f);
+                break;
+            }
+
             if (count - flashRate > 0)
             {
                 count -= flashRate;

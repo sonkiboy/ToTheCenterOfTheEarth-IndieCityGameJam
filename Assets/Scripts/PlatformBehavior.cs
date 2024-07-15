@@ -95,7 +95,11 @@ public class PlatformBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
         {
-            collision.transform.parent = null;
+            if (gameObject.activeSelf)
+            {
+                collision.transform.parent = null;
+            }
+            
         }
     }
 
@@ -112,7 +116,7 @@ public class PlatformBehavior : MonoBehaviour
 
                 if (foundCollisions.Length > 0)
                 {
-                    Debug.Log("Digging");
+                    //Debug.Log("Digging");
 
                     foreach (Collider2D collision in foundCollisions)
                     {
@@ -121,6 +125,12 @@ public class PlatformBehavior : MonoBehaviour
                             TileBehavior tileBehavior = collision.GetComponent<TileBehavior>();
 
                             tileBehavior.Health -= DrillDamage;
+                        }
+                        else if (collision.gameObject.tag == "Enemy")
+                        {
+                            IEnemy enemy = collision.gameObject.GetComponent<IEnemy>();
+
+                            enemy.DealDamage(DrillDamage);
                         }
                     }
                 }

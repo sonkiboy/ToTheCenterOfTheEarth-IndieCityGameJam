@@ -30,7 +30,7 @@ public class BlockGenerator : MonoBehaviour
 
     void Start()
     {
-        
+        GenerateStart();
 
         
     }

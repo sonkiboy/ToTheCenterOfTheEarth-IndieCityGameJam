@@ -142,15 +142,15 @@ ScriptedImporter:
   spriteSheetImportData:
   - name: BG
     originalName: 
-    pivot: {x: 0, y: 0}
-    alignment: 6
+    pivot: {x: 0, y: 0.29032257}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 62
+      y: 53
       width: 64
-      height: 22
+      height: 31
     spriteID: 727ccbaf79f668d49a753b7c2089c5b8
     spriteBone: []
     spriteOutline: []

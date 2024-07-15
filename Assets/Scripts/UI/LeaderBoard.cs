@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using Unity.VisualScripting;
+using System.Linq;
 
 public class LeaderBoard : MonoBehaviour
 {
@@ -13,8 +14,11 @@ public class LeaderBoard : MonoBehaviour
     [SerializeField] Sprite[] FontSprites;
     [SerializeField] GameObject[] PlayerNames;
     [SerializeField] GameObject[] Scores;
-    
+
     #endregion
+
+    string[] textNames;
+    string[] textScores;
 
     string path;
 
@@ -30,13 +34,14 @@ public class LeaderBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         path = Application.persistentDataPath + "/LeaderBoard.txt";
 
+        
 
-
-
-        InsertNewScore("kill",9999999);
         UpdateScoreBoard();
+        
+
     }
 
     // Update is called once per frame
@@ -45,15 +50,16 @@ public class LeaderBoard : MonoBehaviour
         
     }
 
-    private void UpdateScoreBoard()
+    public void UpdateScoreBoard()
     {
-        StreamReader reader = new StreamReader(path);
+        
 
-        string[] textArray = reader.ReadToEnd().Split("\n");
-        reader.Close();
+        string[] textArray = File.ReadAllLines(path);
+        //Debug.Log($"Read from file : {textArray[0]}");
+        
 
-        string[] textNames = new string[textArray.Length/2];
-        string[] textScores = new string[textArray.Length / 2];
+        textNames = new string[textArray.Length/2];
+        textScores = new string[textArray.Length / 2];
 
         int counter = 0;
 
@@ -110,8 +116,11 @@ public class LeaderBoard : MonoBehaviour
             {
                 char[] charArray = textNames[i].ToCharArray();
 
-                for (int j = 0; j < PlayerNames[i].transform.childCount; j++)
+                //Debug.Log($"Setting Player name {i} to {textArray[i]}");
+
+                for (int j = 0; j < charArray.Length; j++)
                 {
+                    
                     Image image = PlayerNames[i].transform.GetChild(j).GetComponent<Image>();
                     image.sprite = GetFontSprite(charArray[j].ToString());
 
@@ -134,6 +143,8 @@ public class LeaderBoard : MonoBehaviour
 
     }
 
+    
+
     Sprite GetFontSprite(string character)
     {
         string pathName = "LB_" + character;
@@ -151,87 +162,93 @@ public class LeaderBoard : MonoBehaviour
         return FontSprites[0];
     }
 
-    public bool CheckNewScore(int newScore, string[] textArray)
+    public bool CheckNewScore(int newScore)
     {
         
-
-        int lowestScore = Convert.ToInt32(textArray[textArray.Length - 1]);
-
-        if(newScore > lowestScore)
+        if (textScores.Length < 10)
         {
             return true;
         }
         else
         {
-            return false;
+            int lowestScore = Convert.ToInt32(textScores[textScores.Length - 1]);
+
+            if (newScore > lowestScore)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
+        
 
     }
 
-    public void InsertNewScore(string name, int score)
+    public IEnumerator InsertNewScore(string name, int score)
     {
         name = name.ToUpper();
 
-        StreamReader reader = new StreamReader(path);
 
-        string[] textArray = reader.ReadToEnd().Split("\n");
-        reader.Close();
 
-        int indexToInsert = -1;
+        string[] textArray = File.ReadAllLines(path);
+        //Debug.Log($"Read {textArray.Length} lines from file : {textArray[0]}");
 
-        // first find where the score should be in the list
-        for (int i = 0; i < textArray.Length; i += 2)
+        int insertIndex = -1;
+
+        for (int i = 0; i < textScores.Length; i++)
         {
-            // i is the name
-            int checkingScore = Convert.ToInt32(textArray[textArray.Length + 1]);
+            int convertedScore = Convert.ToInt32(textScores[i]);
 
-            if(score > checkingScore)
+            if(score > convertedScore)
             {
-                indexToInsert = i;
+                insertIndex = i * 2;
                 break;
             }
         }
 
-        // then create the new string to store
-        string[] newDataArray = new string[20];
-
-        for (int i = 0; i < newDataArray.Length; i++)
+        if(insertIndex == -1 && textArray.Length < 20)
         {
-            if(i < indexToInsert * 2)
-            {
-                newDataArray[i] = textArray[i];
-            }
-            else if (i == indexToInsert)
-            {
-                newDataArray[i] = name;
-            }
-            else if (i == indexToInsert + 1)
-            {
-                newDataArray[i] = score.ToString();
-            }
-            else
-            {
-                if(i < textArray.Length)
-                {
-                    newDataArray[i] = textArray[i];
-                }
-                
-            }
-            
-
+            insertIndex = textArray.Length;
         }
+
+
+        List<string> oldList = textArray.ToList<string>();
+
+        if(insertIndex >= 0)
+        {
+            //Debug.Log($"Inserting: {name}, into index {insertIndex} with score {score}");
+
+            oldList.Insert(insertIndex, name);
+            oldList.Insert(insertIndex + 1, score.ToString());
+        }
+
 
         string newSave = string.Empty;
 
-        for (int i = 0; i < newDataArray.Length; i++)
+        for (int i = 0; i < oldList.Count; i++)
         {
-            newSave += newDataArray[i] + "\n";
-
+            if (i != oldList.Count - 1)
+            {
+                newSave += oldList[i] + "\n";
+            }
+            else
+            {
+                newSave += oldList[i];
+            }
         }
 
-        StreamWriter writer = new StreamWriter(path);
-        writer.Write(newSave);
+        
 
+        File.WriteAllText(path, newSave);
+        
 
+        yield return new WaitForFixedUpdate();
+
+        UpdateScoreBoard();
     }
+
+    
 }

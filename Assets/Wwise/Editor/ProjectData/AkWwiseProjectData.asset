@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b28a8b35638bd0468618d48e40b4a1ca
     GuidInternal: 
-    m_lastTime: -8584813078468701364
+    m_lastTime: -8584807064447248482
     List:
     - name: UrMom
       guid: 892131c98ee99f478dc92a2ff1ed4ae5
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 5e02a02a7cd2f549a036b2ce223a358c
     GuidInternal: 
-    m_lastTime: -8584809507471113905
+    m_lastTime: -8584807064452912376
     List:
     - name: AlarmOff
       guid: 88b4851f46e98e42b1cd9737dbd32dc4
@@ -145,8 +145,8 @@ MonoBehaviour:
         guid: 0ad0284f436a6d4d8020bff32d0c1003
       Path: Events\Default Work Unit\BatScreech
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1.6249791
+      minDuration: 1.4860625
     - name: BulletHit
       guid: 366eee04287da24d94f3b4740373f98f
       id: 4179333400
@@ -162,8 +162,8 @@ MonoBehaviour:
         guid: 366eee04287da24d94f3b4740373f98f
       Path: Events\Default Work Unit\BulletHit
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.79689586
+      minDuration: 0.79689586
     - name: EnemyHit
       guid: cae133893b85344d9139be0b4074d6b4
       id: 391172934
@@ -179,8 +179,8 @@ MonoBehaviour:
         guid: cae133893b85344d9139be0b4074d6b4
       Path: Events\Default Work Unit\EnemyHit
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.7443333
+      minDuration: 0.7443333
     - name: Explosion
       guid: 9755ac7d55d80a4dbbcd96d9ea273498
       id: 13776098
@@ -196,8 +196,8 @@ MonoBehaviour:
         guid: 9755ac7d55d80a4dbbcd96d9ea273498
       Path: Events\Default Work Unit\Explosion
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2.4043126
+      minDuration: 1.5369375
     - name: JetPackOff
       guid: c07deaec1bdc1a4c902ede71f745bdd9
       id: 2024411100
@@ -247,8 +247,8 @@ MonoBehaviour:
         guid: 82fdba4486e58f43953c9096b89c2b68
       Path: Events\Default Work Unit\PlatformEnd
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 7.6134753
+      minDuration: 7.6134753
     - name: PlatformStart
       guid: 903bbcc2028a2e43ba615e54ec004c8d
       id: 4276765652
@@ -264,8 +264,8 @@ MonoBehaviour:
         guid: 903bbcc2028a2e43ba615e54ec004c8d
       Path: Events\Default Work Unit\PlatformStart
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 7.2708335
+      minDuration: 7.2708335
     - name: PlayerHit
       guid: 11442683c0287d4188344e6926408214
       id: 3831688773
@@ -281,8 +281,8 @@ MonoBehaviour:
         guid: 11442683c0287d4188344e6926408214
       Path: Events\Default Work Unit\PlayerHit
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.5830014
+      minDuration: 0.5830014
     - name: PlayerJump
       guid: 6e6b3f20c99c7247a4e834ac000ec01f
       id: 4008126242
@@ -298,8 +298,8 @@ MonoBehaviour:
         guid: 6e6b3f20c99c7247a4e834ac000ec01f
       Path: Events\Default Work Unit\PlayerJump
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.13928217
+      minDuration: 0.13928217
     - name: PlayerLand
       guid: c86fab8b15c32e49a22be97b9cc42139
       id: 846198821
@@ -315,8 +315,8 @@ MonoBehaviour:
         guid: c86fab8b15c32e49a22be97b9cc42139
       Path: Events\Default Work Unit\PlayerLand
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.34327084
+      minDuration: 0.34327084
     - name: PlayerShoot
       guid: 5a7b120d36db1e42b422d0b126a50b5a
       id: 2538918815
@@ -332,8 +332,8 @@ MonoBehaviour:
         guid: 5a7b120d36db1e42b422d0b126a50b5a
       Path: Events\Default Work Unit\PlayerShoot
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1.1051458
+      minDuration: 0.49914584
     - name: RockBreak
       guid: 5d72e7dde1ae0c4dba466f47ce9ab5dc
       id: 337805159
@@ -349,8 +349,8 @@ MonoBehaviour:
         guid: 5d72e7dde1ae0c4dba466f47ce9ab5dc
       Path: Events\Default Work Unit\RockBreak
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1.1601042
+      minDuration: 0.89754164
     - name: TreasureCollected
       guid: f4244cc2fd77f445a726a8175aaaec71
       id: 1483571575
@@ -366,8 +366,8 @@ MonoBehaviour:
         guid: f4244cc2fd77f445a726a8175aaaec71
       Path: Events\Default Work Unit\TreasureCollected
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2.130744
+      minDuration: 2.130744
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -380,8 +380,22 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: d70589505ddc5947a15eef807efe142c
     GuidInternal: 
-    m_lastTime: -8584813095585319130
-    List: []
+    m_lastTime: -8584807064452782727
+    List:
+    - name: CollectedTreasure
+      guid: 8649bc97c4c6334fb204fbc4f5928c2a
+      id: 3550022565
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d70589505ddc5947a15eef807efe142c
+      - ElementName: CollectedTreasure
+        ObjectType: 13
+        guid: 8649bc97c4c6334fb204fbc4f5928c2a
+      Path: Game Parameters\Default Work Unit\CollectedTreasure
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:

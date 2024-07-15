@@ -86,6 +86,13 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
+        GetComponent<GameOver>().StartGameOver(CurrentTreasure);
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        player.transform.Find("Sprite").GetComponent<Renderer>().material.SetFloat("_Intensity", 1f);
+        Platform.enabled = false;
 
     }
 }
