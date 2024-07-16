@@ -25,7 +25,7 @@
 				<GameParameter Id="3550022565" Name="CollectedTreasure"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{25B61ACC-8F9D-26AB-1472-E49347E9EDBE}">
+		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{A9D798B3-3362-8E61-9876-A68CFA03BE79}">
 			<ShortName>UrMom</ShortName>
 			<Path>UrMom.bnk</Path>
 			<Media>
@@ -167,7 +167,7 @@
 						<MediaRef Id="585746009"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2024411100" Name="JetPackOff" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2024411100" Name="JetPackOff" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="1383918998" Name="JetPackOn" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="526125494"/>
@@ -225,5 +225,5 @@
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{29146A78-BC44-89D7-C9C6-3C886C32913D}</FileHash>
+	<FileHash>{0CE73458-C4D5-533E-0EAC-B49E2711F21A}</FileHash>
 </SoundBanksInfo>

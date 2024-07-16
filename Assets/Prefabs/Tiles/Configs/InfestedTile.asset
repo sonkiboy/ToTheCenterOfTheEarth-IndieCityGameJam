@@ -27,3 +27,7 @@ MonoBehaviour:
   - {fileID: 2078680820865373513, guid: cd678ccd98750894baae7724b9875700, type: 3}
   SpawnedPowerUps: []
   BrokenOverlays: []
+  BreakSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: da4775d5eb3aea8469a89e0fa097c00d, type: 2}

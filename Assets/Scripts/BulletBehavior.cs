@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour
 {
+    public AK.Wwise.Event HitSound;
+    public AK.Wwise.Event EnemyHitsound;
+
     public int ExtraDamage = 0;
     private Rigidbody2D rb;
     public float Speed = 1;
@@ -34,6 +37,7 @@ public class BulletBehavior : MonoBehaviour
 
         //Debug.Log($"Detected collision : {collision.gameObject.name}");
 
+        HitSound.Post(gameObject);
 
         TileBehavior tb = collision.gameObject.GetComponent<TileBehavior>();
         IEnemy enemy = collision.gameObject.GetComponent<IEnemy>();
@@ -45,6 +49,7 @@ public class BulletBehavior : MonoBehaviour
         }
         else if (enemy != null)
         {
+            EnemyHitsound.Post(gameObject);
             enemy.DealDamage(Damage);
         }
 

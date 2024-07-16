@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunBehavior : MonoBehaviour
 {
     public GameObject Bullet;
+    public AK.Wwise.Event ShootEvent;
 
     public float FireSpeed = .5f;
 
@@ -29,6 +30,11 @@ public class GunBehavior : MonoBehaviour
         if (canFire)
         {
             GameObject bullet = Instantiate(Bullet,this.transform.position,this.transform.rotation);
+
+            
+
+            ShootEvent.Post(gameObject);
+
             bullet.GetComponent<BulletBehavior>().ExtraDamage = AdditionalDamage;
 
             StartCoroutine(FireCoolDown());

@@ -100,6 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e28dec72b5e83544a03dc508d2c9b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HitSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c68314b5cc0a9fd4d97d1a8dba06af98, type: 2}
+  EnemyHitsound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b50a649d865ef38459f28a1877728e76, type: 2}
   ExtraDamage: 0
   Speed: 8
   Damage: 5

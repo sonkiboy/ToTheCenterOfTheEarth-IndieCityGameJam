@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   SpawnChance: 5
+  TreasureDrop: 0
+  FuelDrop: 0
   ExplodeOnBreak: 1
   LayersDected:
     serializedVersion: 2
@@ -21,4 +23,10 @@ MonoBehaviour:
   ExplosionRange: 3
   ExplosionDamage: 20
   BlastForce: 30
+  SpawnedEnemies: []
+  SpawnedPowerUps: []
   BrokenOverlays: []
+  BreakSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a920864f88775ed419fcc56164077086, type: 2}

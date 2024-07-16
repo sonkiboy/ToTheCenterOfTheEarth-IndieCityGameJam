@@ -111,6 +111,8 @@ public class TileBehavior : MonoBehaviour
             
         }
 
+        Config.BreakSound.Post(gameObject);
+
         yield return new WaitForEndOfFrame();
 
         Destroy(gameObject);

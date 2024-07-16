@@ -25,4 +25,6 @@ public class TileConfig : ScriptableObject
 
     public Sprite[] BrokenOverlays;
 
+    public AK.Wwise.Event BreakSound;
+
 }

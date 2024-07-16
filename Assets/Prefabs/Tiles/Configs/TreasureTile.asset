@@ -28,3 +28,7 @@ MonoBehaviour:
   BrokenOverlays:
   - {fileID: -2411033462416485723, guid: 3711a272fef5060469fdcc79f4f5ac03, type: 3}
   - {fileID: 5666457195211117344, guid: 3711a272fef5060469fdcc79f4f5ac03, type: 3}
+  BreakSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: da4775d5eb3aea8469a89e0fa097c00d, type: 2}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,6 +23,12 @@ public class PlayerController : MonoBehaviour
 
     #region Inputs
 
+    #region Sounds
+
+    public AK.Wwise.Event JetPackOn;
+    public AK.Wwise.Event JetPackOff;
+
+    #endregion
 
     PlayerControllerInput inputManager;
 
@@ -69,6 +76,9 @@ public class PlayerController : MonoBehaviour
         damageFlash = transform.Find("Sprite").GetComponent<Renderer>();
 
     }
+
+    bool IsJeckpack = false;
+    
 
 
     private void OnEnable()
@@ -148,12 +158,25 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(newPos);
         }
         
-
+        // sound stuff
         if (ThrustPower > .5f)
         {
             //Debug.Log("Thrusting");
 
             rb.AddForce(Vector2.up * JetThrust);
+
+            if (!IsJeckpack)
+            {
+                JetPackOn.Post(gameObject);
+
+                IsJeckpack = true;
+            }
+            
+        }
+        else if(IsJeckpack)
+        {
+            IsJeckpack = false;
+            JetPackOff.Post(gameObject);
         }
 
         Quaternion newRotation = new Quaternion(Quaternion.identity.x, Quaternion.identity.y, Quaternion.LookRotation(aimDirection, Vector3.forward).z , Quaternion.LookRotation(aimDirection, Vector3.forward).w);

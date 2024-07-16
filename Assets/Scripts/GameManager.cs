@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
         set
         {
             level = value;
+
+            Platform.FuelPerSecond += .1f;
+
             StatTracker.SetLevelScore(level);
 
         }
