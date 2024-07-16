@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     public AK.Wwise.Event JetPackOn;
     public AK.Wwise.Event JetPackOff;
+    
 
     #endregion
 
@@ -200,6 +201,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Invincibility(float Durration)
     {
+
+        
+
         isInvincible = true;
 
         float count = Durration;

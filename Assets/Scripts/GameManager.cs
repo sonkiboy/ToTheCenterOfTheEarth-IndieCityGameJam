@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public PlatformBehavior Platform;
 
+    public AK.Wwise.Event PlayerDamagedSound;
+
 
 
     private int level = 0;
@@ -53,6 +55,9 @@ public class GameManager : MonoBehaviour
             {
                 GameOver();
             }
+
+
+            PlayerDamagedSound.Post(gameObject);
 
             HealthTracker.SetHealthUi(health);
         }

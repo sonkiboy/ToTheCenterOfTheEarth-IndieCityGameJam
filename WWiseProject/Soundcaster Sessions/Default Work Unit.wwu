@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{2DC7298F-11E6-4F54-AB2E-72E4AD0A2E11}" SchemaVersion="119">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{2DC7298F-11E6-4F54-AB2E-72E4AD0A2E11}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{2DC7298F-11E6-4F54-AB2E-72E4AD0A2E11}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="TestSession" ID="{04F9BEA4-2E08-4F47-87F8-1C00095AD1A9}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="AlarmOn" ID="{2EF17D4D-2C71-4EEA-9838-1D23CDBB7AFB}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="PlatformStart" ID="{C2BC3B90-8A02-432E-BA61-5E54EC004C8D}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="AlarmOff" ID="{1F85B488-E946-428E-B1CD-9737DBD32DC4}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="PlatformEnd" ID="{44BAFD82-E586-438F-953C-9096B89C2B68}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="BatScreech" ID="{4F28D00A-6A43-4D6D-8020-BFF32D0C1003}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>

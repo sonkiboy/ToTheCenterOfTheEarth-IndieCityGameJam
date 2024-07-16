@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}" PersistMode="Standalone">
 			<ChildrenList>
 				<RandomSequenceContainer Name="GunFire" ID="{31B5A88C-DE6C-47BB-8ED6-EC7DB6EDF5A8}" ShortID="598505889">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-360</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>

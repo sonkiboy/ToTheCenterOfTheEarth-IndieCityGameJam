@@ -38622,6 +38622,10 @@ PrefabInstance:
       propertyPath: JetPackOff.WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: cb286b7bd96fb114bbbce56fec208d45, type: 2}
+    - target: {fileID: 197256816821502604, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
+      propertyPath: PlayerDamagedSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 8bf120c7f04ae5b4aabe6a9cc6f21bca, type: 2}
     - target: {fileID: 1659418921127880368, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
       propertyPath: m_Name
       value: Player
@@ -38632,11 +38636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2053829084334621917, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2053829084334621917, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
       propertyPath: m_SortingLayerID
-      value: 1387516119
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2053829084334621917, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -38650,6 +38654,10 @@ PrefabInstance:
       propertyPath: ShootEvent.WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: 538ca761f8d568e41a88c4cedc312a4c, type: 2}
+    - target: {fileID: 3593165470828137048, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4704323711635953175, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -38669,7 +38677,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1659418921127880368, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1171803876}
   m_SourcePrefab: {fileID: 100100000, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
 --- !u!1 &808893344
 GameObject:
@@ -41948,6 +41959,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelBar: {fileID: 656934506}
+  AlarmOnSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 18d8f1ffe44c4fd4fb63364fc71f43cf, type: 2}
+  AlarmOffSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 829e5eb0de7614e48897dfce552f3b73, type: 2}
+  DrillOnSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3c527a8370cf9fe41ba7254513462fe6, type: 2}
+  DrillOffSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: d6de66bf165eb0c44a47a2d88fe3868d, type: 2}
   DecentSpeed: 4
   DrillRate: 4
   DrillDamage: 3
@@ -50135,6 +50162,10 @@ MonoBehaviour:
   StatTracker: {fileID: 1696989416}
   HealthTracker: {fileID: 1948679562}
   Platform: {fileID: 890292357}
+  PlayerDamagedSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8bf120c7f04ae5b4aabe6a9cc6f21bca, type: 2}
 --- !u!114 &1116396663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52491,6 +52522,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170736011}
   m_CullTransparentMesh: 1
+--- !u!1 &1171803871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1659418921127880368, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
+  m_PrefabInstance: {fileID: 806078016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1171803876
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171803871}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.4}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1172578468
 GameObject:
   m_ObjectHideFlags: 0

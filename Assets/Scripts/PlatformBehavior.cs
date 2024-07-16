@@ -12,8 +12,17 @@ public class PlatformBehavior : MonoBehaviour
 
     #endregion
 
+    #region Sounds
 
-    
+    public AK.Wwise.Event AlarmOnSound;
+    public AK.Wwise.Event AlarmOffSound;
+
+    public AK.Wwise.Event DrillOnSound;
+    public AK.Wwise.Event DrillOffSound;
+
+    #endregion
+
+
     public float DecentSpeed = 2;
     public float DrillRate = 2;
     public int DrillDamage = 3;
@@ -36,11 +45,20 @@ public class PlatformBehavior : MonoBehaviour
             if(fuel <= 0 && !isDraining)
             {
                 fuel = 0;
+
+                AlarmOnSound.Post(gameObject);
+                DrillOnSound.Post(gameObject);
+
                 StartCoroutine(DrainPlayer());
             }
             else if(fuel > 0 && isDraining)
             {
-                Debug.Log("fuel gained, stopping drain");
+                //Debug.Log("fuel gained, stopping drain");
+
+                AlarmOffSound.Post(gameObject);
+                DrillOffSound.Post(gameObject);
+
+
                 isDraining = false;
                 StopCoroutine(DrainPlayer());
             }
@@ -72,6 +90,8 @@ public class PlatformBehavior : MonoBehaviour
         blockGenerator = GameObject.Find("Cavern").GetComponent<BlockGenerator>();
 
         CurrentFuel = 100;
+
+        DrillOnSound.Post(gameObject);
 
         StartCoroutine(Drill());
         StartCoroutine(ConsumeFuel());

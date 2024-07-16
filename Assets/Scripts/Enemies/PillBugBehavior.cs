@@ -10,6 +10,8 @@ public class PillBugBehavior : MonoBehaviour, IEnemy
     Rigidbody2D rb;
     [SerializeField] BoxCollider2D wallCheck;
 
+    Renderer damageFlash;
+
     #endregion
 
     int hp = 20;
@@ -39,6 +41,7 @@ public class PillBugBehavior : MonoBehaviour, IEnemy
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        damageFlash = transform.Find("Sprite").GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -79,6 +82,7 @@ public class PillBugBehavior : MonoBehaviour, IEnemy
     public void DealDamage(int Damage)
     {
         this.Health -= Damage;
+        StartCoroutine(DamageFlash(.1f));
     }
 
     public IEnumerator Die()
@@ -89,5 +93,15 @@ public class PillBugBehavior : MonoBehaviour, IEnemy
 
         yield return new WaitForFixedUpdate();
         Destroy(this.gameObject);
+    }
+
+    IEnumerator DamageFlash(float durration)
+    {
+        damageFlash.material.SetFloat("_Intensity", 1f);
+
+        yield return new WaitForSeconds(durration);
+
+        damageFlash.material.SetFloat("_Intensity", 0f);
+
     }
 }
