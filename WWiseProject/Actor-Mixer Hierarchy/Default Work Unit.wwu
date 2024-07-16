@@ -13,7 +13,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="GunFire_01" ID="{A63FA4D7-6D18-4FF4-905C-1B12DB032532}" ShortID="723075870">
+						<Sound Name="V2GunFire_01" ID="{B7805620-41B6-4CB8-9BA2-239AA4154E15}" ShortID="755846448">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -23,19 +23,19 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="GunFire_01" ID="{CA421483-4A70-47DA-853C-9AE48687A3F3}">
+								<AudioFileSource Name="V2GunFire_01" ID="{6D4D5D5D-AC1B-4C74-8A45-38F4BDB35D86}">
 									<Language>SFX</Language>
-									<AudioFile>GunFire_01.wav</AudioFile>
+									<AudioFile>V2GunFire_01.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="1032960582"/>
+										<MediaID ID="35645405"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="GunFire_01" ID="{CA421483-4A70-47DA-853C-9AE48687A3F3}" Platform="Linked"/>
+								<ActiveSource Name="V2GunFire_01" ID="{6D4D5D5D-AC1B-4C74-8A45-38F4BDB35D86}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="GunFire_02" ID="{8A161A78-2B72-4D9A-9D59-D9E2E6E37E08}" ShortID="632485846">
+						<Sound Name="V2GunFire_02" ID="{2DD3FF51-48BE-4F89-AB95-7823EDFF9957}" ShortID="778399166">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -45,19 +45,19 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="GunFire_02" ID="{8031110A-3072-4A61-B3A8-2336B4047358}">
+								<AudioFileSource Name="V2GunFire_02" ID="{AC0E7098-F003-4197-833F-13DE37CA08A7}">
 									<Language>SFX</Language>
-									<AudioFile>GunFire_02.wav</AudioFile>
+									<AudioFile>V2GunFire_02.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="373917821"/>
+										<MediaID ID="759895451"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="GunFire_02" ID="{8031110A-3072-4A61-B3A8-2336B4047358}" Platform="Linked"/>
+								<ActiveSource Name="V2GunFire_02" ID="{AC0E7098-F003-4197-833F-13DE37CA08A7}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="GunFire_03" ID="{9373797D-8636-4D81-8959-2EC8C682068E}" ShortID="653590176">
+						<Sound Name="V2GunFire_03" ID="{637121A7-DAF9-4F99-9FF1-E51160FCAE2E}" ShortID="77123709">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -67,19 +67,19 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="GunFire_03" ID="{796C5463-A28A-43A8-B9CA-7C579E82D8BB}">
+								<AudioFileSource Name="V2GunFire_03" ID="{9C665309-8ECD-4AEE-9903-84FF91918CC8}">
 									<Language>SFX</Language>
-									<AudioFile>GunFire_03.wav</AudioFile>
+									<AudioFile>V2GunFire_03.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="763462234"/>
+										<MediaID ID="614040044"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="GunFire_03" ID="{796C5463-A28A-43A8-B9CA-7C579E82D8BB}" Platform="Linked"/>
+								<ActiveSource Name="V2GunFire_03" ID="{9C665309-8ECD-4AEE-9903-84FF91918CC8}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="GunFire_04" ID="{5CC555F0-3E85-489B-B90B-2F580A8C9EF0}" ShortID="262645239">
+						<Sound Name="V2GunFire_04" ID="{FBCFD1F1-09F3-437A-A463-3D7DC967D31D}" ShortID="289894498">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -89,16 +89,16 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="GunFire_04" ID="{B01DF7B0-941E-4829-B346-CB1EF2296D13}">
+								<AudioFileSource Name="V2GunFire_04" ID="{BF648317-28A4-442D-8F90-859547575190}">
 									<Language>SFX</Language>
-									<AudioFile>GunFire_04.wav</AudioFile>
+									<AudioFile>V2GunFire_04.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="589328967"/>
+										<MediaID ID="139858927"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="GunFire_04" ID="{B01DF7B0-941E-4829-B346-CB1EF2296D13}" Platform="Linked"/>
+								<ActiveSource Name="V2GunFire_04" ID="{BF648317-28A4-442D-8F90-859547575190}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -182,7 +182,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="RockBreak_01" ID="{07EFA51D-9882-41EF-A728-35F15754AF43}" ShortID="893068874">
+						<Sound Name="V2RockBreak_01" ID="{32F72071-A5E3-473D-9A6F-8CC7846D3852}" ShortID="192069340">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -192,19 +192,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="RockBreak_01" ID="{0E5002C8-49F0-4CBD-B1B2-5928F08AA55A}">
+								<AudioFileSource Name="V2RockBreak_01" ID="{1D4C4B08-EC4C-48A5-924C-C911B0F4F3A9}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.450916400547445"/>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>RockBreak_01.wav</AudioFile>
+									<AudioFile>V2RockBreak_01.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="403914875"/>
+										<MediaID ID="425431553"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="RockBreak_01" ID="{0E5002C8-49F0-4CBD-B1B2-5928F08AA55A}" Platform="Linked"/>
+								<ActiveSource Name="V2RockBreak_01" ID="{1D4C4B08-EC4C-48A5-924C-C911B0F4F3A9}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="RockBreak_02" ID="{E5722148-B155-40B8-8EB5-354D37155ABE}" ShortID="1066510469">
+						<Sound Name="V2RockBreak_02" ID="{26023388-9975-454D-A658-4FF63F6C16DB}" ShortID="419706683">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -214,19 +219,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="RockBreak_02" ID="{D39C0A4C-D2AF-4A2B-AD3E-D49EEA13D7CB}">
+								<AudioFileSource Name="V2RockBreak_02" ID="{8544A481-5BD5-4D1A-93CB-639399F7A33E}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.413439096715329"/>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>RockBreak_02.wav</AudioFile>
+									<AudioFile>V2RockBreak_02.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="76358837"/>
+										<MediaID ID="817672713"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="RockBreak_02" ID="{D39C0A4C-D2AF-4A2B-AD3E-D49EEA13D7CB}" Platform="Linked"/>
+								<ActiveSource Name="V2RockBreak_02" ID="{8544A481-5BD5-4D1A-93CB-639399F7A33E}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="RockBreak_03" ID="{462B0271-6F70-48D7-B190-500539D33760}" ShortID="15440477">
+						<Sound Name="V2RockBreak_03" ID="{946EB60D-B07C-40CD-A7D0-317202B8D599}" ShortID="900558138">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -236,19 +246,22 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="RockBreak_03" ID="{858B361C-CA4E-4F6C-9CE9-AF7789E21BA6}">
+								<AudioFileSource Name="V2RockBreak_03" ID="{44885608-D3EE-4562-8E22-45587D67072D}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>RockBreak_03.wav</AudioFile>
+									<AudioFile>V2RockBreak_03.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="23490814"/>
+										<MediaID ID="898313245"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="RockBreak_03" ID="{858B361C-CA4E-4F6C-9CE9-AF7789E21BA6}" Platform="Linked"/>
+								<ActiveSource Name="V2RockBreak_03" ID="{44885608-D3EE-4562-8E22-45587D67072D}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="RockBreak_04" ID="{A5EAAECA-E5FE-4209-BD44-17143C0F50BD}" ShortID="972534662">
+						<Sound Name="V2RockBreak_04" ID="{DFF21386-056E-4F69-B96C-BE73C5D4C23B}" ShortID="398365301">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -258,21 +271,31 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="RockBreak_04" ID="{08B4D995-F2F8-44A2-A395-04F8775B6F1D}">
+								<AudioFileSource Name="V2RockBreak_04" ID="{341A01E6-7876-45A1-8E99-C86C63F027B0}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>RockBreak_04.wav</AudioFile>
+									<AudioFile>V2RockBreak_04.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="517754794"/>
+										<MediaID ID="651345929"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="RockBreak_04" ID="{08B4D995-F2F8-44A2-A395-04F8775B6F1D}" Platform="Linked"/>
+								<ActiveSource Name="V2RockBreak_04" ID="{341A01E6-7876-45A1-8E99-C86C63F027B0}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
 				</RandomSequenceContainer>
 				<Sound Name="EnemyDamaged" ID="{D064BF6A-CE42-450F-B040-E7F0D61B4B0A}" ShortID="657921341">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>500</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -289,9 +312,21 @@
 								<MediaID ID="1056920243"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="EnemyDamagedV2" ID="{56DFCCD3-781A-4A2D-BD6C-B2E8C85D29CF}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.101311587591241"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.00407162408759124"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>EnemyDamagedV2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1042432538"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="EnemyDamaged" ID="{D8BA310D-48E5-45CD-B295-8870F34652F6}" Platform="Linked"/>
+						<ActiveSource Name="EnemyDamagedV2" ID="{56DFCCD3-781A-4A2D-BD6C-B2E8C85D29CF}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<RandomSequenceContainer Name="BasicExplosion" ID="{029383E3-D224-4556-BE0E-5EE9D90A812E}" ShortID="142325967">
@@ -422,6 +457,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="GroundHit" ID="{796A6878-CBDA-4D95-AC04-60F0C14F7163}" ShortID="377411100">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-430</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -586,9 +628,16 @@
 								<MediaID ID="669445906"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="EngineStartV2" ID="{976911A6-BE27-429A-BCBC-97CE968FFA16}">
+							<Language>SFX</Language>
+							<AudioFile>EngineStartV2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="292878991"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="PlatformStart" ID="{B102851F-8FC1-4245-A96C-954FBC15EB70}" Platform="Linked"/>
+						<ActiveSource Name="EngineStartV2" ID="{976911A6-BE27-429A-BCBC-97CE968FFA16}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="EngineStop" ID="{16045D7A-EDB5-4D6B-9DEA-794EA87CB485}" ShortID="504227867">
@@ -620,9 +669,21 @@
 								<MediaID ID="86352657"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="EngineStopV2" ID="{443C3778-F278-4D1A-986C-71677956C06F}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="4.18567518248175"/>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>EngineStopV2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="31108234"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="PlatformStop" ID="{1191BFD7-1FCD-4B55-86DC-3178E7980FA2}" Platform="Linked"/>
+						<ActiveSource Name="EngineStopV2" ID="{443C3778-F278-4D1A-986C-71677956C06F}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<RandomSequenceContainer Name="Screech" ID="{D7246126-E52A-45A5-B08A-C312DE74C728}" ShortID="740090927">

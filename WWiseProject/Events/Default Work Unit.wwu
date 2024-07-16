@@ -185,6 +185,56 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="MainThemeStart" ID="{F74C3090-A3E7-4362-9AFD-AA6C8E7B9CD6}">
+					<ChildrenList>
+						<Action Name="" ID="{77CAEE08-19B9-4B87-8C78-9D2049EAC1FA}" ShortID="334071631">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MainTheme" ID="{510A37B9-6F1E-47D2-BA52-7AEF174CB9FE}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MainThemeStop" ID="{6E8C5CD5-5FBE-46A8-BC8C-C98B79B000CE}">
+					<ChildrenList>
+						<Action Name="" ID="{9C9DDB7D-62FB-4164-AA59-F4848EC4309C}" ShortID="105802145">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MainTheme" ID="{510A37B9-6F1E-47D2-BA52-7AEF174CB9FE}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="EndThemeStart" ID="{1643940E-0703-4050-9EC9-6DBBC722AB4A}">
+					<ChildrenList>
+						<Action Name="" ID="{C307A6DE-AD36-47C3-8E12-E87E44AA16BA}" ShortID="833318582">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EndTheme" ID="{9205E0D4-EED6-4888-96A1-0261A35AC552}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="EndThemeStop" ID="{EF08328F-C551-44F8-B1C0-C240703FB74F}">
+					<ChildrenList>
+						<Action Name="" ID="{456EB6A9-B422-46AC-874E-60A84F3DA3C4}" ShortID="509784262">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EndTheme" ID="{9205E0D4-EED6-4888-96A1-0261A35AC552}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
