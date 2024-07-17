@@ -44,6 +44,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	855419003	BulletCollision	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\BulletImpact_73CBEDD3.wem		\Actor-Mixer Hierarchy\Default Work Unit\BulletCollision		153164
 	898313245	V2RockBreak_03	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\V2RockBreak_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\V2RockBreak_03		186000
 	929515296	AlarmLoop	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\AlarmLoop_FBC78EF0.wem		\Actor-Mixer Hierarchy\Default Work Unit\AlarmLoop		658444
+	972219008	EnemyDamaged	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\EnemyDamagedV3_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\EnemyDamaged		41356
 	1018182414	Bat_02	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Bat_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_02		285484
-	1042432538	EnemyDamaged	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\EnemyDamagedV2_6AD90192.wem		\Actor-Mixer Hierarchy\Default Work Unit\EnemyDamaged		24516
 

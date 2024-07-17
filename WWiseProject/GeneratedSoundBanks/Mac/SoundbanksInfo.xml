@@ -25,7 +25,7 @@
 				<GameParameter Id="3550022565" Name="CollectedTreasure"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{FD717F4E-13CB-4CB9-F4D0-75F54FBEA903}">
+		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{36AFE0DF-FC7A-4D68-81F1-71FA08B42910}">
 			<ShortName>UrMom</ShortName>
 			<Path>UrMom.bnk</Path>
 			<Media>
@@ -125,13 +125,13 @@
 					<ShortName>AlarmLoop.wav</ShortName>
 					<CachePath>SFX/AlarmLoop_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="972219008" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamagedV3.wav</ShortName>
+					<CachePath>SFX/EnemyDamagedV3_818F3B66.wem</CachePath>
+				</File>
 				<File Id="1018182414" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bat_02.wav</ShortName>
 					<CachePath>SFX/Bat_02_818F3B66.wem</CachePath>
-				</File>
-				<File Id="1042432538" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>EnemyDamagedV2.wav</ShortName>
-					<CachePath>SFX/EnemyDamagedV2_6AD90192.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -154,9 +154,9 @@
 						<MediaRef Id="855419003"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="391172934" Name="EnemyHit" DurationType="OneShot" DurationMin="0.09527613" DurationMax="0.09527613">
+				<Event Id="391172934" Name="EnemyHit" DurationType="OneShot" DurationMin="0.2145625" DurationMax="0.2145625">
 					<MediaRefs>
-						<MediaRef Id="1042432538"/>
+						<MediaRef Id="972219008"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="13776098" Name="Explosion" DurationType="OneShot" DurationMin="1.5369375" DurationMax="2.4043126">
@@ -167,7 +167,7 @@
 						<MediaRef Id="585746009"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2024411100" Name="JetPackOff" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2024411100" Name="JetPackOff" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="1383918998" Name="JetPackOn" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="526125494"/>
@@ -193,12 +193,12 @@
 						<MediaRef Id="550015412"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="846198821" Name="PlayerLand" DurationType="OneShot" DurationMin="0.440054" DurationMax="0.440054">
+				<Event Id="846198821" Name="PlayerLand" DurationType="OneShot" DurationMin="0.43249416" DurationMax="0.43249416">
 					<MediaRefs>
 						<MediaRef Id="774887571"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2538918815" Name="PlayerShoot" DurationType="OneShot" DurationMin="0.8097708" DurationMax="1.10725">
+				<Event Id="2538918815" Name="PlayerShoot" DurationType="OneShot" DurationMin="0.99694484" DurationMax="1.3631847">
 					<MediaRefs>
 						<MediaRef Id="35645405"/>
 						<MediaRef Id="139858927"/>
@@ -225,5 +225,5 @@
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9FF2220C-5E3A-D4FF-A303-C78687F2A21E}</FileHash>
+	<FileHash>{029A447A-7E12-C01A-D95B-A67D87072ACB}</FileHash>
 </SoundBanksInfo>

@@ -36,6 +36,99 @@
 							</Custom>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="TTCOTE_MainTheme" ID="{45F9EE1B-E960-4DC2-B0B4-6BABA170D330}" ShortID="214310659">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="146400"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2D9D4010-F304-4234-A946-7981E3099A01}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="TTCOTE_MainTheme" ID="{822090FE-E229-47ED-80B3-DECFB0D9CE27}" ShortID="945712532">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2D9D4010-F304-4234-A946-7981E3099A01}"/>
+										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{592FBBB3-04A7-4D8A-88A3-6F0B0FDFF466}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TTCOTE_MainTheme" ID="{4AAAE430-3C99-41C1-B3B5-793EE992559C}">
+											<Language>SFX</Language>
+											<AudioFile>TTCOTE_MainTheme.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="983726432"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Sequences">
+											<Reference>
+												<Local>
+													<MusicTrackSequence Name="" ID="{2E6C03A2-A22A-467F-8496-C5AA8D59425D}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<Reference>
+																	<Local>
+																		<MusicClip Name="TTCOTE_MainTheme" ID="{63618CD7-680F-4169-8C76-B5E8B7541C81}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="146400"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="TTCOTE_MainTheme" ID="{4AAAE430-3C99-41C1-B3B5-793EE992559C}"/>
+																		</MusicClip>
+																	</Local>
+																</Reference>
+															</ObjectList>
+														</ObjectLists>
+													</MusicTrackSequence>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicTrack>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Cues">
+									<Reference>
+										<Local>
+											<MusicCue Name="Entry Cue" ID="{16658364-BDC0-425C-873F-7E31850DCEFF}"/>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<MusicCue Name="Exit Cue" ID="{2F2B71ED-DB97-49F0-BFE2-01D1EC7FFA46}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="146400"/>
+												</PropertyList>
+											</MusicCue>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicSegment>
+					</ChildrenList>
 				</MusicPlaylistContainer>
 				<MusicPlaylistContainer Name="EndTheme" ID="{9205E0D4-EED6-4888-96A1-0261A35AC552}" ShortID="117163746">
 					<ReferenceList>
@@ -47,7 +140,11 @@
 						</Reference>
 						<Reference Name="PlaylistRoot">
 							<Custom>
-								<MusicPlaylistItem Name="" ID="{69C0A51F-587C-4FC8-9606-052B2FDBD15D}" ShortID="615597371"/>
+								<MusicPlaylistItem Name="" ID="{69C0A51F-587C-4FC8-9606-052B2FDBD15D}" ShortID="615597371">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+								</MusicPlaylistItem>
 							</Custom>
 						</Reference>
 						<Reference Name="TransitionRoot">
@@ -66,6 +163,99 @@
 							</Custom>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="TTCOTE_GameOver" ID="{57D166FD-62B7-489F-BBED-1F8F43F3B8DD}" ShortID="352422729">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="20425.5416666667"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2D9D4010-F304-4234-A946-7981E3099A01}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="TTCOTE_GameOver" ID="{8929AEB2-B103-47A4-9C91-5794CCB1A855}" ShortID="185074197">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2D9D4010-F304-4234-A946-7981E3099A01}"/>
+										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{6E40953A-FB08-4BAB-8FFF-8F9D625F5A76}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TTCOTE_GameOver" ID="{9E90AA4E-AF26-4F2A-8E6C-57B597EF81D4}">
+											<Language>SFX</Language>
+											<AudioFile>TTCOTE_GameOver.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="418977169"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Sequences">
+											<Reference>
+												<Local>
+													<MusicTrackSequence Name="" ID="{65F0CFC4-98B9-4296-AB01-D5C2A680CFB7}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<Reference>
+																	<Local>
+																		<MusicClip Name="TTCOTE_GameOver" ID="{8C927FD4-D52B-4EEE-97A6-24270281997C}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="20425.5416666667"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="TTCOTE_GameOver" ID="{9E90AA4E-AF26-4F2A-8E6C-57B597EF81D4}"/>
+																		</MusicClip>
+																	</Local>
+																</Reference>
+															</ObjectList>
+														</ObjectLists>
+													</MusicTrackSequence>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicTrack>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Cues">
+									<Reference>
+										<Local>
+											<MusicCue Name="Entry Cue" ID="{F6F24E8A-67EC-4984-8366-3CCB3F92031E}"/>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<MusicCue Name="Exit Cue" ID="{16270A91-5945-4118-8DE9-DD2018C901C9}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="20425.5416666667"/>
+												</PropertyList>
+											</MusicCue>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicSegment>
+					</ChildrenList>
 				</MusicPlaylistContainer>
 			</ChildrenList>
 		</WorkUnit>

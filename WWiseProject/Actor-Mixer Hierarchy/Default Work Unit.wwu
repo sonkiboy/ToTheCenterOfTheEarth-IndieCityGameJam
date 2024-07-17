@@ -179,6 +179,11 @@
 				<RandomSequenceContainer Name="BasicRockBreak" ID="{CA9C51F4-F757-45CA-9EAF-301BF4AB835D}" ShortID="517809871">
 					<PropertyList>
 						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>5</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -297,9 +302,9 @@
 				</RandomSequenceContainer>
 				<Sound Name="EnemyDamaged" ID="{D064BF6A-CE42-450F-B040-E7F0D61B4B0A}" ShortID="657921341">
 					<PropertyList>
-						<Property Name="Pitch" Type="int32">
+						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>500</Value>
+								<Value>-7</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -331,9 +336,16 @@
 								<MediaID ID="1042432538"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="EnemyDamagedV3" ID="{8EFFEF4F-2129-44B6-A32B-7ADDAC27C929}">
+							<Language>SFX</Language>
+							<AudioFile>EnemyDamagedV3.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="972219008"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="EnemyDamagedV2" ID="{56DFCCD3-781A-4A2D-BD6C-B2E8C85D29CF}" Platform="Linked"/>
+						<ActiveSource Name="EnemyDamagedV3" ID="{8EFFEF4F-2129-44B6-A32B-7ADDAC27C929}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<RandomSequenceContainer Name="BasicExplosion" ID="{029383E3-D224-4556-BE0E-5EE9D90A812E}" ShortID="142325967">
@@ -437,6 +449,13 @@
 					</ChildrenList>
 				</RandomSequenceContainer>
 				<Sound Name="Jump" ID="{E5E1FC66-F68C-469E-9C06-E723188A6CFE}" ShortID="711108156">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -467,7 +486,12 @@
 					<PropertyList>
 						<Property Name="Pitch" Type="int32">
 							<ValueList>
-								<Value>-430</Value>
+								<Value>-400</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-1</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -615,7 +639,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-5</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -651,7 +675,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-5</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>

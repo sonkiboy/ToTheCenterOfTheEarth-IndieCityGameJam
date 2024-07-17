@@ -25,7 +25,7 @@
 				<GameParameter Id="3550022565" Name="CollectedTreasure"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{FFD0CAD8-278A-F858-7ED2-256D8C01126B}">
+		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{36AFE0DF-FC7A-4D68-81F1-71FA08B42910}">
 			<ShortName>UrMom</ShortName>
 			<Path>UrMom.bnk</Path>
 			<Media>
@@ -125,13 +125,13 @@
 					<ShortName>AlarmLoop.wav</ShortName>
 					<CachePath>SFX/AlarmLoop_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="972219008" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamagedV3.wav</ShortName>
+					<CachePath>SFX/EnemyDamagedV3_818F3B66.wem</CachePath>
+				</File>
 				<File Id="1018182414" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bat_02.wav</ShortName>
 					<CachePath>SFX/Bat_02_818F3B66.wem</CachePath>
-				</File>
-				<File Id="1042432538" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>EnemyDamagedV2.wav</ShortName>
-					<CachePath>SFX/EnemyDamagedV2_6AD90192.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -154,9 +154,9 @@
 						<MediaRef Id="855419003"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="391172934" Name="EnemyHit" DurationType="OneShot" DurationMin="0.09527613" DurationMax="0.09527613">
+				<Event Id="391172934" Name="EnemyHit" DurationType="OneShot" DurationMin="0.2145625" DurationMax="0.2145625">
 					<MediaRefs>
-						<MediaRef Id="1042432538"/>
+						<MediaRef Id="972219008"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="13776098" Name="Explosion" DurationType="OneShot" DurationMin="1.5369375" DurationMax="2.4043126">
@@ -193,7 +193,7 @@
 						<MediaRef Id="550015412"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="846198821" Name="PlayerLand" DurationType="OneShot" DurationMin="0.440054" DurationMax="0.440054">
+				<Event Id="846198821" Name="PlayerLand" DurationType="OneShot" DurationMin="0.43249416" DurationMax="0.43249416">
 					<MediaRefs>
 						<MediaRef Id="774887571"/>
 					</MediaRefs>
@@ -225,5 +225,5 @@
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{27F2E0CA-2B4C-1B06-78C9-5D80C3038DA2}</FileHash>
+	<FileHash>{F470C0CD-2DF6-22B5-3702-DA32333538CD}</FileHash>
 </SoundBanksInfo>

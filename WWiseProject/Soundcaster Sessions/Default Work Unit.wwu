@@ -14,6 +14,18 @@
 							<Position X="0" Y="1"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="MainThemeStart" ID="{F74C3090-A3E7-4362-9AFD-AA6C8E7B9CD6}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="EndThemeStart" ID="{1643940E-0703-4050-9EC9-6DBBC722AB4A}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="0" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="TreasureCounter" ID="{18F2A5A2-FF97-4345-A716-629A01A6ADE1}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<Position X="0" Y="5"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="AlarmOff" ID="{1F85B488-E946-428E-B1CD-9737DBD32DC4}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
 							<Position X="1" Y="0"/>
 						</Module>
@@ -22,10 +34,55 @@
 							<Position X="1" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="BatScreech" ID="{4F28D00A-6A43-4D6D-8020-BFF32D0C1003}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<ObjectRef Name="MainThemeStop" ID="{6E8C5CD5-5FBE-46A8-BC8C-C98B79B000CE}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="1" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="EndThemeStop" ID="{EF08328F-C551-44F8-B1C0-C240703FB74F}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="1" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Jump" ID="{E5E1FC66-F68C-469E-9C06-E723188A6CFE}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<Position X="1" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GunFire" ID="{31B5A88C-DE6C-47BB-8ED6-EC7DB6EDF5A8}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="EnemyDamaged" ID="{D064BF6A-CE42-450F-B040-E7F0D61B4B0A}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="BulletHit" ID="{04EE6E36-7D28-4DA2-94F3-B4740373F98F}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="2" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="JetPackLoop" ID="{8E4CE6FE-CCF6-4268-B47E-260150D6A735}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<Position X="2" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="BasicExplosion" ID="{029383E3-D224-4556-BE0E-5EE9D90A812E}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
 							<Position X="3" Y="0"/>
 						</Module>
+						<Module>
+							<ObjectRef Name="BasicRockBreak" ID="{CA9C51F4-F757-45CA-9EAF-301BF4AB835D}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GroundHit" ID="{796A6878-CBDA-4D95-AC04-60F0C14F7163}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<Position X="3" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="BatScreech" ID="{4F28D00A-6A43-4D6D-8020-BFF32D0C1003}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="3" Y="3"/>
+						</Module>
 					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+				<SoundcasterSession Name="New Soundcaster Session" ID="{63A148C4-A1B0-4982-9730-15E7295AA405}">
 					<RTPCValueList ShowAll="true"/>
 					<CurrentStateList ShowAll="true"/>
 					<CurrentSwitchList ShowAll="true"/>
