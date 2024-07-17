@@ -17,10 +17,14 @@ namespace AK
         static const AkUniqueID ALARMON = 1464172559U;
         static const AkUniqueID BATSCREECH = 920629373U;
         static const AkUniqueID BULLETHIT = 4179333400U;
+        static const AkUniqueID ENDTHEMESTART = 1730891881U;
+        static const AkUniqueID ENDTHEMESTOP = 3173851011U;
         static const AkUniqueID ENEMYHIT = 391172934U;
         static const AkUniqueID EXPLOSION = 13776098U;
         static const AkUniqueID JETPACKOFF = 2024411100U;
         static const AkUniqueID JETPACKON = 1383918998U;
+        static const AkUniqueID MAINTHEMESTART = 524425647U;
+        static const AkUniqueID MAINTHEMESTOP = 2455228597U;
         static const AkUniqueID PLATFORMEND = 384043239U;
         static const AkUniqueID PLATFORMSTART = 4276765652U;
         static const AkUniqueID PLAYERHIT = 3831688773U;

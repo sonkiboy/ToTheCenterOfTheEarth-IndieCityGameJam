@@ -97,6 +97,11 @@ public class PlatformBehavior : MonoBehaviour
         StartCoroutine(ConsumeFuel());
     }
 
+    private void OnDisable()
+    {
+        AlarmOffSound.Post(gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {

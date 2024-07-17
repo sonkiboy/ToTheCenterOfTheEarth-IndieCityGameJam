@@ -17,6 +17,10 @@ public class GameOver : MonoBehaviour
 
     #endregion 
 
+    
+    public AK.Wwise.Event EndMusicOn;
+    public AK.Wwise.Event EndMusicOff;
+
     PlayerControllerInput inputActions;
 
     public InputAction EnterInput;
@@ -38,6 +42,7 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         boardComponent = LeaderBoard.GetComponent<LeaderBoard>();
+        
     }
 
     // Update is called once per frame
@@ -59,7 +64,7 @@ public class GameOver : MonoBehaviour
 
         yield return null;
 
-        GameManager.Instance.Platform.gameObject.SetActive(false);
+        
 
         GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -72,6 +77,10 @@ public class GameOver : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
+        EndMusicOn.Post(GameManager.Instance.Platform.gameObject);
+
+        yield return new WaitForSeconds(1.5f);
+
         if (boardComponent.CheckNewScore(score))
         {
             highScore.SetActive(true);
@@ -83,12 +92,16 @@ public class GameOver : MonoBehaviour
             EnterInput.performed += RestartGame;
         }
 
+
         
     }
 
     private void RestartGame(InputAction.CallbackContext contex)
     {
+
+        EndMusicOff.Post(gameObject);
+
         inputActions.Dispose();
-        SceneManager.LoadScene("MainScreen");
+        SceneManager.LoadScene("IntroScene");
     }
 }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9802287a83d16364bab133461888c9ec, type: 3}
+  m_Name: 1643940E-0703-4050-9EC9-6DBBC722AB4A
+  m_EditorClassIdentifier: 
+  objectName: EndThemeStart
+  id: 1730891881
+  guid: 1643940E-0703-4050-9EC9-6DBBC722AB4A

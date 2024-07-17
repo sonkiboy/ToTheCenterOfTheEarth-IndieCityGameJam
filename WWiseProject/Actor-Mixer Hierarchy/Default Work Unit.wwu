@@ -10,6 +10,11 @@
 								<Value>-360</Value>
 							</ValueList>
 						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -115,7 +120,7 @@
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-3</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -149,6 +154,11 @@
 								</ModifierInfo>
 							</ModifierList>
 						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>9</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -181,7 +191,7 @@
 						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>5</Value>
+								<Value>12</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -302,9 +312,14 @@
 				</RandomSequenceContainer>
 				<Sound Name="EnemyDamaged" ID="{D064BF6A-CE42-450F-B040-E7F0D61B4B0A}" ShortID="657921341">
 					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>430</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-7</Value>
+								<Value>7</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -349,6 +364,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<RandomSequenceContainer Name="BasicExplosion" ID="{029383E3-D224-4556-BE0E-5EE9D90A812E}" ShortID="142325967">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -586,6 +608,11 @@
 				<Sound Name="AlarmLoop" ID="{EBB551BA-C9DE-44D9-9063-706FD0EEC21C}" ShortID="104310708">
 					<PropertyList>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -597,6 +624,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="AlarmLoop" ID="{E6A6DE8F-F4AC-40A3-AF32-FCCCEE6ABD59}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>AlarmLoop.wav</AudioFile>
 							<MediaIDList>
@@ -636,13 +667,6 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="EngineStart" ID="{808522C3-E4B7-44F0-8CD6-01CF21D1DB42}" ShortID="118365895">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-5</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -675,7 +699,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-5</Value>
+								<Value>2</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>

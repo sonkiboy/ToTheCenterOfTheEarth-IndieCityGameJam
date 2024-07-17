@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public PlatformBehavior Platform;
 
     public AK.Wwise.Event PlayerDamagedSound;
-
+    public AK.Wwise.Event MainMusicOn;
+    public AK.Wwise.Event MainMusicOff;
 
 
     private int level = 0;
@@ -83,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        MainMusicOn.Post(Platform.gameObject);
     }
 
     // Update is called once per frame
@@ -94,13 +95,16 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
+        MainMusicOff.Post(Platform.gameObject);
+
         GetComponent<GameOver>().StartGameOver(CurrentTreasure);
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         player.transform.Find("Sprite").GetComponent<Renderer>().material.SetFloat("_Intensity", 1f);
-        Platform.enabled = false;
+        Platform.gameObject.SetActive(false);
+
 
     }
 }

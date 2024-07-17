@@ -142,13 +142,13 @@ ScriptedImporter:
   spriteSheetImportData:
   - name: EdgeLeft_Sprite
     originalName: 
-    pivot: {x: 0, y: 0}
-    alignment: 6
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 20
       width: 16
       height: 16
     spriteID: 5f96138ef31426e44aa5e6c09f79d835
@@ -162,8 +162,48 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: EdgeRight_Sprite
     originalName: 
-    pivot: {x: 0, y: 0}
-    alignment: 6
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 20
+      width: 16
+      height: 16
+    spriteID: 57cf05fbac579e340a9ad4fbcd6b20c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EdgeSprite_Up
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 16
+      height: 16
+    spriteID: 23e968975f5b0f74bbd8a3f7977b74a0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EdgeTiles_DOWN
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -171,7 +211,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 16
-    spriteID: 57cf05fbac579e340a9ad4fbcd6b20c3
+    spriteID: 54f265c061717514a9139ca32ec3f262
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -194,7 +234,7 @@ ScriptedImporter:
         x: 0
         y: 0
         width: 32
-        height: 16
+        height: 32
       spriteId: 2d546d02243d33c4badf5623d418976e
     linkedCells: []
     parentIndex: -1
@@ -237,4 +277,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 16}
+  canvasSize: {x: 32, y: 32}

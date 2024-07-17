@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}" PersistMode="Standalone">
 			<ChildrenList>
 				<MusicPlaylistContainer Name="MainTheme" ID="{510A37B9-6F1E-47D2-BA52-7AEF174CB9FE}" ShortID="136741629">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -17,6 +24,18 @@
 									<PropertyList>
 										<Property Name="LoopCount" Type="int16" Value="0"/>
 									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{1D5BF0C6-1331-4DA1-B8AB-38E9335BF9C0}" ShortID="31396758">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Segment">
+													<ObjectRef Name="TTCOTE_MainTheme" ID="{45F9EE1B-E960-4DC2-B0B4-6BABA170D330}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+												</Reference>
+											</ReferenceList>
+										</MusicPlaylistItem>
+									</ChildrenList>
 								</MusicPlaylistItem>
 							</Custom>
 						</Reference>
@@ -42,7 +61,7 @@
 								<Property Name="EndPosition" Type="Real64" Value="146400"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-15</Value>
+										<Value>-13</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -131,6 +150,13 @@
 					</ChildrenList>
 				</MusicPlaylistContainer>
 				<MusicPlaylistContainer Name="EndTheme" ID="{9205E0D4-EED6-4888-96A1-0261A35AC552}" ShortID="117163746">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
@@ -144,6 +170,18 @@
 									<PropertyList>
 										<Property Name="LoopCount" Type="int16" Value="0"/>
 									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{02FB25DD-16B7-49E5-A4FF-E332FD451BC7}" ShortID="944797499">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Segment">
+													<ObjectRef Name="TTCOTE_GameOver" ID="{57D166FD-62B7-489F-BBED-1F8F43F3B8DD}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+												</Reference>
+											</ReferenceList>
+										</MusicPlaylistItem>
+									</ChildrenList>
 								</MusicPlaylistItem>
 							</Custom>
 						</Reference>
@@ -169,7 +207,7 @@
 								<Property Name="EndPosition" Type="Real64" Value="20425.5416666667"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-15</Value>
+										<Value>-21</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -183,6 +221,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="TTCOTE_GameOver" ID="{8929AEB2-B103-47A4-9C91-5794CCB1A855}" ShortID="185074197">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2D9D4010-F304-4234-A946-7981E3099A01}"/>

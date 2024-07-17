@@ -190,7 +190,7 @@
 						<Action Name="" ID="{77CAEE08-19B9-4B87-8C78-9D2049EAC1FA}" ShortID="334071631">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="TTCOTE_MainTheme" ID="{45F9EE1B-E960-4DC2-B0B4-6BABA170D330}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+									<ObjectRef Name="MainTheme" ID="{510A37B9-6F1E-47D2-BA52-7AEF174CB9FE}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -215,7 +215,7 @@
 						<Action Name="" ID="{C307A6DE-AD36-47C3-8E12-E87E44AA16BA}" ShortID="833318582">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="TTCOTE_GameOver" ID="{57D166FD-62B7-489F-BBED-1F8F43F3B8DD}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+									<ObjectRef Name="EndTheme" ID="{9205E0D4-EED6-4888-96A1-0261A35AC552}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

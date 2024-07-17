@@ -120,9 +120,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64503f32986f214e897a8a7ab5317db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunSpeed: 10
+  JetPackOn:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 38026ce902284ee4cb966b673fe0012d, type: 2}
+  JetPackOff:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: cb286b7bd96fb114bbbce56fec208d45, type: 2}
+  RunSpeed: 20
   MaxRunSpeed: 5
-  JetThrust: 20
+  JetThrust: 25
+  InvincibilityDurration: 2
 --- !u!1 &6394755000444047695
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +184,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -876546973899608171, guid: f3ba6485b570b4047ade57b3e3cdeb12, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -193,8 +202,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 205071321
-  m_SortingLayer: -3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2751910821779160472, guid: 22f5798043d4f0646bf8f01332a0f870, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -278,8 +287,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -742802839
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -4140940637796902690, guid: 015847a888171a54a87c9dee183a8ca9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -305,4 +314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 8295981333295601976, guid: cfa49aa19affa714a88435ecb03998c1, type: 3}
-  FireSpeed: 0.5
+  ShootEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 538ca761f8d568e41a88c4cedc312a4c, type: 2}
+  FireSpeed: 0.1
+  AdditionalDamage: 0

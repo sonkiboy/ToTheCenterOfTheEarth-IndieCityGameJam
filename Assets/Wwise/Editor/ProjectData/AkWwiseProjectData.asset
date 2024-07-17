@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b28a8b35638bd0468618d48e40b4a1ca
     GuidInternal: 
-    m_lastTime: -8584807064447248482
+    m_lastTime: -8584804158868146961
     List:
     - name: UrMom
       guid: 892131c98ee99f478dc92a2ff1ed4ae5
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 5e02a02a7cd2f549a036b2ce223a358c
     GuidInternal: 
-    m_lastTime: -8584805105617631529
+    m_lastTime: -8584804157805476580
     List:
     - name: AlarmOff
       guid: 88b4851f46e98e42b1cd9737dbd32dc4
@@ -164,6 +164,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.79689586
       minDuration: 0.79689586
+    - name: EndThemeStart
+      guid: 0e944316030750409ec96dbbc722ab4a
+      id: 1730891881
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5e02a02a7cd2f549a036b2ce223a358c
+      - ElementName: EndThemeStart
+        ObjectType: 3
+        guid: 0e944316030750409ec96dbbc722ab4a
+      Path: Events\Default Work Unit\EndThemeStart
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: EndThemeStop
+      guid: 8f3208ef51c5f844b1c0c240703fb74f
+      id: 3173851011
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5e02a02a7cd2f549a036b2ce223a358c
+      - ElementName: EndThemeStop
+        ObjectType: 3
+        guid: 8f3208ef51c5f844b1c0c240703fb74f
+      Path: Events\Default Work Unit\EndThemeStop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: EnemyHit
       guid: cae133893b85344d9139be0b4074d6b4
       id: 391172934
@@ -179,8 +213,8 @@ MonoBehaviour:
         guid: cae133893b85344d9139be0b4074d6b4
       Path: Events\Default Work Unit\EnemyHit
       maxAttenuation: 0
-      maxDuration: 0.7443333
-      minDuration: 0.7443333
+      maxDuration: 0.16737275
+      minDuration: 0.16737275
     - name: Explosion
       guid: 9755ac7d55d80a4dbbcd96d9ea273498
       id: 13776098
@@ -232,6 +266,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: MainThemeStart
+      guid: 90304cf7e7a362439afdaa6c8e7b9cd6
+      id: 524425647
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5e02a02a7cd2f549a036b2ce223a358c
+      - ElementName: MainThemeStart
+        ObjectType: 3
+        guid: 90304cf7e7a362439afdaa6c8e7b9cd6
+      Path: Events\Default Work Unit\MainThemeStart
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MainThemeStop
+      guid: d55c8c6ebe5fa846bc8cc98b79b000ce
+      id: 2455228597
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5e02a02a7cd2f549a036b2ce223a358c
+      - ElementName: MainThemeStop
+        ObjectType: 3
+        guid: d55c8c6ebe5fa846bc8cc98b79b000ce
+      Path: Events\Default Work Unit\MainThemeStop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: PlatformEnd
       guid: 82fdba4486e58f43953c9096b89c2b68
       id: 384043239
@@ -247,8 +315,8 @@ MonoBehaviour:
         guid: 82fdba4486e58f43953c9096b89c2b68
       Path: Events\Default Work Unit\PlatformEnd
       maxAttenuation: 0
-      maxDuration: 7.6134753
-      minDuration: 7.6134753
+      maxDuration: 6.25
+      minDuration: 6.25
     - name: PlatformStart
       guid: 903bbcc2028a2e43ba615e54ec004c8d
       id: 4276765652
@@ -264,8 +332,8 @@ MonoBehaviour:
         guid: 903bbcc2028a2e43ba615e54ec004c8d
       Path: Events\Default Work Unit\PlatformStart
       maxAttenuation: 0
-      maxDuration: 7.2708335
-      minDuration: 7.2708335
+      maxDuration: 4.875
+      minDuration: 4.875
     - name: PlayerHit
       guid: 11442683c0287d4188344e6926408214
       id: 3831688773
@@ -315,8 +383,8 @@ MonoBehaviour:
         guid: c86fab8b15c32e49a22be97b9cc42139
       Path: Events\Default Work Unit\PlayerLand
       maxAttenuation: 0
-      maxDuration: 0.34327084
-      minDuration: 0.34327084
+      maxDuration: 0.43249416
+      minDuration: 0.43249416
     - name: PlayerShoot
       guid: 5a7b120d36db1e42b422d0b126a50b5a
       id: 2538918815
@@ -332,8 +400,8 @@ MonoBehaviour:
         guid: 5a7b120d36db1e42b422d0b126a50b5a
       Path: Events\Default Work Unit\PlayerShoot
       maxAttenuation: 0
-      maxDuration: 1.1051458
-      minDuration: 0.49914584
+      maxDuration: 1.3631847
+      minDuration: 0.99694484
     - name: RockBreak
       guid: 5d72e7dde1ae0c4dba466f47ce9ab5dc
       id: 337805159
@@ -350,7 +418,24 @@ MonoBehaviour:
       Path: Events\Default Work Unit\RockBreak
       maxAttenuation: 0
       maxDuration: 1.1601042
-      minDuration: 0.89754164
+      minDuration: 0.89641666
+    - name: StopAll
+      guid: 0ada7250c3b4cd49bbbe25484180bb46
+      id: 3086540886
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5e02a02a7cd2f549a036b2ce223a358c
+      - ElementName: StopAll
+        ObjectType: 3
+        guid: 0ada7250c3b4cd49bbbe25484180bb46
+      Path: Events\Default Work Unit\StopAll
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: TreasureCollected
       guid: f4244cc2fd77f445a726a8175aaaec71
       id: 1483571575
@@ -439,7 +524,7 @@ MonoBehaviour:
     m_lastTime: -8584813095583912638
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000600000007000000190000001a0000001b000000
+  ExpandedWaapiItemIds: 07000000190000001a0000001b0000001e0000001f000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

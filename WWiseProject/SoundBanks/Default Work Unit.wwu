@@ -5,12 +5,16 @@
 			<ChildrenList>
 				<SoundBank Name="UrMom" ID="{C9312189-E98E-479F-8DC9-2A2FF1ED4AE5}">
 					<ObjectInclusionList>
+						<ObjectRef Name="EndThemeStart" ID="{1643940E-0703-4050-9EC9-6DBBC722AB4A}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayerHit" ID="{83264411-28C0-417D-8834-4E6926408214}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayerShoot" ID="{0D127B5A-DB36-421E-B422-D0B126A50B5A}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AlarmOff" ID="{1F85B488-E946-428E-B1CD-9737DBD32DC4}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlatformStart" ID="{C2BC3B90-8A02-432E-BA61-5E54EC004C8D}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MainThemeStart" ID="{F74C3090-A3E7-4362-9AFD-AA6C8E7B9CD6}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlatformEnd" ID="{44BAFD82-E586-438F-953C-9096B89C2B68}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="EndThemeStop" ID="{EF08328F-C551-44F8-B1C0-C240703FB74F}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="TreasureCollected" ID="{C24C24F4-77FD-45F4-A726-A8175AAAEC71}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MainThemeStop" ID="{6E8C5CD5-5FBE-46A8-BC8C-C98B79B000CE}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayerJump" ID="{203F6B6E-9CC9-4772-A4E8-34AC000EC01F}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="JetPackOn" ID="{0191A4F9-44C7-4799-B422-4837B0C606B0}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayerLand" ID="{8BAB6FC8-C315-492E-A22B-E97B9CC42139}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>

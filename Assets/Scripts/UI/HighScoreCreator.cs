@@ -23,6 +23,8 @@ public class HighScoreCreator : MonoBehaviour
     InputAction moveInput;
     InputAction EnterInput;
 
+    public AK.Wwise.Event StopAllSound;
+
     public int score = 100;
 
     int selectedIcon = 0;
@@ -193,8 +195,10 @@ public class HighScoreCreator : MonoBehaviour
 
     private void RestartGame(InputAction.CallbackContext contex)
     {
+        StopAllSound.Post(gameObject);
+
         inputActions.Dispose();
-        SceneManager.LoadScene("MainScreen");
+        SceneManager.LoadScene("IntroScene");
     }
 
 
