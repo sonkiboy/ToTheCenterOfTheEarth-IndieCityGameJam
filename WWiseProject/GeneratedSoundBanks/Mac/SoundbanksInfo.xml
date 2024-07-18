@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{8C94C5FA-8F34-1C84-0D2D-8AE5D70FB61D}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{50E1E060-836D-1066-016B-5C67D79CA370}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -25,7 +25,7 @@
 				<GameParameter Id="3550022565" Name="CollectedTreasure"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{36AFE0DF-FC7A-4D68-81F1-71FA08B42910}">
+		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{DEF462F9-8EAC-4031-6B28-CB92070F9D8B}">
 			<ShortName>UrMom</ShortName>
 			<Path>UrMom.bnk</Path>
 			<Media>
@@ -60,6 +60,10 @@
 				<File Id="318650182" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bat_01.wav</ShortName>
 					<CachePath>SFX/Bat_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="418977169" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>TTCOTE_GameOver.wav</ShortName>
+					<CachePath>SFX/TTCOTE_GameOver_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="425431553" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>V2RockBreak_01.wav</ShortName>
@@ -123,11 +127,15 @@
 				</File>
 				<File Id="929515296" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AlarmLoop.wav</ShortName>
-					<CachePath>SFX/AlarmLoop_FBC78EF0.wem</CachePath>
+					<CachePath>SFX/AlarmLoop_66B93D96.wem</CachePath>
 				</File>
 				<File Id="972219008" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamagedV3.wav</ShortName>
 					<CachePath>SFX/EnemyDamagedV3_818F3B66.wem</CachePath>
+				</File>
+				<File Id="983726432" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>TTCOTE_MainTheme.wav</ShortName>
+					<CachePath>SFX/TTCOTE_MainTheme_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="1018182414" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bat_02.wav</ShortName>
@@ -154,7 +162,13 @@
 						<MediaRef Id="855419003"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="391172934" Name="EnemyHit" DurationType="OneShot" DurationMin="0.2145625" DurationMax="0.2145625">
+				<Event Id="1730891881" Name="EndThemeStart" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="418977169"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3173851011" Name="EndThemeStop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="391172934" Name="EnemyHit" DurationType="OneShot" DurationMin="0.16737275" DurationMax="0.16737275">
 					<MediaRefs>
 						<MediaRef Id="972219008"/>
 					</MediaRefs>
@@ -173,6 +187,12 @@
 						<MediaRef Id="526125494"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="524425647" Name="MainThemeStart" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="983726432"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2455228597" Name="MainThemeStop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="384043239" Name="PlatformEnd" DurationType="OneShot" DurationMin="6.25" DurationMax="6.25">
 					<MediaRefs>
 						<MediaRef Id="31108234"/>
@@ -183,7 +203,7 @@
 						<MediaRef Id="292878991"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3831688773" Name="PlayerHit" DurationType="OneShot" DurationMin="0.5830014" DurationMax="0.5830014">
+				<Event Id="3831688773" Name="PlayerHit" DurationType="OneShot" DurationMin="0.66583556" DurationMax="0.66583556">
 					<MediaRefs>
 						<MediaRef Id="811838532"/>
 					</MediaRefs>
@@ -214,6 +234,7 @@
 						<MediaRef Id="898313245"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3086540886" Name="StopAll" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="1483571575" Name="TreasureCollected" DurationType="OneShot" DurationMin="2.130744" DurationMax="2.130744">
 					<MediaRefs>
 						<MediaRef Id="702155503"/>
@@ -225,5 +246,5 @@
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{029A447A-7E12-C01A-D95B-A67D87072ACB}</FileHash>
+	<FileHash>{75CA8E6C-8EDA-7132-6B39-73DFE8197025}</FileHash>
 </SoundBanksInfo>

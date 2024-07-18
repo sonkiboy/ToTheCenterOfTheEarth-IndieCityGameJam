@@ -52,9 +52,15 @@ public class LeaderBoard : MonoBehaviour
 
     public void UpdateScoreBoard()
     {
-        
+        if (!File.Exists(path))
+        {
+            File.WriteAllText(path,"");
+        }
 
         string[] textArray = File.ReadAllLines(path);
+
+
+
         //Debug.Log($"Read from file : {textArray[0]}");
         
 

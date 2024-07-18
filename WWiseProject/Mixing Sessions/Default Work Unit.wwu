@@ -10,6 +10,7 @@
 						<ObjectRef Name="GunFire" ID="{31B5A88C-DE6C-47BB-8ED6-EC7DB6EDF5A8}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
 					</ObjectList>
 				</MixingSession>
+				<MixingSession Name="Main" ID="{CDD77801-098E-4322-9EF1-954D84B05528}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</MixingSessions>

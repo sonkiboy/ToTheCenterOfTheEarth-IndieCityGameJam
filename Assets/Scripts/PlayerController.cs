@@ -4,6 +4,7 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     Animator animator;
+    Camera camera;
 
     Renderer damageFlash;
 
@@ -21,22 +23,27 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region Inputs
+
 
     #region Sounds
 
     public AK.Wwise.Event JetPackOn;
     public AK.Wwise.Event JetPackOff;
-    
+
 
     #endregion
 
+    #region Inputs
     PlayerControllerInput inputManager;
 
     InputAction MoveInput;
+    InputAction MouseLookInput;
     InputAction JetInput;
     InputAction LookInput;
     InputAction FireInput;
+
+    bool isController = false;
+    bool isKeyboard = false;
 
     #endregion
 
@@ -66,6 +73,8 @@ public class PlayerController : MonoBehaviour
 
         LookInput = inputManager.Player.Look;
 
+        MouseLookInput = inputManager.Player.MouseLook;
+
         FireInput = inputManager.Player.Fire;
 
         gunObj = transform.Find("Gun").gameObject;
@@ -79,7 +88,7 @@ public class PlayerController : MonoBehaviour
     }
 
     bool IsJeckpack = false;
-    
+
 
 
     private void OnEnable()
@@ -90,6 +99,10 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         inputManager.Disable();
+
+        damageFlash.material.SetFloat("_Intensity", 1f);
+
+        
     }
 
     // Start is called before the first frame update
@@ -98,7 +111,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
 
-
+        camera = Camera.main;
 
         //damageFlash.material.SetFloat("_Intensity", 1f);
     }
@@ -108,14 +121,45 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = MoveInput.ReadValue<Vector2>();
 
-
-        if(LookInput.ReadValue<Vector2>() != Vector2.zero)
+        if (Keyboard.current.anyKey.wasPressedThisFrame && !isKeyboard)
         {
-            aimDirection = LookInput.ReadValue<Vector2>();
-
+            Debug.Log("Switching to Keyboard");
+            isController = false;
+            isKeyboard = true;
+        }
+        else if ((Gamepad.current.aButton.wasPressedThisFrame || Gamepad.current.leftTrigger.wasPressedThisFrame || Gamepad.current.rightTrigger.wasPressedThisFrame) && !isController)
+        {
+            Debug.Log("Switching to Controller");
+            isController = true;
+            isKeyboard = false;
         }
 
-        if(aimDirection.x < 0 && spriteRenderer.flipX == true)
+
+
+
+
+
+
+
+
+        if (isController)
+        {
+            aimDirection = LookInput.ReadValue<Vector2>();
+        }
+        else if (isKeyboard)
+        {
+            aimDirection = MouseLookInput.ReadValue<Vector2>();
+            aimDirection = ((Vector2)this.transform.position - (Vector2)camera.ScreenToWorldPoint(aimDirection)).normalized;
+            aimDirection = -aimDirection;
+        }
+
+
+
+
+
+
+
+        if (aimDirection.x < 0 && spriteRenderer.flipX == true)
         {
             spriteRenderer.flipX = false;
             gunSprite.flipY = false;
@@ -133,7 +177,7 @@ public class PlayerController : MonoBehaviour
         {
             gunBehavior.Fire();
         }
-        
+
 
         //Debug.Log($"Move direction : {moveDirection}");
     }
@@ -142,15 +186,15 @@ public class PlayerController : MonoBehaviour
     {
         float dotDirection = Vector2.Dot(new Vector2(moveDirection.x, 0f), new Vector2(rb.velocity.x, 0f));
 
-        if(dotDirection > 0)
-        { 
+        if (dotDirection > 0)
+        {
             if (Mathf.Abs(rb.velocity.x) < MaxRunSpeed)
             {
                 Vector2 newPos = new Vector2(moveDirection.x * RunSpeed, 0f);
 
                 rb.AddForce(newPos);
             }
-            
+
         }
         else
         {
@@ -158,7 +202,7 @@ public class PlayerController : MonoBehaviour
 
             rb.AddForce(newPos);
         }
-        
+
         // sound stuff
         if (ThrustPower > .5f)
         {
@@ -172,23 +216,23 @@ public class PlayerController : MonoBehaviour
 
                 IsJeckpack = true;
             }
-            
+
         }
-        else if(IsJeckpack)
+        else if (IsJeckpack)
         {
             IsJeckpack = false;
             JetPackOff.Post(gameObject);
         }
 
-        Quaternion newRotation = new Quaternion(Quaternion.identity.x, Quaternion.identity.y, Quaternion.LookRotation(aimDirection, Vector3.forward).z , Quaternion.LookRotation(aimDirection, Vector3.forward).w);
+        Quaternion newRotation = new Quaternion(Quaternion.identity.x, Quaternion.identity.y, Quaternion.LookRotation(aimDirection, Vector3.forward).z, Quaternion.LookRotation(aimDirection, Vector3.forward).w);
 
-        gunObj.transform.rotation = newRotation * Quaternion.Euler(0f,0f,90f);
+        gunObj.transform.rotation = newRotation * Quaternion.Euler(0f, 0f, 90f);
         //Debug.Log($"Aim Direction : {aimDirection} | Rotation : {gunObj.transform.rotation}");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             if (!isInvincible)
             {
@@ -202,19 +246,19 @@ public class PlayerController : MonoBehaviour
     IEnumerator Invincibility(float Durration)
     {
 
-        
+
 
         isInvincible = true;
 
         float count = Durration;
 
-        float flashRate = .25f;
+        float flashRate = .2f;
 
         bool flashOn = false;
 
         while (count > 0)
         {
-            if(GameManager.Instance.CurrentHealth <= 0)
+            if (GameManager.Instance.CurrentHealth <= 0)
             {
                 damageFlash.material.SetFloat("_Intensity", 1f);
                 break;
@@ -260,6 +304,18 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForFixedUpdate();
 
-        isInvincible = false;
+        if (GameManager.Instance.CurrentHealth > 0)
+        {
+            isInvincible = false;
+        }
+
+
+    }
+
+    public IEnumerator Die()
+    {
+        AkSoundEngine.StopAll(gameObject);
+
+        yield return null;
     }
 }

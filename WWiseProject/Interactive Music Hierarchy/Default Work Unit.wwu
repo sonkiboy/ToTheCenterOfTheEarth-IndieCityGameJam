@@ -7,7 +7,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>12</Value>
+								<Value>9</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -153,7 +153,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>6</Value>
+								<Value>12</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -207,7 +207,7 @@
 								<Property Name="EndPosition" Type="Real64" Value="20425.5416666667"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-21</Value>
+										<Value>-29</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>

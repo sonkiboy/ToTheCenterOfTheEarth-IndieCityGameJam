@@ -3,14 +3,19 @@ Event	ID	Name			Wwise Object Path	Notes
 	337805159	RockBreak			\Default Work Unit\RockBreak	
 	384043239	PlatformEnd			\Default Work Unit\PlatformEnd	
 	391172934	EnemyHit			\Default Work Unit\EnemyHit	
+	524425647	MainThemeStart			\Default Work Unit\MainThemeStart	
 	846198821	PlayerLand			\Default Work Unit\PlayerLand	
 	920629373	BatScreech			\Default Work Unit\BatScreech	
 	1383918998	JetPackOn			\Default Work Unit\JetPackOn	
 	1464172559	AlarmOn			\Default Work Unit\AlarmOn	
 	1483571575	TreasureCollected			\Default Work Unit\TreasureCollected	
+	1730891881	EndThemeStart			\Default Work Unit\EndThemeStart	
 	1768459107	AlarmOff			\Default Work Unit\AlarmOff	
 	2024411100	JetPackOff			\Default Work Unit\JetPackOff	
+	2455228597	MainThemeStop			\Default Work Unit\MainThemeStop	
 	2538918815	PlayerShoot			\Default Work Unit\PlayerShoot	
+	3086540886	StopAll			\Default Work Unit\StopAll	
+	3173851011	EndThemeStop			\Default Work Unit\EndThemeStop	
 	3831688773	PlayerHit			\Default Work Unit\PlayerHit	
 	4008126242	PlayerJump			\Default Work Unit\PlayerJump	
 	4179333400	BulletHit			\Default Work Unit\BulletHit	
@@ -20,30 +25,32 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	3550022565	CollectedTreasure			\Default Work Unit\CollectedTreasure	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	31108234	EngineStop	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\EngineStopV2_9A7D1C34.wem		\Actor-Mixer Hierarchy\Default Work Unit\EngineStop		1200160
-	35645405	V2GunFire_01	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\V2GunFire_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\V2GunFire_01		155572
-	76099093	Bat_04	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Bat_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_04		285484
-	139858927	V2GunFire_04	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\V2GunFire_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\V2GunFire_04		155572
-	145726937	Explosion_03	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Explosion_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_03		152698
-	189741029	Bat_03	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Bat_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_03		312156
-	292878991	EngineStart	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\EngineStartV2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\EngineStart		936160
-	318650182	Bat_01	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Bat_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_01		285484
-	425431553	V2RockBreak_01	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\V2RockBreak_01_6F4A13C1.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\V2RockBreak_01		222836
-	476740569	Explosion_04	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Explosion_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_04		147642
-	506899417	Explosion_01	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Explosion_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_01		183048
-	526125494	JetPackLoop	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\JetPackLoop_FBC78EF0.wem		\Actor-Mixer Hierarchy\Default Work Unit\JetPackLoop		120544
-	550015412	Jump	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Jump_9344D156.wem		\Actor-Mixer Hierarchy\Default Work Unit\Jump		26836
-	585746009	Explosion_02	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Explosion_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_02		230910
-	614040044	V2GunFire_03	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\V2GunFire_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\V2GunFire_03		212688
-	651345929	V2RockBreak_04	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\V2RockBreak_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\V2RockBreak_04		172208
-	702155503	TreasureCounter	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\TreasureCounter_3D0E614B.wem		\Actor-Mixer Hierarchy\Default Work Unit\TreasureCounter		409196
-	759895451	V2GunFire_02	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\V2GunFire_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\V2GunFire_02		192344
-	774887571	GroundHit	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\GroundHit_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GroundHit		33050
-	811838532	PlayerDamaged	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\PlayerDamaged_56B5CA66.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlayerDamaged		112032
-	817672713	V2RockBreak_02	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\V2RockBreak_02_1DC3E9F1.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\V2RockBreak_02		198728
-	855419003	BulletCollision	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\BulletImpact_73CBEDD3.wem		\Actor-Mixer Hierarchy\Default Work Unit\BulletCollision		153164
-	898313245	V2RockBreak_03	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\V2RockBreak_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\V2RockBreak_03		186000
-	929515296	AlarmLoop	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\AlarmLoop_FBC78EF0.wem		\Actor-Mixer Hierarchy\Default Work Unit\AlarmLoop		658444
-	972219008	EnemyDamaged	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\EnemyDamagedV3_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\EnemyDamaged		41356
-	1018182414	Bat_02	Y:\Desktop\SonkGame\TTCOTE\WWiseProject\.cache\Mac\SFX\Bat_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_02		285484
+	31108234	EngineStop	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\EngineStopV2_9A7D1C34.wem		\Actor-Mixer Hierarchy\Default Work Unit\EngineStop		1200160
+	35645405	V2GunFire_01	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\V2GunFire_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\V2GunFire_01		155572
+	76099093	Bat_04	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\Bat_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_04		285484
+	139858927	V2GunFire_04	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\V2GunFire_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\V2GunFire_04		155572
+	145726937	Explosion_03	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\Explosion_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_03		152698
+	189741029	Bat_03	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\Bat_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_03		312156
+	292878991	EngineStart	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\EngineStartV2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\EngineStart		936160
+	318650182	Bat_01	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\Bat_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_01		285484
+	418977169	TTCOTE_GameOver	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\TTCOTE_GameOver_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\EndTheme\TTCOTE_GameOver\TTCOTE_GameOver		3921928
+	425431553	V2RockBreak_01	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\V2RockBreak_01_6F4A13C1.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\V2RockBreak_01		222836
+	476740569	Explosion_04	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\Explosion_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_04		147642
+	506899417	Explosion_01	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\Explosion_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_01		183048
+	526125494	JetPackLoop	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\JetPackLoop_FBC78EF0.wem		\Actor-Mixer Hierarchy\Default Work Unit\JetPackLoop		120544
+	550015412	Jump	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\Jump_9344D156.wem		\Actor-Mixer Hierarchy\Default Work Unit\Jump		26836
+	585746009	Explosion_02	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\Explosion_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicExplosion\Explosion_02		230910
+	614040044	V2GunFire_03	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\V2GunFire_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\V2GunFire_03		212688
+	651345929	V2RockBreak_04	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\V2RockBreak_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\V2RockBreak_04		172208
+	702155503	TreasureCounter	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\TreasureCounter_3D0E614B.wem		\Actor-Mixer Hierarchy\Default Work Unit\TreasureCounter		409196
+	759895451	V2GunFire_02	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\V2GunFire_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GunFire\V2GunFire_02		192344
+	774887571	GroundHit	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\GroundHit_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GroundHit		33050
+	811838532	PlayerDamaged	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\PlayerDamaged_56B5CA66.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlayerDamaged		112032
+	817672713	V2RockBreak_02	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\V2RockBreak_02_1DC3E9F1.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\V2RockBreak_02		198728
+	855419003	BulletCollision	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\BulletImpact_73CBEDD3.wem		\Actor-Mixer Hierarchy\Default Work Unit\BulletCollision		153164
+	898313245	V2RockBreak_03	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\V2RockBreak_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasicRockBreak\V2RockBreak_03		186000
+	929515296	AlarmLoop	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\AlarmLoop_66B93D96.wem		\Actor-Mixer Hierarchy\Default Work Unit\AlarmLoop		658444
+	972219008	EnemyDamaged	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\EnemyDamagedV3_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\EnemyDamaged		41356
+	983726432	TTCOTE_MainTheme	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\TTCOTE_MainTheme_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\MainTheme\TTCOTE_MainTheme\TTCOTE_MainTheme		28109024
+	1018182414	Bat_02	G:\Github Repositories\TTCOTE_IDCGameJam\ToTheCenterOfTheEarth-IndieCityGameJam\WWiseProject\.cache\Mac\SFX\Bat_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Screech\Bat_02		285484
 

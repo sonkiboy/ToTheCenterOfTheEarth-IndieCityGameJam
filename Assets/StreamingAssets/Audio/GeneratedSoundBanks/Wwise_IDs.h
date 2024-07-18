@@ -32,6 +32,7 @@ namespace AK
         static const AkUniqueID PLAYERLAND = 846198821U;
         static const AkUniqueID PLAYERSHOOT = 2538918815U;
         static const AkUniqueID ROCKBREAK = 337805159U;
+        static const AkUniqueID STOPALL = 3086540886U;
         static const AkUniqueID TREASURECOLLECTED = 1483571575U;
     } // namespace EVENTS
 

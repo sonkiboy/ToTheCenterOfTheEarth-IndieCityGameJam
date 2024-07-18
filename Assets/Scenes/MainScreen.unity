@@ -9502,6 +9502,10 @@ MonoBehaviour:
   - {fileID: 4845763979863762579, guid: db78019cdbebdc949ac05251cdc0434b, type: 3}
   - {fileID: -1435879450341836913, guid: db78019cdbebdc949ac05251cdc0434b, type: 3}
   LeaderBoardObj: {fileID: 1553461408}
+  StopAllSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 93adda04887b3564790b5f70d9c6a00c, type: 2}
   score: 0
 --- !u!1 &228889018
 GameObject:
@@ -23199,7 +23203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48156e40c63da7747b81be0b362c6519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerList: ae8d9d44f7e1664c
+  triggerList: ae8d9d44
   useOtherObject: 0
   data:
     idInternal: 0
@@ -49698,6 +49702,7 @@ MonoBehaviour:
   StatTracker: {fileID: 1696989416}
   HealthTracker: {fileID: 1948679562}
   Platform: {fileID: 890292357}
+  CenterScreen: {fileID: 1796822946}
   PlayerDamagedSound:
     idInternal: 0
     valueGuidInternal: 
@@ -49732,7 +49737,7 @@ MonoBehaviour:
   EndMusicOff:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: ef6bd5eabfe508d40aae93b08ff13fac, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 93adda04887b3564790b5f70d9c6a00c, type: 2}
   EnterInput:
     m_Name: Enter Input
     m_Type: 0

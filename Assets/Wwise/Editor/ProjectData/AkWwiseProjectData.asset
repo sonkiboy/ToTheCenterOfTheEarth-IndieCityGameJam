@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 10409d2d04f33442a9467981e3099a01
     GuidInternal: 
-    m_lastTime: -8584813095584795123
+    m_lastTime: -8584803574775467738
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b28a8b35638bd0468618d48e40b4a1ca
     GuidInternal: 
-    m_lastTime: -8584804158868146961
+    m_lastTime: -8584803597392864275
     List:
     - name: UrMom
       guid: 892131c98ee99f478dc92a2ff1ed4ae5
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 5e02a02a7cd2f549a036b2ce223a358c
     GuidInternal: 
-    m_lastTime: -8584804157805476580
+    m_lastTime: -8584803559884865012
     List:
     - name: AlarmOff
       guid: 88b4851f46e98e42b1cd9737dbd32dc4
@@ -179,8 +179,8 @@ MonoBehaviour:
         guid: 0e944316030750409ec96dbbc722ab4a
       Path: Events\Default Work Unit\EndThemeStart
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: EndThemeStop
       guid: 8f3208ef51c5f844b1c0c240703fb74f
       id: 3173851011
@@ -281,8 +281,8 @@ MonoBehaviour:
         guid: 90304cf7e7a362439afdaa6c8e7b9cd6
       Path: Events\Default Work Unit\MainThemeStart
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: MainThemeStop
       guid: d55c8c6ebe5fa846bc8cc98b79b000ce
       id: 2455228597
@@ -349,8 +349,8 @@ MonoBehaviour:
         guid: 11442683c0287d4188344e6926408214
       Path: Events\Default Work Unit\PlayerHit
       maxAttenuation: 0
-      maxDuration: 0.5830014
-      minDuration: 0.5830014
+      maxDuration: 0.66583556
+      minDuration: 0.66583556
     - name: PlayerJump
       guid: 6e6b3f20c99c7247a4e834ac000ec01f
       id: 4008126242
@@ -434,8 +434,8 @@ MonoBehaviour:
         guid: 0ada7250c3b4cd49bbbe25484180bb46
       Path: Events\Default Work Unit\StopAll
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: TreasureCollected
       guid: f4244cc2fd77f445a726a8175aaaec71
       id: 1483571575
@@ -524,7 +524,7 @@ MonoBehaviour:
     m_lastTime: -8584813095583912638
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 07000000190000001a0000001b0000001e0000001f000000
+  ExpandedWaapiItemIds: 0600000007000000190000001a0000001b0000001e0000001f00000020000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

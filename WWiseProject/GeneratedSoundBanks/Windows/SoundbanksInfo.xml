@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{19673545-C2C7-46D2-6D45-11A2DF77039B}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{DFAE8D51-1D63-4D90-FE18-052A7450221D}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -25,7 +25,7 @@
 				<GameParameter Id="3550022565" Name="CollectedTreasure"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{11D36F84-BA55-3C11-1ADF-95D714D8D94C}">
+		<SoundBank Id="2629167105" Type="User" Language="SFX" Hash="{999E4F2E-55AE-CB0E-E9CA-CE3C334D90A3}">
 			<ShortName>UrMom</ShortName>
 			<Path>UrMom.bnk</Path>
 			<Media>
@@ -203,7 +203,7 @@
 						<MediaRef Id="292878991"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3831688773" Name="PlayerHit" DurationType="OneShot" DurationMin="0.5830014" DurationMax="0.5830014">
+				<Event Id="3831688773" Name="PlayerHit" DurationType="OneShot" DurationMin="0.66583556" DurationMax="0.66583556">
 					<MediaRefs>
 						<MediaRef Id="811838532"/>
 					</MediaRefs>
@@ -234,6 +234,7 @@
 						<MediaRef Id="898313245"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3086540886" Name="StopAll" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="1483571575" Name="TreasureCollected" DurationType="OneShot" DurationMin="2.130744" DurationMax="2.130744">
 					<MediaRefs>
 						<MediaRef Id="702155503"/>
@@ -245,5 +246,5 @@
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6178EC91-2999-9147-8BC4-ECCF4B8A3AE5}</FileHash>
+	<FileHash>{7D56772E-8A6D-5536-70FD-5D397C1C4F34}</FileHash>
 </SoundBanksInfo>

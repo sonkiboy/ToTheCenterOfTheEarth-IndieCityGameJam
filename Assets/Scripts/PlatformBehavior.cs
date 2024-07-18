@@ -100,6 +100,7 @@ public class PlatformBehavior : MonoBehaviour
     private void OnDisable()
     {
         AlarmOffSound.Post(gameObject);
+        AkSoundEngine.StopAll(gameObject);
     }
 
     // Update is called once per frame
@@ -204,6 +205,9 @@ public class PlatformBehavior : MonoBehaviour
 
     IEnumerator DrainPlayer()
     {
+    
+        DrillOffSound.Post(gameObject);
+
         Debug.Log("Out of fuel drain started");
 
         isDraining = true;

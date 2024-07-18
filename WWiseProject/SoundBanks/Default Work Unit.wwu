@@ -18,6 +18,7 @@
 						<ObjectRef Name="PlayerJump" ID="{203F6B6E-9CC9-4772-A4E8-34AC000EC01F}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="JetPackOn" ID="{0191A4F9-44C7-4799-B422-4837B0C606B0}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayerLand" ID="{8BAB6FC8-C315-492E-A22B-E97B9CC42139}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StopAll" ID="{5072DA0A-B4C3-49CD-BBBE-25484180BB46}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="JetPackOff" ID="{ECEA7DC0-DC1B-4C1A-902E-DE71F745BDD9}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Explosion" ID="{7DAC5597-D855-4D0A-BBCD-96D9EA273498}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="RockBreak" ID="{DDE7725D-AEE1-4D0C-BA46-6F47CE9AB5DC}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>

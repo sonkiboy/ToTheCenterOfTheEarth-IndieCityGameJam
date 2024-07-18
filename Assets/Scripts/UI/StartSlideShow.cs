@@ -13,7 +13,7 @@ public class StartSlideShow : MonoBehaviour
     PlayerControllerInput inputActions;
     InputAction StartInput;
 
-    AK.Wwise.Event StopAllSound;
+    public AK.Wwise.Event StopAllSound;
 
     private void Awake()
     {
@@ -30,6 +30,7 @@ public class StartSlideShow : MonoBehaviour
     private void OnDisable()
     {
         inputActions.Disable();
+        
     }
 
 
@@ -79,7 +80,7 @@ public class StartSlideShow : MonoBehaviour
 
     void StartGame(InputAction.CallbackContext context)
     {
-        StopAllSound.Post(gameObject);
+        
 
         SceneManager.LoadScene("MainScreen");
     }

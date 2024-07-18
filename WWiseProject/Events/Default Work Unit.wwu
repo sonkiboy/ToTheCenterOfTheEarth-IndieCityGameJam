@@ -187,6 +187,16 @@
 				</Event>
 				<Event Name="MainThemeStart" ID="{F74C3090-A3E7-4362-9AFD-AA6C8E7B9CD6}">
 					<ChildrenList>
+						<Action Name="" ID="{EF5DF3C9-B7C4-4F81-8106-A8CCF64ACD40}" ShortID="763803562">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MainTheme" ID="{510A37B9-6F1E-47D2-BA52-7AEF174CB9FE}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{77CAEE08-19B9-4B87-8C78-9D2049EAC1FA}" ShortID="334071631">
 							<ReferenceList>
 								<Reference Name="Target">

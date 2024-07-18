@@ -14,6 +14,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2024411100	JetPackOff			\Default Work Unit\JetPackOff	
 	2455228597	MainThemeStop			\Default Work Unit\MainThemeStop	
 	2538918815	PlayerShoot			\Default Work Unit\PlayerShoot	
+	3086540886	StopAll			\Default Work Unit\StopAll	
 	3173851011	EndThemeStop			\Default Work Unit\EndThemeStop	
 	3831688773	PlayerHit			\Default Work Unit\PlayerHit	
 	4008126242	PlayerJump			\Default Work Unit\PlayerJump	

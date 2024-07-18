@@ -9,6 +9,7 @@ public class GameOver : MonoBehaviour
     #region Obj and Comp
 
     [SerializeField] GameObject LeaderBoard;
+    
     [SerializeField] GameObject BlackBG;
 
     LeaderBoard boardComponent;
@@ -33,10 +34,13 @@ public class GameOver : MonoBehaviour
 
     }
 
-    
 
 
 
+    private void OnDisable()
+    {
+        EndMusicOff.Post(GameManager.Instance.CenterScreen);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -77,9 +81,9 @@ public class GameOver : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        EndMusicOn.Post(GameManager.Instance.Platform.gameObject);
+        EndMusicOn.Post(GameManager.Instance.CenterScreen);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
 
         if (boardComponent.CheckNewScore(score))
         {
@@ -99,7 +103,7 @@ public class GameOver : MonoBehaviour
     private void RestartGame(InputAction.CallbackContext contex)
     {
 
-        EndMusicOff.Post(gameObject);
+        EndMusicOff.Post(GameManager.Instance.CenterScreen);
 
         inputActions.Dispose();
         SceneManager.LoadScene("IntroScene");

@@ -22,8 +22,8 @@
 							<Position X="0" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="TreasureCounter" ID="{18F2A5A2-FF97-4345-A716-629A01A6ADE1}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
-							<Position X="0" Y="5"/>
+							<ObjectRef Name="PlayerHit" ID="{83264411-28C0-417D-8834-4E6926408214}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="0" Y="4"/>
 						</Module>
 						<Module>
 							<ObjectRef Name="AlarmOff" ID="{1F85B488-E946-428E-B1CD-9737DBD32DC4}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
@@ -42,15 +42,11 @@
 							<Position X="1" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Jump" ID="{E5E1FC66-F68C-469E-9C06-E723188A6CFE}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
-							<Position X="1" Y="4"/>
-						</Module>
-						<Module>
-							<ObjectRef Name="GunFire" ID="{31B5A88C-DE6C-47BB-8ED6-EC7DB6EDF5A8}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<ObjectRef Name="PlayerShoot" ID="{0D127B5A-DB36-421E-B422-D0B126A50B5A}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
 							<Position X="2" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="EnemyDamaged" ID="{D064BF6A-CE42-450F-B040-E7F0D61B4B0A}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<ObjectRef Name="EnemyHit" ID="{8933E1CA-853B-4D34-9139-BE0B4074D6B4}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
 							<Position X="2" Y="1"/>
 						</Module>
 						<Module>
@@ -58,23 +54,27 @@
 							<Position X="2" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="JetPackLoop" ID="{8E4CE6FE-CCF6-4268-B47E-260150D6A735}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<ObjectRef Name="JetPackOn" ID="{0191A4F9-44C7-4799-B422-4837B0C606B0}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
 							<Position X="2" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="BasicExplosion" ID="{029383E3-D224-4556-BE0E-5EE9D90A812E}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<ObjectRef Name="TreasureCollected" ID="{C24C24F4-77FD-45F4-A726-A8175AAAEC71}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<Position X="2" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Explosion" ID="{7DAC5597-D855-4D0A-BBCD-96D9EA273498}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
 							<Position X="3" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="BasicRockBreak" ID="{CA9C51F4-F757-45CA-9EAF-301BF4AB835D}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<ObjectRef Name="RockBreak" ID="{DDE7725D-AEE1-4D0C-BA46-6F47CE9AB5DC}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
 							<Position X="3" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="GroundHit" ID="{796A6878-CBDA-4D95-AC04-60F0C14F7163}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+							<ObjectRef Name="PlayerLand" ID="{8BAB6FC8-C315-492E-A22B-E97B9CC42139}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
 							<Position X="3" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="BatScreech" ID="{4F28D00A-6A43-4D6D-8020-BFF32D0C1003}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
+							<ObjectRef Name="JetPackOff" ID="{ECEA7DC0-DC1B-4C1A-902E-DE71F745BDD9}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}"/>
 							<Position X="3" Y="3"/>
 						</Module>
 					</ModuleList>
