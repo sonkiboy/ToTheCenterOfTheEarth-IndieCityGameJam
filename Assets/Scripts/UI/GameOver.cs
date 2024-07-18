@@ -68,7 +68,7 @@ public class GameOver : MonoBehaviour
 
         yield return null;
 
-        
+        AkSoundEngine.StopAll(GameObject.FindGameObjectWithTag("Player");
 
         GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -80,6 +80,7 @@ public class GameOver : MonoBehaviour
         yield return null;
 
         yield return new WaitForSeconds(waitTime);
+        
 
         EndMusicOn.Post(GameManager.Instance.CenterScreen);
 
