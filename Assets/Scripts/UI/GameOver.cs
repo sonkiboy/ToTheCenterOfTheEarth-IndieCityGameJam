@@ -68,7 +68,7 @@ public class GameOver : MonoBehaviour
 
         yield return null;
 
-        AkSoundEngine.StopAll(GameObject.FindGameObjectWithTag("Player");
+        AkSoundEngine.StopAll(GameObject.FindGameObjectWithTag("Player"));
 
         GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
