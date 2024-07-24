@@ -103,6 +103,12 @@ public class PlatformBehavior : MonoBehaviour
         AkSoundEngine.StopAll(gameObject);
     }
 
+    private void OnDestroy()
+    {
+        AlarmOffSound.Post(gameObject);
+        AkSoundEngine.StopAll(gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -212,13 +218,16 @@ public class PlatformBehavior : MonoBehaviour
 
         isDraining = true;
 
-        while (fuel <= 0)
-        {
-            yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);
 
+        while (CurrentFuel <= 0)
+        {
+            
             GameManager.Instance.CurrentHealth -= 1;
 
-            if(GameManager.Instance.CurrentHealth <= 0)
+            yield return new WaitForSeconds(2f);
+
+            if (GameManager.Instance.CurrentHealth <= 0)
             {
                 break;
             }
