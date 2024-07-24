@@ -195,11 +195,13 @@ public class HighScoreCreator : MonoBehaviour
 
     private void RestartGame(InputAction.CallbackContext contex)
     {
-        StopAllSound.Post(gameObject);
+        StopAllSound.Post(GameManager.Instance.CenterScreen);
 
         inputActions.Dispose();
         SceneManager.LoadScene("IntroScene");
     }
+
+    
 
 
 }

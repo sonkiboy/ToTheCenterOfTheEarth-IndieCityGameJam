@@ -84,4 +84,6 @@ public class StartSlideShow : MonoBehaviour
 
         SceneManager.LoadScene("MainScreen");
     }
+
+
 }

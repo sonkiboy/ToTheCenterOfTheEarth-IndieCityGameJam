@@ -121,23 +121,27 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = MoveInput.ReadValue<Vector2>();
 
+        
+
         if (Keyboard.current != null)
         {
             if (Keyboard.current.anyKey.wasPressedThisFrame && !isKeyboard)
             {
-                Debug.Log("Switching to Keyboard");
+                Debug.Log($"Switching to Keyboard, found as {Keyboard.current}");
                 isController = false;
                 isKeyboard = true;
             }
         }
-        else if (Gamepad.current != null)
+        if (Gamepad.current != null)
         {
+            Debug.Log("Found but nothing pressed");
             if ((Gamepad.current.aButton.wasPressedThisFrame || Gamepad.current.leftTrigger.wasPressedThisFrame || Gamepad.current.rightTrigger.wasPressedThisFrame) && !isController)
             {
                 Debug.Log("Switching to Controller");
                 isController = true;
                 isKeyboard = false;
             }
+            
         }
 
 

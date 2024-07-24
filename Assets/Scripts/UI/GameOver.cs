@@ -69,6 +69,7 @@ public class GameOver : MonoBehaviour
         yield return null;
 
         AkSoundEngine.StopAll(GameObject.FindGameObjectWithTag("Player"));
+        AkSoundEngine.StopAll(GameManager.Instance.Platform.gameObject);
 
         GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -107,6 +108,11 @@ public class GameOver : MonoBehaviour
         EndMusicOff.Post(GameManager.Instance.CenterScreen);
 
         inputActions.Dispose();
+
+        
         SceneManager.LoadScene("IntroScene");
     }
+    
+
+    
 }
