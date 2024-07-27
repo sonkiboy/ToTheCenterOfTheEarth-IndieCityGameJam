@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Invincibility(float Durration)
+    public IEnumerator Invincibility(float Durration)
     {
 
 

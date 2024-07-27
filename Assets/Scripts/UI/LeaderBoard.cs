@@ -175,6 +175,19 @@ public class LeaderBoard : MonoBehaviour
         {
             return true;
         }
+        else if(textScores.Length >= 10)
+        {
+            int lowestScore = Convert.ToInt32(textScores[9]);
+
+            if (newScore > lowestScore)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         else
         {
             int lowestScore = Convert.ToInt32(textScores[textScores.Length - 1]);

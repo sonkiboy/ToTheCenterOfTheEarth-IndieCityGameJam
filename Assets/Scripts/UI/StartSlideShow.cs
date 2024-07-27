@@ -80,7 +80,7 @@ public class StartSlideShow : MonoBehaviour
 
     void StartGame(InputAction.CallbackContext context)
     {
-        
+        PeristentSoundPlayer.instance.StopEnd();
 
         SceneManager.LoadScene("MainScreen");
     }

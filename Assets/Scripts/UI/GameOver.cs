@@ -83,7 +83,7 @@ public class GameOver : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         
 
-        EndMusicOn.Post(GameManager.Instance.CenterScreen);
+        PeristentSoundPlayer.instance.PlayEnd();
 
         yield return new WaitForSeconds(.5f);
 
@@ -105,7 +105,7 @@ public class GameOver : MonoBehaviour
     private void RestartGame(InputAction.CallbackContext contex)
     {
 
-        EndMusicOff.Post(GameManager.Instance.CenterScreen);
+        
 
         inputActions.Dispose();
 

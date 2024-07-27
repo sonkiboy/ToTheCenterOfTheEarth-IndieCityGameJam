@@ -4,6 +4,9 @@ using UnityEngine;
 public class PlatformBehavior : MonoBehaviour
 {
     #region Object and Components
+
+    PlayerController playerController;
+
     public SpriteRenderer fuelBar;
     SpriteRenderer spriteRenderer;
     BoxCollider2D drillCollider;
@@ -88,6 +91,7 @@ public class PlatformBehavior : MonoBehaviour
     {
         drillCollider = transform.Find("DrillCollider").GetComponent<BoxCollider2D>();
         blockGenerator = GameObject.Find("Cavern").GetComponent<BlockGenerator>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         CurrentFuel = 100;
 
@@ -224,13 +228,16 @@ public class PlatformBehavior : MonoBehaviour
         {
             
             GameManager.Instance.CurrentHealth -= 1;
+            if (GameManager.Instance.CurrentHealth <= 0)
+            {
+
+                break;
+            }
+            StartCoroutine(playerController.Invincibility(playerController.InvincibilityDurration));
 
             yield return new WaitForSeconds(2f);
 
-            if (GameManager.Instance.CurrentHealth <= 0)
-            {
-                break;
-            }
+            
            
         }
     }
