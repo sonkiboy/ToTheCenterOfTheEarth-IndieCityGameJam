@@ -62,24 +62,18 @@ public class GameManager : MonoBehaviour
             // set the UI Level counter to the current Level
             StatTracker.SetLevelScore(level);
 
-            if(level%100 == 0)
+            if(level%100 == 0 && level > 99)
             {
                 BossManager.StartBossFight(BossManager.Bosses.InsectQueen);
             }
 
-            if(level%110 == 0)
-            {
-
-            }
+            
             
 
         }
     }
 
-    public Color[,] DepthColors;
-    public Color[] Depth100Colors;
-    public Color[] Depth200Colors;
-    public Color[] Depth300Colors;
+    
 
     // ------------ TREASURE ------------
 
@@ -261,8 +255,8 @@ public class GameManager : MonoBehaviour
 
                 ScoreAnchor = StatTracker.gameObject.transform.Find("ScoreAnchor");
                 Overlay = GameObject.FindAnyObjectByType<OverlayUI>();
-                GameOver.BlackBG = GameObject.Find("EndCanvas").transform.Find("DeathBackground").gameObject;
                 
+                BossManager = GameObject.Find("Cavern").GetComponent<BossManager>();
 
                 StartNormalGame();
 
@@ -313,6 +307,8 @@ public class GameManager : MonoBehaviour
     {
         yield return null;
         CurrentTreasure = 0;
+        CurrentDepth = 0;
+        
         Overlay.StartCountdown();
         yield return new WaitForSeconds(3);
 

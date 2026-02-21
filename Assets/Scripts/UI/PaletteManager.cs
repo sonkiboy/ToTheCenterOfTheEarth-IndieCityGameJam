@@ -1,18 +1,29 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PaletteManager : MonoBehaviour
+public class PaletteManager : MonoBehaviour,ISceneUpdate
 {
     // the renderer component of the low screen resolution
     public RawImage ScreenRenderer;
 
     public Color[] DefaultColors;
-    
+
+    public Color[,] DepthColors;
+    public Color[] Depth100Colors;
+    public Color[] Depth200Colors;
+    public Color[] Depth300Colors;
+    public Color[] Depth400Colors;
+    int currentPallete = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SceneManager.activeSceneChanged += OnSceneChanged;
+        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
         ResetColors();
+
     }
 
     private void OnDisable()
@@ -29,6 +40,10 @@ public class PaletteManager : MonoBehaviour
     public void ChangePalette(float time, Color color1, Color color2, Color color3, Color color4)
     {
         StartCoroutine(SwapPalette(time, color1,color2 ,color3,color4)); 
+    }
+    public void ChangePalette(float time, Color[] pallete)
+    {
+        StartCoroutine(SwapPalette(time, pallete[0], pallete[1], pallete[2], pallete[3]));
     }
 
     private IEnumerator SwapPalette(float time, Color color1, Color color2, Color color3, Color color4)
@@ -66,5 +81,46 @@ public class PaletteManager : MonoBehaviour
             ScreenRenderer.material.SetColor("_NEW4", DefaultColors[3]);
         }
         
+    }
+
+    public void IncrimentPallete(float time)
+    {
+        currentPallete++;
+
+
+        switch (currentPallete)
+        {
+            case 0:
+                ChangePalette(time,DefaultColors);
+
+                break;
+            case 1:
+                ChangePalette(time, Depth100Colors);
+                break;
+            case 2:
+                ChangePalette(time, Depth200Colors);
+                break;
+            case 3:
+                ChangePalette(time, Depth300Colors);
+                break;
+            case 4:
+                ChangePalette(time, Depth400Colors);
+                break;
+            default:
+
+                currentPallete = 0;
+                ChangePalette(time, DefaultColors);
+                break;
+        }
+
+        if(currentPallete > 4)
+        {
+            currentPallete = 0;
+        }
+    }
+
+    public void OnSceneChanged(Scene Current, Scene Next)
+    {
+        ScreenRenderer = GameObject.Find("LowResCamera/RendererCanvas/Screen").GetComponent<RawImage>();
     }
 }

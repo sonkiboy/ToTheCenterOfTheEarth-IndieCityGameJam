@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class GameOver : MonoBehaviour
+public class GameOver : MonoBehaviour, ISceneUpdate
 {
     #region Obj and Comp
-
-    [SerializeField] GameObject LeaderBoard;
+    GameObject EndUi;
+    GameObject LeaderBoard;
     
     public GameObject BlackBG;
 
@@ -46,7 +46,9 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         
-        boardComponent = LeaderBoard.GetComponent<LeaderBoard>();
+        
+        SceneManager.activeSceneChanged += OnSceneChanged;
+        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
         
     }
 
@@ -113,7 +115,13 @@ public class GameOver : MonoBehaviour
         
         SceneManager.LoadScene("MainMenu");
     }
-    
 
-    
+    public void OnSceneChanged(Scene Current, Scene Next)
+    {
+        EndUi = GameObject.Find("EndCanvas").gameObject;
+        LeaderBoard = EndUi.transform.Find("LeaderBoard").gameObject;
+        boardComponent = LeaderBoard.GetComponent<LeaderBoard>();
+        BlackBG = EndUi.transform.Find("DeathBackground").gameObject;
+        highScore = EndUi.transform.Find("HighScore").gameObject;
+    }
 }

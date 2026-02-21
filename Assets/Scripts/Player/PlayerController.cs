@@ -308,6 +308,18 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        else if (collision.gameObject.tag == "EnemyBullet")
+        {
+            // check if the player isn't invincible, if they are, ignore the collision
+            if (!isInvincible)
+            {
+                // subtract player health from the Game Manager
+                GameManager.Instance.CurrentHealth--;
+
+                Destroy(collision.gameObject);
+
+            }
+        }
     }
 
     // This Routine will make the player invulnerable from attacks during its durration, and flash the players damage color on and off

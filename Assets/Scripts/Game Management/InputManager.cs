@@ -16,6 +16,8 @@ public class InputManager : MonoBehaviour
     public InputAction FireInput;
     public InputAction MenuInput;
 
+    public InputAction DebugColorChange;
+
     public bool isController = false;
     public bool isKeyboard = false;
 
@@ -33,6 +35,8 @@ public class InputManager : MonoBehaviour
         MouseLookInput = inputManager.Player.MouseLook;
         FireInput = inputManager.Player.Fire;
         MenuInput = inputManager.Player.Start;
+
+        DebugColorChange = inputManager.Debug.ChangePallete;
     }
 
     private void OnEnable()
@@ -47,7 +51,11 @@ public class InputManager : MonoBehaviour
         MenuInput.Enable();
         MenuInput.performed += OnMenuDebugPress;
 
-        
+        DebugColorChange.Enable();
+        DebugColorChange.performed += OnColorChangeDebugPress;
+
+
+
     }
 
     private void OnDisable()
@@ -61,6 +69,9 @@ public class InputManager : MonoBehaviour
         FireInput.Disable();
         MenuInput.Disable();
         MenuInput.performed -= OnMenuDebugPress;
+
+        DebugColorChange.Enable();
+        DebugColorChange.performed -= OnColorChangeDebugPress;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -100,6 +111,14 @@ public class InputManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "RegularGame")
         {
             SceneManager.LoadScene("MainMenu");
+        }
+    }
+
+    void OnColorChangeDebugPress(InputAction.CallbackContext context)
+    {
+        if(SceneManager.GetActiveScene().name == "MainMenu" && GameManager.Instance.PaletteManager != null)
+        {
+            GameManager.Instance.PaletteManager.IncrimentPallete(.25f);
         }
     }
 }

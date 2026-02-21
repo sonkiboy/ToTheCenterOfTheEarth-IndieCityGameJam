@@ -7630,6 +7630,10 @@ PrefabInstance:
       propertyPath: MenuInput.m_Name
       value: Menu Input
       objectReference: {fileID: 0}
+    - target: {fileID: 7374063556836506445, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
+      propertyPath: DebugColorChange.m_Name
+      value: Debug Color Change
+      objectReference: {fileID: 0}
     - target: {fileID: 8627713085867861884, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
       propertyPath: SoundManager
       value: 

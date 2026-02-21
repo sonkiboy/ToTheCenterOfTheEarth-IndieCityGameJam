@@ -41,21 +41,7 @@ public class BulletBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (IsEnemyBullet)
-        {
-            if (collision.gameObject.tag == "Player")
-            {
-                //Debug.Log("Enemy Bullet has hit a player, destroying: " + gameObject);
-
-                GameManager.Instance.CurrentHealth--;
-
-                Destroy(gameObject);
-
-            }
-        }
-        else
-        {
-
+        
             //Debug.Log($"Detected collision : {collision.gameObject.name}");
 
             GameManager.Instance.SoundManager.PlaySoundOnObject("BulletHit",this.gameObject);
@@ -77,7 +63,7 @@ public class BulletBehavior : MonoBehaviour
 
             Destroy(gameObject);
 
-        }
+        
 
     }
 

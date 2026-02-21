@@ -126,6 +126,8 @@ public class InsectQueenBehavior : Enemy
         yield return new WaitForSeconds(3f);
 
         if(RewardChest != null) {Instantiate(RewardChest,this.transform.position,Quaternion.identity);}
+        GameManager.Instance.PaletteManager.IncrimentPallete(1.5f);
+
 
         // destroy the boss object
         base.Die();
