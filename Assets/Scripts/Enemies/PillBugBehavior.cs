@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class PillBugBehavior : MonoBehaviour, IEnemy
+public class PillBugBehavior : Enemy
 {
 
     #region Obj and Components
@@ -10,30 +11,16 @@ public class PillBugBehavior : MonoBehaviour, IEnemy
     Rigidbody2D rb;
     [SerializeField] BoxCollider2D wallCheck;
 
-    Renderer damageFlash;
+    
 
     #endregion
 
-    int hp = 20;
-    public int Health
-    {
-        get { return hp; }
-        set 
-        { 
-            hp = value;
-
-            if(hp <= 0)
-            {
-                StartCoroutine(Die());
-            }
-        }
-    }
+    
 
     [Range(0f, 5f)]
     public float Speed = .15f;
 
-    public int TreasureReward = 10;
-    public int FuelReward = 15;
+    
 
     Vector2 currentDirection = Vector2.left;
 
@@ -41,7 +28,8 @@ public class PillBugBehavior : MonoBehaviour, IEnemy
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        damageFlash = transform.Find("Sprite").GetComponent<Renderer>();
+        damageFlash[0] = transform.Find("Sprite").GetComponent<Renderer>();
+        StartCoroutine(ContinuousWallCheck());  
     }
 
     // Update is called once per frame
@@ -52,56 +40,51 @@ public class PillBugBehavior : MonoBehaviour, IEnemy
 
     private void FixedUpdate()
     {
-        Vector2 newVel = new Vector2(currentDirection.x * Speed, rb.velocity.y);
-        rb.velocity = newVel;
+        Vector2 newVel = new Vector2(currentDirection.x * Speed, rb.linearVelocity.y);
+        rb.linearVelocity = newVel;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        WallCheck();
+    }
+
+    IEnumerator ContinuousWallCheck()
+    {
+        while (Health > 0)
+        {
+            WallCheck();
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    void WallCheck()
+    {
         Collider2D foundWall = Physics2D.OverlapBox(wallCheck.bounds.center, wallCheck.size, 0f, wallCheck.includeLayers);
 
-        if(foundWall != null)
+        if (foundWall != null)
         {
 
             currentDirection = -currentDirection;
 
-            if (currentDirection.x > 0 )
+            if (currentDirection.x > 0)
             {
                 gameObject.transform.rotation = Quaternion.Euler(Vector3.up * 180);
             }
-            else if(currentDirection.x < 0)
+            else if (currentDirection.x < 0)
             {
                 gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
             }
-            
-            
+
+
 
         }
     }
+    
 
-    public void DealDamage(int Damage)
-    {
-        this.Health -= Damage;
-        StartCoroutine(DamageFlash(.1f));
-    }
+    
 
-    public IEnumerator Die()
-    {
+    
 
-        GameManager.Instance.CurrentTreasure += TreasureReward;
-        GameManager.Instance.Platform.CurrentFuel += FuelReward;
-
-        yield return new WaitForFixedUpdate();
-        Destroy(this.gameObject);
-    }
-
-    IEnumerator DamageFlash(float durration)
-    {
-        damageFlash.material.SetFloat("_Intensity", 1f);
-
-        yield return new WaitForSeconds(durration);
-
-        damageFlash.material.SetFloat("_Intensity", 0f);
-
-    }
+    
 }

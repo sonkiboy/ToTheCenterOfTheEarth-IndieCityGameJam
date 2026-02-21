@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "PlayerControllerInput",
     "maps": [
         {
@@ -27,7 +28,7 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "31fc8888-12db-4de3-8469-2cdadf516bc9",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -36,7 +37,7 @@
                     "name": "Jet",
                     "type": "Button",
                     "id": "78a515bd-ca37-4c48-b582-5d98c28f1b79",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -184,11 +185,11 @@
                 },
                 {
                     "name": "",
-                    "id": "3ea4d645-4504-4529-b061-ab81934c3752",
-                    "path": "<Joystick>/stick",
+                    "id": "75374f91-76a0-4c9d-922b-5d073490bf82",
+                    "path": "<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 1>/stick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick;Gamepad",
+                    "groups": ";Joystick",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -217,33 +218,22 @@
                 },
                 {
                     "name": "",
-                    "id": "886e731e-7071-4ae4-95c0-e61739dad6fd",
-                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "id": "ed0fb839-1367-4de0-bf0d-4beb0f6c15b8",
+                    "path": "<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 2>/trigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Touch",
+                    "groups": "",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ee3d0cd2-254e-47a7-a8cb-bc94d9658c54",
-                    "path": "<Joystick>/trigger",
+                    "id": "cd26373f-987d-479c-8c97-5819a7efffe6",
+                    "path": "<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 2>/button2",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8255d333-5683-4943-a58a-ccb207ff1dce",
-                    "path": "<XRController>/{PrimaryAction}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
+                    "groups": "",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -272,11 +262,44 @@
                 },
                 {
                     "name": "",
+                    "id": "6a1a82fb-5eaa-455d-bfdc-81fc6bd00c8a",
+                    "path": "<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 1>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jet",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47fdcd36-872a-4cbe-981a-d301fe6f66af",
+                    "path": "<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 1>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jet",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1688cd93-e857-4bf4-ab4c-7517d2a0abc4",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "StickDeadzone",
                     "groups": "Joystick;Gamepad",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6c6bca1-927b-43b7-b40a-f3744e83abb2",
+                    "path": "<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 2>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -324,7 +347,7 @@
                     "name": "Move",
                     "type": "Button",
                     "id": "5fefbc83-6cf8-4051-98d0-a2478a247e38",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

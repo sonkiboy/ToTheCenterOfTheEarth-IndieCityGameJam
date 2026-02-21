@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -77,11 +78,14 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
   asepriteImporterSettings:
     fileImportMode: 0
     importHiddenLayers: 0
@@ -89,11 +93,14 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
   importFileNodeState: 1
   platformSettingsDirtyTick: 638559717685826547
   textureAssetName: 
@@ -103,6 +110,7 @@ ScriptedImporter:
     pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 0
@@ -124,6 +132,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -0.10000001}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -142,15 +151,16 @@ ScriptedImporter:
   spriteSheetImportData:
   - name: ChargeBars_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0, y: 0}
+    alignment: 6
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
       y: 36
       width: 39
-      height: 7
+      height: 11
     spriteID: 6da2df0adbd3025488bf02999d43c496
     spriteBone: []
     spriteOutline: []
@@ -162,14 +172,15 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: ChargeBars_1
     originalName: 
-    pivot: {x: 0, y: -0.25}
-    alignment: 9
+    pivot: {x: 0, y: 0}
+    alignment: 6
     border: {x: 2, y: 0, z: 5, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 3
       y: 21
-      width: 11
+      width: 10
       height: 4
     spriteID: 56abb5dadabd32e4889984d1d082a495
     spriteBone: []
@@ -182,9 +193,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: ChargeBars_2
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0, y: 0}
+    alignment: 6
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -200,9 +212,36 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
+  - name: ChargeBars_3
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 6
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 13
+      y: 21
+      width: 33
+      height: 5
+    spriteID: 1140f64df8b62a240b225c353e78157b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1207754328
+    uuid:
+      value0: 2026112440
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 2026112440
     name: ChargeBars
     layerFlags: 0
     layerType: 0
@@ -210,14 +249,18 @@ ScriptedImporter:
     cells:
     - name: ChargeBars
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 5
         y: 5
-        width: 39
-        height: 39
+        width: 43
+        height: 42
       spriteId: 13f8b630ca519344abe7d1d00e49d372
     linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
     parentIndex: -1
+  tileSets: []
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -255,6 +298,8 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 48, y: 48}
+  previousTextureSize: {x: 64, y: 64}

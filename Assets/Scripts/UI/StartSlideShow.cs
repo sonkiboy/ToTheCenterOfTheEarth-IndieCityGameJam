@@ -80,9 +80,9 @@ public class StartSlideShow : MonoBehaviour
 
     void StartGame(InputAction.CallbackContext context)
     {
-        PeristentSoundPlayer.instance.StopEnd();
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("GameOverOff");
 
-        SceneManager.LoadScene("MainScreen");
+        SceneManager.LoadScene("RegularGame");
     }
 
 

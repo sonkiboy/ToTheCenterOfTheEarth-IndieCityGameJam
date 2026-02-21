@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10
   SpawnChance: 3
-  TreasureDrop: 50
+  PointsGiven: 250
+  GemsDropped: 3
   FuelDrop: 0
   ExplodeOnBreak: 0
   LayersDected:
@@ -26,6 +27,7 @@ MonoBehaviour:
   SpawnedEnemies:
   - {fileID: 2078680820865373513, guid: cd678ccd98750894baae7724b9875700, type: 3}
   SpawnedPowerUps: []
+  breakParticles: {fileID: 0}
   BrokenOverlays: []
   BreakSound:
     idInternal: 0

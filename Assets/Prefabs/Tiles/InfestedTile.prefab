@@ -229,5 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionFX: {fileID: 0}
+  gemDrop: {fileID: 7721911675991746013, guid: acd4b42a372784341b8d3946d05a7dd7, type: 3}
+  fuelDrop: {fileID: 514592976782679714, guid: d556e07c57d6c304baea8998e0e52694, type: 3}
   Config: {fileID: 11400000, guid: f6c5d7c386a96624bba7abf75e7b2b5c, type: 2}
   hp: 10

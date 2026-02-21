@@ -39,12 +39,13 @@ public class GameOver : MonoBehaviour
 
     private void OnDisable()
     {
-        EndMusicOff.Post(GameManager.Instance.CenterScreen);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("EndMusicOff");
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        
         boardComponent = LeaderBoard.GetComponent<LeaderBoard>();
         
     }
@@ -81,9 +82,9 @@ public class GameOver : MonoBehaviour
         yield return null;
 
         yield return new WaitForSeconds(waitTime);
-        
 
-        PeristentSoundPlayer.instance.PlayEnd();
+
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("GameOverOn");
 
         yield return new WaitForSeconds(.5f);
 
@@ -110,7 +111,7 @@ public class GameOver : MonoBehaviour
         inputActions.Dispose();
 
         
-        SceneManager.LoadScene("IntroScene");
+        SceneManager.LoadScene("MainMenu");
     }
     
 

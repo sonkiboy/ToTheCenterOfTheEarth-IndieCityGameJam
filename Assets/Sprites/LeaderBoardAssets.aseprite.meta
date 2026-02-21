@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -77,11 +78,14 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
   asepriteImporterSettings:
     fileImportMode: 0
     importHiddenLayers: 0
@@ -89,11 +93,14 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
+    generateIndividualEvents: 1
+    generateSpriteAtlas: 1
   importFileNodeState: 1
   platformSettingsDirtyTick: 638564042704818797
   textureAssetName: 
@@ -103,6 +110,7 @@ ScriptedImporter:
     pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 0
@@ -124,6 +132,7 @@ ScriptedImporter:
     pivot: {x: 0.5081967, y: -0.021505376}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -145,6 +154,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0}
     alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -165,6 +175,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 3, y: 3, z: 3, w: 3}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -185,6 +196,7 @@ ScriptedImporter:
     pivot: {x: 0.42857143, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -205,6 +217,7 @@ ScriptedImporter:
     pivot: {x: 0.42857143, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 13
@@ -225,6 +238,7 @@ ScriptedImporter:
     pivot: {x: 0.42857143, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 22
@@ -245,6 +259,7 @@ ScriptedImporter:
     pivot: {x: 0, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 31
@@ -265,6 +280,7 @@ ScriptedImporter:
     pivot: {x: 0, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 40
@@ -282,9 +298,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_F
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 49
@@ -302,9 +319,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_G
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 58
@@ -322,9 +340,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_H
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -343,8 +362,9 @@ ScriptedImporter:
   - name: LB_I
     originalName: 
     pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 13
@@ -362,9 +382,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_J
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 22
@@ -382,9 +403,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_K
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 31
@@ -402,9 +424,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_L
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 40
@@ -422,9 +445,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_M
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 49
@@ -445,6 +469,7 @@ ScriptedImporter:
     pivot: {x: 0.42857143, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 58
@@ -462,9 +487,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_O
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 58
@@ -482,9 +508,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_P
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -502,9 +529,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_Q
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 13
@@ -522,9 +550,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_R
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 22
@@ -542,9 +571,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_S
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 31
@@ -562,9 +592,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_T
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 40
@@ -582,9 +613,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_U
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 49
@@ -602,9 +634,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_V
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 58
@@ -622,9 +655,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_W
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -642,9 +676,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_X
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 13
@@ -662,9 +697,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_Y
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 22
@@ -682,9 +718,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_Z
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 31
@@ -702,9 +739,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_1
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 40
@@ -722,9 +760,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_2
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 49
@@ -742,9 +781,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_3
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 58
@@ -762,9 +802,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_4
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -782,9 +823,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_5
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 13
@@ -802,9 +844,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_6
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 22
@@ -822,9 +865,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_7
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 31
@@ -842,9 +886,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_8
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 40
@@ -862,9 +907,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_9
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 49
@@ -882,9 +928,10 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: LB_0
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.42857143, y: 0.5}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 58
@@ -905,6 +952,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 49
@@ -925,6 +973,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 40
@@ -940,9 +989,15 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
+  tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1126195792
+    uuid:
+      value0: 1668894608
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 1668894608
     name: LeaderBoardAssets
     layerFlags: 0
     layerType: 0
@@ -950,6 +1005,7 @@ ScriptedImporter:
     cells:
     - name: LeaderBoardAssets
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 2
@@ -957,7 +1013,10 @@ ScriptedImporter:
         height: 93
       spriteId: 1a89cc02d56a9874e98a3ddd8e6c5c77
     linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
     parentIndex: -1
+  tileSets: []
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -995,6 +1054,8 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 64, y: 96}
+  previousTextureSize: {x: 128, y: 128}

@@ -25,23 +25,16 @@ public class LeaderBoard : MonoBehaviour
     private void OnEnable()
     {
 
-        
+    }
 
-        
-        
-
+    private void Awake()
+    {
+        path = Application.persistentDataPath + "/LeaderBoard.txt";
     }
     // Start is called before the first frame update
     void Start()
     {
-
-        path = Application.persistentDataPath + "/LeaderBoard.txt";
-
-        
-
         UpdateScoreBoard();
-        
-
     }
 
     // Update is called once per frame
@@ -59,11 +52,6 @@ public class LeaderBoard : MonoBehaviour
 
         string[] textArray = File.ReadAllLines(path);
 
-
-
-        //Debug.Log($"Read from file : {textArray[0]}");
-        
-
         textNames = new string[textArray.Length/2];
         textScores = new string[textArray.Length / 2];
 
@@ -77,7 +65,6 @@ public class LeaderBoard : MonoBehaviour
             counter += 2;
         }
 
-       
         for (int i = 0; i < Scores.Length; i++)
         {
 
@@ -143,10 +130,7 @@ public class LeaderBoard : MonoBehaviour
 
                 }
             }
-            
-
         }
-
     }
 
     
@@ -170,7 +154,8 @@ public class LeaderBoard : MonoBehaviour
 
     public bool CheckNewScore(int newScore)
     {
-        
+        UpdateScoreBoard();
+
         if (textScores.Length < 10)
         {
             return true;

@@ -198,7 +198,7 @@ public class HighScoreCreator : MonoBehaviour
         
 
         inputActions.Dispose();
-        SceneManager.LoadScene("IntroScene");
+        SceneManager.LoadScene("MainMenu");
     }
 
     
