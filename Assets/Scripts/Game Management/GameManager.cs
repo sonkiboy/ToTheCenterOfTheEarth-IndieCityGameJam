@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public PaletteManager PaletteManager;
     public BossManager BossManager;
     public OverlayUI Overlay;
+    public GameOver GameOver;
     
 
     
@@ -33,9 +34,10 @@ public class GameManager : MonoBehaviour
 
     // ONLY REFRENCED IN DEFAULT GAMES
     [HideInInspector] public PlatformBehavior Platform;
-    [HideInInspector] public GameObject ScoreAnchor;
+    [HideInInspector] public Transform ScoreAnchor;
     [HideInInspector] public StatTracker StatTracker;
     [HideInInspector] public HealthTracker HealthTracker;
+    
 
 
     // ------------ DEPTH LEVEL ------------
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour
     // ------------ TREASURE ------------
 
     // tracks the current treasure collected by the player 
-    private int treasure = 0;
+    [SerializeField]private int treasure = 0;
     public int CurrentTreasure
     {
         get { return treasure; }
@@ -92,7 +94,8 @@ public class GameManager : MonoBehaviour
             treasure = value;
 
             // set the Treasure UI counter to the current score
-            StatTracker.SetTreasureScore(treasure);
+            if(StatTracker !=null) StatTracker.SetTreasureScore(treasure);
+
         }
     }
 
@@ -120,7 +123,7 @@ public class GameManager : MonoBehaviour
                 // if health is 0 or below, call for a game over
                 if (health <= 0)
                 {
-                    GameOver();
+                    EndGame();
                 }
 
                 // play the damage sound effect
@@ -168,7 +171,7 @@ public class GameManager : MonoBehaviour
                         break;
 
                     case GameStates.GameOver:
-                        GameOver();
+                        EndGame();
                         break;
                 }
 
@@ -189,6 +192,7 @@ public class GameManager : MonoBehaviour
         if (GameManager.Instance == null)
         {
             GameManager.Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
 
         // if there already is a game manager found, then this is a duplicate that needs to be destroyed
@@ -220,7 +224,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Starts the GameOver sequence 
-    private void GameOver()
+    private void EndGame()
     {
         CurrentState = GameStates.GameOver;
 
@@ -231,8 +235,8 @@ public class GameManager : MonoBehaviour
         // stop the main game music
         GameManager.Instance.SoundManager.PlayNonDiageticSound("MainMusicOff");
 
-        // 
-        GetComponent<GameOver>().StartGameOver(CurrentTreasure);
+        
+        GameOver.StartGameOver(CurrentTreasure);
 
         Player.CurrentState = PlayerController.PlayerState.Dead;
 
@@ -255,8 +259,10 @@ public class GameManager : MonoBehaviour
                 StatTracker = GameObject.FindAnyObjectByType<StatTracker>();
                 HealthTracker = GameObject.FindAnyObjectByType<HealthTracker>();
 
-                ScoreAnchor = StatTracker.gameObject.transform.Find("ScoreAnchor").gameObject;
+                ScoreAnchor = StatTracker.gameObject.transform.Find("ScoreAnchor");
                 Overlay = GameObject.FindAnyObjectByType<OverlayUI>();
+                GameOver.BlackBG = GameObject.Find("EndCanvas").transform.Find("DeathBackground").gameObject;
+                
 
                 StartNormalGame();
 
@@ -266,6 +272,8 @@ public class GameManager : MonoBehaviour
                 CurrentState = GameStates.Menu;
 
                 Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+                ScoreAnchor = Player.transform;
+                ScoreAnchor = Player.transform;
 
 
                 break;
@@ -295,12 +303,16 @@ public class GameManager : MonoBehaviour
     public void StartNormalGame()
     {
         CurrentState = GameStates.RegularGame;
+
+        
         StartCoroutine(StartGameSequence());
 
     }
 
     IEnumerator StartGameSequence()
     {
+        yield return null;
+        CurrentTreasure = 0;
         Overlay.StartCountdown();
         yield return new WaitForSeconds(3);
 

@@ -10,7 +10,7 @@ public class GameOver : MonoBehaviour
 
     [SerializeField] GameObject LeaderBoard;
     
-    [SerializeField] GameObject BlackBG;
+    public GameObject BlackBG;
 
     LeaderBoard boardComponent;
 

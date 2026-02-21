@@ -35,7 +35,7 @@ public class PickUpBehavior : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Instance.CurrentTreasure += ScoreAmount;
-        GameManager.Instance.Platform.CurrentFuel += FuelAmount;
+        if(GameManager.Instance.Platform != null) GameManager.Instance.Platform.CurrentFuel += FuelAmount;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -108,7 +108,11 @@ public class PickUpBehavior : MonoBehaviour
 
             case JumpToPoint.Platform:
 
-                return GameManager.Instance.Platform.transform.position;
+                if (GameManager.Instance.Platform != null) return GameManager.Instance.Platform.transform.position;
+
+                else if (GameManager.Instance.Player != null) return GameManager.Instance.Player.transform.position;
+                else return transform.position;
+
 
             default:
 

@@ -10,34 +10,22 @@ public class StartSlideShow : MonoBehaviour
     public GameObject Slides;
     public float SlideTime = 5;
 
-    PlayerControllerInput inputActions;
-    InputAction StartInput;
-
-    public AK.Wwise.Event StopAllSound;
+    public GameObject InstructionsParent;
+    public Animator FadeAnimator;
 
     private void Awake()
     {
-        inputActions = new PlayerControllerInput();
-        StartInput = inputActions.Player.Start;
-        StartInput.performed += StartGame;
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-
-    }
-    private void OnDisable()
-    {
-        inputActions.Disable();
         
+        GameManager.Instance.InputManager.MenuInput.performed += StartGame;
     }
+
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SlideShow());
+        //StartCoroutine(SlideShow());
     }
 
     // Update is called once per frame
@@ -81,8 +69,31 @@ public class StartSlideShow : MonoBehaviour
     void StartGame(InputAction.CallbackContext context)
     {
         GameManager.Instance.SoundManager.PlayNonDiageticSound("GameOverOff");
+        GameManager.Instance.InputManager.MenuInput.performed -= StartGame;
 
+
+        StartCoroutine(RunInstructions());
+    }
+
+    IEnumerator RunInstructions()
+    {
+        FadeAnimator.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(1f);
+        InstructionsParent.SetActive(true);
+        GameObject gemImg = InstructionsParent.transform.Find("Gems").gameObject;
+        GameObject fuelImg = InstructionsParent.transform.Find("Fuel").gameObject;
+        GameObject platImg = InstructionsParent.transform.Find("Platform").gameObject;
+        
+        gemImg.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        fuelImg.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+        platImg.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("RegularGame");
+
     }
 
 

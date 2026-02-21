@@ -27,6 +27,18 @@ public class GunBehavior : MonoBehaviour
         GameManager.Instance.InputManager.FireInput.performed += StartFiring;
     }
 
+    private void OnEnable()
+    {
+        // subscribe this guns StartFiring method do the Fire Input Performed event in the Input Manager
+        GameManager.Instance.InputManager.FireInput.performed += StartFiring;
+    }
+
+    private void OnDisable()
+    {
+        // subscribe this guns StartFiring method do the Fire Input Performed event in the Input Manager
+        GameManager.Instance.InputManager.FireInput.performed -= StartFiring;
+    }
+
     // Update is called once per frame
     void Update()
     {
