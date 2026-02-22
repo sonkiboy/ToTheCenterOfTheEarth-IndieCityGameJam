@@ -23,9 +23,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject CenterScreen;
 
-    public AK.Wwise.Event PlayerDamagedSound;
-    public AK.Wwise.Event MainMusicOn;
-    public AK.Wwise.Event MainMusicOff;
+    
 
     // ------------ SCENE REFS ------------
 
@@ -43,7 +41,7 @@ public class GameManager : MonoBehaviour
     // ------------ DEPTH LEVEL ------------
 
     // tracks the level the player is on, USE "CurrentDepth" INSTEAD TO ACCESS
-    private int level = 0;
+    [SerializeField]private int level = 0;
     public bool IsGameOver = false;
 
     // used to refrence the depth the player is on
@@ -62,7 +60,7 @@ public class GameManager : MonoBehaviour
             // set the UI Level counter to the current Level
             StatTracker.SetLevelScore(level);
 
-            if(level%100 == 0 && level > 99)
+            if(level%100 == 0 && level > 10)
             {
                 BossManager.StartBossFight(BossManager.Bosses.InsectQueen);
             }
@@ -73,6 +71,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public int ActuallDepth = 0;
     
 
     // ------------ TREASURE ------------
@@ -96,7 +95,7 @@ public class GameManager : MonoBehaviour
     // ------------ HEALTH ------------
 
     // current health of the player
-    private int health = 3;
+    [SerializeField]private int health = 3;
     public int CurrentHealth
     {
         get { return health; }
@@ -120,8 +119,7 @@ public class GameManager : MonoBehaviour
                     EndGame();
                 }
 
-                // play the damage sound effect
-                GameManager.Instance.SoundManager.PlayNonDiageticSound("PlayerDamaged");
+                
 
 
                 // set the health UI to the current health
@@ -133,7 +131,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ------------ GAME STATE ------------
+    // ------------ GAME STATE ------------ 
 
     public enum GameStates
     {
@@ -144,7 +142,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private GameStates _state;
+    [SerializeField]private GameStates _state;
     public GameStates CurrentState
     {
         get { return _state; }
@@ -157,15 +155,23 @@ public class GameManager : MonoBehaviour
                 switch (_state)
                 {
                     case GameStates.Menu:
+                        GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStop");
+                        GameManager.Instance.SoundManager.PlayNonDiageticSound("BossThemeStop");
+
 
                         break;
 
                     case GameStates.RegularGame:
-
+                        GameManager.Instance.SoundManager.PlayNonDiageticSound("BossThemeStop");
                         break;
 
                     case GameStates.GameOver:
                         EndGame();
+                        break;
+
+                    case GameStates.Boss:
+                        GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStop");
+                        GameManager.Instance.SoundManager.PlayNonDiageticSound("BossThemeStart");
                         break;
                 }
 
@@ -208,7 +214,7 @@ public class GameManager : MonoBehaviour
         // TO DO: make this change based on the starting Game State
         //GameManager.Instance.SoundManager.PlayNonDiageticSound("MainMusic");
 
-        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        //OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
     }
 
     // Update is called once per frame
@@ -227,9 +233,10 @@ public class GameManager : MonoBehaviour
         IsGameOver = true;
 
         // stop the main game music
-        GameManager.Instance.SoundManager.PlayNonDiageticSound("MainMusicOff");
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStop");
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("BossThemeStop");
 
-        
+
         GameOver.StartGameOver(CurrentTreasure);
 
         Player.CurrentState = PlayerController.PlayerState.Dead;
@@ -269,6 +276,7 @@ public class GameManager : MonoBehaviour
                 ScoreAnchor = Player.transform;
                 ScoreAnchor = Player.transform;
 
+                GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStart");
 
                 break;
 
@@ -306,11 +314,18 @@ public class GameManager : MonoBehaviour
     IEnumerator StartGameSequence()
     {
         yield return null;
+        GameManager.Instance.Player.enabled = false;
+
         CurrentTreasure = 0;
         CurrentDepth = 0;
+        ActuallDepth = 0;
+        IsGameOver = false;
+        CurrentHealth = 3;
+        
         
         Overlay.StartCountdown();
         yield return new WaitForSeconds(3);
+        GameManager.Instance.Player.enabled = true;
 
         Platform.StartDrilling();
 

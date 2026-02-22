@@ -29,7 +29,4 @@ MonoBehaviour:
   SpawnedPowerUps: []
   breakParticles: {fileID: 0}
   BrokenOverlays: []
-  BreakSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: da4775d5eb3aea8469a89e0fa097c00d, type: 2}
+  BreakSound: RockBreak

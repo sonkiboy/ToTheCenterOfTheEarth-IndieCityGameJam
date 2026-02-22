@@ -59,6 +59,17 @@ public class PickUpBehavior : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.linearVelocity = Vector3.zero;
 
+        if(FuelAmount > 0)
+        {
+            GameManager.Instance.SoundManager.PlaySoundOnObject("Blip",this.gameObject);
+        }
+        if(ScoreAmount > 0)
+        {
+             
+            GameManager.Instance.SoundManager.PlaySoundOnObject("TreasureCollect", this.gameObject);
+
+        }
+
         StartCoroutine(MoveToPoint());
     }
 

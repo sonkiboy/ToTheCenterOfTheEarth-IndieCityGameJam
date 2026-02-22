@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class PeristentSoundPlayer : MonoBehaviour
 {
+
+    
+    public AK.Wwise.Event[] SoundEvents;
+
     AK.Wwise.Event PlayerShoot;
     AK.Wwise.Event PlayerJet;
 
@@ -22,42 +26,47 @@ public class PeristentSoundPlayer : MonoBehaviour
 
     public void PlayNonDiageticSound(string EventName)
     {
-
+        AK.Wwise.Event foundEvent = SearchForSoundByName(EventName);
+        if (foundEvent != null)
+        {
+            foundEvent.Post(this.gameObject);
+        }
     }
 
     public void PlaySoundOnObject(string eventName, GameObject obj)
     {
-
+        AK.Wwise.Event foundEvent = SearchForSoundByName(eventName);
+        if (foundEvent != null)
+        {
+            foundEvent.Post(obj);
+        }
     }
 
     public void PlaySoundOnTransform(string eventName, Transform trans)
     {
-
+        AK.Wwise.Event foundEvent = SearchForSoundByName(eventName);
+        if (foundEvent != null)
+        {
+            foundEvent.Post(trans.gameObject);
+        }
     }
 
 
     private AK.Wwise.Event SearchForSoundByName(string EventName)
     {
-        switch(EventName)
+        foreach(AK.Wwise.Event SoundEvent in SoundEvents)
         {
-            case "PlayerShoot":
-
-                return PlayerShoot;
-
-            case "PlayerJet":
-
-                return PlayerJet;
-            
-            default:
-
-                Debug.LogError("No Sound found with that name");
-
-                return null;
-
-            
-
-
+            if(SoundEvent.Name == EventName)
+            {
+                return SoundEvent;
+            }
         }
+
+        Debug.LogError("No Sound found with the name " + EventName);
+
+        return null;
+
+
     }
     
 

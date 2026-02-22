@@ -39,15 +39,26 @@ public class OverlayUI : MonoBehaviour
         GameObject go = CountdownParent.transform.GetChild(3).gameObject;
 
         three.SetActive(true);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
         yield return new WaitForSeconds(1); 
         three.SetActive(false);
         two.SetActive(true);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
         yield return new WaitForSeconds(1);
         two.SetActive(false);
         one.SetActive(true);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
         yield return new WaitForSeconds(1);
         one.SetActive(false);
         go.SetActive(true);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStart");
+
+
         yield return new WaitForSeconds(3); 
         three.SetActive(false);
         two.SetActive(false);

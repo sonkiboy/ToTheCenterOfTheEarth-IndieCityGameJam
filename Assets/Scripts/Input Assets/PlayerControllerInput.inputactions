@@ -635,19 +635,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "296d4423-e2d6-4de8-9044-fb9ec6fbda1b",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangePallete",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b2c07347-4487-46aa-bc98-08b0a2ce2647",
-                    "path": "<Gamepad>/rightShoulder",
+                    "id": "b26f979d-53d9-45fa-975a-90c4a7ef8513",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

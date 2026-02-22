@@ -22,7 +22,7 @@ public class BossManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //StartBossFight(Bosses.InsectQueen);
     }
 
     // Update is called once per frame
@@ -35,6 +35,8 @@ public class BossManager : MonoBehaviour
     {
         GameManager.Instance.CurrentState = GameManager.GameStates.Boss;
         GameManager.Instance.StatTracker.TurnOnBoss();
+
+        
 
         switch (boss)
         {
@@ -52,6 +54,9 @@ public class BossManager : MonoBehaviour
         boss.OnEnemyDeath -= OnBossFightEnd;
         GameManager.Instance.CurrentState = GameManager.GameStates.RegularGame;
         GameManager.Instance.StatTracker.TurnOffBoss(true);
+
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStart");
+
 
     }
 

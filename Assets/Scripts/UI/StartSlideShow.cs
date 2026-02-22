@@ -16,7 +16,6 @@ public class StartSlideShow : MonoBehaviour
     private void Awake()
     {
         
-        GameManager.Instance.InputManager.MenuInput.performed += StartGame;
     }
 
     
@@ -26,6 +25,8 @@ public class StartSlideShow : MonoBehaviour
     void Start()
     {
         //StartCoroutine(SlideShow());
+        GameManager.Instance.InputManager.MenuInput.performed += StartGame;
+
     }
 
     // Update is called once per frame
@@ -68,10 +69,9 @@ public class StartSlideShow : MonoBehaviour
 
     void StartGame(InputAction.CallbackContext context)
     {
-        GameManager.Instance.SoundManager.PlayNonDiageticSound("GameOverOff");
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStop");
         GameManager.Instance.InputManager.MenuInput.performed -= StartGame;
-
-
+        GameManager.Instance.Player.enabled = false;
         StartCoroutine(RunInstructions());
     }
 
@@ -83,14 +83,15 @@ public class StartSlideShow : MonoBehaviour
         GameObject gemImg = InstructionsParent.transform.Find("Gems").gameObject;
         GameObject fuelImg = InstructionsParent.transform.Find("Fuel").gameObject;
         GameObject platImg = InstructionsParent.transform.Find("Platform").gameObject;
-        
+
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
         gemImg.SetActive(true);
         yield return new WaitForSeconds(1f);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
         fuelImg.SetActive(true);
-
         yield return new WaitForSeconds(1f);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
         platImg.SetActive(true);
-
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("RegularGame");
 

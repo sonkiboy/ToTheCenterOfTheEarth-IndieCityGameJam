@@ -55,25 +55,15 @@ MonoBehaviour:
   Overlay: {fileID: 0}
   GameOver: {fileID: 1817808975515444347}
   CenterScreen: {fileID: 0}
-  PlayerDamagedSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 8bf120c7f04ae5b4aabe6a9cc6f21bca, type: 2}
-  MainMusicOn:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: c6a743afd802e5341bbe4e8449ed6c06, type: 2}
-  MainMusicOff:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 4d5c3109caf5bbd47a236b00878117c2, type: 2}
   Player: {fileID: 0}
   Platform: {fileID: 0}
   ScoreAnchor: {fileID: 0}
   StatTracker: {fileID: 0}
   HealthTracker: {fileID: 0}
+  level: 0
   IsGameOver: 0
   treasure: 0
+  _state: 0
 --- !u!114 &1817808975515444347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +259,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: SoundEvents.Array.size
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: SoundEvents.Array.data[21].WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: c9fbc893f59fbf247ae5acf0ccf72735, type: 2}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: SoundEvents.Array.data[22].WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 73b699fd5823a454abcd32dc782ad223, type: 2}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: SoundEvents.Array.data[23].WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: c0c07e951608ccb4bb977fc304e86d22, type: 2}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: SoundEvents.Array.data[24].WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b33d05e6c467994daaa974ab246ad23, type: 2}
     - target: {fileID: 9023265390000644445, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
       propertyPath: m_Name
       value: PersistentSoundPlayer

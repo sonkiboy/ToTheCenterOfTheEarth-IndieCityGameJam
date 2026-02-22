@@ -49,7 +49,7 @@ public class GunBehavior : MonoBehaviour
     void StartFiring(InputAction.CallbackContext context)
     {
         // while the Fire routines check isFiring at their start, this helps prevent the start of extra coroutines
-        if (isFiring == false && GameManager.Instance.Player.CurrentState != PlayerController.PlayerState.Dead)
+        if (isFiring == false && GameManager.Instance.Player.CurrentState != PlayerController.PlayerState.Dead && GameManager.Instance.Player.enabled == true)
         {
             StartCoroutine(RapidFireRoutine());
         }
@@ -81,7 +81,7 @@ public class GunBehavior : MonoBehaviour
     public void Fire()
     {
         GameObject bullet = Instantiate(Bullet, this.transform.position, this.transform.rotation);
-        GameManager.Instance.SoundManager.PlaySoundOnObject("PlayerFire",this.gameObject);
+        GameManager.Instance.SoundManager.PlaySoundOnObject("PlayerShoot",this.gameObject);
         bullet.GetComponent<BulletBehavior>().ExtraDamage = AdditionalDamage;
     }
 

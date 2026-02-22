@@ -45,6 +45,8 @@ public class PowerUpBehavior : MonoBehaviour
     {
         isCollected = true;
 
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("TreasureCollected");
+
         animator.enabled = false;
         spriteRenderer.enabled = false;
 

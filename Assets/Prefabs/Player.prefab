@@ -356,5 +356,5 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 538ca761f8d568e41a88c4cedc312a4c, type: 2}
-  FireSpeed: 0.1
+  FireSpeed: 0.15
   AdditionalDamage: 0

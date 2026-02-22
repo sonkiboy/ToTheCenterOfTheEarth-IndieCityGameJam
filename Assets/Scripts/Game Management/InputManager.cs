@@ -110,6 +110,7 @@ public class InputManager : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "RegularGame")
         {
+            AkUnitySoundEngine.StopAll();
             SceneManager.LoadScene("MainMenu");
         }
     }

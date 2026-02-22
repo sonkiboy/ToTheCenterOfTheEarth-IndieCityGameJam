@@ -6032,7 +6032,7 @@ MonoBehaviour:
   TreasureReward: 10
   FuelReward: 15
   CollisionDamage: 1
-  hp: 500
+  hp: 800
   Downtime: 11
   ChargeTime: 4
   FireDurration: 5

@@ -31,7 +31,4 @@ MonoBehaviour:
   - {fileID: 599738050225399084, guid: c6016bf1f727afc439add964c4d52e2e, type: 3}
   breakParticles: {fileID: 0}
   BrokenOverlays: []
-  BreakSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 30db7a8ec3561cf49a714d8a73b51ea6, type: 2}
+  BreakSound: RockBreak

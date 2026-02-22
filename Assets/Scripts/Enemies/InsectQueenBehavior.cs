@@ -104,6 +104,7 @@ public class InsectQueenBehavior : Enemy
         StopCoroutine(BattleSequence());
 
         lazerSprite.gameObject.SetActive(false);
+        warningBarController.gameObject.SetActive(false);
 
 
         // start the off screen death 
@@ -114,6 +115,8 @@ public class InsectQueenBehavior : Enemy
     {
         // start the death animator
         queenAnimator.SetTrigger("TriggerDeath");
+
+        
 
         // play the explosion particle 
         explosionParticle.Play();

@@ -28,4 +28,4 @@ MonoBehaviour:
   SpawnedPowerUps: []
   breakParticles: {fileID: 0}
   BrokenOverlays: []
-  BreakSound: 
+  BreakSound: Explosion

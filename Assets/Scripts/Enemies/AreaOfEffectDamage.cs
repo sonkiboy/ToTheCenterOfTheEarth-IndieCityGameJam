@@ -10,7 +10,6 @@ public class AreaOfEffectDamage : MonoBehaviour
     public int Damage = 1;
     public float DamageCoolDown = 1f;
 
-    private List<GameObject> objectsBeingDamaged = new List<GameObject>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,35 +20,30 @@ public class AreaOfEffectDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StartCoroutine(DealDamage());
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    
+    IEnumerator DealDamage()
     {
-        if (objectsBeingDamaged.Contains(collision.gameObject) == false)
+        while (true)
         {
-            if (collision.tag == "Player")
+            // look for any objects within the drill collider that match it's layer mask
+            Collider2D[] foundCollisions = Physics2D.OverlapBoxAll(colliderBody.bounds.center, colliderBody.bounds.size, 0f, ~colliderBody.excludeLayers);
+
+            if (foundCollisions.Length != 0)
             {
-                Debug.Log("Player entered lazer beam");
-                StartCoroutine(DamagePlayer(collision.gameObject));
+                foreach(Collider2D collision in foundCollisions)
+                {
+                    if(collision.tag == "Player")
+                    {
+                        collision.GetComponent<PlayerController>().TakeDamage(1);
+                    }
+                }
             }
-        }
-        
-    }
 
-    IEnumerator DamagePlayer(GameObject player)
-    {
-        objectsBeingDamaged.Add(player);
-
-        while(colliderBody.bounds.Contains(player.transform.position))
-        {
-            GameManager.Instance.CurrentHealth--;
 
             yield return new WaitForSeconds(DamageCoolDown);
         }
-
-        Debug.Log("Player left lazer beam");
-        objectsBeingDamaged.Remove(player);
-
     }
 }

@@ -42,7 +42,7 @@ public class PlatformBehavior : MonoBehaviour
             {
                 // when the draining starts, turn on the alarm and turn off the drilling sound
                 GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOn");
-                GameManager.Instance.SoundManager.PlayNonDiageticSound("DrillOff");
+                GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformStop");
 
                 StartCoroutine(DrainPlayer());
             }
@@ -53,7 +53,7 @@ public class PlatformBehavior : MonoBehaviour
             {
                 // when the draining stops, turn off the alarm sound and turn back on the drilling
                 GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOff");
-                GameManager.Instance.SoundManager.PlayNonDiageticSound("DrillOn");
+                GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformStart");
 
 
                 isDrainingHealth = false;
@@ -106,8 +106,7 @@ public class PlatformBehavior : MonoBehaviour
         // Set the Current Fuel to its Maximum
         CurrentFuel = MaxFuel;
 
-        // Start the Drilling Sound
-        GameManager.Instance.SoundManager.PlayNonDiageticSound("DrillOn");
+        
 
         // subscribe the OnGameOver method to the Game State Changed event to see when Game Over happens
         GameManager.Instance.StateChanged += OnGameOver;
@@ -117,6 +116,9 @@ public class PlatformBehavior : MonoBehaviour
 
     public void StartDrilling()
     {
+        // Start the Drilling Sound
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformStart");
+
         // Start the routines for Drilling and Consuming Fuel
         StartCoroutine(Drill());
         StartCoroutine(ConsumeFuel());
@@ -126,14 +128,12 @@ public class PlatformBehavior : MonoBehaviour
     {
         // stop all sounds tied to this game object
         GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOff");
-        AkSoundEngine.StopAll(gameObject);
     }
 
     private void OnDestroy()
     {
         // stop all sounds tied to this game object
         GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOff");
-        AkSoundEngine.StopAll(gameObject);
     }
 
     // Update is called once per frame
@@ -232,14 +232,22 @@ public class PlatformBehavior : MonoBehaviour
                 yield return new WaitForFixedUpdate();
             }
 
+
+
             // TO DO: REPLACE THIS WITH AN EVENT INSTEAD
-            GameManager.Instance.CurrentDepth++;
+            if (GameManager.Instance.CurrentState == GameManager.GameStates.RegularGame)
+            {
+                GameManager.Instance.CurrentDepth++;
+            }
+
+            GameManager.Instance.ActuallDepth++;
             blockGenerator.GenerateNextLevel();
 
             // at the end of the routine, set is Decending back to false
             isDecending = false;
         }
     }
+
 
     // will drain fuel from the platform based on Fuel Per Second (Drains 1/4 the value every 1/4 seconds)
     IEnumerator ConsumeFuel()
@@ -254,8 +262,11 @@ public class PlatformBehavior : MonoBehaviour
     // drains health from the player while the platform has no fuel until either the platform refuels, or the player dies
     IEnumerator DrainPlayer()
     {
+        // 
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOn");
+
         // turn off the drill sound
-        GameManager.Instance.SoundManager.PlayNonDiageticSound("DrillOff");
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformStop");
 
         // set is Draining Health to true
         isDrainingHealth = true;

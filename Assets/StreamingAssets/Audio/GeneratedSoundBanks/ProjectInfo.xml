@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectInfo>
-	<Project Name="ToTheCenterOfTheEarth-IndieCityGameJam_WwiseProject" GUID="{65C7ADA0-2111-4D16-BA75-41EA63EF2ED7}" Generator="2023.1.5.8522"/>
+	<Project Name="ToTheCenterOfTheEarth-IndieCityGameJam_WwiseProject" GUID="{65C7ADA0-2111-4D16-BA75-41EA63EF2ED7}" Generator="2025.1.5.9095"/>
 	<CacheRoot>../../../../WWiseProject/.cache</CacheRoot>
 	<Platforms>
 		<Platform Name="Mac" GUID="{7520E8FD-7693-45F8-9F93-66370189472D}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../../../../WWiseProject/GeneratedSoundBanks/Mac"/>
@@ -9,5 +9,5 @@
 	<Languages>
 		<Language Name="English(US)" Id="684519430" GUID="{C7D84EF4-1FED-4757-A247-8B4076C124D5}" Default="true" UseAsStandIn="true"/>
 	</Languages>
-	<FileHash>{EF66FFC7-3BE8-9B97-CD05-BF517A8336FF}</FileHash>
+	<FileHash>{B1B46D0E-84F5-723B-2047-A50D2E81A00D}</FileHash>
 </ProjectInfo>

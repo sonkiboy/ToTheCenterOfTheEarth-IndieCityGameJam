@@ -41,10 +41,11 @@ public class BulletBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        
+        if (!IsEnemyBullet)
+        {
             //Debug.Log($"Detected collision : {collision.gameObject.name}");
 
-            GameManager.Instance.SoundManager.PlaySoundOnObject("BulletHit",this.gameObject);
+            GameManager.Instance.SoundManager.PlaySoundOnObject("BulletHit", this.gameObject);
 
             TileBehavior tb = collision.gameObject.GetComponent<TileBehavior>();
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
@@ -56,12 +57,14 @@ public class BulletBehavior : MonoBehaviour
             }
             else if (enemy != null)
             {
-                GameManager.Instance.SoundManager.PlaySoundOnObject("EnemyHit",enemy.gameObject);
+                GameManager.Instance.SoundManager.PlaySoundOnObject("EnemyHit", enemy.gameObject);
 
                 enemy.Health -= (Damage);
             }
 
             Destroy(gameObject);
+        }
+            
 
         
 

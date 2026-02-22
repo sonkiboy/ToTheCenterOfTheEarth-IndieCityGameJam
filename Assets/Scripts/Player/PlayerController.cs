@@ -165,6 +165,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        GameManager.Instance.SoundManager.PlaySoundOnObject("JetPackOff", this.gameObject);
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -245,7 +251,7 @@ public class PlayerController : MonoBehaviour
             if (!IsJeckpack)
             {
                 // start the Start Jetpack Sound event when starting to jetpack
-                GameManager.Instance.SoundManager.PlaySoundOnObject("JetOn", this.gameObject);
+                GameManager.Instance.SoundManager.PlaySoundOnObject("JetPackOn", this.gameObject);
 
                 // set is jetpacking to true
                 IsJeckpack = true;
@@ -260,7 +266,7 @@ public class PlayerController : MonoBehaviour
         {
             IsJeckpack = false;
 
-            GameManager.Instance.SoundManager.PlaySoundOnObject("JetOn",this.gameObject);
+            GameManager.Instance.SoundManager.PlaySoundOnObject("JetPackOff",this.gameObject);
 
             // tell the animator to play the jet animation
             animator.SetBool("IsJetting", false);
@@ -297,7 +303,7 @@ public class PlayerController : MonoBehaviour
                 // if there is no enemy component, or there is one and it allows for collision damage, then we will proceed and deal collision damage to the player
 
                 // subtract player health from the Game Manager
-                GameManager.Instance.CurrentHealth--;
+                TakeDamage(1);
 
                 // if the player died on this collision, set the animator back to idel by setting its speed to 0 and jetpack state to false
                 if (GameManager.Instance.CurrentHealth <= 0)
@@ -311,15 +317,20 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.tag == "EnemyBullet")
         {
             // check if the player isn't invincible, if they are, ignore the collision
-            if (!isInvincible)
-            {
-                // subtract player health from the Game Manager
-                GameManager.Instance.CurrentHealth--;
-
-                Destroy(collision.gameObject);
-
-            }
+            TakeDamage(1);
+            Destroy(collision.gameObject);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (!isInvincible)
+        {
+            GameManager.Instance.CurrentHealth -= damage;
+            // play the damage sound effect
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("PlayerHit");
+        }
+
     }
 
     // This Routine will make the player invulnerable from attacks during its durration, and flash the players damage color on and off

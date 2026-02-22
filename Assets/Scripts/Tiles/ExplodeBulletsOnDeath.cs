@@ -17,6 +17,7 @@ public class ExplodeBulletsOnDeath : MonoBehaviour
     public SpreadDirections DirectionSetting;
 
     public float SpawnOffset = 0f;
+    public Vector2 PositionOffset = Vector2.one/2;
 
     private void Start()
     {
@@ -38,7 +39,7 @@ public class ExplodeBulletsOnDeath : MonoBehaviour
 
                     Vector2 dir = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
 
-                    Instantiate(BulletPrefab, (Vector2)transform.position + (dir * SpawnOffset), Quaternion.LookRotation(dir,Vector3.forward) * Quaternion.Euler(90,0,0));
+                    Instantiate(BulletPrefab, ((Vector2)transform.position + PositionOffset) + (dir * SpawnOffset), Quaternion.LookRotation(dir,Vector3.forward) * Quaternion.Euler(90,0,0));
                 }
 
 

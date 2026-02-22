@@ -39,7 +39,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
     private void OnDisable()
     {
-        GameManager.Instance.SoundManager.PlayNonDiageticSound("EndMusicOff");
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStop");
     }
 
     // Start is called before the first frame update
@@ -71,8 +71,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
         yield return null;
 
-        AkSoundEngine.StopAll(GameObject.FindGameObjectWithTag("Player"));
-        AkSoundEngine.StopAll(GameManager.Instance.Platform.gameObject);
+        
 
         GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -86,7 +85,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
         yield return new WaitForSeconds(waitTime);
 
 
-        GameManager.Instance.SoundManager.PlayNonDiageticSound("GameOverOn");
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStart");
 
         yield return new WaitForSeconds(.5f);
 
@@ -108,7 +107,8 @@ public class GameOver : MonoBehaviour, ISceneUpdate
     private void RestartGame(InputAction.CallbackContext contex)
     {
 
-        
+        EnterInput.performed -= RestartGame;
+
 
         inputActions.Dispose();
 
@@ -118,6 +118,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
     public void OnSceneChanged(Scene Current, Scene Next)
     {
+        
         EndUi = GameObject.Find("EndCanvas").gameObject;
         LeaderBoard = EndUi.transform.Find("LeaderBoard").gameObject;
         boardComponent = LeaderBoard.GetComponent<LeaderBoard>();
