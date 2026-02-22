@@ -15,3 +15,4 @@ MonoBehaviour:
   objectName: BulletHit
   id: 4179333400
   guid: 04EE6E36-7D28-4DA2-94F3-B4740373F98F
+  IsInUserDefinedSoundBank: 1

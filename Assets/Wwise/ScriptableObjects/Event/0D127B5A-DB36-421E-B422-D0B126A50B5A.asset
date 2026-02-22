@@ -15,3 +15,4 @@ MonoBehaviour:
   objectName: PlayerShoot
   id: 2538918815
   guid: 0D127B5A-DB36-421E-B422-D0B126A50B5A
+  IsInUserDefinedSoundBank: 1

@@ -15,3 +15,4 @@ MonoBehaviour:
   objectName: Explosion
   id: 13776098
   guid: 7DAC5597-D855-4D0A-BBCD-96D9EA273498
+  IsInUserDefinedSoundBank: 1

@@ -15,3 +15,4 @@ MonoBehaviour:
   objectName: AlarmOff
   id: 1768459107
   guid: 1F85B488-E946-428E-B1CD-9737DBD32DC4
+  IsInUserDefinedSoundBank: 1

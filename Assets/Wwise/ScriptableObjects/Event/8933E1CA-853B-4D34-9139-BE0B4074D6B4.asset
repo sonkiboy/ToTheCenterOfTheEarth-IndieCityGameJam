@@ -15,3 +15,4 @@ MonoBehaviour:
   objectName: EnemyHit
   id: 391172934
   guid: 8933E1CA-853B-4D34-9139-BE0B4074D6B4
+  IsInUserDefinedSoundBank: 1

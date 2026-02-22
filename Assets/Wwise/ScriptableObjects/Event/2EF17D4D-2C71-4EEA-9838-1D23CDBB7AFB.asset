@@ -15,3 +15,4 @@ MonoBehaviour:
   objectName: AlarmOn
   id: 1464172559
   guid: 2EF17D4D-2C71-4EEA-9838-1D23CDBB7AFB
+  IsInUserDefinedSoundBank: 1

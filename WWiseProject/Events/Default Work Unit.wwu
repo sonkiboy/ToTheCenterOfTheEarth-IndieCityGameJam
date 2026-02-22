@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" SchemaVersion="133">
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" PersistMode="Standalone">
 			<ChildrenList>
@@ -88,7 +88,7 @@
 						<Action Name="" ID="{5614F5CB-E826-4519-BFD4-129008AE4323}" ShortID="345477271">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Jump" ID="{E5E1FC66-F68C-469E-9C06-E723188A6CFE}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+									<ObjectRef Name="Blip" ID="{E5E1FC66-F68C-469E-9C06-E723188A6CFE}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -252,6 +252,63 @@
 								<Property Name="ActionType" Type="int16" Value="3"/>
 							</PropertyList>
 							<ReferenceList/>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Blip" ID="{2178CFEE-A6E8-4DF1-9994-EDF618E9A841}">
+					<ChildrenList>
+						<Action Name="" ID="{E2421AD7-3B27-406D-86DB-97D79D4B51F9}" ShortID="748508326">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Blip" ID="{E5E1FC66-F68C-469E-9C06-E723188A6CFE}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="TreasureCollect" ID="{3467B80B-19BF-49F8-9D36-0C24759033C7}">
+					<ChildrenList>
+						<Action Name="" ID="{71440CCB-BF95-4D18-A028-A5821F133BAC}" ShortID="901497733">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TreasureCollect" ID="{34F10FDD-2141-49B0-A029-76078E17D8FF}" WorkUnitID="{F483ABFE-EFE5-4AF8-846F-A43746ED5562}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BossThemeStart" ID="{9A045EFA-5718-4BA2-9650-60D86DB8451E}">
+					<ChildrenList>
+						<Action Name="" ID="{24F0E6A9-284C-4FE2-A4D4-EFACD5386492}" ShortID="35751014">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BossTheme" ID="{05AE8DAF-CBD8-466C-A4A5-36072C5A6A2D}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{EDF30BA7-FACA-4083-AEB3-F29529F7093F}" ShortID="392411904">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BossTheme" ID="{05AE8DAF-CBD8-466C-A4A5-36072C5A6A2D}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BossThemeStop" ID="{157B4329-2CA2-44DB-AF2D-8AAF01501D45}">
+					<ChildrenList>
+						<Action Name="" ID="{4A629238-0A47-4262-9A6C-0A8EE419B74C}" ShortID="410532770">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BossTheme" ID="{05AE8DAF-CBD8-466C-A4A5-36072C5A6A2D}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>

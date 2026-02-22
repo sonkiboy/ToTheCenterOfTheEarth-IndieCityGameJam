@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{358B8AB2-8B63-46D0-8618-D48E40B4A1CA}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{358B8AB2-8B63-46D0-8618-D48E40B4A1CA}" SchemaVersion="133">
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{358B8AB2-8B63-46D0-8618-D48E40B4A1CA}" PersistMode="Standalone">
 			<ChildrenList>
@@ -12,6 +12,7 @@
 						<ObjectRef Name="PlatformStart" ID="{C2BC3B90-8A02-432E-BA61-5E54EC004C8D}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MainThemeStart" ID="{F74C3090-A3E7-4362-9AFD-AA6C8E7B9CD6}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlatformEnd" ID="{44BAFD82-E586-438F-953C-9096B89C2B68}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BossThemeStop" ID="{157B4329-2CA2-44DB-AF2D-8AAF01501D45}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="EndThemeStop" ID="{EF08328F-C551-44F8-B1C0-C240703FB74F}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="TreasureCollected" ID="{C24C24F4-77FD-45F4-A726-A8175AAAEC71}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MainThemeStop" ID="{6E8C5CD5-5FBE-46A8-BC8C-C98B79B000CE}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
@@ -19,12 +20,15 @@
 						<ObjectRef Name="JetPackOn" ID="{0191A4F9-44C7-4799-B422-4837B0C606B0}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayerLand" ID="{8BAB6FC8-C315-492E-A22B-E97B9CC42139}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="StopAll" ID="{5072DA0A-B4C3-49CD-BBBE-25484180BB46}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="TreasureCollect" ID="{3467B80B-19BF-49F8-9D36-0C24759033C7}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BossThemeStart" ID="{9A045EFA-5718-4BA2-9650-60D86DB8451E}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="JetPackOff" ID="{ECEA7DC0-DC1B-4C1A-902E-DE71F745BDD9}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Explosion" ID="{7DAC5597-D855-4D0A-BBCD-96D9EA273498}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="RockBreak" ID="{DDE7725D-AEE1-4D0C-BA46-6F47CE9AB5DC}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="EnemyHit" ID="{8933E1CA-853B-4D34-9139-BE0B4074D6B4}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="BatScreech" ID="{4F28D00A-6A43-4D6D-8020-BFF32D0C1003}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="BulletHit" ID="{04EE6E36-7D28-4DA2-94F3-B4740373F98F}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Blip" ID="{2178CFEE-A6E8-4DF1-9994-EDF618E9A841}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AlarmOn" ID="{2EF17D4D-2C71-4EEA-9838-1D23CDBB7AFB}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

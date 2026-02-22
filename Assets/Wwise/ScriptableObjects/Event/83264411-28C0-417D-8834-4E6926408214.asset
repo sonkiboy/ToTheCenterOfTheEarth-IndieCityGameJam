@@ -15,3 +15,4 @@ MonoBehaviour:
   objectName: PlayerHit
   id: 3831688773
   guid: 83264411-28C0-417D-8834-4E6926408214
+  IsInUserDefinedSoundBank: 1
