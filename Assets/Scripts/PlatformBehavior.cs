@@ -41,10 +41,15 @@ public class PlatformBehavior : MonoBehaviour
             if (fuel <= 0 && !isDrainingHealth)
             {
                 // when the draining starts, turn on the alarm and turn off the drilling sound
-                GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOn");
-                GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformStop");
 
-                StartCoroutine(DrainPlayer());
+                if(GameManager.Instance.CurrentState == GameManager.GameStates.RegularGame)
+                {
+                    GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOn");
+                    GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformStop");
+
+                    StartCoroutine(DrainPlayer());
+                }
+                
             }
 
             // STOP DRAINING HEALTH?

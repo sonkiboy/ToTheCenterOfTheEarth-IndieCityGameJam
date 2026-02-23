@@ -29280,6 +29280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDefaultListener: 1
+  bOverrideScalingFactor: 0
+  scalingFactor: -1
   listenerId: 0
 --- !u!114 &519420038
 MonoBehaviour:
@@ -29298,9 +29300,11 @@ MonoBehaviour:
     useDefaultListeners: 1
   isEnvironmentAware: 0
   isStaticObject: 0
+  usePositionOffsetData: 0
   m_positionOffsetData:
     KeepMe: 0
     positionOffset: {x: 0, y: 0, z: 0}
+  scalingFactor: 1
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
 --- !u!114 &519420039
@@ -32072,6 +32076,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 6842841822378426712, guid: 0fa1a995ec531ee41bf86d308766f202, type: 3}
   DirectionSetting: 0
   SpawnOffset: 0
+  PositionOffset: {x: 0.5, y: 0.5}
 --- !u!114 &568559777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54170,7 +54175,7 @@ Transform:
   m_GameObject: {fileID: 1038513691}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -6.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54192,7 +54197,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 3776
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -63372,7 +63377,7 @@ Transform:
   m_GameObject: {fileID: 1183396901}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 12.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: 11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63394,7 +63399,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 3776
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -109745,6 +109750,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 6842841822378426712, guid: 0fa1a995ec531ee41bf86d308766f202, type: 3}
   DirectionSetting: 0
   SpawnOffset: 0
+  PositionOffset: {x: 0.5, y: 0.5}
 --- !u!114 &2084471853
 MonoBehaviour:
   m_ObjectHideFlags: 0
