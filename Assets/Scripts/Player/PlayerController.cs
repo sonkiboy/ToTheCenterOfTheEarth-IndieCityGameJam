@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
         else if (GameManager.Instance.InputManager.isKeyboard)
         {
             // first get the current position of the mouse on the screen as a 2d vector
-            aimDirection = GameManager.Instance.InputManager.MouseLookInput.ReadValue<Vector2>();
+            //aimDirection = GameManager.Instance.InputManager.MouseLookInput.ReadValue<Vector2>();
 
             // then figure out where that screen position would be in the game, and then calculate the direction in comparison from the player, and normalize
             aimDirection = ((Vector2)this.transform.position - (Vector2)Camera.main.ScreenToWorldPoint(aimDirection)).normalized;

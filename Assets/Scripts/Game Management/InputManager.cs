@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     PlayerControllerInput inputManager;
 
     public InputAction MoveInput;
-    public InputAction MouseLookInput;
+    //public InputAction MouseLookInput;
     public InputAction JetInput;
     public InputAction LookInput;
     public InputAction FireInput;
@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour
         MoveInput = inputManager.Player.Move;
         JetInput = inputManager.Player.Jet;
         LookInput = inputManager.Player.Look;
-        MouseLookInput = inputManager.Player.MouseLook;
+        //MouseLookInput = inputManager.Player.MouseLook;
         FireInput = inputManager.Player.Fire;
         MenuInput = inputManager.Player.Start;
 
@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
         MoveInput.Enable();
         JetInput.Enable();
         LookInput.Enable();
-        MouseLookInput.Enable();
+        //MouseLookInput.Enable();
         FireInput.Enable();
         MenuInput.Enable();
         MenuInput.performed += OnMenuDebugPress;
@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour
         MoveInput.Disable();
         JetInput.Disable();
         LookInput.Disable();
-        MouseLookInput.Disable();
+        //MouseLookInput.Disable();
         FireInput.Disable();
         MenuInput.Disable();
         MenuInput.performed -= OnMenuDebugPress;
@@ -84,15 +84,15 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.anyKey.wasPressedThisFrame && !isKeyboard)
-            {
-                //Debug.Log($"Switching to Keyboard, found as {Keyboard.current}");
-                isController = false;
-                isKeyboard = true;
-            }
-        }
+        //if (Keyboard.current != null)
+        //{
+        //    if (Keyboard.current.anyKey.wasPressedThisFrame && !isKeyboard)
+        //    {
+        //        //Debug.Log($"Switching to Keyboard, found as {Keyboard.current}");
+        //        isController = false;
+        //        isKeyboard = true;
+        //    }
+        //}
         if (Gamepad.current != null)
         {
             //Debug.Log("Found but nothing pressed");
