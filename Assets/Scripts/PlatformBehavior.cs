@@ -45,7 +45,7 @@ public class PlatformBehavior : MonoBehaviour
                 if(GameManager.Instance.CurrentState == GameManager.GameStates.RegularGame)
                 {
                     GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOn");
-                    GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformStop");
+                    GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformEnd");
 
                     StartCoroutine(DrainPlayer());
                 }
@@ -271,7 +271,7 @@ public class PlatformBehavior : MonoBehaviour
         GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOn");
 
         // turn off the drill sound
-        GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformStop");
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformEnd");
 
         // set is Draining Health to true
         isDrainingHealth = true;

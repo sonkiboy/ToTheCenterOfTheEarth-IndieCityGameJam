@@ -212,9 +212,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // TO DO: make this change based on the starting Game State
-        //GameManager.Instance.SoundManager.PlayNonDiageticSound("MainMusic");
 
-        //OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        switch(CurrentState)
+        {
+            case GameStates.RegularGame:
+                //GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStart");
+
+                OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+                break;
+        }
+        
     }
 
     // Update is called once per frame
@@ -234,6 +241,8 @@ public class GameManager : MonoBehaviour
 
         // stop the main game music
         GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStop");
+
+        
         GameManager.Instance.SoundManager.PlayNonDiageticSound("BossThemeStop");
 
 
@@ -284,7 +293,8 @@ public class GameManager : MonoBehaviour
 
                 CurrentState = GameStates.RegularGame;
                 Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-
+                ScoreAnchor = Player.transform;
+                ScoreAnchor = Player.transform;
 
                 break;
 

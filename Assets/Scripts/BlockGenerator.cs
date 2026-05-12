@@ -78,6 +78,46 @@ public class BlockGenerator : MonoBehaviour
         }
     }
 
+    public void GenerateFlat()
+    {
+        ResetGeneration();
+
+        float platformSize = PlatSize;
+        int platDepth = PlatDepth;
+
+        //Debug.Log($"Unrounded (Size: {platformSize}) | Left: {-(platformSize - 1) / 2}, right: {(platformSize - 1) / 2}");
+
+        int leftPlatSize = -(int)Mathf.Ceil((platformSize - 1) / 2);
+        int rightPlatSize = (int)Mathf.Floor((platformSize - 1) / 2);
+
+        //Debug.Log($"Rounded | Left: {leftPlatSize}, right: {rightPlatSize}");
+
+        for (int y = -GenerateHeight; y <= GenerateHeight; y++)
+        {
+            Instantiate(Edges[0], new Vector2(-GenerateWidth - 1, y), Edges[0].transform.rotation, ground.transform);
+            Instantiate(Edges[1], new Vector2(GenerateWidth + 1, y), Edges[0].transform.rotation, ground.transform);
+
+
+            for (int x = -GenerateWidth; x <= GenerateWidth; x++)
+            {
+                if (y >= platDepth)
+                {
+                    if (x >= leftPlatSize && x <= rightPlatSize)
+                    {
+                        continue;
+                    }
+                }
+
+                if(y < -2)
+                {
+                    GameObject block = RandomizeBlock();
+                    Instantiate(block, new Vector2(x, y), block.transform.rotation, ground.transform);
+                }
+                
+
+            }
+        }
+    }
     private List<GameObject> GetAllBlocks()
     {
         List<GameObject> blocks = new List<GameObject>();

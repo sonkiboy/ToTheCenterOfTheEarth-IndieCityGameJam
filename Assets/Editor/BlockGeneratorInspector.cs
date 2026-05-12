@@ -18,6 +18,11 @@ public class BlockGeneratorInspector : Editor
             generator.GenerateStart();
         }
 
+        if (GUILayout.Button("Generate Flat Layout"))
+        {
+            generator.GenerateFlat();
+        }
+
         if (GUILayout.Button("Generating next Level Layout"))
         {
             generator.GenerateNextLevel();

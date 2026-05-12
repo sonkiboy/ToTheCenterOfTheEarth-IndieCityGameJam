@@ -87,7 +87,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1465916838648257369, guid: d4151d63a37e40c4d8879ff4d42f31b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.875, y: 0.5625}
@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e28dec72b5e83544a03dc508d2c9b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 5
+  DestroyTime: 5
+  ExtraDamage: 0
   HitSound:
     idInternal: 0
     valueGuidInternal: 
@@ -116,9 +119,7 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: b50a649d865ef38459f28a1877728e76, type: 2}
   IsEnemyBullet: 0
-  ExtraDamage: 0
   Speed: 8
-  Damage: 5
 --- !u!50 &8701137524217068109
 Rigidbody2D:
   serializedVersion: 5

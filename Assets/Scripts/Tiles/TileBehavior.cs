@@ -21,6 +21,7 @@ public class TileBehavior : MonoBehaviour
 
 
     public event EventHandler<EventArgs> OnTileBreak;
+    public event EventHandler<EventArgs> OnTileHealthChange;
 
     public TileConfig Config;
 
@@ -34,6 +35,11 @@ public class TileBehavior : MonoBehaviour
             if (hp > 0)
             {
                 hp = value;
+
+                if (OnTileHealthChange != null)
+                {
+                    OnTileHealthChange.Invoke(this,EventArgs.Empty);
+                }
 
                 if (hp <= 0)
                 {
@@ -62,11 +68,15 @@ public class TileBehavior : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        hp = Config.Health;
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        hp = Config.Health;
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         if(transform.Find("Overlay") != null)

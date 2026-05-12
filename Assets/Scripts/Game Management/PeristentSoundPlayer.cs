@@ -26,6 +26,13 @@ public class PeristentSoundPlayer : MonoBehaviour
 
     public void PlayNonDiageticSound(string EventName)
     {
+        //SKIPPED SOUNDS
+        if(EventName == "MainThemeStart" || EventName == "BossThemeStart")
+        {
+            return;
+        }
+
+
         AK.Wwise.Event foundEvent = SearchForSoundByName(EventName);
         if (foundEvent != null)
         {

@@ -177,7 +177,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7960515734397767930, guid: cf51ff1d9f71a39459a796302e5f37d5, type: 3}
+  m_Sprite: {fileID: 5103777432762176344, guid: cf51ff1d9f71a39459a796302e5f37d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -265,6 +265,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 6842841822378426712, guid: 0fa1a995ec531ee41bf86d308766f202, type: 3}
   DirectionSetting: 0
   SpawnOffset: 0
+  PositionOffset: {x: 0.5, y: 0.5}
 --- !u!95 &5227796689297246118
 Animator:
   serializedVersion: 7

@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639035908290121439
+  platformSettingsDirtyTick: 639107607718537227
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,17 +127,17 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: JungleTiles
+  - name: SpikeBall
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.75, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
-      width: 48
+      x: 0
+      y: 0
+      width: 32
       height: 16
     spriteID: 94c247a81ec31474e94fee20d6d1c7ac
     spriteBone: []
@@ -147,7 +147,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 0, y: 0}
   spriteSheetImportData:
   - name: JungleTiles 1_0
     originalName: 

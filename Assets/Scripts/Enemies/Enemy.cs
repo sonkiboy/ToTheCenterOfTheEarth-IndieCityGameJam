@@ -21,6 +21,11 @@ public class Enemy: MonoBehaviour
             // if the hp is decreasing, call the method for any On Damage Taken behavior and flash for damage
             if(value < hp)
             {
+                if (OnEnemyDamaged != null)
+                {
+                    OnEnemyDamaged.Invoke(this, this);
+                }
+
                 StartCoroutine(DamageFlash(.1f));
                 OnTakenDamage();
             }
@@ -34,7 +39,11 @@ public class Enemy: MonoBehaviour
             if (hp <= 0 && isDead == false)
             {
                 GameManager.Instance.CurrentTreasure += TreasureReward;
-                GameManager.Instance.Platform.CurrentFuel += FuelReward;
+                if(GameManager.Instance.Platform != null)
+                {
+                    GameManager.Instance.Platform.CurrentFuel += FuelReward;
+
+                }
 
                 isDead = true;
 
@@ -46,6 +55,7 @@ public class Enemy: MonoBehaviour
     }
 
     public event EventHandler<Enemy> OnEnemyDeath;
+    public event EventHandler<Enemy> OnEnemyDamaged;
 
     public void Awake()
     {
@@ -89,6 +99,12 @@ public class Enemy: MonoBehaviour
 
     public virtual void OnTakenDamage()
     {
+
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.StateChanged -= OnGameOver;
 
     }
 }

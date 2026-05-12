@@ -118,11 +118,22 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
     public void OnSceneChanged(Scene Current, Scene Next)
     {
+        if(Next.name != "MainMenu")
+        {
+            EndUi = GameObject.Find("EndCanvas").gameObject;
+            LeaderBoard = EndUi.transform.Find("LeaderBoard").gameObject;
+            boardComponent = LeaderBoard.GetComponent<LeaderBoard>();
+            BlackBG = EndUi.transform.Find("DeathBackground").gameObject;
+            highScore = EndUi.transform.Find("HighScore").gameObject;
+        }
+        else
+        {
+            EndUi = null;
+            LeaderBoard = null;
+            boardComponent = null;
+            BlackBG= null;
+            highScore = null;
+        }
         
-        EndUi = GameObject.Find("EndCanvas").gameObject;
-        LeaderBoard = EndUi.transform.Find("LeaderBoard").gameObject;
-        boardComponent = LeaderBoard.GetComponent<LeaderBoard>();
-        BlackBG = EndUi.transform.Find("DeathBackground").gameObject;
-        highScore = EndUi.transform.Find("HighScore").gameObject;
     }
 }

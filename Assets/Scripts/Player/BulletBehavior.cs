@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletBehavior : MonoBehaviour
+public class BulletBehavior : Bullet
 {
     public AK.Wwise.Event HitSound;
     public AK.Wwise.Event EnemyHitsound;
 
     public bool IsEnemyBullet = false;
 
-    public int ExtraDamage = 0;
+    
     private Rigidbody2D rb;
     public float Speed = 1;
-    public int Damage = 5;
-    public float DestroyTime = 5f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +34,7 @@ public class BulletBehavior : MonoBehaviour
     private void FixedUpdate()
     {
 
-        Vector2 newPos = (rb.position - (Vector2)rb.transform.TransformPoint(Vector2.right)).normalized * Speed * Time.deltaTime;
+        Vector2 newPos = ( (Vector2)rb.transform.TransformPoint(Vector2.right) - rb.position).normalized * Speed * Time.deltaTime;
         rb.MovePosition(rb.position + newPos);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,10 +69,6 @@ public class BulletBehavior : MonoBehaviour
 
     }
 
-    IEnumerator Lifetime()
-    {
-        yield return new WaitForSeconds(DestroyTime);
-        Destroy(this.gameObject);
-    }
+    
 
 }

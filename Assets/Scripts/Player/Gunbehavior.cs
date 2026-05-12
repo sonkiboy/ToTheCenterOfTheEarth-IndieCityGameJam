@@ -82,7 +82,7 @@ public class GunBehavior : MonoBehaviour
     {
         GameObject bullet = Instantiate(Bullet, this.transform.position, this.transform.rotation);
         GameManager.Instance.SoundManager.PlaySoundOnObject("PlayerShoot",this.gameObject);
-        bullet.GetComponent<BulletBehavior>().ExtraDamage = AdditionalDamage;
+        bullet.GetComponent<Bullet>().ExtraDamage = AdditionalDamage;
     }
 
 

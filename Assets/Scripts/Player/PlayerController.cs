@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
         else if (GameManager.Instance.InputManager.isKeyboard)
         {
             // first get the current position of the mouse on the screen as a 2d vector
-            //aimDirection = GameManager.Instance.InputManager.MouseLookInput.ReadValue<Vector2>();
+            aimDirection = GameManager.Instance.InputManager.MouseLookInput.ReadValue<Vector2>();
 
             // then figure out where that screen position would be in the game, and then calculate the direction in comparison from the player, and normalize
             aimDirection = ((Vector2)this.transform.position - (Vector2)Camera.main.ScreenToWorldPoint(aimDirection)).normalized;
@@ -200,14 +200,14 @@ public class PlayerController : MonoBehaviour
         if (aimDirection.x < 0 && spriteRenderer.flipX == true)
         {
             spriteRenderer.flipX = false;
-            gunSprite.flipY = false;
+            gunSprite.flipY = true;
         }
 
         // if the player is aiming to the right, flip the gun and player sprite if they aren't already facing right
         else if (aimDirection.x > 0 && spriteRenderer.flipX == false)
         {
             spriteRenderer.flipX = true;
-            gunSprite.flipY = true;
+            gunSprite.flipY = false;
         }
 
         // read the Jetpack Thrust input this frame
@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviour
         if (aimDirection != Vector2.zero)
         {
             Quaternion newRotation = new Quaternion(Quaternion.identity.x, Quaternion.identity.y, Quaternion.LookRotation(aimDirection, Vector3.forward).z, Quaternion.LookRotation(aimDirection, Vector3.forward).w);
-            gunObj.transform.rotation = newRotation * Quaternion.Euler(0f, 0f, 90f);
+            gunObj.transform.rotation = newRotation * Quaternion.Euler(0f, 0f, -90f);
         }
     }
 
