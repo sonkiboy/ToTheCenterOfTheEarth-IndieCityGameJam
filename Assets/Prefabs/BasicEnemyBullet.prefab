@@ -81,8 +81,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -879296729
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8066803067053511194, guid: 970de4ef5f6941a4684d7b2dec8a0956, type: 3}
@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e28dec72b5e83544a03dc508d2c9b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 5
+  DestroyTime: 10
+  ExtraDamage: 0
   HitSound:
     idInternal: 0
     valueGuidInternal: 
@@ -116,10 +119,7 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: b50a649d865ef38459f28a1877728e76, type: 2}
   IsEnemyBullet: 1
-  ExtraDamage: 0
   Speed: 2
-  Damage: 5
-  DestroyTime: 10
 --- !u!50 &5285241821634052846
 Rigidbody2D:
   serializedVersion: 5

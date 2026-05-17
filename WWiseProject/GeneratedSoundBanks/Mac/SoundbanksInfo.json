@@ -64,7 +64,7 @@
     "Type": "User",
     "GUID": "{C9312189-E98E-479F-8DC9-2A2FF1ED4AE5}",
     "Language": "SFX",
-    "Hash": "{769365AB-ECE8-2A57-BABB-65594F650A2C}",
+    "Hash": "{3581178B-D148-DA84-D5DB-37E9B92477C1}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\UrMom",
     "ShortName": "UrMom",
     "Path": "UrMom.bnk",
@@ -666,6 +666,6 @@
     ]
    }
   ],
-  "FileHash": "{9BC1BEA0-5D91-D98C-2863-3C4A3C953B8F}"
+  "FileHash": "{F39E5812-B066-2CA9-9822-A3C84C38C6BB}"
  }
 }

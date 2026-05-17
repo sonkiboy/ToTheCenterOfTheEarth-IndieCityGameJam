@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2373695607ea14f8f8382bd4cb8b1f, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: Assembly-CSharp::GunSettings
+  GunSprite: {fileID: -4444919722054599887, guid: d73d174ffa11ea24c8f26adf4870c277, type: 3}
+  Bullet: {fileID: 8295981333295601976, guid: cfa49aa19affa714a88435ecb03998c1, type: 3}
+  FireSpeed: 0.5
+  ShootEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 538ca761f8d568e41a88c4cedc312a4c, type: 2}

@@ -55,7 +55,7 @@ public class PowerUpBehavior : MonoBehaviour
         GunBehavior gun = playerObj.transform.GetComponentInChildren<GunBehavior>(true);
 
         gun.AdditionalDamage += DamageUp;
-        gun.FireSpeed -= GunSpeedDown;
+        gun.Settings.FireSpeed -= GunSpeedDown;
         
         GameManager.Instance.CurrentHealth += HealDamage;
 
@@ -70,9 +70,13 @@ public class PowerUpBehavior : MonoBehaviour
         yield return new WaitForSeconds(Durration);
 
         gun.AdditionalDamage -= DamageUp;
-        gun.FireSpeed += GunSpeedDown;
+        gun.Settings.FireSpeed += GunSpeedDown;
         GameManager.Instance.CurrentHealth -= HealDamage;
-        GameManager.Instance.Platform.DecentSpeed += DrillSpeed;
+        if( GameManager.Instance.Platform != null)
+        {
+            GameManager.Instance.Platform.DecentSpeed += DrillSpeed;
+
+        }
 
     }
 }

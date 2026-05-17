@@ -27,10 +27,10 @@ public class SniperBulletBehavior : Bullet
 
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.right, 25f, HitMask);
 
-        Debug.Log($"Firing sniper bullet at {this.transform.position} towards {this.transform.right}");
+        //Debug.Log($"Firing sniper bullet at {this.transform.position} towards {this.transform.right}");
         if (hit.collider != null)
         {
-            Debug.Log($"Sniper bullet hit {hit.collider.name} {hit.distance} units away");
+            //Debug.Log($"Sniper bullet hit {hit.collider.name} {hit.distance} units away");
 
             
             SpriteRend.size = new Vector2(hit.distance, .0625f);
