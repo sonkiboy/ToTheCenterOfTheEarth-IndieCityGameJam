@@ -29081,10 +29081,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2053829084334621917, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2185779998678924061, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
       propertyPath: Bullet
       value: 
@@ -29097,37 +29093,9 @@ PrefabInstance:
       propertyPath: FireSpeed
       value: 0.75
       objectReference: {fileID: 0}
-    - target: {fileID: 4704323711635953175, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704323711635953175, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704323711635953175, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
-      propertyPath: m_Size.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704323711635953175, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 5924030830996797525, guid: 25137426d2596454281fd60846528ca8, type: 3}
-    - target: {fileID: 4704323711635953175, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
-      propertyPath: m_SortingLayer
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704323711635953175, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704323711635953175, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -879296729
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704323711635953175, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
+    - target: {fileID: 2185779998678924061, guid: f5ca69cf9f1daba49b50020287255384, type: 3}
+      propertyPath: BulletSpawnOffset
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

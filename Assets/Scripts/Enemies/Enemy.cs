@@ -64,17 +64,21 @@ public class Enemy: MonoBehaviour
 
     IEnumerator DamageFlash(float durration)
     {
-
-        foreach(Renderer rend  in damageFlash)
+        if (damageFlash.Length > 0 && damageFlash != null)
         {
-            rend.material.SetFloat("_Intensity", 1f);
-        }
+            
 
-        yield return new WaitForSeconds(durration);
+            foreach (Renderer rend in damageFlash)
+            {
+                rend.material.SetFloat("_Intensity", 1f);
+            }
 
-        foreach (Renderer rend in damageFlash)
-        {
-            rend.material.SetFloat("_Intensity", 0f);
+            yield return new WaitForSeconds(durration);
+
+            foreach (Renderer rend in damageFlash)
+            {
+                rend.material.SetFloat("_Intensity", 0f);
+            }
         }
     }
 

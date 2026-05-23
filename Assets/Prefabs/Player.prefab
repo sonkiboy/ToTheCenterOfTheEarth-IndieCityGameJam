@@ -217,7 +217,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2751910821779160472, guid: 22f5798043d4f0646bf8f01332a0f870, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.6875, y: 0.75}
@@ -325,16 +325,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -742802839
-  m_SortingLayer: -2
-  m_SortingOrder: 0
+  m_SortingLayerID: -879296729
+  m_SortingLayer: -1
+  m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4140940637796902690, guid: 015847a888171a54a87c9dee183a8ca9, type: 3}
+  m_Sprite: {fileID: 5924030830996797525, guid: 25137426d2596454281fd60846528ca8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.5, y: 0.3125}
+  m_Size: {x: 1, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -351,10 +351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f215fb48eb8904c85d24034f48e6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 8295981333295601976, guid: cfa49aa19affa714a88435ecb03998c1, type: 3}
-  ShootEvent:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 538ca761f8d568e41a88c4cedc312a4c, type: 2}
-  FireSpeed: 0.15
+  Settings: {fileID: 0}
   AdditionalDamage: 0
+  BulletSpawnOffset: 1

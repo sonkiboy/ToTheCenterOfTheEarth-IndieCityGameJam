@@ -70,7 +70,7 @@ public class InputManager : MonoBehaviour
         MenuInput.Disable();
         MenuInput.performed -= OnMenuDebugPress;
 
-        DebugColorChange.Enable();
+        DebugColorChange.Disable();
         DebugColorChange.performed -= OnColorChangeDebugPress;
     }
 

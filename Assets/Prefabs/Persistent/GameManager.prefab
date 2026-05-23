@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1817808975515444347}
   - component: {fileID: 7374063556836506445}
   - component: {fileID: 12273638454663181}
+  - component: {fileID: 2319868388547996760}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -54,6 +55,8 @@ MonoBehaviour:
   BossManager: {fileID: 0}
   Overlay: {fileID: 0}
   GameOver: {fileID: 1817808975515444347}
+  PopUpManager: {fileID: 2319868388547996760}
+  gun: {fileID: 11400000, guid: 6d86bfcd6c48eea4dab7783860547af4, type: 2}
   CenterScreen: {fileID: 0}
   Player: {fileID: 0}
   Platform: {fileID: 0}
@@ -62,7 +65,9 @@ MonoBehaviour:
   HealthTracker: {fileID: 0}
   level: 0
   IsGameOver: 0
+  ActuallDepth: 0
   treasure: 0
+  health: 3
   _state: 0
 --- !u!114 &1817808975515444347
 MonoBehaviour:
@@ -211,6 +216,19 @@ MonoBehaviour:
   - {r: 0.1254902, g: 0.7490196, b: 0.33333334, a: 0}
   - {r: 0.003921569, g: 0.7294118, b: 0.9372549, a: 0}
   - {r: 0.9843137, g: 0.9843137, b: 1, a: 0}
+--- !u!114 &2319868388547996760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827984039748135261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c47517e1bf284c93b003aaedeb8c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PopUpManager
+  PowerPopUp: {fileID: 431553466246730587, guid: 83be3b0d7e1e3da4493ad1aaf2da1b4d, type: 3}
 --- !u!1001 &5194495448690299090
 PrefabInstance:
   m_ObjectHideFlags: 0

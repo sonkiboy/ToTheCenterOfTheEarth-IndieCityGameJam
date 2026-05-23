@@ -89,8 +89,8 @@ public class FlowerTileMod : MonoBehaviour
                     }
                     yield return null;
                 }
-                
 
+                yield return null;
             }
 
             // wait for the buffer time and check every number of times to see if the tile either was destroyed, or got a rooted componend on it

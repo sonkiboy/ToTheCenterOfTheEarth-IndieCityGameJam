@@ -12,6 +12,12 @@ public class PowerUpBehavior : MonoBehaviour
 
     #endregion 
 
+    public enum PowerUpTypes 
+    {
+        Heal,Damage,DrillSpeed, Reload
+    }
+
+    public PowerUpTypes Type;
     public float Durration = 10f;
     public int DamageUp = 0;
     public float GunSpeedDown = 0;
@@ -46,6 +52,8 @@ public class PowerUpBehavior : MonoBehaviour
         isCollected = true;
 
         GameManager.Instance.SoundManager.PlayNonDiageticSound("TreasureCollected");
+
+        GameManager.Instance.PopUpManager.DisplayPowerPopUp(Type, this.transform.position);
 
         animator.enabled = false;
         spriteRenderer.enabled = false;

@@ -30,7 +30,7 @@ public class SniperBulletBehavior : Bullet
         //Debug.Log($"Firing sniper bullet at {this.transform.position} towards {this.transform.right}");
         if (hit.collider != null)
         {
-            //Debug.Log($"Sniper bullet hit {hit.collider.name} {hit.distance} units away");
+            Debug.Log($"Sniper bullet hit {hit.collider.name} {hit.distance} units away");
 
             
             SpriteRend.size = new Vector2(hit.distance, .0625f);
@@ -39,13 +39,15 @@ public class SniperBulletBehavior : Bullet
             {
                 case "Enemy":
 
-                    hit.transform.GetComponent<Enemy>().Health -= Damage + ExtraDamage;
+                    Enemy enemy = hit.collider.transform.GetComponent<Enemy>();
+                    if(enemy != null) enemy.Health -= Damage + ExtraDamage;
 
                     break;
 
                 case "Tile":
+                    TileBehavior tile = hit.collider.transform.GetComponent<TileBehavior>();
+                    if(tile != null) tile.Health -= Damage + ExtraDamage;
 
-                    hit.transform.GetComponent<TileBehavior>().Health -= Damage + ExtraDamage;
 
 
                     break;

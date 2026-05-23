@@ -21,10 +21,13 @@ public class GunBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Settings = GameManager.Instance.CurrentGun;
         // subscribe this guns StartFiring method do the Fire Input Performed event in the Input Manager
         GameManager.Instance.InputManager.FireInput.performed += StartFiring;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = Settings.GunSprite;
+
+        GameManager.Instance.OnGunChanged += OnGunChanged;
     }
 
     private void OnEnable()
@@ -39,6 +42,14 @@ public class GunBehavior : MonoBehaviour
     {
         // subscribe this guns StartFiring method do the Fire Input Performed event in the Input Manager
         GameManager.Instance.InputManager.FireInput.performed -= StartFiring;
+
+
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnGunChanged -= OnGunChanged;
+
     }
 
     // Update is called once per frame
@@ -74,6 +85,7 @@ public class GunBehavior : MonoBehaviour
     // Rapid fire gun routine will fire bullets at a consistent rate based on the Fire Speed
     IEnumerator RapidFireRoutine()
     {
+
         // check if the player isn't already firing, this should be checked before the routine is started to prevent excess coroutines being called, this check is a fail safe
         if (isFiring == false)
         {
@@ -81,7 +93,7 @@ public class GunBehavior : MonoBehaviour
             isFiring = true;
 
             // while the fire button is pressed, fire a bullet ever number of seconds equal to Fire Speed
-            while (GameManager.Instance.InputManager.FireInput.IsPressed())
+            while (GameManager.Instance.InputManager.FireInput.IsPressed() && Settings.Mode == GunSettings.BulletMode.Rapid)
             {
                 Fire();
                 yield return new WaitForSeconds(Settings.FireSpeed);
@@ -103,15 +115,15 @@ public class GunBehavior : MonoBehaviour
 
     IEnumerator BeamFireRoutine()
     {
-        
-        if(isFiring == false)
+
+        if (isFiring == false)
         {
             isFiring = true;
 
             GameObject instantiated = Instantiate(Settings.Bullet, this.transform.position + (this.transform.right * BulletSpawnOffset), this.transform.rotation, this.transform);
 
             // while the fire button is pressed
-            while (GameManager.Instance.InputManager.FireInput.IsPressed())
+            while (GameManager.Instance.InputManager.FireInput.IsPressed() && Settings.Mode == GunSettings.BulletMode.Singular)
             {
                 yield return new WaitForFixedUpdate();
             }
@@ -123,6 +135,18 @@ public class GunBehavior : MonoBehaviour
             isFiring = false;
         }
     }
+    public void OnGunChanged(object sender, GunSettings e)
+    {
+        Debug.Log("Gun Changed Called");
+        if(Settings != e)
+        {
+            Settings = e;
+            spriteRenderer.sprite = e.GunSprite;
 
+            StopCoroutine(RapidFireRoutine());
+            StopCoroutine(BeamFireRoutine());
+        }
+        
+    }
 
 }

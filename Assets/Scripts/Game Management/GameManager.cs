@@ -15,6 +15,24 @@ public class GameManager : MonoBehaviour
     public BossManager BossManager;
     public OverlayUI Overlay;
     public GameOver GameOver;
+    public PopUpManager PopUpManager;
+
+    // GUN MANAGMENET
+    [SerializeField]private GunSettings gun;
+    public GunSettings CurrentGun
+    {
+        get { return gun; }
+        set
+        {
+            gun = value;
+            if(OnGunChanged != null)
+            {
+                OnGunChanged.Invoke(this, value);   
+            }
+
+        }
+    }
+    public EventHandler<GunSettings> OnGunChanged;
     
 
     

@@ -40,6 +40,8 @@ public class GameOver : MonoBehaviour, ISceneUpdate
     private void OnDisable()
     {
         GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStop");
+        SceneManager.activeSceneChanged -= OnSceneChanged;
+
     }
 
     // Start is called before the first frame update

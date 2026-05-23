@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2373695607ea14f8f8382bd4cb8b1f, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: Assembly-CSharp::GunSettings
+  Mode: 0
   GunSprite: {fileID: -4444919722054599887, guid: d73d174ffa11ea24c8f26adf4870c277, type: 3}
   Bullet: {fileID: 8295981333295601976, guid: cfa49aa19affa714a88435ecb03998c1, type: 3}
-  FireSpeed: 0.5
+  FireSpeed: 0.25
   ShootEvent:
     idInternal: 0
     valueGuidInternal: 
