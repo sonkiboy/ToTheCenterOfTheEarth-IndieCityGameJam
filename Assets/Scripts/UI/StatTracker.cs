@@ -14,6 +14,8 @@ public class StatTracker : MonoBehaviour
     private GameObject[] levelDigits;
     public GameObject TreasureNumbers;
     private GameObject[] treasureDigits;
+    public GameObject GemHealNumbers;
+    private GameObject[] healDigits;
 
     public GameObject LevelBossText;
     public GameObject BossWinText;
@@ -22,10 +24,10 @@ public class StatTracker : MonoBehaviour
 
     // Sprites for the large and small variants of the score digits
     [SerializeField] Sprite[] bigNumbers;
-    [SerializeField] Sprite[] smallNumbers;
+    [SerializeField] Sprite[] blueSmallNumbers;
+    [SerializeField] Sprite[] redSmallNumbers;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         // Create a new array based on the number of digits the Level Number can display
         levelDigits = new GameObject[LevelNumbers.transform.childCount];
@@ -44,6 +46,21 @@ public class StatTracker : MonoBehaviour
         {
             treasureDigits[i] = TreasureNumbers.transform.GetChild(i).gameObject;
         }
+
+        // Create a new array based on the number of digits the Heal Number can display
+        healDigits = new GameObject[GemHealNumbers.transform.childCount];
+
+        // loop through the newly made array and save all the digits in Heal Number to it
+        for (int i = 0; i < healDigits.Length; i++)
+        {
+            healDigits[i] = GemHealNumbers.transform.GetChild(i).gameObject;
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
 
     }
 
@@ -73,7 +90,7 @@ public class StatTracker : MonoBehaviour
 
                 if(treasureDigits[i] != null)
                 {
-                    treasureDigits[i].GetComponent<Image>().sprite = smallNumbers[0];
+                    treasureDigits[i].GetComponent<Image>().sprite = blueSmallNumbers[0];
 
                 }
             }
@@ -85,7 +102,44 @@ public class StatTracker : MonoBehaviour
 
                 if (treasureDigits[i] != null)
                 {
-                    treasureDigits[i].GetComponent<Image>().sprite = smallNumbers[number];
+                    treasureDigits[i].GetComponent<Image>().sprite = blueSmallNumbers[number];
+                }
+            }
+        }
+    }
+
+    public void SetGemHealScore(int score)
+    {
+        // convert the int to a string and split all the characters in that string to an array as their own index
+        string strScore = score.ToString();
+        char[] charArray = strScore.ToCharArray();
+
+        // if the number of digits is less than the number of digits that could be displayed, save difference in digits
+        // this will be used to add 0's infront of the number to fill the empty space
+        int digitOffset = healDigits.Length - charArray.Length;
+
+        // Loop through the digits in the UI and set them to their correct number
+        for (int i = 0; i < healDigits.Length; i++)
+        {
+            // if the current digit is less than the digit offset, then the number is to small to use this digit, so set it to 0
+            if (i < digitOffset)
+            {
+
+                if (healDigits[i] != null)
+                {
+                    healDigits[i].GetComponent<Image>().sprite = redSmallNumbers[0];
+
+                }
+            }
+
+            // if the score has a value for this digit spot, then set the UI digit to the correct number
+            else
+            {
+                int number = Convert.ToInt32(charArray[i - digitOffset].ToString());
+
+                if (healDigits[i] != null)
+                {
+                    healDigits[i].GetComponent<Image>().sprite = redSmallNumbers[number];
                 }
             }
         }

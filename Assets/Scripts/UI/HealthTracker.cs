@@ -8,9 +8,7 @@ public class HealthTracker : MonoBehaviour
     public Sprite[] Icons;
     private Image[] Hearts;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         Hearts = new Image[transform.childCount];
         for (int i = 0; i < Hearts.Length; i++)
@@ -18,6 +16,11 @@ public class HealthTracker : MonoBehaviour
             Hearts[i] = transform.GetChild(i).GetComponent<Image>();
         }
 
+
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         
     }
 

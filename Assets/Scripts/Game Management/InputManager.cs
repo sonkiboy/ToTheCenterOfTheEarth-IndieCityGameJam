@@ -86,7 +86,7 @@ public class InputManager : MonoBehaviour
     {
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.anyKey.wasPressedThisFrame && !isKeyboard)
+            if ((Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame) && !isKeyboard)
             {
                 //Debug.Log($"Switching to Keyboard, found as {Keyboard.current}");
                 isController = false;

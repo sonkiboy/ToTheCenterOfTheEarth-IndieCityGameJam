@@ -59,7 +59,12 @@ public class Enemy: MonoBehaviour
 
     public void Awake()
     {
-        GameManager.Instance.StateChanged += OnGameOver;
+        if(GameManager.Instance != null) GameManager.Instance.StateChanged += OnGameOver;
+        else
+        {
+            GameObject.FindAnyObjectByType<GameManager>().StateChanged += OnGameOver;
+        }
+
     }
 
     IEnumerator DamageFlash(float durration)

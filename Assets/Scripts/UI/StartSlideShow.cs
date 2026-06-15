@@ -24,7 +24,7 @@ public class StartSlideShow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(SlideShow());
+        StartCoroutine(SlideShow());
         GameManager.Instance.InputManager.MenuInput.performed += StartGame;
 
     }

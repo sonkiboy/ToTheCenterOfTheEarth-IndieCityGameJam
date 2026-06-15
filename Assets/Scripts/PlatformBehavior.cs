@@ -246,7 +246,7 @@ public class PlatformBehavior : MonoBehaviour
             }
 
             GameManager.Instance.ActuallDepth++;
-            blockGenerator.GenerateNextLevel();
+            //blockGenerator.GenerateNextLevel();
 
             // at the end of the routine, set is Decending back to false
             isDecending = false;

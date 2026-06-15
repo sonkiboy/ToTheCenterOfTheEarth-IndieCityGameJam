@@ -15,6 +15,7 @@ public class GunSettings : ScriptableObject
     public Sprite GunSprite;
     public GameObject Bullet;
     public float FireSpeed = .5f;
+    public int PierceCount = 1;
     public AK.Wwise.Event ShootEvent;
 
 }

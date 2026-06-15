@@ -5,10 +5,12 @@ public class FlyingEnemy : MonoBehaviour
 
     Rigidbody2D rb;
     Collider2D collider;
+    SpriteRenderer spriteRenderer;
 
     public Vector2 Speed2D = Vector2.one;
 
     public Transform Target;
+    [SerializeField] Vector2 targetPosition;
     public float OffsetDistance = 0f;
 
 
@@ -16,6 +18,7 @@ public class FlyingEnemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,14 +33,34 @@ public class FlyingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(OffsetDistance != 0f)
+        {
+            Vector2 dir = (Target.position - transform.position).normalized;
+            targetPosition = (Vector2)Target.position - (dir * OffsetDistance);
+            if(spriteRenderer != null)
+            {
+                if(targetPosition.x > this.transform.position.x && spriteRenderer.flipX == true)
+                {
+                    spriteRenderer.flipX = false;
+                }
+                else if (targetPosition.x < this.transform.position.x && spriteRenderer.flipX == false)
+                {
+                    spriteRenderer.flipX = true;
+
+                }
+            }
+        }
+        else
+        {
+            targetPosition = Target.position;
+        }
     }
 
     private void FixedUpdate()
     {
-        if(Vector3.Distance(rb.position, Target.position) > OffsetDistance)
+        if(Vector3.Distance(rb.position, targetPosition) > OffsetDistance)
         {
-            Vector2 dir = ((Vector2)Target.position - (Vector2)rb.position).normalized;
+            Vector2 dir = (targetPosition - (Vector2)rb.position).normalized;
             rb.AddForce(dir * Speed2D) ;
         }
     }

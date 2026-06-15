@@ -235,13 +235,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf357c50faf2984caef687e05c6e297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserBulletBehavior
-  Damage: 5
+  Damage: 4
   DestroyTime: 5
   ExtraDamage: 0
   HitMask:
     serializedVersion: 2
     m_Bits: 2112
-  HitArea: {x: 3, y: 2}
+  HitArea: {x: 5, y: 2}
   DamageRate: 0.1
   target: {fileID: 0}
 --- !u!1 &1259952730795764769

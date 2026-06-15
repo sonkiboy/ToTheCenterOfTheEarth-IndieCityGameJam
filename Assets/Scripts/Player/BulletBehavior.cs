@@ -10,7 +10,7 @@ public class BulletBehavior : Bullet
     public bool IsEnemyBullet = false;
 
     
-    private Rigidbody2D rb;
+    [SerializeField]private Rigidbody2D rb;
     public float Speed = 1;
     
 

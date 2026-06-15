@@ -15,7 +15,8 @@ MonoBehaviour:
   Mode: 0
   GunSprite: {fileID: -4444919722054599887, guid: d73d174ffa11ea24c8f26adf4870c277, type: 3}
   Bullet: {fileID: 8295981333295601976, guid: cfa49aa19affa714a88435ecb03998c1, type: 3}
-  FireSpeed: 0.25
+  FireSpeed: 0.15
+  PierceCount: 1
   ShootEvent:
     idInternal: 0
     valueGuidInternal: 

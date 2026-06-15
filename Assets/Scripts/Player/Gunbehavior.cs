@@ -12,11 +12,15 @@ public class GunBehavior : MonoBehaviour
 
     // additional damage that bullets fired from this gun deal
     public int AdditionalDamage = 0;
+    public int AdditionalPierceCount = 0;
+    public float ReloadModifier = 0f;
 
     // tracks whether or not the gun is currently firing 
     private bool isFiring = false;
 
     public float BulletSpawnOffset = 1f;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -96,7 +100,8 @@ public class GunBehavior : MonoBehaviour
             while (GameManager.Instance.InputManager.FireInput.IsPressed() && Settings.Mode == GunSettings.BulletMode.Rapid)
             {
                 Fire();
-                yield return new WaitForSeconds(Settings.FireSpeed);
+                yield return new WaitForSeconds(Settings.FireSpeed - (Settings.FireSpeed* ReloadModifier));
+                yield return new WaitForSeconds(Settings.FireSpeed * .05f);
             }
 
             // once the button is released, set is firing to false

@@ -15,17 +15,24 @@ public class BlockGeneratorInspector : Editor
 
         if (GUILayout.Button("Generate Starting Layout"))
         {
-            generator.GenerateStart();
+            generator.ResetGeneration();
+            generator.GenerateChunk(generator.chunkSize.y, generator.chunkSize.y);
+            generator.GenerateChunk(0, 0);
         }
 
         if (GUILayout.Button("Generate Flat Layout"))
         {
-            generator.GenerateFlat();
+            generator.ResetGeneration();
+            
+            generator.GenerateChunk(1, 1);
         }
 
         if (GUILayout.Button("Generating next Level Layout"))
         {
-            generator.GenerateNextLevel();
+            //generator.GenerateNextLevel();
+            generator.ResetGeneration();
+
+            generator.GenerateChunk(0,0);
         }
 
         if (GUILayout.Button("Reset"))

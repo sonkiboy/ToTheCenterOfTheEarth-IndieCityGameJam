@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public OverlayUI Overlay;
     public GameOver GameOver;
     public PopUpManager PopUpManager;
+    public Camera LowResCamera;
+    public Camera MainCamera;
 
     // GUN MANAGMENET
     [SerializeField]private GunSettings gun;
@@ -33,16 +35,9 @@ public class GameManager : MonoBehaviour
         }
     }
     public EventHandler<GunSettings> OnGunChanged;
-    
-
-    
-
-    
-
+     
     public GameObject CenterScreen;
-
-    
-
+        
     // ------------ SCENE REFS ------------
 
     // NEED TO REFRENCE IN EVERY SCENE
@@ -54,8 +49,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public StatTracker StatTracker;
     [HideInInspector] public HealthTracker HealthTracker;
     
-
-
     // ------------ DEPTH LEVEL ------------
 
     // tracks the level the player is on, USE "CurrentDepth" INSTEAD TO ACCESS
@@ -82,10 +75,7 @@ public class GameManager : MonoBehaviour
             {
                 BossManager.StartBossFight(BossManager.Bosses.InsectQueen);
             }
-
             
-            
-
         }
     }
 
@@ -101,12 +91,21 @@ public class GameManager : MonoBehaviour
         get { return treasure; }
         set
         {
-            // save the value to _treasure
-            treasure = value;
+            if (CurrentState != GameStates.Menu)
+            {
+                // save the value to _treasure
+                treasure = value;
 
-            // set the Treasure UI counter to the current score
-            if(StatTracker !=null) StatTracker.SetTreasureScore(treasure);
+                // set the Treasure UI counter to the current score
+                if (StatTracker != null) StatTracker.SetTreasureScore(treasure);
 
+                if (treasure >= nextGemHeal)
+                {
+                    if (CurrentHealth < 3) CurrentHealth++;
+                    nextGemHeal += GemHealRate;
+                    StatTracker.SetGemHealScore(nextGemHeal);
+                }
+            }
         }
     }
 
@@ -148,6 +147,9 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public int GemHealRate = 15000;
+    private int nextGemHeal = 0;
 
     // ------------ GAME STATE ------------ 
 
@@ -229,17 +231,24 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // TO DO: make this change based on the starting Game State
+        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
 
-        switch(CurrentState)
-        {
-            case GameStates.RegularGame:
-                //GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStart");
+        //// TO DO: make this change based on the starting Game State
 
-                OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
-                break;
-        }
-        
+        //switch(CurrentState)
+        //{
+        //    case GameStates.RegularGame:
+        //        //GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStart");
+
+        //        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        //        break;
+
+        //    case GameStates.Menu:
+
+        //        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        //        break;
+        //}
+
     }
 
     // Update is called once per frame
@@ -275,7 +284,9 @@ public class GameManager : MonoBehaviour
 
     public void OnSceneChanged(Scene Current, Scene Next)
     {
-
+        StopAllCoroutines();
+        LowResCamera = GameObject.Find("LowResCamera").GetComponent<Camera>();
+        LowResCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         switch (Next.name)
         {
             case ("RegularGame"):
@@ -289,8 +300,18 @@ public class GameManager : MonoBehaviour
 
                 ScoreAnchor = StatTracker.gameObject.transform.Find("ScoreAnchor");
                 Overlay = GameObject.FindAnyObjectByType<OverlayUI>();
-                
+
                 BossManager = GameObject.Find("Cavern").GetComponent<BossManager>();
+                
+                CurrentTreasure = 0;
+                CurrentDepth = 0;
+                ActuallDepth = 0;
+                IsGameOver = false;
+                CurrentHealth = 3;
+
+
+                StatTracker.SetGemHealScore(nextGemHeal);
+                nextGemHeal = GemHealRate;
 
                 StartNormalGame();
 
@@ -298,12 +319,12 @@ public class GameManager : MonoBehaviour
 
             case ("MainMenu"):
                 CurrentState = GameStates.Menu;
-
+                GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStart");
                 Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
                 ScoreAnchor = Player.transform;
                 ScoreAnchor = Player.transform;
 
-                GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStart");
+                
 
                 break;
 
@@ -344,11 +365,6 @@ public class GameManager : MonoBehaviour
         yield return null;
         GameManager.Instance.Player.enabled = false;
 
-        CurrentTreasure = 0;
-        CurrentDepth = 0;
-        ActuallDepth = 0;
-        IsGameOver = false;
-        CurrentHealth = 3;
         
         
         Overlay.StartCountdown();
@@ -356,6 +372,7 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.Player.enabled = true;
 
         Platform.StartDrilling();
+
 
         yield return new WaitForSeconds(7);
         Overlay.ShowLevelTitle(1);

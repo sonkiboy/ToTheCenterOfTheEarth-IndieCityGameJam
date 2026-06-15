@@ -50,7 +50,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
         
         
         SceneManager.activeSceneChanged += OnSceneChanged;
-        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        //OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
         
     }
 

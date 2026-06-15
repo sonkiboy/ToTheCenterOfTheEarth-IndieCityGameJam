@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2373695607ea14f8f8382bd4cb8b1f, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: Assembly-CSharp::GunSettings
+  Mode: 0
   GunSprite: {fileID: 60961914044726642, guid: 790a6b0f0a6e33f49937b28be2eaea78, type: 3}
   Bullet: {fileID: 3156207888390412282, guid: 582c90079efe9724da05368db6cb6f80, type: 3}
-  FireSpeed: 1
+  FireSpeed: 0.9
+  PierceCount: 3
   ShootEvent:
     idInternal: 0
     valueGuidInternal: 

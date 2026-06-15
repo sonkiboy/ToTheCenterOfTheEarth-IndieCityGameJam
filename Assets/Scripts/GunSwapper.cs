@@ -5,9 +5,21 @@ public class GunSwapper : MonoBehaviour
 
     public GunSettings Gun;
 
+
+    private GameObject Bubble;
+    private GameObject EmptyBubble;
+
+    private Animator BubbleAnimator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Bubble = transform.Find("Bubble").gameObject;
+        EmptyBubble = transform.Find("EmptyBubble").gameObject;
+
+        BubbleAnimator = GetComponent<Animator>();
+        BubbleAnimator.Play(0,-1, Random.Range(0f, 1f));
+
         CheckIfAlreadyEquiped();
         GameManager.Instance.OnGunChanged += CheckIfAlreadyEquiped;
     }
@@ -43,24 +55,32 @@ public class GunSwapper : MonoBehaviour
     {
         if(GameManager.Instance.CurrentGun == Gun)
         {
-            this.gameObject.SetActive(false);
+            Bubble.SetActive(false);
+            EmptyBubble.SetActive(true);
+
         }
         else
         {
-            this .gameObject.SetActive(true);
+            Bubble.SetActive(true);
+            EmptyBubble.SetActive(false);
+
         }
 
-        
+
     }
     void CheckIfAlreadyEquiped(object sender, GunSettings e)
     {
         if (e == Gun)
         {
-            this.gameObject.SetActive(false);
+            Bubble.SetActive(false);
+            EmptyBubble.SetActive(true);
+
         }
         else
         {
-            this.gameObject.SetActive(true);
+            Bubble.SetActive(true);
+            EmptyBubble.SetActive(false);
+
         }
     }
 }

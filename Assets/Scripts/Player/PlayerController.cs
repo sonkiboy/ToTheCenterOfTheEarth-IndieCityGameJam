@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     GameObject gunObj;
     SpriteRenderer gunSprite;
 
-
+    [HideInInspector]
+    public GunBehavior Gun;
     #endregion
 
 
@@ -147,6 +148,7 @@ public class PlayerController : MonoBehaviour
     {
         // Find the Gun and save it, and the sprite (Used in aiming)
         gunObj = transform.Find("Gun").gameObject;
+        Gun = gunObj.GetComponent<GunBehavior>();
         gunSprite = gunObj.GetComponent<SpriteRenderer>();
 
         // Get the player material renderer and sprite renderer
@@ -157,12 +159,14 @@ public class PlayerController : MonoBehaviour
         // Get the Rigidbody
         rb = GetComponent<Rigidbody2D>();
 
+        StartCoroutine(OutOfBoundsCheck());
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        aimDirection = Vector3.right;
     }
 
     private void OnDisable()
@@ -187,10 +191,13 @@ public class PlayerController : MonoBehaviour
         else if (GameManager.Instance.InputManager.isKeyboard)
         {
             // first get the current position of the mouse on the screen as a 2d vector
-            aimDirection = GameManager.Instance.InputManager.MouseLookInput.ReadValue<Vector2>();
+            //aimDirection = GameManager.Instance.InputManager.MouseLookInput.ReadValue<Vector2>();
+            aimDirection = (Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()/5.2F);
 
             // then figure out where that screen position would be in the game, and then calculate the direction in comparison from the player, and normalize
-            aimDirection = ((Vector2)this.transform.position - (Vector2)Camera.main.ScreenToWorldPoint(aimDirection)).normalized;
+
+            aimDirection = ((Vector2)this.transform.position - (aimDirection)).normalized;
+            //Debug.Log($"Player position: {(Vector2)this.transform.position} vs Aim Point {aimDirection} ({aimDirection}) calculated to direction {aimDirection} from Camera {Camera.main.gameObject.name}");
 
             // Invert the aim direciton
             aimDirection = -aimDirection;
@@ -387,7 +394,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    IEnumerator OutOfBoundsCheck()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            {
+                //Debug.Log($"OOB Check: Player {transform.position.y} Platform {GameManager.Instance.Platform.transform.position.y}");
+                if (transform.position.y > (GameManager.Instance.Platform.transform.position.y + 11) || transform.position.y < ((GameManager.Instance.Platform.transform.position.y - 3)))
+                {
+                    Debug.LogWarning("Player out of bounds");
+                    yield return new WaitForSeconds(3f);
+                    if (transform.position.y > (GameManager.Instance.Platform.transform.position.y + 11) || transform.position.y < ((GameManager.Instance.Platform.transform.position.y - 3)))
+                    {
+                        this.transform.position = GameManager.Instance.Platform.transform.position + (Vector3.up * 9);
+                    }
+
+                }
+            }
+        }
+    }
 
     
 }

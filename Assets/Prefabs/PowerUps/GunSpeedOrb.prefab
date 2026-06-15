@@ -102,9 +102,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -742802839
-  m_SortingLayer: -2
-  m_SortingOrder: 0
+  m_SortingLayerID: -879296729
+  m_SortingLayer: -1
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8355657312842337554, guid: fd3a98e5dd7fe1445a9b17a3f7c4841e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -167,6 +167,6 @@ MonoBehaviour:
   Type: 3
   Durration: 10
   DamageUp: 0
-  GunSpeedDown: 0.05
+  GunSpeedDown: 0.2
   DrillSpeed: 0
   HealDamage: 0

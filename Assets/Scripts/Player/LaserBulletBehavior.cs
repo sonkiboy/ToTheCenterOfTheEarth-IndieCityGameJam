@@ -12,13 +12,11 @@ public class LaserBulletBehavior : Bullet
 
     [SerializeField] Transform target;
 
-    private void Awake()
+    
+    private void Start()
     {
         lineController = GetComponent<BasicCurvedLineController>();
         hitPoint = transform.Find("HitPoint");
-    }
-    private void Start()
-    {
         StartCoroutine(FireLazer());
         StartCoroutine(DamageTarget());
     }
