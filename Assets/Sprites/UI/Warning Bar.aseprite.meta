@@ -33,7 +33,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 16
@@ -72,37 +72,37 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
+    mosaicPadding: 1
     spritePadding: 0
     generateModelPrefab: 1
-    generateAnimationClips: 1
+    generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
+    mosaicPadding: 1
     spritePadding: 0
     generateModelPrefab: 1
-    generateAnimationClips: 1
+    generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639048817862161466
+  platformSettingsDirtyTick: 639191373838947579
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -253,7 +253,133 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 72}
-  spriteSheetImportData: []
+  spriteSheetImportData:
+  - name: Warning Bar_0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 6, y: 0, z: 6, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 83
+      width: 64
+      height: 16
+    spriteID: 77c519f9d152e2541abacd4f311dd4ca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Warning Bar_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 6, y: 0, z: 6, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 66
+      width: 64
+      height: 16
+    spriteID: ee7afb1ffd40481479481ec49a9f3733
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Warning Bar_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 6, y: 0, z: 6, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 50
+      width: 64
+      height: 16
+    spriteID: 7384bed9ea6d8b14eb034ea12da07ad3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Warning Bar_3
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 6, y: 0, z: 6, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 17
+      width: 64
+      height: 16
+    spriteID: 4d140c1184885c245aa77e0318caa8d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Warning Bar_4
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 6, y: 0, z: 6, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 34
+      width: 64
+      height: 16
+    spriteID: bb403c45b6766a346a3710a3220c0e4d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Warning Bar_5
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 6, y: 0, z: 6, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 0
+      width: 64
+      height: 16
+    spriteID: fb9205d20fb672c4b9d8394e9f760a80
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -352,8 +478,20 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 64, y: 16}
-  previousTextureSize: {x: 64, y: 128}
+  previousTextureSize: {x: 128, y: 128}

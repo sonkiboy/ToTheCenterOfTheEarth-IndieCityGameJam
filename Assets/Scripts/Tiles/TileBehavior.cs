@@ -38,7 +38,7 @@ public class TileBehavior : MonoBehaviour
 
                 if (OnTileHealthChange != null)
                 {
-                    OnTileHealthChange.Invoke(this,EventArgs.Empty);
+                    OnTileHealthChange.Invoke(this, EventArgs.Empty);
                 }
 
                 if (hp <= 0)
@@ -46,23 +46,24 @@ public class TileBehavior : MonoBehaviour
                     BreakTile(true);
                 }
 
-
-                else if (hp <= (float)Config.Health * .3 && Config.BrokenOverlays.Length >= 1)
+                else if (Config.BrokenOverlays.Length > 0 && OverlayRenderer != null)
                 {
-                    if (spriteRenderer.sprite != Config.BrokenOverlays[0])
+                    if (hp <= (float)Config.Health * .3 && Config.BrokenOverlays.Length >= 1)
                     {
-                        OverlayRenderer.sprite = Config.BrokenOverlays[0];
-                    }
+                        if (spriteRenderer.sprite != Config.BrokenOverlays[0])
+                        {
+                            OverlayRenderer.sprite = Config.BrokenOverlays[0];
+                        }
 
-                }
-                else if (hp <= (float)Config.Health * .75 && Config.BrokenOverlays.Length >= 2)
-                {
-                    if (spriteRenderer.sprite != Config.BrokenOverlays[1])
+                    }
+                    else if (hp <= (float)Config.Health * .75 && Config.BrokenOverlays.Length >= 2)
                     {
-                        OverlayRenderer.sprite = Config.BrokenOverlays[1];
+                        if (spriteRenderer.sprite != Config.BrokenOverlays[1])
+                        {
+                            OverlayRenderer.sprite = Config.BrokenOverlays[1];
+                        }
                     }
                 }
-
             }
 
         }
@@ -79,7 +80,7 @@ public class TileBehavior : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if(transform.Find("Overlay") != null)
+        if (transform.Find("Overlay") != null)
         {
             OverlayRenderer = transform.Find("Overlay").GetComponent<SpriteRenderer>();
 
@@ -99,9 +100,9 @@ public class TileBehavior : MonoBehaviour
     IEnumerator BreakTileSequence(bool isBrokenByPlayer)
     {
         // call the event 
-        if(OnTileBreak != null)
+        if (OnTileBreak != null)
         {
-            OnTileBreak.Invoke(this,EventArgs.Empty);
+            OnTileBreak.Invoke(this, EventArgs.Empty);
         }
 
         // if there are break particles assigned, spawn them
@@ -138,7 +139,7 @@ public class TileBehavior : MonoBehaviour
                 }
             }
 
-            
+
 
             // if the conifg spawns a power up, pick a random power up from the config list
             if (Config.SpawnedPowerUps.Length > 0)
@@ -162,7 +163,7 @@ public class TileBehavior : MonoBehaviour
         }
 
         // play the break tile sound effect
-        GameManager.Instance.SoundManager.PlaySoundOnObject(Config.BreakSound,this.gameObject);
+        GameManager.Instance.SoundManager.PlaySoundOnObject(Config.BreakSound, this.gameObject);
 
         // buffer to make sure everything above happens before the tile object is destroyed
         yield return new WaitForEndOfFrame();
@@ -173,7 +174,7 @@ public class TileBehavior : MonoBehaviour
     void Explode()
     {
         // Create a circle boundary at the position of the tile with demensions and collision based on the config
-        Collider2D[] foundColliders = Physics2D.OverlapCircleAll(transform.position , Config.ExplosionRange,Config.LayersDected);
+        Collider2D[] foundColliders = Physics2D.OverlapCircleAll(transform.position, Config.ExplosionRange, Config.LayersDected);
 
         // foreach collider found in the circle bounds, check if it is a Tile, Player, Enemy, or Pickup to interact with
         foreach (Collider2D collider in foundColliders)
@@ -191,7 +192,7 @@ public class TileBehavior : MonoBehaviour
 
                     //Debug.Log($"Force read as {force} and Direction as {direction}");
 
-                    rb.AddForce(force,ForceMode2D.Impulse);
+                    rb.AddForce(force, ForceMode2D.Impulse);
                 }
             }
             else if (collider.gameObject.tag == "Tile")
@@ -201,6 +202,19 @@ public class TileBehavior : MonoBehaviour
                 int totalDamage = Mathf.RoundToInt((float)Config.ExplosionDamage * (Config.ExplosionRange - distance) / Config.ExplosionRange);
 
                 collider.GetComponent<TileBehavior>().Health -= totalDamage;
+
+                Rigidbody2D rb = collider.attachedRigidbody;
+
+                if (rb != null)
+                {
+                    Vector2 direction = ((Vector2)transform.position - (Vector2)collider.transform.position);
+
+                    Vector2 force = -direction.normalized * Config.BlastForce / direction.magnitude;
+
+                    //Debug.Log($"Force read as {force} and Direction as {direction}");
+
+                    rb.AddForce(force, ForceMode2D.Impulse);
+                }
             }
         }
 
@@ -216,5 +230,5 @@ public class TileBehavior : MonoBehaviour
 
         Instantiate(drop, transform.position + (Vector3)offset, Quaternion.Euler(Vector3.forward * rotationOffset));
     }
-    
+
 }

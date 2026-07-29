@@ -13,11 +13,12 @@ public class OverlayUI : MonoBehaviour
     #endregion
 
     [SerializeField] GameObject CountdownParent;
+    [SerializeField] GameObject PowerUpDials;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GameManager.Instance.StateChanged += GameOverCheck;
     }
 
     // Update is called once per frame
@@ -69,5 +70,13 @@ public class OverlayUI : MonoBehaviour
     public void ShowLevelTitle(int stage)
     {
 
+    }
+
+    public void GameOverCheck(object sender, GameManager.GameStates state)
+    {
+        if(state == GameManager.GameStates.GameOver)
+        {
+            PowerUpDials.SetActive(false);
+        }
     }
 }

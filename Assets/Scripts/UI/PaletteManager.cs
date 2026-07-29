@@ -15,6 +15,8 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
     public Color[] Depth200Colors;
     public Color[] Depth300Colors;
     public Color[] Depth400Colors;
+
+    private Color[] currentColors;
     int currentPallete = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,6 +25,10 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
         SceneManager.activeSceneChanged += OnSceneChanged;
         OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
         ResetColors();
+        if (GameManager.Instance.GameOptions.IsStaticColorsOn)
+        {
+            SetToStaticColors();
+        }
 
     }
 
@@ -39,15 +45,25 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
 
     public void ChangePalette(float time, Color color1, Color color2, Color color3, Color color4)
     {
-        StartCoroutine(SwapPalette(time, color1,color2 ,color3,color4)); 
+        if (GameManager.Instance.GameOptions.IsStaticColorsOn ==false)
+        {
+            StartCoroutine(SwapPalette(time, color1, color2, color3, color4));
+        }
+        
     }
     public void ChangePalette(float time, Color[] pallete)
     {
-        StartCoroutine(SwapPalette(time, pallete[0], pallete[1], pallete[2], pallete[3]));
+        if (GameManager.Instance.GameOptions.IsStaticColorsOn == false)
+        {
+            StartCoroutine(SwapPalette(time, pallete[0], pallete[1], pallete[2], pallete[3]));
+        }
     }
 
     private IEnumerator SwapPalette(float time, Color color1, Color color2, Color color3, Color color4)
     {
+        currentColors = new Color[4] {color1, color2, color3, color4};
+
+
         int stepCount = 4;
 
         Color og1 = ScreenRenderer.material.GetColor("_NEW1");
@@ -73,7 +89,8 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
 
     public void ResetColors()
     {
-        if(ScreenRenderer != null)
+        currentColors = DefaultColors;
+        if (ScreenRenderer != null)
         {
             ScreenRenderer.material.SetColor("_NEW1", DefaultColors[0]);
             ScreenRenderer.material.SetColor("_NEW2", DefaultColors[1]);
@@ -83,39 +100,64 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
         
     }
 
+    public void RefreshCurrentColors()
+    {
+
+        if (ScreenRenderer != null)
+        {
+            ScreenRenderer.material.SetColor("_NEW1", currentColors[0]);
+            ScreenRenderer.material.SetColor("_NEW2", currentColors[1]);
+            ScreenRenderer.material.SetColor("_NEW3", currentColors[2]);
+            ScreenRenderer.material.SetColor("_NEW4", currentColors[3]);
+        }
+    }
+
+    public void SetToStaticColors()
+    {
+        if (ScreenRenderer != null)
+        {
+            ScreenRenderer.material.SetColor("_NEW1", DefaultColors[0]);
+            ScreenRenderer.material.SetColor("_NEW2", GameManager.Instance.GameOptions.SupportedStaticColors[GameManager.Instance.GameOptions.StaticHeartyColor]);
+            ScreenRenderer.material.SetColor("_NEW3", GameManager.Instance.GameOptions.SupportedStaticColors[GameManager.Instance.GameOptions.StaticVibrantColor]);
+            ScreenRenderer.material.SetColor("_NEW4", DefaultColors[3]);
+        }
+    }
     public void IncrimentPallete(float time)
     {
-        currentPallete++;
-
-
-        switch (currentPallete)
+        if (GameManager.Instance.GameOptions.IsStaticColorsOn == false)
         {
-            case 0:
-                ChangePalette(time,DefaultColors);
+            currentPallete++;
 
-                break;
-            case 1:
-                ChangePalette(time, Depth100Colors);
-                break;
-            case 2:
-                ChangePalette(time, Depth200Colors);
-                break;
-            case 3:
-                ChangePalette(time, Depth300Colors);
-                break;
-            case 4:
-                ChangePalette(time, Depth400Colors);
-                break;
-            default:
 
+            switch (currentPallete)
+            {
+                case 0:
+                    ChangePalette(time, DefaultColors);
+
+                    break;
+                case 1:
+                    ChangePalette(time, Depth100Colors);
+                    break;
+                case 2:
+                    ChangePalette(time, Depth200Colors);
+                    break;
+                case 3:
+                    ChangePalette(time, Depth300Colors);
+                    break;
+                case 4:
+                    ChangePalette(time, Depth400Colors);
+                    break;
+                default:
+
+                    currentPallete = 0;
+                    ChangePalette(time, DefaultColors);
+                    break;
+            }
+
+            if (currentPallete > 4)
+            {
                 currentPallete = 0;
-                ChangePalette(time, DefaultColors);
-                break;
-        }
-
-        if(currentPallete > 4)
-        {
-            currentPallete = 0;
+            }
         }
     }
 

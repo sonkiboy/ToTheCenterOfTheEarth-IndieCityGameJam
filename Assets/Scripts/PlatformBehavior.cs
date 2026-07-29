@@ -233,7 +233,7 @@ public class PlatformBehavior : MonoBehaviour
             {
                 transform.position = (Vector2)transform.position + Vector2.down * .25f;
 
-                yield return new WaitForSeconds(1 / DecentSpeed);
+                yield return new WaitForSeconds(1 / (DecentSpeed + (GameManager.Instance.PowerManager.DrillSpeed * GameManager.Instance.PowerManager.DrillPowerCount)));
                 yield return new WaitForFixedUpdate();
             }
 
@@ -303,5 +303,11 @@ public class PlatformBehavior : MonoBehaviour
             StopCoroutine(Decend());
             
         }
+    }
+
+    public void IncreaseFuelRate(float percentageIncrease)
+    {
+        FuelPerSecond += percentageIncrease * FuelPerSecond;
+        GameManager.Instance.PopUpManager.DisplayFuelIncrease((Vector2)this.transform.position + (Vector2.up *2));
     }
 }

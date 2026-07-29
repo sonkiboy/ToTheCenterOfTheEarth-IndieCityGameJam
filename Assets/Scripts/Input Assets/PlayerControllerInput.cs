@@ -132,7 +132,7 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
                     ""name"": ""Start"",
                     ""type"": ""Button"",
                     ""id"": ""35228549-7117-4b60-9ecc-a06675edbff0"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -431,10 +431,28 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
                     ""name"": ""Enter"",
                     ""type"": ""Button"",
                     ""id"": ""e661fec6-09b4-4dbf-8ba0-8e62e6fc4f01"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AnyButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""f13d9869-68cd-45f4-857e-cac155e9c2c1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""4277f8d1-dd65-4826-a9d7-99073c691913"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -690,6 +708,193 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
                     ""action"": ""Enter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6690ed9-a901-433c-9945-9d3b480e0924"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a80e9e7-b150-4ad2-8a98-8844fd74b365"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07013ec9-0fe6-4aed-953b-f7929d9eac00"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c345bc41-8f50-4cde-8dc8-fa691d25125d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04c7a5d6-89a0-4da5-8ffc-1ab94c9b16e6"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6055f44-cf3d-4d25-aa62-4a8e57611fae"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""122832b1-98c5-4cd5-a17c-d2fbb17fbce7"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 1>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""008f41ed-e989-4931-9be5-77564a48a5bf"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 1>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d576c91-48eb-4cbc-a656-882a1d1e40e8"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91af54f5-0398-4340-be67-ec833b54d36f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81d4f5fa-9363-4b26-b30b-fb58c13eb71e"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8938f8d8-94d3-4094-bd23-99cecc6d3764"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 2>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""147967b1-e3e8-4de9-987b-af245b9ce8bd"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 2>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebce8271-d3b8-4f11-b802-697eff60b693"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""198d7988-decb-4115-9c07-def452b822b7"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db576d44-7d88-4f6d-97cd-0152078792b2"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ec70f0b-3022-451e-aaaf-3b45b4b586ac"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -797,6 +1002,8 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Move = m_UI.FindAction("Move", throwIfNotFound: true);
         m_UI_Enter = m_UI.FindAction("Enter", throwIfNotFound: true);
+        m_UI_AnyButton = m_UI.FindAction("AnyButton", throwIfNotFound: true);
+        m_UI_Mouse = m_UI.FindAction("Mouse", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_ChangePallete = m_Debug.FindAction("ChangePallete", throwIfNotFound: true);
@@ -1035,6 +1242,8 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Move;
     private readonly InputAction m_UI_Enter;
+    private readonly InputAction m_UI_AnyButton;
+    private readonly InputAction m_UI_Mouse;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -1054,6 +1263,14 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
         /// Provides access to the underlying input action "UI/Enter".
         /// </summary>
         public InputAction @Enter => m_Wrapper.m_UI_Enter;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/AnyButton".
+        /// </summary>
+        public InputAction @AnyButton => m_Wrapper.m_UI_AnyButton;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Mouse".
+        /// </summary>
+        public InputAction @Mouse => m_Wrapper.m_UI_Mouse;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1086,6 +1303,12 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
             @Enter.started += instance.OnEnter;
             @Enter.performed += instance.OnEnter;
             @Enter.canceled += instance.OnEnter;
+            @AnyButton.started += instance.OnAnyButton;
+            @AnyButton.performed += instance.OnAnyButton;
+            @AnyButton.canceled += instance.OnAnyButton;
+            @Mouse.started += instance.OnMouse;
+            @Mouse.performed += instance.OnMouse;
+            @Mouse.canceled += instance.OnMouse;
         }
 
         /// <summary>
@@ -1103,6 +1326,12 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
             @Enter.started -= instance.OnEnter;
             @Enter.performed -= instance.OnEnter;
             @Enter.canceled -= instance.OnEnter;
+            @AnyButton.started -= instance.OnAnyButton;
+            @AnyButton.performed -= instance.OnAnyButton;
+            @AnyButton.canceled -= instance.OnAnyButton;
+            @Mouse.started -= instance.OnMouse;
+            @Mouse.performed -= instance.OnMouse;
+            @Mouse.canceled -= instance.OnMouse;
         }
 
         /// <summary>
@@ -1368,6 +1597,20 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnEnter(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AnyButton" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAnyButton(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Mouse" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMouse(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Debug" which allows adding and removing callbacks.

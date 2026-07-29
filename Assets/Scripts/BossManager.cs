@@ -54,6 +54,7 @@ public class BossManager : MonoBehaviour
         boss.OnEnemyDeath -= OnBossFightEnd;
         GameManager.Instance.CurrentState = GameManager.GameStates.RegularGame;
         GameManager.Instance.StatTracker.TurnOffBoss(true);
+        GameManager.Instance.Platform.IncreaseFuelRate(.125f);
 
         GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStart");
 

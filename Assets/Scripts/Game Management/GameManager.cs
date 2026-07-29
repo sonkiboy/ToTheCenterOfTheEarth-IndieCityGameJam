@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    public OptionsSettings GameOptions;
     public InputManager InputManager;
     public PeristentSoundPlayer SoundManager;
     public PaletteManager PaletteManager;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public OverlayUI Overlay;
     public GameOver GameOver;
     public PopUpManager PopUpManager;
+    public PowerUpManager PowerManager;
     public Camera LowResCamera;
     public Camera MainCamera;
 
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
 
             // as the level increases, increase the fuel consumption rate on the platform
             // this will cause the dificulty to slowly increase as the player decends, to a point where the player cannot keep up with the demand
-            Platform.FuelPerSecond += .1f;
+            //Platform.FuelPerSecond += .1f;
 
             // set the UI Level counter to the current Level
             StatTracker.SetLevelScore(level);
@@ -225,13 +227,14 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.activeSceneChanged += OnSceneChanged;
+        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
     }
 
     
 
     void Start()
     {
-        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        
 
         //// TO DO: make this change based on the starting Game State
 
@@ -315,6 +318,17 @@ public class GameManager : MonoBehaviour
 
                 StartNormalGame();
 
+                break;
+
+            case ("TestScene"):
+                Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+                Platform = GameObject.FindGameObjectWithTag("Platform").GetComponent<PlatformBehavior>();
+                StatTracker = GameObject.FindAnyObjectByType<StatTracker>();
+                HealthTracker = GameObject.FindAnyObjectByType<HealthTracker>();
+
+                ScoreAnchor = StatTracker.gameObject.transform.Find("ScoreAnchor");
+                Overlay = GameObject.FindAnyObjectByType<OverlayUI>();
                 break;
 
             case ("MainMenu"):

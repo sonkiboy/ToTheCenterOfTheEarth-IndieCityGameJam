@@ -43,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Background
     uniqueID: 3344195875
     locked: 0
@@ -55,11 +58,9 @@ TagManager:
   - name: InfrontRock
     uniqueID: 3415670567
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: UI
     uniqueID: 1387516119
     locked: 0
   m_RenderingLayers:
   - Default
+  m_MigratedRenderPipelines: []

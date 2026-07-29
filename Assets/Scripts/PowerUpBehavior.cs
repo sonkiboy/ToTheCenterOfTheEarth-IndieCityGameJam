@@ -12,12 +12,9 @@ public class PowerUpBehavior : MonoBehaviour
 
     #endregion 
 
-    public enum PowerUpTypes 
-    {
-        Heal,Damage,DrillSpeed, Reload
-    }
+    
 
-    public PowerUpTypes Type;
+    public PowerUpManager.PowerUpTypes Type;
     public float Durration = 10f;
     public int DamageUp = 0;
     public float GunSpeedDown = 0;
@@ -51,40 +48,64 @@ public class PowerUpBehavior : MonoBehaviour
     {
         isCollected = true;
 
+        switch (Type)
+        {
+            case PowerUpManager.PowerUpTypes.Reload:
+
+                GameManager.Instance.PowerManager.ReloadPowerCount++;
+
+                break;
+
+            case PowerUpManager.PowerUpTypes.DrillSpeed:
+
+                GameManager.Instance.PowerManager.DrillPowerCount++;
+
+
+                break;
+
+            case PowerUpManager.PowerUpTypes.Damage:
+
+                GameManager.Instance.PowerManager.DamagePowerCount++;
+                break;
+
+
+        }
+
         GameManager.Instance.SoundManager.PlayNonDiageticSound("TreasureCollected");
 
         GameManager.Instance.PopUpManager.DisplayPowerPopUp(Type, this.transform.position);
 
         animator.enabled = false;
         spriteRenderer.enabled = false;
+        yield return null;
+        Destroy(this.gameObject);
+        //GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        //GunBehavior gun = playerObj.transform.GetComponentInChildren<GunBehavior>(true);
 
-        GunBehavior gun = playerObj.transform.GetComponentInChildren<GunBehavior>(true);
-
-        gun.AdditionalDamage += DamageUp;
-        gun.ReloadModifier += GunSpeedDown;
+        //gun.AdditionalDamage += DamageUp;
+        //gun.ReloadModifier += GunSpeedDown;
         
-        GameManager.Instance.CurrentHealth += HealDamage;
+        //GameManager.Instance.CurrentHealth += HealDamage;
 
-        if(GameManager.Instance.Platform != null)
-        {
-            GameManager.Instance.Platform.DecentSpeed += DrillSpeed;
+        //if(GameManager.Instance.Platform != null)
+        //{
+        //    GameManager.Instance.Platform.DecentSpeed += DrillSpeed;
 
-        }
+        //}
 
 
 
-        yield return new WaitForSeconds(Durration);
+        //yield return new WaitForSeconds(Durration);
 
-        gun.AdditionalDamage -= DamageUp;
-        gun.ReloadModifier -= GunSpeedDown;
-        GameManager.Instance.CurrentHealth -= HealDamage;
-        if( GameManager.Instance.Platform != null)
-        {
-            GameManager.Instance.Platform.DecentSpeed += DrillSpeed;
+        //gun.AdditionalDamage -= DamageUp;
+        //gun.ReloadModifier -= GunSpeedDown;
+        //GameManager.Instance.CurrentHealth -= HealDamage;
+        //if( GameManager.Instance.Platform != null)
+        //{
+        //    GameManager.Instance.Platform.DecentSpeed += DrillSpeed;
 
-        }
+        //}
 
     }
 }

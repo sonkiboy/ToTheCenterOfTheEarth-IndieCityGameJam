@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7374063556836506445}
   - component: {fileID: 12273638454663181}
   - component: {fileID: 2319868388547996760}
+  - component: {fileID: 8306201206735521034}
+  - component: {fileID: 558844998993144958}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468e9693635623a4a894c1366da28bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOptions: {fileID: 0}
   InputManager: {fileID: 7374063556836506445}
   SoundManager: {fileID: 1476708650184283372}
   PaletteManager: {fileID: 12273638454663181}
@@ -56,6 +59,9 @@ MonoBehaviour:
   Overlay: {fileID: 0}
   GameOver: {fileID: 1817808975515444347}
   PopUpManager: {fileID: 2319868388547996760}
+  PowerManager: {fileID: 8306201206735521034}
+  LowResCamera: {fileID: 0}
+  MainCamera: {fileID: 0}
   gun: {fileID: 11400000, guid: 6d86bfcd6c48eea4dab7783860547af4, type: 2}
   CenterScreen: {fileID: 0}
   Player: {fileID: 0}
@@ -68,6 +74,7 @@ MonoBehaviour:
   ActuallDepth: 0
   treasure: 0
   health: 3
+  GemHealRate: 15000
   _state: 0
 --- !u!114 &1817808975515444347
 MonoBehaviour:
@@ -91,15 +98,6 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 93adda04887b3564790b5f70d9c6a00c, type: 2}
-  EnterInput:
-    m_Name: Enter Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: c1db251c-0082-4c1e-aa18-3dd6ab8a6a81
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
   waitTime: 3
 --- !u!114 &7374063556836506445
 MonoBehaviour:
@@ -167,6 +165,33 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  UIMoveInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 70c69083-873f-432d-be72-1d36dec5eea6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  UIEnter:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2be2410d-fbbe-4c7b-87c9-7b8161e54ed4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  AnyInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: eda74c23-324e-4739-a566-af91ef6a537d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   DebugColorChange:
     m_Name: Debug Color Change
     m_Type: 0
@@ -229,6 +254,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopUpManager
   PowerPopUp: {fileID: 431553466246730587, guid: 83be3b0d7e1e3da4493ad1aaf2da1b4d, type: 3}
+--- !u!114 &8306201206735521034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827984039748135261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f6236e1f15f1a44a5881dec687af1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpManager
+  dmgDial: {fileID: 0}
+  reloadDial: {fileID: 0}
+  drillDial: {fileID: 0}
+  DamagePowerCount: 0
+  DamageUp: 20
+  DmgUpDurration: 10
+  ReloadPowerCount: 0
+  ReloadSpeedDown: 0.2
+  ReloadSpeedDurration: 10
+  DrillPowerCount: 0
+  DrillSpeed: 5
+  DrillDurration: 10
+  HealDamage: 1
+--- !u!114 &558844998993144958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827984039748135261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f972d1c805387845a6c34c6c11c3fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OptionsSettings
+  IsFullScreen: 0
+  SupportedResolutions:
+  - 2560x1440
+  - 1920x1080
+  - 1366x768
+  - 1280x720
+  - 1920x1200
+  - 1680x1050
+  - 1440x900
+  - 1280x800
+  - 1024x768
+  - 800x600
+  - 640x480
+  - 368x208
+  CurrentResolutionIndex: 0
+  IsScreenShakeOn: 0
+  IsVSynchOn: 0
+  SupportedStaticColors:
+  - {r: 0.33333334, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0.33333334, b: 0.33333334, a: 1}
+  - {r: 1, g: 0.33333334, b: 1, a: 1}
+  - {r: 1, g: 1, b: 0.33333334, a: 1}
+  - {r: 1, g: 0.33333334, b: 0, a: 1}
+  - {r: 0.6666667, g: 0.33333334, b: 0, a: 1}
+  - {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
+  - {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+  - {r: 0.33333334, g: 0.33333334, b: 1, a: 1}
+  - {r: 0.33333334, g: 1, b: 0.33333334, a: 1}
+  IsStaticColorsOn: 0
+  StaticVibrantColor: 0
+  StaticHeartyColor: 0
+  MasterVolume: 50
+  SoundVolume: 50
+  MusicVolume: 50
 --- !u!1001 &5194495448690299090
 PrefabInstance:
   m_ObjectHideFlags: 0

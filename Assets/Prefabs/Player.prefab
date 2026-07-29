@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64503f32986f214e897a8a7ab5317db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Gun: {fileID: 0}
   JetPackOn:
     idInternal: 0
     valueGuidInternal: 
@@ -211,8 +212,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -879296729
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2751910821779160472, guid: 22f5798043d4f0646bf8f01332a0f870, type: 3}
@@ -326,7 +327,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5924030830996797525, guid: 25137426d2596454281fd60846528ca8, type: 3}
@@ -353,4 +354,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Settings: {fileID: 0}
   AdditionalDamage: 0
+  AdditionalPierceCount: 0
+  ReloadModifier: 0
   BulletSpawnOffset: 1

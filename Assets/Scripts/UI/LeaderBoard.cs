@@ -43,20 +43,25 @@ public class LeaderBoard : MonoBehaviour
         
     }
 
-    public void UpdateScoreBoard()
+    // reads the data from the score board txt file and updates the textNames and textScores
+    void ReadDataFromFile()
     {
+        // if the file for the score board scores doesn't exist, then make a new one that has no text
         if (!File.Exists(path))
         {
-            File.WriteAllText(path,"");
+            File.WriteAllText(path, "");
         }
 
+        // read all the lines from the score board txt file and save them to a string array
         string[] textArray = File.ReadAllLines(path);
 
-        textNames = new string[textArray.Length/2];
+        // the txt file saves the scores and names as seperate lines, so half of the elements in the textArray are scores, and the other half are names
+        // create two arrays for the names and scores seperately, sized at half the length of the text array
+        textNames = new string[textArray.Length / 2];
         textScores = new string[textArray.Length / 2];
 
+        // seperate the textArray elements into the two seperate textNames and textScores arrays
         int counter = 0;
-
         for (int i = 0; i < textNames.Length; i++)
         {
             textNames[i] = textArray[counter];
@@ -64,6 +69,11 @@ public class LeaderBoard : MonoBehaviour
 
             counter += 2;
         }
+    }
+
+    public void UpdateScoreBoard()
+    {
+        ReadDataFromFile();
 
         for (int i = 0; i < Scores.Length; i++)
         {

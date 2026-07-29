@@ -22,17 +22,10 @@ public class GameOver : MonoBehaviour, ISceneUpdate
     public AK.Wwise.Event EndMusicOn;
     public AK.Wwise.Event EndMusicOff;
 
-    PlayerControllerInput inputActions;
-
-    public InputAction EnterInput;
+    
     public float waitTime = 3;
 
-    private void Awake()
-    {
-        inputActions = new PlayerControllerInput();
-        EnterInput = inputActions.UI.Enter;
-
-    }
+    
 
 
 
@@ -50,7 +43,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
         
         
         SceneManager.activeSceneChanged += OnSceneChanged;
-        //OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
         
     }
 
@@ -63,7 +56,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
     public void StartGameOver(int score)
     {
         StartCoroutine(GameOverSequence(score));
-        inputActions.Enable();
+        
 
     }
 
@@ -99,7 +92,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
         else
         {
             LeaderBoard.transform.localPosition = Vector2.zero;
-            EnterInput.performed += RestartGame;
+            GameManager.Instance.InputManager.MenuInput.started += RestartGame;
         }
 
 
@@ -108,11 +101,12 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
     private void RestartGame(InputAction.CallbackContext contex)
     {
+        Debug.LogAssertion("HIT IN GAMEOVER");
 
-        EnterInput.performed -= RestartGame;
+        GameManager.Instance.InputManager.MenuInput.started -= RestartGame;
 
 
-        inputActions.Dispose();
+        
 
         
         SceneManager.LoadScene("MainMenu");

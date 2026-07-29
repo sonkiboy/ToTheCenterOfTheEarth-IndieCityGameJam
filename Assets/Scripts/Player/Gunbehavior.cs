@@ -100,7 +100,7 @@ public class GunBehavior : MonoBehaviour
             while (GameManager.Instance.InputManager.FireInput.IsPressed() && Settings.Mode == GunSettings.BulletMode.Rapid)
             {
                 Fire();
-                yield return new WaitForSeconds(Settings.FireSpeed - (Settings.FireSpeed* ReloadModifier));
+                yield return new WaitForSeconds(Settings.FireSpeed - (Settings.FireSpeed* (GameManager.Instance.PowerManager.ReloadSpeedDown * GameManager.Instance.PowerManager.ReloadPowerCount)));
                 yield return new WaitForSeconds(Settings.FireSpeed * .05f);
             }
 

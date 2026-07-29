@@ -15,6 +15,9 @@ public class InputManager : MonoBehaviour
     public InputAction LookInput;
     public InputAction FireInput;
     public InputAction MenuInput;
+    public InputAction UIMoveInput;
+    public InputAction UIEnter;
+    public InputAction AnyInput;
 
     public InputAction DebugColorChange;
 
@@ -35,6 +38,9 @@ public class InputManager : MonoBehaviour
         MouseLookInput = inputManager.Player.MouseLook;
         FireInput = inputManager.Player.Fire;
         MenuInput = inputManager.Player.Start;
+        UIMoveInput = inputManager.UI.Move;
+        UIEnter = inputManager.UI.Enter;
+        AnyInput = inputManager.UI.AnyButton;
 
         DebugColorChange = inputManager.Debug.ChangePallete;
     }
@@ -49,7 +55,10 @@ public class InputManager : MonoBehaviour
         MouseLookInput.Enable();
         FireInput.Enable();
         MenuInput.Enable();
-        MenuInput.performed += OnMenuDebugPress;
+        UIMoveInput.Enable();
+        UIEnter.Enable();
+        AnyInput.Enable();
+        //MenuInput.performed += OnMenuDebugPress;
 
         DebugColorChange.Enable();
         DebugColorChange.performed += OnColorChangeDebugPress;
@@ -68,7 +77,10 @@ public class InputManager : MonoBehaviour
         MouseLookInput.Disable();
         FireInput.Disable();
         MenuInput.Disable();
-        MenuInput.performed -= OnMenuDebugPress;
+        AnyInput.Disable();
+        UIMoveInput.Disable();
+        UIMoveInput.Disable();
+        //MenuInput.performed -= OnMenuDebugPress;
 
         DebugColorChange.Disable();
         DebugColorChange.performed -= OnColorChangeDebugPress;
@@ -77,7 +89,7 @@ public class InputManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        MenuInput.performed += OnMenuDebugPress;
+        //MenuInput.performed += OnMenuDebugPress;
 
     }
 
@@ -106,12 +118,24 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    bool testpause = false;
     void OnMenuDebugPress(InputAction.CallbackContext context)
     {
-        if(SceneManager.GetActiveScene().name == "RegularGame")
+        //if(SceneManager.GetActiveScene().name == "RegularGame")
+        //{
+        //    AkUnitySoundEngine.StopAll();
+        //    SceneManager.LoadScene("MainMenu");
+        //}
+
+        if(testpause == false)
         {
-            AkUnitySoundEngine.StopAll();
-            SceneManager.LoadScene("MainMenu");
+            Time.timeScale = 0;
+            testpause = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            testpause = false;
         }
     }
 

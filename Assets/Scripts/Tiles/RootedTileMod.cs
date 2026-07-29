@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class RootedTileMod : MonoBehaviour
@@ -26,7 +27,11 @@ public class RootedTileMod : MonoBehaviour
     {
         tile.Health = tile.Health + TileHealthBonus;
         tile.OnTileHealthChange += OnRootDamaged;
-        rootOverlay = Instantiate(rootPrefab, this.gameObject.transform);
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+        rootOverlay = Instantiate(rootPrefab, boxCollider.bounds.center,quaternion.identity);
+        rootOverlay.transform.localScale = boxCollider.size;
+        
+
     }
 
     void OnRootDamaged(object sender, EventArgs e)

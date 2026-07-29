@@ -52,7 +52,9 @@ public class BulletBehavior : Bullet
 
             if (tb != null)
             {
-                tb.Health -= Damage + ExtraDamage;
+                if(GameManager.Instance.PowerManager != null) tb.Health -= Damage + ExtraDamage + (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount);
+                else tb.Health -= Damage + ExtraDamage;
+
             }
             else if (enemy != null)
             {

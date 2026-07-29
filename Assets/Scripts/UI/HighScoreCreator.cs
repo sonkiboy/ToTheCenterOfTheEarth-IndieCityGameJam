@@ -19,9 +19,7 @@ public class HighScoreCreator : MonoBehaviour
 
     #endregion
 
-    PlayerControllerInput inputActions;
-    InputAction moveInput;
-    InputAction EnterInput;
+    
 
     public AK.Wwise.Event StopAllSound;
 
@@ -30,30 +28,15 @@ public class HighScoreCreator : MonoBehaviour
     int selectedIcon = 0;
     int selectedCharacter = 0;
 
-    private void Awake()
-    {
-        inputActions = new PlayerControllerInput();
-        moveInput = inputActions.UI.Move;
-        EnterInput = inputActions.UI.Enter;
-
-        moveInput.performed += InputNavigate;
-        EnterInput.performed += EnterName;
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
+    
 
     private void Start()
     {
         leaderBoard = LeaderBoardObj.GetComponent<LeaderBoard>();
         score = GameManager.Instance.CurrentTreasure;
+
+        GameManager.Instance.InputManager.UIMoveInput.performed += InputNavigate;
+        GameManager.Instance.InputManager.MenuInput.performed += EnterName;
     }
 
     void InputNavigate(InputAction.CallbackContext context) 
@@ -92,7 +75,7 @@ public class HighScoreCreator : MonoBehaviour
 
             selectedCharacter = GetIndexOfLetterSprite(LetterRenderers[selectedIcon].sprite);
 
-            Selector.transform.localPosition = new Vector2(-65 + (selectedIcon * 36), -26);
+            Selector.transform.position = LetterRenderers[selectedIcon].rectTransform.position;
         }
 
         // else if the input is up or down, 
@@ -125,10 +108,10 @@ public class HighScoreCreator : MonoBehaviour
 
             }
 
-            if (selectedIcon != LetterRenderers.Length - 1)
-            {
-                LetterRenderers[selectedIcon].sprite = LetterSprites[selectedCharacter];
-            }
+            //if (selectedIcon != LetterRenderers.Length - 1)
+            //{
+            LetterRenderers[selectedIcon].sprite = LetterSprites[selectedCharacter];
+            //}
         }
 
 
@@ -185,9 +168,9 @@ public class HighScoreCreator : MonoBehaviour
 
             gameObject.transform.localPosition = Vector2.up * 400;
 
-            moveInput.performed -= InputNavigate;
-            EnterInput.performed -= EnterName;
-            EnterInput.performed += RestartGame;
+            GameManager.Instance.InputManager.UIMoveInput.performed -= InputNavigate;
+            GameManager.Instance.InputManager.MenuInput.performed -= EnterName;
+            GameManager.Instance.InputManager.MenuInput.performed += RestartGame;
             
         }
 
@@ -196,8 +179,8 @@ public class HighScoreCreator : MonoBehaviour
     private void RestartGame(InputAction.CallbackContext contex)
     {
         
+        GameManager.Instance.InputManager.MenuInput.performed -= RestartGame;
 
-        inputActions.Dispose();
         SceneManager.LoadScene("MainMenu");
     }
 
