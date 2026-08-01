@@ -13,12 +13,29 @@ MonoBehaviour:
   m_Name: JungleLayer
   m_EditorClassIdentifier: Assembly-CSharp::LayerSerializedObject
   LayerPallete:
-  - {r: 0, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
-  BaseBlockPallet: []
-  CommonFeatures: []
-  CommonFeatureSpawnRange: {x: 1, y: 1}
-  RareFeatures: []
-  RareFeatureSpawnRange: {x: 1, y: 1}
+  - {r: 0.11764706, g: 0.16078432, b: 0.32156864, a: 0}
+  - {r: 0.80784315, g: 0.08627451, b: 0.38039216, a: 0}
+  - {r: 0.38039216, g: 0.5803922, b: 0.48235294, a: 0}
+  - {r: 0.9882353, g: 0.91764706, b: 0.87058824, a: 0}
+  BaseBlockPallet:
+  - {fileID: 4798846638758500855, guid: 5f027b9caccd4274e98246689b32f549, type: 3}
+  - {fileID: 4798846638758500855, guid: e83ef899b5e9ca4449dde1dc45580b6f, type: 3}
+  - {fileID: 4798846638758500855, guid: 1b305436b4a5e2e419508f2f7f41ad48, type: 3}
+  - {fileID: 4798846638758500855, guid: 92f78e70e73eefb4aac4954d2193e0e4, type: 3}
+  - {fileID: 4798846638758500855, guid: 458abdb814ad0374c8f933bdb1eb4038, type: 3}
+  - {fileID: 5995631081246457305, guid: 63a51d890beb44a4bab8a2efb5b196d8, type: 3}
+  - {fileID: 886337191729954254, guid: 51ed92e6e6bf65a49ba5de69b17287c1, type: 3}
+  CommonFeatures:
+  - {fileID: 4959592619365724177, guid: 09b3d56f75a27c84582133402596ee37, type: 3}
+  - {fileID: 5574620536172851613, guid: 12be4af054ec1e848a748b0d5b40a2b3, type: 3}
+  - {fileID: 646387717767332898, guid: 8fc60ba7d57fd9c41b408c95c9a5e1e8, type: 3}
+  - {fileID: 1969568219695917701, guid: 9f6004c65f0c1ee4fac027f50cef97a1, type: 3}
+  CommonFeatureSpawnRange: 100
+  RareFeatures:
+  - {fileID: 7795167321983646521, guid: f1583c459f3248e408f84b1e81304ed9, type: 3}
+  - {fileID: 6245839323528266023, guid: 57ef3e154d7d97448aa7c717e56283a4, type: 3}
+  - {fileID: 2163494120345482535, guid: f24d92beae7b899488d9c0bb734af467, type: 3}
+  RareFeatureSpawnRange: 10
+  SpawnedEnemies: []
+  NumberOfEnemies: 4
+  LayerBoss: 0

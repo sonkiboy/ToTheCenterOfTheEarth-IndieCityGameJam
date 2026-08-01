@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a22037321fb5cd4eb36f9d72233155f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyingEnemy
-  Speed2D: {x: 2, y: 2}
+  Speed2D: {x: 3, y: 2}
   Target: {fileID: 0}
   targetPosition: {x: 0, y: 0}
   OffsetDistance: 2
@@ -214,7 +214,7 @@ MonoBehaviour:
   TreasureReward: 10
   FuelReward: 15
   CollisionDamage: 1
-  hp: 40
+  hp: 120
   BulletPrefab: {fileID: 6842841822378426712, guid: d8c7048bf6ed99845868ad76c44d73f2, type: 3}
   ChargeTime: 1
   CoolDownTime: 3

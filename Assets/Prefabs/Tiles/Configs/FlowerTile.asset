@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FlowerTile
   m_EditorClassIdentifier: 
   Health: 30
-  SpawnChance: 1
+  SpawnChance: 10
   PointsGiven: 50
   GemsDropped: 0
   FuelDrop: 0

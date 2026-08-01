@@ -14,11 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LayerSerializedObject
   LayerPallete:
   - {r: 0, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0.9960785, g: 0.33333334, b: 0.33333334, a: 1}
+  - {r: 0.33333334, g: 0.9960785, b: 0.9960785, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  BaseBlockPallet: []
-  CommonFeatures: []
-  CommonFeatureSpawnRange: {x: 1, y: 1}
-  RareFeatures: []
-  RareFeatureSpawnRange: {x: 1, y: 1}
+  BaseBlockPallet:
+  - {fileID: 4798846638758500855, guid: 5f027b9caccd4274e98246689b32f549, type: 3}
+  - {fileID: 4798846638758500855, guid: e83ef899b5e9ca4449dde1dc45580b6f, type: 3}
+  - {fileID: 4798846638758500855, guid: 1b305436b4a5e2e419508f2f7f41ad48, type: 3}
+  - {fileID: 4798846638758500855, guid: 458abdb814ad0374c8f933bdb1eb4038, type: 3}
+  - {fileID: 4798846638758500855, guid: 92f78e70e73eefb4aac4954d2193e0e4, type: 3}
+  - {fileID: 7872972630094744611, guid: d8103fea5db2bb644979ed0b451d345b, type: 3}
+  - {fileID: 4798846638758500855, guid: 726fbbef7ef879344b1980efdc42e46a, type: 3}
+  CommonFeatures:
+  - {fileID: 4959592619365724177, guid: 09b3d56f75a27c84582133402596ee37, type: 3}
+  - {fileID: 2163494120345482535, guid: 63f46a3f04c826744b6fda6bc2e0d4a2, type: 3}
+  - {fileID: 2163494120345482535, guid: 846a0898766539648a5fa0717011302a, type: 3}
+  - {fileID: 2163494120345482535, guid: 0f21390153a4a6b4c8a33d53f6c78acc, type: 3}
+  - {fileID: 2163494120345482535, guid: 5b4c49008ed6ab348a2a7b2186d7b818, type: 3}
+  - {fileID: 5574620536172851613, guid: 12be4af054ec1e848a748b0d5b40a2b3, type: 3}
+  - {fileID: 646387717767332898, guid: 8fc60ba7d57fd9c41b408c95c9a5e1e8, type: 3}
+  - {fileID: 1969568219695917701, guid: 9f6004c65f0c1ee4fac027f50cef97a1, type: 3}
+  CommonFeatureSpawnRange: 40
+  RareFeatures:
+  - {fileID: 7795167321983646521, guid: f1583c459f3248e408f84b1e81304ed9, type: 3}
+  - {fileID: 6245839323528266023, guid: 57ef3e154d7d97448aa7c717e56283a4, type: 3}
+  - {fileID: 2163494120345482535, guid: f24d92beae7b899488d9c0bb734af467, type: 3}
+  RareFeatureSpawnRange: 10
+  SpawnedEnemies:
+  - {fileID: 2210593898646789075, guid: 54794689216a5084fa45ecdd7e7e50e7, type: 3}
+  NumberOfEnemies: 4
+  LayerBoss: 0

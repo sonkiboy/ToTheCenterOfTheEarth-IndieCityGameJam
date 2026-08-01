@@ -117,7 +117,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -742802839
-  m_SortingLayer: -2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1055753057529974843, guid: 109d653c5bbb39a44ae3ab8cc0d77200, type: 3}
@@ -326,6 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WindForceArea
   Direciton: {x: 0, y: 1}
   ForceStrength: 50
+  MaxVelocity: 20
   ForceMask:
     serializedVersion: 2
     m_Bits: 6400
@@ -5243,9 +5244,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -879296729
-  m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingLayerID: -742802839
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

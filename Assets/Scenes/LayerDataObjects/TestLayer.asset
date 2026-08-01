@@ -39,7 +39,7 @@ MonoBehaviour:
   - {fileID: 5574620536172851613, guid: 12be4af054ec1e848a748b0d5b40a2b3, type: 3}
   - {fileID: 646387717767332898, guid: 8fc60ba7d57fd9c41b408c95c9a5e1e8, type: 3}
   - {fileID: 1969568219695917701, guid: 9f6004c65f0c1ee4fac027f50cef97a1, type: 3}
-  CommonFeatureSpawnRange: 15
+  CommonFeatureSpawnRange: 40
   RareFeatures:
   - {fileID: 7795167321983646521, guid: f1583c459f3248e408f84b1e81304ed9, type: 3}
   - {fileID: 6245839323528266023, guid: 57ef3e154d7d97448aa7c717e56283a4, type: 3}
@@ -47,3 +47,4 @@ MonoBehaviour:
   RareFeatureSpawnRange: 10
   SpawnedEnemies: []
   NumberOfEnemies: 4
+  LayerBoss: 0

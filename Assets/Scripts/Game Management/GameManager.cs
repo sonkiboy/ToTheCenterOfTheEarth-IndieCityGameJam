@@ -66,22 +66,25 @@ public class GameManager : MonoBehaviour
             // save the passed in value to "level"
             level = value;
 
-            // as the level increases, increase the fuel consumption rate on the platform
-            // this will cause the dificulty to slowly increase as the player decends, to a point where the player cannot keep up with the demand
-            //Platform.FuelPerSecond += .1f;
+            if(OnDepthChanged != null)
+            {
+                OnDepthChanged.Invoke(this, level);
+            }
 
             // set the UI Level counter to the current Level
             StatTracker.SetLevelScore(level);
 
-            if(level%100 == 0 && level > 10)
-            {
-                BossManager.StartBossFight(BossManager.Bosses.InsectQueen);
-            }
+            //if(level%100 == 0 && level > 10)
+            //{
+            //    BossManager.StartBossFight(BossManager.Bosses.InsectQueen);
+            //}
             
         }
     }
 
     public int ActuallDepth = 0;
+
+    public EventHandler<int> OnDepthChanged;
     
 
     // ------------ TREASURE ------------
@@ -227,14 +230,14 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.activeSceneChanged += OnSceneChanged;
-        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
     }
 
     
 
     void Start()
     {
-        
+        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+
 
         //// TO DO: make this change based on the starting Game State
 

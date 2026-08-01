@@ -155,7 +155,7 @@ public class PauseMenuUI : MonoBehaviour
             uiInputModule.enabled = true;
 
         }
-        else
+        else if(PauseMenuObj.activeSelf == false && GameManager.Instance.CurrentState != GameManager.GameStates.GameOver) 
         {
             Time.timeScale = 0;
 

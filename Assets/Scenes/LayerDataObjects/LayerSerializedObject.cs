@@ -14,5 +14,7 @@ public class LayerSerializedObject : ScriptableObject
     public int RareFeatureSpawnRange = 5;
 
     public GameObject[] SpawnedEnemies;
-    public int NumberOfEnemies = 4; 
+    public int NumberOfEnemies = 4;
+
+    public BossManager.Bosses LayerBoss;
 }

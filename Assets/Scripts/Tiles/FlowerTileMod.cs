@@ -62,9 +62,12 @@ public class FlowerTileMod : MonoBehaviour
                     }
                     else
                     {
-                        if (Vector3.Distance(this.transform.position, tile.transform.position) < Vector3.Distance(this.transform.position, targetTile.transform.position))
+                        if (tile != null)
                         {
-                            targetTile = tile;
+                            if (Vector3.Distance(this.transform.position, tile.transform.position) < Vector3.Distance(this.transform.position, targetTile.transform.position))
+                            {
+                                targetTile = tile;
+                            }
                         }
                     }
 

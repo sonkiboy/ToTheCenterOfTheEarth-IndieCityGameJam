@@ -24,6 +24,7 @@ public class BlockGenerator : MonoBehaviour
     //[SerializeField] int GenerateHeight = 10;
 
     [SerializeField]public Vector2Int chunkSize = new Vector2Int(17, 17);
+    public Vector2 OffScreenEnemySpawn = Vector2.right * 10;
 
 
     public LayerSerializedObject LayerData;
@@ -39,7 +40,7 @@ public class BlockGenerator : MonoBehaviour
         GenerateChunk(chunkSize.y, chunkSize.y);
         GenerateChunk(0, 0);
         StartCoroutine(ChunkCounter());
-
+        GameManager.Instance.OnDepthChanged += OnLevelUpdated;
     }
 
     // Update is called once per frame
@@ -159,6 +160,25 @@ public class BlockGenerator : MonoBehaviour
 
         }
     }
+
+    public void OnLevelUpdated(object sender, int level)
+    {
+        while(level > 100)
+        {
+            level -= 100;
+        }
+
+        if (level % (100 / (LayerData.NumberOfEnemies + 1)) == 0 && level < 100)
+        {
+            Instantiate(LayerData.SpawnedEnemies[0], (Vector2)GameManager.Instance.Platform.transform.position + OffScreenEnemySpawn, Quaternion.identity);
+            OffScreenEnemySpawn *= Vector2.left;
+        }
+
+        if (level % 100 == 0 && level > 10)
+        {
+            GameManager.Instance.BossManager.StartBossFight(LayerData.LayerBoss);
+        }
+    }
     public void GenerateChunk(int depth,int platformlevel)
     {
         //chunkSize = new Vector2Int(17, 17);
@@ -246,16 +266,16 @@ public class BlockGenerator : MonoBehaviour
                     //Debug.Log($"incrimenting origin index from {validOriginIndex} to {validOriginIndex + Vector2Int.right}");
 
                     validOriginIndex += Vector2Int.right;
-                    if (validOriginIndex.x >= chunkSize.x - featureData.Size.x - 1)
+                    if (validOriginIndex.x > chunkSize.x - featureData.Size.x - 1)
                     {
                         //Debug.Log($"origin index ({validOriginIndex}) overflowed X max {chunkSize.x - featureData.Size.x}, incirmenting Y");
 
                         validOriginIndex = new Vector2Int(0, validOriginIndex.y + 1);
-                        if (validOriginIndex.y >= chunkSize.y - 1)
+                        if (validOriginIndex.y > chunkSize.y -1)
                         {
                             //Debug.Log($"origin index ({validOriginIndex}) overflowed U max {chunkSize.y}, incirmenting to first possible indext {Vector2Int.up * featureData.Size.y}");
 
-                            validOriginIndex = Vector2Int.up * featureData.Size.y;
+                            validOriginIndex = new Vector2Int(0, featureData.Size.y);
                         }
                     }
 
@@ -304,11 +324,9 @@ public class BlockGenerator : MonoBehaviour
                 Vector2Int validOriginIndex = evalStartIndex;
                 Vector2Int finalOrigin = -Vector2Int.one;
 
-                // its possible that due to the random nature of the placement that a feature is not able to be placed in the chunk. maxPlacementAttempts dictates how many times we can try before giving up
+
                 do
                 {
-
-
                     // if the tile is empty, star checking if the whole shape can fit here
                     if (tileArray[validOriginIndex.x, validOriginIndex.y] == false)
                     {
@@ -351,16 +369,16 @@ public class BlockGenerator : MonoBehaviour
                     //Debug.Log($"incrimenting origin index from {validOriginIndex} to {validOriginIndex + Vector2Int.right}");
 
                     validOriginIndex += Vector2Int.right;
-                    if (validOriginIndex.x >= chunkSize.x - featureData.Size.x - 1)
+                    if (validOriginIndex.x > chunkSize.x - featureData.Size.x -1)
                     {
                         //Debug.Log($"origin index ({validOriginIndex}) overflowed X max {chunkSize.x - featureData.Size.x}, incirmenting Y");
 
                         validOriginIndex = new Vector2Int(0, validOriginIndex.y + 1);
-                        if (validOriginIndex.y >= chunkSize.y - 1)
+                        if (validOriginIndex.y > chunkSize.y - 1)
                         {
                             //Debug.Log($"origin index ({validOriginIndex}) overflowed U max {chunkSize.y}, incirmenting to first possible indext {Vector2Int.up * featureData.Size.y}");
 
-                            validOriginIndex = Vector2Int.up * featureData.Size.y;
+                            validOriginIndex = new Vector2Int (0 ,featureData.Size.y);
                         }
                     }
 

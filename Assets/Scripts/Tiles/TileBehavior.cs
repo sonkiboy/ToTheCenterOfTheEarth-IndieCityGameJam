@@ -215,6 +215,13 @@ public class TileBehavior : MonoBehaviour
 
                     rb.AddForce(force, ForceMode2D.Impulse);
                 }
+
+
+                RootedTileMod rootMod = collider.GetComponent<RootedTileMod>();
+                if(rootMod != null)
+                {
+                    rootMod.IgniteRoot();
+                }
             }
         }
 
