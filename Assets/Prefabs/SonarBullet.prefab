@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6301116939211003608, guid: 5515b6ac29d2e954fb83924761962e2a, type: 3}
@@ -152,7 +152,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -195,6 +195,17 @@ MonoBehaviour:
   Damage: 5
   DestroyTime: 3
   ExtraDamage: 0
+  HitSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  EnemyHitsound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  IsEnemyBullet: 1
+  rb: {fileID: 5285241821634052846}
+  Speed: 0.1
   MaxScaleSize: 2
   MovementCurve:
     serializedVersion: 2

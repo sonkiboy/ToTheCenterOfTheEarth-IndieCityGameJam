@@ -61,14 +61,19 @@ public class InsectQueenBehavior : Enemy
     IEnumerator BattleSequence()
     {
 
-        while (true)
+        while (Health > 0)
         {
+            if (Health <= 0) break;
+
             queenAnimator.SetTrigger("TriggerIdle");
             yield return new WaitForSeconds(Downtime);
+
+            if (Health <= 0) break;
 
             queenAnimator.SetTrigger("TriggerCharge");
             warningBarController.ShowWarning(ChargeTime);
             yield return new WaitForSeconds(ChargeTime);
+            if (Health <= 0) break;
 
             StartCoroutine(FireLazer());
             queenAnimator.SetTrigger("TriggerFire");
@@ -128,8 +133,7 @@ public class InsectQueenBehavior : Enemy
 
         yield return new WaitForSeconds(3f);
 
-        if(RewardChest != null) {Instantiate(RewardChest,this.transform.position,Quaternion.identity);}
-        GameManager.Instance.PaletteManager.IncrimentPallete(1.5f);
+        
 
 
         // destroy the boss object

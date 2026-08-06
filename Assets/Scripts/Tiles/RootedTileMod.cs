@@ -68,6 +68,8 @@ public class RootedTileMod : MonoBehaviour
         {
             isIgnited = true;
 
+            
+
             // start the coroutine
             StartCoroutine(SpreadFire());
         }
@@ -102,7 +104,7 @@ public class RootedTileMod : MonoBehaviour
         yield return new WaitForSeconds(BurnTime / 2f);
 
 
-        tile.Health = originalTileHealth;   
+        tile.Health = originalTileHealth/2;   
 
 
     }

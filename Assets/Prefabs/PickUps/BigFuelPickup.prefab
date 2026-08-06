@@ -201,7 +201,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 3391
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -308,9 +308,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 205071321
-  m_SortingLayer: -3
-  m_SortingOrder: 0
+  m_SortingLayerID: -742802839
+  m_SortingLayer: 3
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4621639139397466731, guid: f20ff02f4e3307d48aaa393865f891b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -181,11 +181,20 @@ public class StatTracker : MonoBehaviour
     {
         LevelBossText.SetActive(true);
         BossWinText.SetActive(false);
+
+        foreach(GameObject numRender in levelDigits)
+        {
+            numRender.SetActive(false);
+        }
     }
 
     public void TurnOffBoss(bool win)
     {
         LevelBossText.SetActive(false);
+        foreach (GameObject numRender in levelDigits)
+        {
+            numRender.SetActive(true);
+        }
 
         if (!win)
         {

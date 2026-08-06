@@ -80,7 +80,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Positions:
@@ -241,7 +241,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8187914590041648259, guid: a79ad488381c43e469909a2b56cbc3b9, type: 3}
@@ -261,7 +261,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2148418146656349969}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -404,7 +404,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -720803166590162853, guid: f9f93ad9417e3984492d6b83f1c9ca00, type: 3}
@@ -619,7 +619,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Positions:
@@ -781,7 +781,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Positions:
@@ -973,7 +973,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8187914590041648259, guid: a79ad488381c43e469909a2b56cbc3b9, type: 3}
@@ -993,7 +993,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4752359981026439279}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -1101,7 +1101,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8187914590041648259, guid: a79ad488381c43e469909a2b56cbc3b9, type: 3}
@@ -1121,7 +1121,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5337557352797180789}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -1234,6 +1234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlyingEnemy
   Speed2D: {x: 10, y: 10}
   Target: {fileID: 3601318166807015139}
+  targetPosition: {x: 0, y: 0}
   OffsetDistance: 0
 --- !u!50 &8025932932691474667
 Rigidbody2D:
@@ -1314,7 +1315,7 @@ MonoBehaviour:
   TreasureReward: 10
   FuelReward: 15
   CollisionDamage: 1
-  hp: 200
+  hp: 700
   PetalBulletPrefab: {fileID: 1722580727778870292, guid: 31b33039692b3ee47a5d48e2b19631e6, type: 3}
   ShotsPerCycle: 3
   FireRate: 0.75

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 242b58bb48983684ca922c4c44c8bc94
+guid: e6176417644d9624587fffeab619e8b7
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -54,9 +54,9 @@ ScriptedImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
     normalMap: 0
     textureFormat: 0
     maxTextureSize: 0
@@ -76,33 +76,33 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 0
+    defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 0
     spritePadding: 0
     generateModelPrefab: 1
-    generateAnimationClips: 1
+    generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
-    generateIndividualEvents: 1
+    generateIndividualEvents: 0
     generateSpriteAtlas: 1
   asepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 0
+    defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 0
     spritePadding: 0
     generateModelPrefab: 1
-    generateAnimationClips: 1
+    generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
-    generateIndividualEvents: 1
+    generateIndividualEvents: 0
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639212924389543472
+  platformSettingsDirtyTick: 639212044659106897
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Bee
+  - name: Start Arrow
     originalName: 
-    pivot: {x: 0.5555556, y: 0.5714286}
+    pivot: {x: 0.48780486, y: -0.07692308}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 9
-      height: 7
-    spriteID: 8cb27ea44bc31f841b692c3efcb4c6e0
+      width: 41
+      height: 26
+    spriteID: cf1affb7dc36039438fc140bd617eebc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3021629282
+      value0: 1887481469
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Bee
+    name: Start Arrow
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Bee
+    - name: Start Arrow
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 3
-        y: 4
-        width: 9
-        height: 7
-      spriteId: 8cb27ea44bc31f841b692c3efcb4c6e0
+        x: 4
+        y: 2
+        width: 41
+        height: 26
+      spriteId: cf1affb7dc36039438fc140bd617eebc
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -217,5 +217,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
-  previousTextureSize: {x: 16, y: 8}
+  canvasSize: {x: 48, y: 32}
+  previousTextureSize: {x: 64, y: 32}

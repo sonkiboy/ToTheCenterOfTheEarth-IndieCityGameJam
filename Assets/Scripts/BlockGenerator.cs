@@ -27,12 +27,16 @@ public class BlockGenerator : MonoBehaviour
     public Vector2 OffScreenEnemySpawn = Vector2.right * 10;
 
 
-    public LayerSerializedObject LayerData;
+    public int CurrentLayerData = 0;
 
+    public LayerSerializedObject[] Layers;
     
 
     [SerializeField] float ScrollDownSpeed = .5f;
 
+    private void Awake()
+    {
+    }
 
     void Start()
     {
@@ -41,6 +45,10 @@ public class BlockGenerator : MonoBehaviour
         GenerateChunk(0, 0);
         StartCoroutine(ChunkCounter());
         GameManager.Instance.OnDepthChanged += OnLevelUpdated;
+        if (GameManager.Instance.GameOptions.IsStaticColorsOn == false)
+        {
+            GameManager.Instance.PaletteManager.ChangePalette(0f, Layers[CurrentLayerData].LayerPallete[0], Layers[CurrentLayerData].LayerPallete[1], Layers[CurrentLayerData].LayerPallete[2], Layers[CurrentLayerData].LayerPallete[3]);
+        }
     }
 
     // Update is called once per frame
@@ -49,7 +57,12 @@ public class BlockGenerator : MonoBehaviour
 
     }
 
-    
+    private void OnDisable()
+    {
+        GameManager.Instance.OnDepthChanged -= OnLevelUpdated;
+
+    }
+
     private List<GameObject> GetAllBlocks()
     {
         List<GameObject> blocks = new List<GameObject>();
@@ -78,7 +91,7 @@ public class BlockGenerator : MonoBehaviour
         List<TileBehavior> tileBehaviors = new List<TileBehavior>();
 
 
-        foreach (GameObject tile in LayerData.BaseBlockPallet)
+        foreach (GameObject tile in Layers[CurrentLayerData].BaseBlockPallet)
         {
             tileBehaviors.Add(tile.GetComponent<TileBehavior>());
         }
@@ -91,17 +104,17 @@ public class BlockGenerator : MonoBehaviour
         }
 
 
-        GameObject spawnedBlock = LayerData.BaseBlockPallet[0];
+        GameObject spawnedBlock = Layers[CurrentLayerData].BaseBlockPallet[0];
 
         int randomNum = Random.Range(1, sum);
 
         int count = 0;
 
-        for (int i = 0; i < LayerData.BaseBlockPallet.Length; i++)
+        for (int i = 0; i < Layers[CurrentLayerData].BaseBlockPallet.Length; i++)
         {
             if (randomNum < tileBehaviors[i].Config.SpawnChance + count)
             {
-                spawnedBlock = LayerData.BaseBlockPallet[i];
+                spawnedBlock = Layers[CurrentLayerData].BaseBlockPallet[i];
                 break;
 
             }
@@ -142,7 +155,7 @@ public class BlockGenerator : MonoBehaviour
     public IEnumerator ChunkCounter()
     {
         int nextSpawnLevel = GameManager.Instance.ActuallDepth + chunkSize.y / 2;
-        Debug.Log($"Starting Next Chunk Level: {nextSpawnLevel}");
+        //Debug.Log($"Starting Next Chunk Level: {nextSpawnLevel}");
         while (this.isActiveAndEnabled)
         {
             
@@ -168,15 +181,15 @@ public class BlockGenerator : MonoBehaviour
             level -= 100;
         }
 
-        if (level % (100 / (LayerData.NumberOfEnemies + 1)) == 0 && level < 100)
+        if (level % (100 / (Layers[CurrentLayerData].NumberOfEnemies + 1)) == 0 && level < 100)
         {
-            Instantiate(LayerData.SpawnedEnemies[0], (Vector2)GameManager.Instance.Platform.transform.position + OffScreenEnemySpawn, Quaternion.identity);
+            Instantiate(Layers[CurrentLayerData].SpawnedEnemies[0], (Vector2)GameManager.Instance.Platform.transform.position + OffScreenEnemySpawn, Quaternion.identity);
             OffScreenEnemySpawn *= Vector2.left;
         }
 
         if (level % 100 == 0 && level > 10)
         {
-            GameManager.Instance.BossManager.StartBossFight(LayerData.LayerBoss);
+            GameManager.Instance.BossManager.StartBossFight(Layers[CurrentLayerData].LayerBoss);
         }
     }
     public void GenerateChunk(int depth,int platformlevel)
@@ -201,14 +214,14 @@ public class BlockGenerator : MonoBehaviour
             }
         }
 
-        int numOfFeatures = Mathf.RoundToInt((chunkSize.y / 100f) * LayerData.CommonFeatureSpawnRange);
+        int numOfFeatures = Mathf.RoundToInt((chunkSize.y / 100f) * Layers[CurrentLayerData].CommonFeatureSpawnRange);
 
         // COMMON FEATURES 
 
         // place the dicated number of features into the chunk and fill their spots in the tileArray
         for (int i = 0; i < numOfFeatures; i++)
         {
-            LevelFeatureData featureData = LayerData.CommonFeatures[Random.Range(0, LayerData.CommonFeatures.Length)].GetComponent<LevelFeatureData>();
+            LevelFeatureData featureData = Layers[CurrentLayerData].CommonFeatures[Random.Range(0, Layers[CurrentLayerData].CommonFeatures.Length)].GetComponent<LevelFeatureData>();
             if (featureData != null)
             {
                 // find a suitable place in the array
@@ -309,11 +322,11 @@ public class BlockGenerator : MonoBehaviour
             }
         }
 
-        int numOfRareFeatures = Mathf.RoundToInt((chunkSize.y/100f) * LayerData.RareFeatureSpawnRange);
+        int numOfRareFeatures = Mathf.RoundToInt((chunkSize.y/100f) * Layers[CurrentLayerData].RareFeatureSpawnRange);
 
         for (int i = 0; i < numOfFeatures; i++)
         {
-            LevelFeatureData featureData = LayerData.RareFeatures[Random.Range(0, LayerData.RareFeatures.Length)].GetComponent<LevelFeatureData>();
+            LevelFeatureData featureData = Layers[CurrentLayerData].RareFeatures[Random.Range(0, Layers[CurrentLayerData].RareFeatures.Length)].GetComponent<LevelFeatureData>();
             if (featureData != null)
             {
                 // find a suitable place in the array
@@ -455,6 +468,19 @@ public class BlockGenerator : MonoBehaviour
         }
     }
 
+    public void NextLayer()
+    {
+        CurrentLayerData++;
+        if(CurrentLayerData >= Layers.Length)
+        {
+            CurrentLayerData = 0;
+        }
 
+        if(GameManager.Instance.GameOptions.IsStaticColorsOn == false)
+        {
+            GameManager.Instance.PaletteManager.ChangePalette(1.5f, Layers[CurrentLayerData].LayerPallete[0], Layers[CurrentLayerData].LayerPallete[1], Layers[CurrentLayerData].LayerPallete[2], Layers[CurrentLayerData].LayerPallete[3]);
+        }
+
+    }
 
 }

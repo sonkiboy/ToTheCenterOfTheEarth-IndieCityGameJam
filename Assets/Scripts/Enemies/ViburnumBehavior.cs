@@ -6,6 +6,7 @@ public class ViburnumBehavior : Enemy
     private Transform head;
     private Animator animator;
     public GameObject PetalBulletPrefab;
+    private RotateToTarget headRotation;
     public int ShotsPerCycle = 3;
     public float FireRate = .75f;
     public float CoolDownTime = 3f;
@@ -19,6 +20,8 @@ public class ViburnumBehavior : Enemy
         head = transform.Find("Head");
         startingHP = Health;
         animator = head.GetComponent<Animator>();
+        headRotation = head.GetComponent<RotateToTarget>();
+        headRotation.Target = GameManager.Instance.Player.transform;
         StartCoroutine(AttackRoutine());
     }
 

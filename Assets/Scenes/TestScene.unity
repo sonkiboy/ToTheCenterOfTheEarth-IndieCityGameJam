@@ -1646,6 +1646,7 @@ MonoBehaviour:
   - {fileID: 191286559}
   - {fileID: 2074553266}
   - {fileID: 359188981}
+  Board: {fileID: 0}
 --- !u!224 &118316073
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41604,25 +41605,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 84071001473600400, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 974083828011403569, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1550440429976148647, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1793871242177238624, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
       propertyPath: m_Name
       value: OverlayCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2387318804569743974, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4114439211914113024, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
       propertyPath: m_Pivot.x
@@ -41704,30 +41689,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5331581098966977211, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5522026557435675207, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1963988507}
-    - target: {fileID: 6247704675881967787, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
-      propertyPath: m_ScreenMatchMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6247704675881967787, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8711209202915400077, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8787072992548908373, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

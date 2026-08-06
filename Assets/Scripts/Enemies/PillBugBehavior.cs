@@ -46,7 +46,13 @@ public class PillBugBehavior : Enemy
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         WallCheck();
+
+        if (collision.gameObject.tag == "Player")
+        {
+            GameManager.Instance.Player.TakeDamage(1);
+        }
     }
 
     IEnumerator ContinuousWallCheck()

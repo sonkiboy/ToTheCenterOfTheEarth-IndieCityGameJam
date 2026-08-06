@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuUI : MonoBehaviour
 {
@@ -123,6 +124,11 @@ public class PauseMenuUI : MonoBehaviour
         
     }
 
+    private void OnDisable()
+    {
+        GameManager.Instance.InputManager.MenuInput.performed -= TogglePauseMenu;
+
+    }
     public void PointerOverObject(GameObject uiObject)
     {
         Debug.Log("hit");
@@ -211,7 +217,15 @@ public class PauseMenuUI : MonoBehaviour
 
     public void QuitGame()
     {
-
+        if(SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            Application.Quit();
+        }
+        else
+        {
+            TogglePauseMenu(new InputAction.CallbackContext());
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
 

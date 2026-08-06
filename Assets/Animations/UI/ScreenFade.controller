@@ -28,7 +28,7 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1107 &-1240260438863955240
 AnimatorStateMachine:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -40,7 +40,7 @@ AnimatorStateMachine:
     m_Position: {x: 350, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8025146853238590480}
-    m_Position: {x: 350, y: 10, z: 0}
+    m_Position: {x: 340, y: 30, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 7140231321591448197}
@@ -60,7 +60,7 @@ AnimatorController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ScreenFade
-  serializedVersion: 5
+  serializedVersion: 6
   m_AnimatorParameters:
   - m_Name: FadeIn
     m_Type: 9
@@ -87,6 +87,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+  m_EvaluateTransitionsOnStart: 0
 --- !u!1101 &4855017009638713120
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

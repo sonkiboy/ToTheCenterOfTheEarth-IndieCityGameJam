@@ -130,7 +130,7 @@ public class GunBehavior : MonoBehaviour
             // while the fire button is pressed
             while (GameManager.Instance.InputManager.FireInput.IsPressed() && Settings.Mode == GunSettings.BulletMode.Singular)
             {
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForSeconds(Settings.FireSpeed);
             }
 
             Destroy(instantiated);

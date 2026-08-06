@@ -5,23 +5,26 @@ public class BossManager : MonoBehaviour
     #region obj and comp
 
     Camera cam;
+    BlockGenerator blockGenerator;
 
     #endregion
 
     public enum Bosses
     {
         InsectQueen,
-        HeadAndHands,
-        Plantera
+        Viburnum
     }
 
+    [SerializeField] GameObject RewardChest;
     [SerializeField] GameObject InsectQueenPrefab;
+    [SerializeField] GameObject ViburnumPrefab;
 
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        blockGenerator = GetComponent<BlockGenerator>();    
         //StartBossFight(Bosses.InsectQueen);
     }
 
@@ -35,15 +38,24 @@ public class BossManager : MonoBehaviour
     {
         GameManager.Instance.CurrentState = GameManager.GameStates.Boss;
         GameManager.Instance.StatTracker.TurnOnBoss();
+        GameObject spawnedBoss;
 
-        
+
 
         switch (boss)
         {
             case Bosses.InsectQueen:
 
-                GameObject spawnedBoss = Instantiate(InsectQueenPrefab,new Vector3(0,2.5f,1),Quaternion.identity,Camera.main.transform);
+                 spawnedBoss = Instantiate(InsectQueenPrefab,new Vector3(0,2.5f,1),Quaternion.identity,Camera.main.transform);
                 spawnedBoss.GetComponent<Enemy>().OnEnemyDeath += OnBossFightEnd;
+
+                break;
+
+                case Bosses.Viburnum:
+
+                 spawnedBoss = Instantiate(ViburnumPrefab, GameManager.Instance.Platform.transform.position, Quaternion.identity, Camera.main.transform);
+                 spawnedBoss.GetComponentInChildren<Enemy>().OnEnemyDeath += OnBossFightEnd;
+
 
                 break;
         }
@@ -54,10 +66,10 @@ public class BossManager : MonoBehaviour
         boss.OnEnemyDeath -= OnBossFightEnd;
         GameManager.Instance.CurrentState = GameManager.GameStates.RegularGame;
         GameManager.Instance.StatTracker.TurnOffBoss(true);
-        GameManager.Instance.Platform.IncreaseFuelRate(.125f);
-
+        GameManager.Instance.Platform.IncreaseFuelRate(.1f);
+        blockGenerator.NextLayer();
         GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStart");
-
+        if (RewardChest != null) { Instantiate(RewardChest, this.transform.position, Quaternion.identity); }
 
     }
 

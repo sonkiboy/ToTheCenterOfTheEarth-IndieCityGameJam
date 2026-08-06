@@ -13,20 +13,66 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField] PowerDialUI reloadDial;
     [SerializeField] PowerDialUI drillDial;
 
+    public int MaxPowers = 5;
 
     // POWER UP VARIABLES
-    public int DamagePowerCount = 0;
-    public int DamageUp = 20;
+    private int _dmgCnt = 0;
+    public int DamagePowerCount
+    {
+        get {return _dmgCnt;}
+        set 
+        {
+            if(_dmgCnt < MaxPowers)
+            {
+                _dmgCnt++;
+            }
+            else
+            {
+                damageTimeCount = DmgUpDurration;
+            }
+        }
+    }
+    public float DamageUp = 1.25f;
     public float DmgUpDurration = 10f;
     private float damageTimeCount = 0;
 
-    public int ReloadPowerCount = 0;
+    private int _rldCnt = 0;
+    public int ReloadPowerCount
+    {
+        get { return _rldCnt; }
+        set
+        {
+            if (_rldCnt < MaxPowers)
+            {
+                _rldCnt++;
+            }
+            else
+            {
+                reloadTimeCount = ReloadSpeedDurration;
+            }
+        }
+    }
     public float ReloadSpeedDown = 0.2f;
     public float ReloadSpeedDurration = 10f;
     private float reloadTimeCount = 0;
 
 
-    public int DrillPowerCount = 0;
+    private int _drlCnt = 0;
+    public int DrillPowerCount
+    {
+        get { return _drlCnt; }
+        set
+        {
+            if (_drlCnt < MaxPowers)
+            {
+                _drlCnt++;
+            }
+            else
+            {
+                drillTimeCount = DrillDurration;
+            }
+        }
+    }
     public int DrillSpeed = 5;
     public float DrillDurration = 10f;
     private float drillTimeCount = 0;

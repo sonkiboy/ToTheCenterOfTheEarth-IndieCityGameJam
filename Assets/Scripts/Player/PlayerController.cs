@@ -289,44 +289,44 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if the player has collided with an Enemy...
-        if (collision.gameObject.tag == "Enemy")
-        {
-            // check if the player isn't invincible, if they are, ignore the collision
-            if (!isInvincible)
-            {
+        //// if the player has collided with an Enemy...
+        //if (collision.gameObject.tag == "Enemy")
+        //{
+        //    // check if the player isn't invincible, if they are, ignore the collision
+        //    if (!isInvincible)
+        //    {
 
-                Enemy enemyComp = collision.gameObject.GetComponent<Enemy>();
+        //        Enemy enemyComp = collision.gameObject.GetComponent<Enemy>();
 
-                if (enemyComp != null)
-                {
-                    if (!enemyComp.CollisionDamage)
-                    {
-                        // THIS ENEMY DOES NOT DO COLLISION DAMAGE, RETURN AND IGNORE COLLISION
-                        return;
-                    }
-                }
+        //        if (enemyComp != null)
+        //        {
+        //            if (!enemyComp.CollisionDamage)
+        //            {
+        //                // THIS ENEMY DOES NOT DO COLLISION DAMAGE, RETURN AND IGNORE COLLISION
+        //                return;
+        //            }
+        //        }
 
-                // if there is no enemy component, or there is one and it allows for collision damage, then we will proceed and deal collision damage to the player
+        //        // if there is no enemy component, or there is one and it allows for collision damage, then we will proceed and deal collision damage to the player
 
-                // subtract player health from the Game Manager
-                TakeDamage(1);
+        //        // subtract player health from the Game Manager
+        //        TakeDamage(1);
 
-                // if the player died on this collision, set the animator back to idel by setting its speed to 0 and jetpack state to false
-                if (GameManager.Instance.CurrentHealth <= 0)
-                {
-                    animator.SetFloat("Speed", 0);
-                    animator.SetBool("IsJetpacking", false);
-                }
+        //        // if the player died on this collision, set the animator back to idel by setting its speed to 0 and jetpack state to false
+        //        if (GameManager.Instance.CurrentHealth <= 0)
+        //        {
+        //            animator.SetFloat("Speed", 0);
+        //            animator.SetBool("IsJetpacking", false);
+        //        }
 
-            }
-        }
-        else if (collision.gameObject.tag == "EnemyBullet")
-        {
-            // check if the player isn't invincible, if they are, ignore the collision
-            TakeDamage(1);
-            Destroy(collision.gameObject);
-        }
+        //    }
+        //}
+        //else if (collision.gameObject.tag == "EnemyBullet")
+        //{
+        //    // check if the player isn't invincible, if they are, ignore the collision
+        //    TakeDamage(1);
+        //    Destroy(collision.gameObject);
+        //}
     }
 
     public void TakeDamage(int damage)
@@ -336,6 +336,13 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.CurrentHealth -= damage;
             // play the damage sound effect
             GameManager.Instance.SoundManager.PlayNonDiageticSound("PlayerHit");
+
+            if (GameManager.Instance.CurrentHealth <= 0)
+            {
+                animator.SetFloat("Speed", 0);
+                animator.SetBool("IsJetpacking", false);
+            }
+
         }
 
     }
@@ -399,6 +406,7 @@ public class PlayerController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
+            if (GameManager.Instance.Platform != null)
             {
                 //Debug.Log($"OOB Check: Player {transform.position.y} Platform {GameManager.Instance.Platform.transform.position.y}");
                 if (transform.position.y > (GameManager.Instance.Platform.transform.position.y + 11) || transform.position.y < ((GameManager.Instance.Platform.transform.position.y - 3)))

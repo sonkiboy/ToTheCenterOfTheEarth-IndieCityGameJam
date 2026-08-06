@@ -91,7 +91,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
         }
         else
         {
-            LeaderBoard.transform.localPosition = Vector2.zero;
+            boardComponent.Board.SetActive(true);
             GameManager.Instance.InputManager.MenuInput.started += RestartGame;
         }
 

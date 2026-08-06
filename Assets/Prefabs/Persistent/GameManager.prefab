@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468e9693635623a4a894c1366da28bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOptions: {fileID: 0}
+  GameOptions: {fileID: 558844998993144958}
   InputManager: {fileID: 7374063556836506445}
   SoundManager: {fileID: 1476708650184283372}
   PaletteManager: {fileID: 12273638454663181}
@@ -166,7 +166,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   UIMoveInput:
-    m_Name: 
+    m_Name: UI Move Input
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 70c69083-873f-432d-be72-1d36dec5eea6
@@ -175,7 +175,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   UIEnter:
-    m_Name: 
+    m_Name: UI Enter
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 2be2410d-fbbe-4c7b-87c9-7b8161e54ed4
@@ -184,7 +184,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   AnyInput:
-    m_Name: 
+    m_Name: Any Input
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: eda74c23-324e-4739-a566-af91ef6a537d
@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopUpManager
   PowerPopUp: {fileID: 431553466246730587, guid: 83be3b0d7e1e3da4493ad1aaf2da1b4d, type: 3}
+  FuelIncreasePopUp: {fileID: 0}
 --- !u!114 &8306201206735521034
 MonoBehaviour:
   m_ObjectHideFlags: 0

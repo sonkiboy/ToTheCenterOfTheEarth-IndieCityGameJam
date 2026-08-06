@@ -52,7 +52,7 @@ public class BulletBehavior : Bullet
 
             if (tb != null)
             {
-                if(GameManager.Instance.PowerManager != null) tb.Health -= Damage + ExtraDamage + (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount);
+                if(GameManager.Instance.PowerManager != null) tb.Health -= Mathf.RoundToInt(Damage + ExtraDamage * (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount));
                 else tb.Health -= Damage + ExtraDamage;
 
             }
@@ -60,9 +60,15 @@ public class BulletBehavior : Bullet
             {
                 GameManager.Instance.SoundManager.PlaySoundOnObject("EnemyHit", enemy.gameObject);
 
-                enemy.Health -= (Damage);
+                if (GameManager.Instance.PowerManager != null) enemy.Health -= Mathf.RoundToInt(Damage + ExtraDamage * (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount));
+                else enemy.Health -= (Damage + ExtraDamage);
             }
 
+            Destroy(gameObject);
+        }
+        else
+        {
+            GameManager.Instance.Player.TakeDamage(1);
             Destroy(gameObject);
         }
             

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class HighScoreCreator : MonoBehaviour
@@ -19,7 +20,7 @@ public class HighScoreCreator : MonoBehaviour
 
     #endregion
 
-    
+
 
     public AK.Wwise.Event StopAllSound;
 
@@ -28,7 +29,7 @@ public class HighScoreCreator : MonoBehaviour
     int selectedIcon = 0;
     int selectedCharacter = 0;
 
-    
+    string lastEnteredName = "sink";
 
     private void Start()
     {
@@ -37,9 +38,20 @@ public class HighScoreCreator : MonoBehaviour
 
         GameManager.Instance.InputManager.UIMoveInput.performed += InputNavigate;
         GameManager.Instance.InputManager.MenuInput.performed += EnterName;
+
+        char[] nameArray = lastEnteredName.ToCharArray();
+        for (int i = 0; i < LetterRenderers.Length; i++)
+        {
+            LetterRenderers[i].sprite = GetSpriteFromLetter(nameArray[i].ToString());
+        }
     }
 
-    void InputNavigate(InputAction.CallbackContext context) 
+    private void OnDisable()
+    {
+        GameManager.Instance.InputManager.MenuInput.performed -= RestartGame;
+
+    }
+    void InputNavigate(InputAction.CallbackContext context)
     {
         Vector2 direction = context.ReadValue<Vector2>();
 
@@ -48,9 +60,9 @@ public class HighScoreCreator : MonoBehaviour
         // if left or right, change which letter is selected
         if (direction.x > threshHold || direction.x < -threshHold)
         {
-            if(direction.x > 0)
+            if (direction.x > 0)
             {
-                if(selectedIcon + 1 >= LetterRenderers.Length)
+                if (selectedIcon + 1 >= LetterRenderers.Length)
                 {
                     selectedIcon = 0;
                 }
@@ -58,7 +70,7 @@ public class HighScoreCreator : MonoBehaviour
                 {
                     selectedIcon++;
                 }
-                
+
 
             }
             else if (direction.x < 0)
@@ -81,9 +93,9 @@ public class HighScoreCreator : MonoBehaviour
         // else if the input is up or down, 
         else if (direction.y > threshHold || direction.y < -threshHold)
         {
-            if(direction.y > 0)
+            if (direction.y > 0)
             {
-                if(selectedCharacter + 1 >= LetterSprites.Length)
+                if (selectedCharacter + 1 >= LetterSprites.Length)
                 {
                     selectedCharacter = 0;
 
@@ -139,7 +151,7 @@ public class HighScoreCreator : MonoBehaviour
             {
                 char[] nameArray = sprite.name.ToCharArray();
 
-                return nameArray[nameArray.Length-1].ToString();
+                return nameArray[nameArray.Length - 1].ToString();
             }
 
 
@@ -147,44 +159,60 @@ public class HighScoreCreator : MonoBehaviour
         return "A";
     }
 
-    void EnterName(InputAction.CallbackContext contex)
+    Sprite GetSpriteFromLetter(string letter)
     {
-        if(selectedIcon == LetterRenderers.Length - 1)
-        {
-            string playerName = string.Empty;
+        char[] nameArray;
 
-            for (int i = 0; i < 4; i++)
+        for (int i = 0; i < LetterSprites.Length; i++)
+        {
+            nameArray = letter.ToCharArray();
+            if (nameArray[nameArray.Length - 1].ToString().ToLower() == letter.ToLower())
             {
-                playerName += GetStrOfLetterSprite(LetterRenderers[i].sprite);
+                return LetterSprites[i];
             }
 
-            //Debug.Log($"Writing {playerName} to the scoreboard with score {score}");
-            score = GameManager.Instance.CurrentTreasure;
-            StartCoroutine(leaderBoard.InsertNewScore(playerName, score));
-            
 
-            LeaderBoardObj.transform.localPosition = Vector2.zero;
-            
-
-            gameObject.transform.localPosition = Vector2.up * 400;
-
-            GameManager.Instance.InputManager.UIMoveInput.performed -= InputNavigate;
-            GameManager.Instance.InputManager.MenuInput.performed -= EnterName;
-            GameManager.Instance.InputManager.MenuInput.performed += RestartGame;
-            
         }
+        return LetterSprites[0];
+    }
+
+    void EnterName(InputAction.CallbackContext contex)
+    {
+
+        string playerName = string.Empty;
+
+        for (int i = 0; i < 4; i++)
+        {
+            playerName += GetStrOfLetterSprite(LetterRenderers[i].sprite);
+        }
+
+        //Debug.Log($"Writing {playerName} to the scoreboard with score {score}");
+        score = GameManager.Instance.CurrentTreasure;
+        StartCoroutine(leaderBoard.InsertNewScore(playerName, score));
+
+
+        leaderBoard.Board.SetActive(true);
+
+
+        gameObject.transform.localPosition = Vector2.up * 400;
+
+        GameManager.Instance.InputManager.UIMoveInput.performed -= InputNavigate;
+        GameManager.Instance.InputManager.MenuInput.performed -= EnterName;
+        GameManager.Instance.InputManager.MenuInput.performed += RestartGame;
+
+
 
     }
 
     private void RestartGame(InputAction.CallbackContext contex)
     {
-        
+
         GameManager.Instance.InputManager.MenuInput.performed -= RestartGame;
 
         SceneManager.LoadScene("MainMenu");
     }
 
-    
+
 
 
 }

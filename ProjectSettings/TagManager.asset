@@ -58,6 +58,9 @@ TagManager:
   - name: InfrontRock
     uniqueID: 3415670567
     locked: 0
+  - name: Player
+    uniqueID: 630710391
+    locked: 0
   - name: UI
     uniqueID: 1387516119
     locked: 0

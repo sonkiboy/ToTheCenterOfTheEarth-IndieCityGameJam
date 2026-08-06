@@ -25,7 +25,7 @@ public class StartSlideShow : MonoBehaviour
     void Start()
     {
         StartCoroutine(SlideShow());
-        GameManager.Instance.InputManager.MenuInput.performed += StartGame;
+        //GameManager.Instance.InputManager.MenuInput.performed += StartGame;
 
     }
 
@@ -67,10 +67,9 @@ public class StartSlideShow : MonoBehaviour
 
     }
 
-    void StartGame(InputAction.CallbackContext context)
+    public void StartGame()
     {
         GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStop");
-        GameManager.Instance.InputManager.MenuInput.performed -= StartGame;
         GameManager.Instance.Player.enabled = false;
         StartCoroutine(RunInstructions());
     }

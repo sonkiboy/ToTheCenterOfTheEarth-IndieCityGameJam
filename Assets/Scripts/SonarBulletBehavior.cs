@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SonarBulletBehavior : Bullet
+public class SonarBulletBehavior : BulletBehavior
 {
     Rigidbody2D rb;
     public float MaxScaleSize = 2f;
@@ -62,23 +62,6 @@ public class SonarBulletBehavior : Bullet
 
         
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision.tag == "Player")
-        {
-            //Debug.Log($"Detected collision : {collision.gameObject.name}");
-
-            GameManager.Instance.SoundManager.PlaySoundOnObject("BulletHit", this.gameObject);
-
-
-
-            Destroy(gameObject);
-
-
-
-
-        }
-    }
+    
 
 }

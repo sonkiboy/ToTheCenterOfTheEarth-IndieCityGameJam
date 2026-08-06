@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8066803067053511194, guid: 970de4ef5f6941a4684d7b2dec8a0956, type: 3}
@@ -119,6 +119,7 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: b50a649d865ef38459f28a1877728e76, type: 2}
   IsEnemyBullet: 1
+  rb: {fileID: 0}
   Speed: 2
 --- !u!50 &5285241821634052846
 Rigidbody2D:
@@ -177,7 +178,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

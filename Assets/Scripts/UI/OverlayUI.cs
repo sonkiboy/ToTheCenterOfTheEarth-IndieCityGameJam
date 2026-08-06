@@ -15,6 +15,12 @@ public class OverlayUI : MonoBehaviour
     [SerializeField] GameObject CountdownParent;
     [SerializeField] GameObject PowerUpDials;
 
+
+    private void Awake()
+    {
+        PowerUpDials = transform.Find("PowerUpDials").gameObject;
+        CountdownParent = transform.Find("CountDownUI").gameObject;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +31,12 @@ public class OverlayUI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.StateChanged -= GameOverCheck;
+
     }
 
     public void StartCountdown()

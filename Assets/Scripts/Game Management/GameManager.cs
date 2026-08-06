@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         get { return treasure; }
         set
         {
-            if (CurrentState != GameStates.Menu)
+            if (CurrentState != GameStates.MainMenu)
             {
                 // save the value to _treasure
                 treasure = value;
@@ -116,6 +116,8 @@ public class GameManager : MonoBehaviour
 
     // ------------ HEALTH ------------
 
+    public bool IsInvinible = false;
+
     // current health of the player
     [SerializeField]private int health = 3;
     public int CurrentHealth
@@ -123,31 +125,36 @@ public class GameManager : MonoBehaviour
         get { return health; }
         set
         {
-            // if the game isn't already over, we can change the health of the player
-            if (!IsGameOver)
+            if (IsInvinible == false)
             {
-                // if the health is decreasing (player took damage) then give them invincibility
-                if(health > value)
+
+
+                // if the game isn't already over, we can change the health of the player
+                if (!IsGameOver)
                 {
-                    StartCoroutine(Player.Invincibility(Player.InvincibilityDurration));
-                }
+                    // if the health is decreasing (player took damage) then give them invincibility
+                    if (health > value)
+                    {
+                        StartCoroutine(Player.Invincibility(Player.InvincibilityDurration));
+                    }
 
-                // save the value to _health
-                health = value;
+                    // save the value to _health
+                    health = value;
 
-                // if health is 0 or below, call for a game over
-                if (health <= 0)
-                {
-                    EndGame();
-                }
-
-                
+                    // if health is 0 or below, call for a game over
+                    if (health <= 0)
+                    {
+                        EndGame();
+                    }
 
 
-                // set the health UI to the current health
-                if (HealthTracker != null)
-                {
-                    HealthTracker.SetHealthUi(health);
+
+
+                    // set the health UI to the current health
+                    if (HealthTracker != null)
+                    {
+                        HealthTracker.SetHealthUi(health);
+                    }
                 }
             }
         }
@@ -160,7 +167,7 @@ public class GameManager : MonoBehaviour
 
     public enum GameStates
     {
-        Menu,
+        MainMenu,
         RegularGame,
         GameOver,
         Boss
@@ -179,7 +186,7 @@ public class GameManager : MonoBehaviour
 
                 switch (_state)
                 {
-                    case GameStates.Menu:
+                    case GameStates.MainMenu:
                         GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStop");
                         GameManager.Instance.SoundManager.PlayNonDiageticSound("BossThemeStop");
 
@@ -335,7 +342,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case ("MainMenu"):
-                CurrentState = GameStates.Menu;
+                CurrentState = GameStates.MainMenu;
                 GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStart");
                 Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
                 ScoreAnchor = Player.transform;

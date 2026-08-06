@@ -15,6 +15,9 @@ public class LeaderBoard : MonoBehaviour
     [SerializeField] GameObject[] PlayerNames;
     [SerializeField] GameObject[] Scores;
 
+    [HideInInspector]
+    public GameObject Board;
+
     #endregion
 
     string[] textNames;
@@ -30,10 +33,13 @@ public class LeaderBoard : MonoBehaviour
     private void Awake()
     {
         path = Application.persistentDataPath + "/LeaderBoard.txt";
+        Debug.Log("Path: " + path);
+        Board = transform.Find("Board").gameObject;
     }
     // Start is called before the first frame update
     void Start()
     {
+        Board.SetActive(false);
         UpdateScoreBoard();
     }
 

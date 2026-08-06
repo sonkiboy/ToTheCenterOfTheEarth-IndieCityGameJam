@@ -116,4 +116,12 @@ public class Enemy: MonoBehaviour
         GameManager.Instance.StateChanged -= OnGameOver;
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            GameManager.Instance.Player.TakeDamage(1);
+        }
+    }
 }

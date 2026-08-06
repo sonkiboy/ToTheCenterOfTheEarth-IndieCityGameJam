@@ -15,7 +15,7 @@ public class PlatformBehavior : MonoBehaviour
 
     #endregion
 
-    
+
 
     public float DecentSpeed = 2;
     public float DrillRate = 2;
@@ -42,14 +42,14 @@ public class PlatformBehavior : MonoBehaviour
             {
                 // when the draining starts, turn on the alarm and turn off the drilling sound
 
-                if(GameManager.Instance.CurrentState == GameManager.GameStates.RegularGame)
+                if (GameManager.Instance.CurrentState == GameManager.GameStates.RegularGame)
                 {
                     GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOn");
                     GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformEnd");
 
                     StartCoroutine(DrainPlayer());
                 }
-                
+
             }
 
             // STOP DRAINING HEALTH?
@@ -74,7 +74,7 @@ public class PlatformBehavior : MonoBehaviour
 
             // calculate the size of the Fuel Bar graphic on the Platform
             float width = ((float)fuel / (float)MaxFuel) * 2.5f;
-            if(fuelBar != null)
+            if (fuelBar != null)
             {
                 fuelBar.size = new Vector2(width, fuelBar.size.y);
 
@@ -111,12 +111,12 @@ public class PlatformBehavior : MonoBehaviour
         // Set the Current Fuel to its Maximum
         CurrentFuel = MaxFuel;
 
-        
+
 
         // subscribe the OnGameOver method to the Game State Changed event to see when Game Over happens
         GameManager.Instance.StateChanged += OnGameOver;
 
-        
+
     }
 
     public void StartDrilling()
@@ -133,6 +133,8 @@ public class PlatformBehavior : MonoBehaviour
     {
         // stop all sounds tied to this game object
         GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOff");
+        GameManager.Instance.StateChanged -= OnGameOver;
+
     }
 
     private void OnDestroy()
@@ -158,11 +160,12 @@ public class PlatformBehavior : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        // if the player or an emeny leaves the platform, make sure its parent object is set to nothing
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
+        if (gameObject.activeSelf)
         {
-            if (gameObject.activeSelf)
+            // if the player or an emeny leaves the platform, make sure its parent object is set to nothing
+            if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
             {
+
                 collision.transform.parent = null;
             }
 
@@ -287,7 +290,7 @@ public class PlatformBehavior : MonoBehaviour
 
             // give the player invincibility?
             // TODO: do this better, id rather this get called in the Current Health get set
-            
+
 
             // wait HealthDrainRate seconds, then loop
             yield return new WaitForSeconds(HealthDrainRate);
@@ -298,16 +301,16 @@ public class PlatformBehavior : MonoBehaviour
     {
         if (e == GameManager.GameStates.GameOver)
         {
-            
+
             StopAllCoroutines();
             StopCoroutine(Decend());
-            
+
         }
     }
 
     public void IncreaseFuelRate(float percentageIncrease)
     {
         FuelPerSecond += percentageIncrease * FuelPerSecond;
-        GameManager.Instance.PopUpManager.DisplayFuelIncrease((Vector2)this.transform.position + (Vector2.up *2));
+        GameManager.Instance.PopUpManager.DisplayFuelIncrease((Vector2)this.transform.position + (Vector2.up * 2));
     }
 }

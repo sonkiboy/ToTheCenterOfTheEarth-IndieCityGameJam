@@ -116,12 +116,13 @@ public class LaserBulletBehavior : Bullet
                             while (tile.Health > 0 && GameManager.Instance.InputManager.FireInput.IsPressed() && target == tile.transform)
                             {
                                 //Debug.Log($"Frame check variables read as: {tile.Health > 0} {GameManager.Instance.InputManager.FireInput.IsPressed()} && {target == tile.transform}");
-                               // Debug.Log($"Tile health is {tile.Health}");
+                                // Debug.Log($"Tile health is {tile.Health}");
 
-                                
-                                tile.Health -= Damage;
+                                if (GameManager.Instance.PowerManager != null) tile.Health -= Mathf.RoundToInt(Damage + ExtraDamage * (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount));
+                                else tile.Health -= (Damage + ExtraDamage);
 
-                                yield return new WaitForSeconds(DamageRate);
+
+                                yield return new WaitForSeconds(DamageRate - (DamageRate * (GameManager.Instance.PowerManager.ReloadSpeedDown * GameManager.Instance.PowerManager.ReloadPowerCount)));
 
                             }
                             Debug.Log($"No More Tile");
@@ -139,8 +140,10 @@ public class LaserBulletBehavior : Bullet
                                 //lineController.Target = (Vector2)enemyComp.transform.position + (Vector2.one / 2);
                                 //lineController.RelativeBezPoint = lineController.Origin + ((Vector2)this.transform.right * Vector2.Distance(lineController.Origin, lineController.Target));
 
-                                enemyComp.Health -= Damage;
-                                yield return new WaitForSeconds(DamageRate);
+                                enemyComp.Health -= Damage + ExtraDamage;
+                                if (GameManager.Instance.PowerManager != null) enemyComp.Health -= Mathf.RoundToInt(Damage + ExtraDamage * (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount));
+                                else enemyComp.Health -= (Damage + ExtraDamage);
+                                yield return new WaitForSeconds(DamageRate - (DamageRate * (GameManager.Instance.PowerManager.ReloadSpeedDown * GameManager.Instance.PowerManager.ReloadPowerCount))/2);
 
                             }
                         }
