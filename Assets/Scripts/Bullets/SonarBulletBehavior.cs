@@ -7,7 +7,6 @@ public class SonarBulletBehavior : BulletBehavior
     public float MaxScaleSize = 2f;
     public AnimationCurve MovementCurve;
     public float MaxDistance = 3f;
-    public float Speed = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

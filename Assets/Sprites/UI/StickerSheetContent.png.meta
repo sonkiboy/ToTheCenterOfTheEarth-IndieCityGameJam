@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 789d41c2385abde49ad9a8c6a21297d7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -428129392231920442
+    second: StickerSheetContent_0
+  - first:
+      213: -5143674295161369073
+    second: StickerSheetContent_1
+  - first:
+      213: 2542254511960485934
+    second: StickerSheetContent_2
+  - first:
+      213: -5177871305183659222
+    second: StickerSheetContent_3
+  - first:
+      213: 7979074771097218986
+    second: StickerSheetContent_4
+  - first:
+      213: 3344844763790100492
+    second: StickerSheetContent_5
+  - first:
+      213: 5206938203606966584
+    second: StickerSheetContent_6
+  - first:
+      213: 4143420463454860506
+    second: StickerSheetContent_7
+  - first:
+      213: -8805369093792997627
+    second: StickerSheetContent_8
+  - first:
+      213: -796051845469897451
+    second: StickerSheetContent_9
+  - first:
+      213: 957177663973102193
+    second: StickerSheetContent_10
+  - first:
+      213: 6337955489487771324
+    second: StickerSheetContent_11
+  - first:
+      213: 8200172242277319511
+    second: StickerSheetContent_12
+  - first:
+      213: 7860410555937833922
+    second: StickerSheetContent_13
+  - first:
+      213: -9125822798489869555
+    second: StickerSheetContent_14
+  - first:
+      213: 5535285591466739325
+    second: StickerSheetContent_15
+  - first:
+      213: -2516987806041824150
+    second: StickerSheetContent_16
+  - first:
+      213: 5103997343184558130
+    second: StickerSheetContent_17
+  - first:
+      213: 2266647168986230814
+    second: StickerSheetContent_18
+  - first:
+      213: 3467632320052491412
+    second: StickerSheetContent_19
+  - first:
+      213: 2994437539860414376
+    second: StickerSheetContent_20
+  - first:
+      213: 1378667833679430803
+    second: StickerSheetContent_21
+  - first:
+      213: 6254290930417114666
+    second: StickerSheetContent_22
+  - first:
+      213: -249445977348147072
+    second: StickerSheetContent_23
+  - first:
+      213: 942157713497865338
+    second: StickerSheetContent_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StickerSheetContent_0
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1554
+        width: 162
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cccc1a069afe0af0800000000000000
+      internalID: -428129392231920442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_1
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 1489
+        width: 742
+        height: 547
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0e499c1b7ffd98b0800000000000000
+      internalID: -5143674295161369073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_2
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1274
+        width: 182
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e20f90a5207e74320800000000000000
+      internalID: 2542254511960485934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_3
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 1389
+        width: 252
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2bf6d14b718428b0800000000000000
+      internalID: -5177871305183659222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_4
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 929
+        width: 322
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aafe787ba3e5bbe60800000000000000
+      internalID: 7979074771097218986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_5
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 1049
+        width: 492
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c08c88647964b6e20800000000000000
+      internalID: 3344844763790100492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_6
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 934
+        width: 282
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 831676965b2c24840800000000000000
+      internalID: 5206938203606966584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_7
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 614
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad4bf4f65f2608930800000000000000
+      internalID: 4143420463454860506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_8
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 614
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50fd348467b0dc580800000000000000
+      internalID: -8805369093792997627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_9
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 614
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51df8ff601bd3f4f0800000000000000
+      internalID: -796051845469897451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_10
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 614
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1721e089304984d00800000000000000
+      internalID: 957177663973102193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_11
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 614
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb6d72110f0f4f750800000000000000
+      internalID: 6337955489487771324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_12
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 614
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75345fd353ddcc170800000000000000
+      internalID: 8200172242277319511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_13
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 379
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c3c76f11c9c51d60800000000000000
+      internalID: 7860410555937833922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_14
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 379
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d03a9d4f3809a5180800000000000000
+      internalID: -9125822798489869555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_15
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 379
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7686b11be841dc40800000000000000
+      internalID: 5535285591466739325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_16
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 379
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6423ec0decd11dd0800000000000000
+      internalID: -2516987806041824150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_17
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 379
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2389d0f9a8a05d640800000000000000
+      internalID: 5103997343184558130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_18
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 379
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e10b19a479fb47f10800000000000000
+      internalID: 2266647168986230814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_19
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 134
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 494746809318f1030800000000000000
+      internalID: 3467632320052491412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_20
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 134
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8af7979c3116e8920800000000000000
+      internalID: 2994437539860414376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_21
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 134
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39448b91713022310800000000000000
+      internalID: 1378667833679430803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_22
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 134
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2e957de674bbc650800000000000000
+      internalID: 6254290930417114666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_23
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 134
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0887389843ac98cf0800000000000000
+      internalID: -249445977348147072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickerSheetContent_24
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 134
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7c3f6bd277331d00800000000000000
+      internalID: 942157713497865338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      StickerSheetContent_0: -428129392231920442
+      StickerSheetContent_1: -5143674295161369073
+      StickerSheetContent_10: 957177663973102193
+      StickerSheetContent_11: 6337955489487771324
+      StickerSheetContent_12: 8200172242277319511
+      StickerSheetContent_13: 7860410555937833922
+      StickerSheetContent_14: -9125822798489869555
+      StickerSheetContent_15: 5535285591466739325
+      StickerSheetContent_16: -2516987806041824150
+      StickerSheetContent_17: 5103997343184558130
+      StickerSheetContent_18: 2266647168986230814
+      StickerSheetContent_19: 3467632320052491412
+      StickerSheetContent_2: 2542254511960485934
+      StickerSheetContent_20: 2994437539860414376
+      StickerSheetContent_21: 1378667833679430803
+      StickerSheetContent_22: 6254290930417114666
+      StickerSheetContent_23: -249445977348147072
+      StickerSheetContent_24: 942157713497865338
+      StickerSheetContent_3: -5177871305183659222
+      StickerSheetContent_4: 7979074771097218986
+      StickerSheetContent_5: 3344844763790100492
+      StickerSheetContent_6: 5206938203606966584
+      StickerSheetContent_7: 4143420463454860506
+      StickerSheetContent_8: -8805369093792997627
+      StickerSheetContent_9: -796051845469897451
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

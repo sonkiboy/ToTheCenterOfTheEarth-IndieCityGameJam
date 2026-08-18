@@ -22,9 +22,9 @@ public class PowerUpManager : MonoBehaviour
         get {return _dmgCnt;}
         set 
         {
-            if(_dmgCnt < MaxPowers)
+            if(value < MaxPowers)
             {
-                _dmgCnt++;
+                _dmgCnt = value;
             }
             else
             {
@@ -42,9 +42,9 @@ public class PowerUpManager : MonoBehaviour
         get { return _rldCnt; }
         set
         {
-            if (_rldCnt < MaxPowers)
+            if (value < MaxPowers)
             {
-                _rldCnt++;
+                _rldCnt = value;
             }
             else
             {
@@ -63,9 +63,9 @@ public class PowerUpManager : MonoBehaviour
         get { return _drlCnt; }
         set
         {
-            if (_drlCnt < MaxPowers)
+            if (value < MaxPowers)
             {
-                _drlCnt++;
+                _drlCnt = value;
             }
             else
             {
@@ -166,8 +166,13 @@ public class PowerUpManager : MonoBehaviour
     public void OnSceneChanged(Scene Current, Scene Next)
     {
         dmgDial = GameObject.Find("DmgPower").GetComponent<PowerDialUI>();
-        reloadDial = GameObject.Find("ReloadPower").GetComponent<PowerDialUI>(); ;
-        drillDial = GameObject.Find("DrillPower").GetComponent<PowerDialUI>(); ;
+        reloadDial = GameObject.Find("ReloadPower").GetComponent<PowerDialUI>(); 
+        drillDial = GameObject.Find("DrillPower").GetComponent<PowerDialUI>(); 
+
+
+        DrillPowerCount = 0;
+        ReloadPowerCount = 0;
+        DamagePowerCount = 0;
     }
 
     IEnumerator DrillSpeedRoutine()

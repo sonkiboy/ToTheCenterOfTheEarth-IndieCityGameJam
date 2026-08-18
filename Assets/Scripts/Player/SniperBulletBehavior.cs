@@ -93,13 +93,13 @@ public class SniperBulletBehavior : Bullet
                     case "Enemy":
 
                         Enemy enemy = hitCollider.transform.GetComponent<Enemy>();
-                        if (enemy != null) enemy.Health -= Damage + ExtraDamage;
+                        if (enemy != null) enemy.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
 
                         break;
 
                     case "Tile":
                         TileBehavior tile = hitCollider.transform.GetComponent<TileBehavior>();
-                        if (tile != null) tile.Health -= Damage + ExtraDamage;
+                        if (tile != null) tile.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
 
 
 
@@ -115,7 +115,7 @@ public class SniperBulletBehavior : Bullet
             {
                 if (renderedHits[i] != null)
                 {
-                    Debug.Log($"distance calculated as {Vector2.Distance(this.transform.position, renderedHits[i].transform.position)}");
+                    //Debug.Log($"distance calculated as {Vector2.Distance(this.transform.position, renderedHits[i].transform.position)}");
                     SpriteRend.size = new Vector2(Vector2.Distance(this.transform.position, renderedHits[i].transform.position), .0625f);
                     break;
                 }
@@ -123,7 +123,7 @@ public class SniperBulletBehavior : Bullet
         }
         else
         {
-            Debug.Log("Sniper Bullet missed");
+            //Debug.Log("Sniper Bullet missed");
             SpriteRend.size = new Vector2 (25f, .0625f);
         }
 

@@ -104,6 +104,10 @@ public class OptionsSettings : MonoBehaviour
     public float SoundVolume = 50;
     public float MusicVolume = 50;
 
+    // SAVE SETTINGS
+
+    public string LastHighscoreName = "sink";
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -150,7 +154,7 @@ public class OptionsSettings : MonoBehaviour
             SoundVolume = loadedSettings.SoundVolume;
             MusicVolume = loadedSettings.MusicVolume;
 
-            
+            LastHighscoreName = loadedSettings.LastHighscoreName;
 
         }
         else

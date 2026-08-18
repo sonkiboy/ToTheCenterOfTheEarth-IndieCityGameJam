@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafa9f91fb03ff643b18e5d29f41d5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SniperBulletBehavior
-  Damage: 20
+  Damage: 15
   DestroyTime: 5
   ExtraDamage: 0
   HitMask:

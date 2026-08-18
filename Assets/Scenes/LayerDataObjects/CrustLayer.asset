@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b660dfd90e08f644db5577090e5a6c90, type: 3}
   m_Name: CrustLayer
   m_EditorClassIdentifier: Assembly-CSharp::LayerSerializedObject
+  Name: The Crust
   LayerPallete:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 0.9960785, g: 0.33333334, b: 0.33333334, a: 1}

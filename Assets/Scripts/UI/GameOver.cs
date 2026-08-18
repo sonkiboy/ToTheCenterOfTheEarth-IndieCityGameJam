@@ -66,7 +66,8 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
         yield return null;
 
-        
+        GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.off, 0);
+
 
         GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -79,6 +80,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
         yield return new WaitForSeconds(waitTime);
 
+        GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 0);
 
         GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStart");
 

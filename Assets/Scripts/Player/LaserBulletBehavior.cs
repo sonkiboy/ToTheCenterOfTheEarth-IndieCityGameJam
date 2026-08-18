@@ -8,7 +8,7 @@ public class LaserBulletBehavior : Bullet
 
     public LayerMask HitMask;
     public Vector2 HitArea;
-    public float DamageRate = .25f;
+    //public float DamageRate = .25f;
 
     [SerializeField] Transform target;
 
@@ -118,11 +118,12 @@ public class LaserBulletBehavior : Bullet
                                 //Debug.Log($"Frame check variables read as: {tile.Health > 0} {GameManager.Instance.InputManager.FireInput.IsPressed()} && {target == tile.transform}");
                                 // Debug.Log($"Tile health is {tile.Health}");
 
-                                if (GameManager.Instance.PowerManager != null) tile.Health -= Mathf.RoundToInt(Damage + ExtraDamage * (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount));
+                                if (GameManager.Instance.PowerManager != null) tile.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
                                 else tile.Health -= (Damage + ExtraDamage);
 
 
-                                yield return new WaitForSeconds(DamageRate - (DamageRate * (GameManager.Instance.PowerManager.ReloadSpeedDown * GameManager.Instance.PowerManager.ReloadPowerCount)));
+                                //yield return new WaitForSeconds(DamageRate - (DamageRate * (GameManager.Instance.PowerManager.ReloadSpeedDown * GameManager.Instance.PowerManager.ReloadPowerCount)));
+                                yield return new WaitForSeconds(GameManager.Instance.CurrentGun.ReloadSpeedLevels[GameManager.Instance.PowerManager.ReloadPowerCount]);
 
                             }
                             Debug.Log($"No More Tile");
@@ -140,10 +141,11 @@ public class LaserBulletBehavior : Bullet
                                 //lineController.Target = (Vector2)enemyComp.transform.position + (Vector2.one / 2);
                                 //lineController.RelativeBezPoint = lineController.Origin + ((Vector2)this.transform.right * Vector2.Distance(lineController.Origin, lineController.Target));
 
-                                enemyComp.Health -= Damage + ExtraDamage;
-                                if (GameManager.Instance.PowerManager != null) enemyComp.Health -= Mathf.RoundToInt(Damage + ExtraDamage * (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount));
+                                //enemyComp.Health -= Damage + ExtraDamage;
+                                if (GameManager.Instance.PowerManager != null) enemyComp.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
                                 else enemyComp.Health -= (Damage + ExtraDamage);
-                                yield return new WaitForSeconds(DamageRate - (DamageRate * (GameManager.Instance.PowerManager.ReloadSpeedDown * GameManager.Instance.PowerManager.ReloadPowerCount))/2);
+                                //yield return new WaitForSeconds(DamageRate - (DamageRate * (GameManager.Instance.PowerManager.ReloadSpeedDown * GameManager.Instance.PowerManager.ReloadPowerCount))/2);
+                                yield return new WaitForSeconds(GameManager.Instance.CurrentGun.ReloadSpeedLevels[GameManager.Instance.PowerManager.ReloadPowerCount] * 2);
 
                             }
                         }

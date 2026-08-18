@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class LayerSerializedObject : ScriptableObject
 {
+    public string Name;
     public Color[] LayerPallete = new Color[4] {Color.black,Color.red ,Color.blue ,Color.white};
 
     public GameObject[] BaseBlockPallet;

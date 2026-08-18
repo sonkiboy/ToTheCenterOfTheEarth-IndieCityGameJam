@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2319868388547996760}
   - component: {fileID: 8306201206735521034}
   - component: {fileID: 558844998993144958}
+  - component: {fileID: 1007105145765103074}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -62,7 +63,8 @@ MonoBehaviour:
   PowerManager: {fileID: 8306201206735521034}
   LowResCamera: {fileID: 0}
   MainCamera: {fileID: 0}
-  gun: {fileID: 11400000, guid: 6d86bfcd6c48eea4dab7783860547af4, type: 2}
+  ArcadeLEDs: {fileID: 1007105145765103074}
+  gun: {fileID: 11400000, guid: 6c59b8e8da49abe45a201a84ebffabf0, type: 2}
   CenterScreen: {fileID: 0}
   Player: {fileID: 0}
   Platform: {fileID: 0}
@@ -73,8 +75,9 @@ MonoBehaviour:
   IsGameOver: 0
   ActuallDepth: 0
   treasure: 0
+  IsInvinible: 0
   health: 3
-  GemHealRate: 15000
+  GemHealRate: 50000
   _state: 0
 --- !u!114 &1817808975515444347
 MonoBehaviour:
@@ -218,7 +221,7 @@ MonoBehaviour:
   ScreenRenderer: {fileID: 0}
   DefaultColors:
   - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0.9960785, g: 0.33333334, b: 0.33333334, a: 0}
+  - {r: 1, g: 0.33333334, b: 0.33333334, a: 0}
   - {r: 0.33333334, g: 1, b: 1, a: 0}
   - {r: 1, g: 1, b: 1, a: 0}
   Depth100Colors:
@@ -254,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopUpManager
   PowerPopUp: {fileID: 431553466246730587, guid: 83be3b0d7e1e3da4493ad1aaf2da1b4d, type: 3}
-  FuelIncreasePopUp: {fileID: 0}
+  FuelIncreasePopUp: {fileID: 4784901686420563989, guid: 8cf8aa5cf3591a643a2b5fec80ee7a06, type: 3}
 --- !u!114 &8306201206735521034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,15 +273,13 @@ MonoBehaviour:
   dmgDial: {fileID: 0}
   reloadDial: {fileID: 0}
   drillDial: {fileID: 0}
-  DamagePowerCount: 0
-  DamageUp: 20
-  DmgUpDurration: 10
-  ReloadPowerCount: 0
-  ReloadSpeedDown: 0.2
-  ReloadSpeedDurration: 10
-  DrillPowerCount: 0
+  MaxPowers: 5
+  DamageUp: 1.25
+  DmgUpDurration: 20
+  ReloadSpeedDown: 0.15
+  ReloadSpeedDurration: 20
   DrillSpeed: 5
-  DrillDurration: 10
+  DrillDurration: 20
   HealDamage: 1
 --- !u!114 &558844998993144958
 MonoBehaviour:
@@ -326,6 +327,19 @@ MonoBehaviour:
   MasterVolume: 50
   SoundVolume: 50
   MusicVolume: 50
+  LastHighscoreName: sink
+--- !u!114 &1007105145765103074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827984039748135261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191cb872520a33445a125fb03cdad9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArcadeLightManager
 --- !u!1001 &5194495448690299090
 PrefabInstance:
   m_ObjectHideFlags: 0

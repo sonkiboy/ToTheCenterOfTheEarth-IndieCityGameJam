@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,9 @@ public class HighScoreCreator : MonoBehaviour
     [SerializeField] GameObject LeaderBoardObj;
     LeaderBoard leaderBoard;
 
+    TextMeshProUGUI scoreFrontText;
+    TextMeshProUGUI scoreBackText;
+
     #endregion
 
 
@@ -29,17 +33,37 @@ public class HighScoreCreator : MonoBehaviour
     int selectedIcon = 0;
     int selectedCharacter = 0;
 
-    string lastEnteredName = "sink";
+
+    string _score = "000000";
+    string HighScoreText
+    {
+        set
+        {
+            _score = value;
+            scoreBackText.text = value;
+            scoreFrontText.text = value;
+        }
+        get {  return _score; }
+    }
+
+    private void Awake()
+    {
+        GameManager.Instance.InputManager.UIMoveInput.performed += InputNavigate;
+        GameManager.Instance.InputManager.MenuInput.performed += EnterName;
+        leaderBoard = LeaderBoardObj.GetComponent<LeaderBoard>();
+        scoreBackText = transform.Find("Score").GetComponent<TextMeshProUGUI>();
+        scoreFrontText = scoreBackText.transform.Find("Score").GetComponent<TextMeshProUGUI>();
+    }
 
     private void Start()
     {
-        leaderBoard = LeaderBoardObj.GetComponent<LeaderBoard>();
+        
         score = GameManager.Instance.CurrentTreasure;
+        HighScoreText = score.ToString();
 
-        GameManager.Instance.InputManager.UIMoveInput.performed += InputNavigate;
-        GameManager.Instance.InputManager.MenuInput.performed += EnterName;
+        
 
-        char[] nameArray = lastEnteredName.ToCharArray();
+        char[] nameArray = GameManager.Instance.GameOptions.LastHighscoreName.ToCharArray();
         for (int i = 0; i < LetterRenderers.Length; i++)
         {
             LetterRenderers[i].sprite = GetSpriteFromLetter(nameArray[i].ToString());
@@ -161,14 +185,18 @@ public class HighScoreCreator : MonoBehaviour
 
     Sprite GetSpriteFromLetter(string letter)
     {
+        Debug.Log($"finding {letter}");
+
         char[] nameArray;
 
         for (int i = 0; i < LetterSprites.Length; i++)
         {
-            nameArray = letter.ToCharArray();
+            nameArray = LetterSprites[i].name.ToCharArray();
+            Debug.Log($"comparing sent {letter.ToLower()} with list item {nameArray[nameArray.Length - 1].ToString().ToLower()}");
             if (nameArray[nameArray.Length - 1].ToString().ToLower() == letter.ToLower())
             {
                 return LetterSprites[i];
+                
             }
 
 
@@ -186,6 +214,7 @@ public class HighScoreCreator : MonoBehaviour
             playerName += GetStrOfLetterSprite(LetterRenderers[i].sprite);
         }
 
+        GameManager.Instance.GameOptions.LastHighscoreName = playerName;
         //Debug.Log($"Writing {playerName} to the scoreboard with score {score}");
         score = GameManager.Instance.CurrentTreasure;
         StartCoroutine(leaderBoard.InsertNewScore(playerName, score));

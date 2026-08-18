@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b660dfd90e08f644db5577090e5a6c90, type: 3}
   m_Name: JungleLayer
   m_EditorClassIdentifier: Assembly-CSharp::LayerSerializedObject
+  Name: The Jungle
   LayerPallete:
   - {r: 0.0627451, g: 0.078431375, b: 0.2, a: 0.21176471}
   - {r: 0.80784315, g: 0.08627451, b: 0.38039216, a: 0}
@@ -37,6 +38,6 @@ MonoBehaviour:
   - {fileID: 2163494120345482535, guid: f24d92beae7b899488d9c0bb734af467, type: 3}
   RareFeatureSpawnRange: 10
   SpawnedEnemies:
-  - {fileID: -2253911629886400664, guid: fd40774e412fcc0448bf0543351fa091, type: 3}
+  - {fileID: 5943335651752628607, guid: b3b49a67436c1bc4e90efdf25590be91, type: 3}
   NumberOfEnemies: 3
   LayerBoss: 1

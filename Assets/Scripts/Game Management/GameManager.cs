@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public Camera LowResCamera;
     public Camera MainCamera;
 
+    public ArcadeLightManager ArcadeLEDs;
+
     // GUN MANAGMENET
     [SerializeField]private GunSettings gun;
     public GunSettings CurrentGun
@@ -290,7 +292,7 @@ public class GameManager : MonoBehaviour
 
         Player.CurrentState = PlayerController.PlayerState.Dead;
 
-        
+        ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.off, 0);
 
 
     }

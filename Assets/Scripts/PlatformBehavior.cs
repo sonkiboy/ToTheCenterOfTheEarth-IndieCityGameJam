@@ -48,6 +48,16 @@ public class PlatformBehavior : MonoBehaviour
                     GameManager.Instance.SoundManager.PlayNonDiageticSound("PlatformEnd");
 
                     StartCoroutine(DrainPlayer());
+
+                    if (blockGenerator.Layers[blockGenerator.CurrentLayerData].Name == "The Crust")
+                    {
+                        GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.alert, 0);
+                    }
+                    else if (blockGenerator.Layers[blockGenerator.CurrentLayerData].Name == "The Jungle")
+                    {
+                        GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.alert, 1);
+                    }
+
                 }
 
             }
@@ -63,6 +73,15 @@ public class PlatformBehavior : MonoBehaviour
 
                 isDrainingHealth = false;
                 StopCoroutine(DrainPlayer());
+
+                if (blockGenerator.Layers[blockGenerator.CurrentLayerData].Name == "The Crust")
+                {
+                    GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 0);
+                }
+                else if (blockGenerator.Layers[blockGenerator.CurrentLayerData].Name == "The Jungle")
+                {
+                    GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 1);
+                }
             }
 
 

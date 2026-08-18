@@ -49,6 +49,15 @@ public class BlockGenerator : MonoBehaviour
         {
             GameManager.Instance.PaletteManager.ChangePalette(0f, Layers[CurrentLayerData].LayerPallete[0], Layers[CurrentLayerData].LayerPallete[1], Layers[CurrentLayerData].LayerPallete[2], Layers[CurrentLayerData].LayerPallete[3]);
         }
+
+        if (Layers[CurrentLayerData].Name == "The Crust")
+        {
+            GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 0);
+        }
+        else if (Layers[CurrentLayerData].Name == "The Jungle")
+        {
+            GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 1);
+        }
     }
 
     // Update is called once per frame
@@ -479,6 +488,16 @@ public class BlockGenerator : MonoBehaviour
         if(GameManager.Instance.GameOptions.IsStaticColorsOn == false)
         {
             GameManager.Instance.PaletteManager.ChangePalette(1.5f, Layers[CurrentLayerData].LayerPallete[0], Layers[CurrentLayerData].LayerPallete[1], Layers[CurrentLayerData].LayerPallete[2], Layers[CurrentLayerData].LayerPallete[3]);
+        }
+
+        if (Layers[CurrentLayerData].Name == "The Crust")
+        {
+            GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 0);
+        }
+        else if(Layers[CurrentLayerData].Name == "The Jungle")
+        {
+            GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 1);
+
         }
 
     }

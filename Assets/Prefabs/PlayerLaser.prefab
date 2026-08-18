@@ -242,7 +242,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2112
   HitArea: {x: 5, y: 2}
-  DamageRate: 0.1
+  DamageRate: 0.05
   target: {fileID: 0}
 --- !u!1 &1259952730795764769
 GameObject:

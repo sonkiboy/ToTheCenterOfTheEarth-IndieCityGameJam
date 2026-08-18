@@ -12,6 +12,8 @@ public class BulletBehavior : Bullet
     
     [SerializeField]private Rigidbody2D rb;
     public float Speed = 1;
+
+    public bool DoesIgnite = false;
     
 
     // Start is called before the first frame update
@@ -52,15 +54,16 @@ public class BulletBehavior : Bullet
 
             if (tb != null)
             {
-                if(GameManager.Instance.PowerManager != null) tb.Health -= Mathf.RoundToInt(Damage + ExtraDamage * (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount));
-                else tb.Health -= Damage + ExtraDamage;
+                if(GameManager.Instance.PowerManager != null) tb.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
+                else tb.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
+
 
             }
             else if (enemy != null)
             {
                 GameManager.Instance.SoundManager.PlaySoundOnObject("EnemyHit", enemy.gameObject);
 
-                if (GameManager.Instance.PowerManager != null) enemy.Health -= Mathf.RoundToInt(Damage + ExtraDamage * (GameManager.Instance.PowerManager.DamageUp * GameManager.Instance.PowerManager.DamagePowerCount));
+                if (GameManager.Instance.PowerManager != null) enemy.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
                 else enemy.Health -= (Damage + ExtraDamage);
             }
 
@@ -68,8 +71,7 @@ public class BulletBehavior : Bullet
         }
         else
         {
-            GameManager.Instance.Player.TakeDamage(1);
-            Destroy(gameObject);
+            
         }
             
 

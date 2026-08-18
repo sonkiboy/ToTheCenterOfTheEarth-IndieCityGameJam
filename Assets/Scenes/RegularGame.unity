@@ -39696,17 +39696,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!114 &480591039 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 558844998993144958, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-  m_PrefabInstance: {fileID: 2770226413458671170}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f972d1c805387845a6c34c6c11c3fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OptionsSettings
 --- !u!1 &481581083
 GameObject:
   m_ObjectHideFlags: 0
@@ -51810,17 +51799,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &759126963 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1476708650184283372, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-  m_PrefabInstance: {fileID: 2770226413458671170}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 538a5cbbc582ac84d827aa65a0428bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &760412473
 GameObject:
   m_ObjectHideFlags: 0
@@ -97939,11 +97917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1553461408 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2274956116729612091, guid: b66e5488537df6349a579f15adb1ff67, type: 3}
-  m_PrefabInstance: {fileID: 5996615848906411358}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1556709638
 GameObject:
   m_ObjectHideFlags: 0
@@ -124180,13 +124153,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 12273638454663181, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: ScreenRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 12273638454663181, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: DefaultColors.Array.data[1].r
-      value: 1
+    - target: {fileID: 558844998993144958, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
+      propertyPath: LastHighscoreName
+      value: sonk
       objectReference: {fileID: 0}
     - target: {fileID: 1817808975515444347, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
       propertyPath: BlackBG
@@ -124196,10 +124165,6 @@ PrefabInstance:
       propertyPath: highScore
       value: 
       objectReference: {fileID: 228437093}
-    - target: {fileID: 1817808975515444347, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: LeaderBoard
-      value: 
-      objectReference: {fileID: 1553461408}
     - target: {fileID: 2297308276368327132, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -124240,42 +124205,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2319868388547996760, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: FuelIncreasePopUp
-      value: 
-      objectReference: {fileID: 4784901686420563989, guid: 8cf8aa5cf3591a643a2b5fec80ee7a06, type: 3}
     - target: {fileID: 2827984039748135261, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7374063556836506445, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: UIEnter.m_Name
-      value: UI Enter
-      objectReference: {fileID: 0}
-    - target: {fileID: 7374063556836506445, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: AnyInput.m_Name
-      value: Any Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 7374063556836506445, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: MenuInput.m_Name
-      value: Menu Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 7374063556836506445, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: UIMoveInput.m_Name
-      value: UI Move Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 8306201206735521034, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: DamageUp
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8306201206735521034, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: ReloadSpeedDown
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8627713085867861884, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: gun
-      value: 
-      objectReference: {fileID: 11400000, guid: 6c59b8e8da49abe45a201a84ebffabf0, type: 2}
     - target: {fileID: 8627713085867861884, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
       propertyPath: Overlay
       value: 
@@ -124289,18 +124222,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2128418155}
     - target: {fileID: 8627713085867861884, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: GameOptions
-      value: 
-      objectReference: {fileID: 480591039}
-    - target: {fileID: 8627713085867861884, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: GemHealRate
-      value: 30000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8627713085867861884, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: IsInvinible
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8627713085867861884, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
       propertyPath: ScoreAnchor
       value: 
       objectReference: {fileID: 521775238}
@@ -124312,10 +124233,6 @@ PrefabInstance:
       propertyPath: CenterScreen
       value: 
       objectReference: {fileID: 1796822946}
-    - target: {fileID: 8627713085867861884, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
-      propertyPath: SoundManager
-      value: 
-      objectReference: {fileID: 759126963}
     - target: {fileID: 8627713085867861884, guid: 60ae7f081a6e63a4daa88089bf6c6efd, type: 3}
       propertyPath: HealthTracker
       value: 
@@ -124716,25 +124633,9 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 3091066313595155208, guid: b66e5488537df6349a579f15adb1ff67, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3091066313595155208, guid: b66e5488537df6349a579f15adb1ff67, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 630710391
-      objectReference: {fileID: 0}
     - target: {fileID: 5640781005478971746, guid: b66e5488537df6349a579f15adb1ff67, type: 3}
       propertyPath: m_Name
       value: EndCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6554062905840573143, guid: b66e5488537df6349a579f15adb1ff67, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8448016060586596948, guid: b66e5488537df6349a579f15adb1ff67, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -54
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
