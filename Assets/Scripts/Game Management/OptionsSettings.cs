@@ -166,7 +166,7 @@ public class OptionsSettings : MonoBehaviour
         
     }
 
-    private void SaveSettingsToFile()
+    public void SaveSettingsToFile()
     {
         
 

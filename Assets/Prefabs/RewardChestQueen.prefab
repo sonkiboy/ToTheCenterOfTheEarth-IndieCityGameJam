@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 8614346479274675863}
   - component: {fileID: 3656697003364234345}
   - component: {fileID: 7289291075541438680}
-  - component: {fileID: 3730177651741516340}
-  m_Layer: 11
+  - component: {fileID: 2198720153441020640}
+  m_Layer: 6
   m_Name: RewardChestQueen
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,10 +151,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.8}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: -0.04}
+    pivot: {x: 0.5, y: 0.59999996}
     oldSize: {x: 2, y: 1.5625}
     newSize: {x: 2, y: 1.5625}
     adaptiveTilingThreshold: 0.5
@@ -190,7 +190,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3730177651741516340
+--- !u!114 &2198720153441020640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,17 +199,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2107733984899341791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc7949fd4f4b1a042a360bdb3241bea2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b79b9dba8cc45f4086dba0d9e4271aa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RewardChestBehavior
-  damageFlash:
-  - {fileID: 1065713666164479885}
-  TreasureReward: 0
-  FuelReward: 0
-  CollisionDamage: 0
-  hp: 20
-  SmallGemPrefab: {fileID: 7721911675991746013, guid: acd4b42a372784341b8d3946d05a7dd7, type: 3}
-  BigGemPrefab: {fileID: 7721911675991746013, guid: b82ae55bff5a71d46885aa347416238c, type: 3}
-  SmallGemsOnHit: 3
-  SmallGemFlingForce: 4
-  BigGemsOnOpen: 5
+  m_EditorClassIdentifier: Assembly-CSharp::TileBehavior
+  explosionFX: {fileID: 0}
+  gemDrop: {fileID: 7721911675991746013, guid: b82ae55bff5a71d46885aa347416238c, type: 3}
+  fuelDrop: {fileID: 0}
+  Config: {fileID: 11400000, guid: 5d435e5d4cdd52d4488d240a04e1e78c, type: 2}
+  hp: 10
+  isDamagedByPlayer: 0

@@ -49,6 +49,7 @@ public class HighScoreCreator : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.InputManager.UIMoveInput.performed += InputNavigate;
+        GameManager.Instance.InputManager.UIHeldMoveInput.performed += OnNavigateHeld;
         GameManager.Instance.InputManager.MenuInput.performed += EnterName;
         leaderBoard = LeaderBoardObj.GetComponent<LeaderBoard>();
         scoreBackText = transform.Find("Score").GetComponent<TextMeshProUGUI>();
@@ -151,6 +152,90 @@ public class HighScoreCreator : MonoBehaviour
         }
 
 
+    }
+
+    void OnNavigateHeld(InputAction.CallbackContext context)
+    {
+        Debug.Log("Held Hit");
+        StartCoroutine(ScrollLetter(context.ReadValue<Vector2>()));
+    }
+
+    IEnumerator ScrollLetter(Vector2 direction)
+    {
+        while (GameManager.Instance.InputManager.UIHeldMoveInput.IsPressed())
+        {
+            float threshHold = .5f;
+
+            // if left or right, change which letter is selected
+            if (direction.x > threshHold || direction.x < -threshHold)
+            {
+                if (direction.x > 0)
+                {
+                    if (selectedIcon + 1 >= LetterRenderers.Length)
+                    {
+                        selectedIcon = 0;
+                    }
+                    else
+                    {
+                        selectedIcon++;
+                    }
+
+
+                }
+                else if (direction.x < 0)
+                {
+                    if (selectedIcon - 1 <= -1)
+                    {
+                        selectedIcon = LetterRenderers.Length - 1;
+                    }
+                    else
+                    {
+                        selectedIcon--;
+                    }
+                }
+
+                selectedCharacter = GetIndexOfLetterSprite(LetterRenderers[selectedIcon].sprite);
+
+                Selector.transform.position = LetterRenderers[selectedIcon].rectTransform.position;
+            }
+
+            // else if the input is up or down, 
+            else if (direction.y > threshHold || direction.y < -threshHold)
+            {
+                if (direction.y > 0)
+                {
+                    if (selectedCharacter + 1 >= LetterSprites.Length)
+                    {
+                        selectedCharacter = 0;
+
+                    }
+                    else
+                    {
+                        selectedCharacter++;
+                    }
+
+                }
+                else if (direction.y < 0)
+                {
+                    if (selectedCharacter - 1 == -1)
+                    {
+                        selectedCharacter = LetterSprites.Length - 1;
+
+                    }
+                    else
+                    {
+                        selectedCharacter--;
+                    }
+
+                }
+
+                //if (selectedIcon != LetterRenderers.Length - 1)
+                //{
+                LetterRenderers[selectedIcon].sprite = LetterSprites[selectedCharacter];
+                //}
+            }
+            yield return new WaitForSeconds(.1f);
+        }
     }
 
     int GetIndexOfLetterSprite(Sprite sprite)

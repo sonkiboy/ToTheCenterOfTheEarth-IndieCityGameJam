@@ -43,5 +43,5 @@ MonoBehaviour:
   RareFeatureSpawnRange: 10
   SpawnedEnemies:
   - {fileID: 2210593898646789075, guid: 54794689216a5084fa45ecdd7e7e50e7, type: 3}
-  NumberOfEnemies: 3
+  NumberOfEnemies: 5
   LayerBoss: 0

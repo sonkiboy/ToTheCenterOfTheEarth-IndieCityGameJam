@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,7 @@ public class InputManager : MonoBehaviour
     public InputAction FireInput;
     public InputAction MenuInput;
     public InputAction UIMoveInput;
+    public InputAction UIHeldMoveInput;
     public InputAction UIEnter;
     public InputAction AnyInput;
 
@@ -39,6 +41,7 @@ public class InputManager : MonoBehaviour
         FireInput = inputManager.Player.Fire;
         MenuInput = inputManager.Player.Start;
         UIMoveInput = inputManager.UI.Move;
+        UIHeldMoveInput = inputManager.UI.MoveHeld;
         UIEnter = inputManager.UI.Enter;
         AnyInput = inputManager.UI.AnyButton;
 
@@ -56,12 +59,13 @@ public class InputManager : MonoBehaviour
         FireInput.Enable();
         MenuInput.Enable();
         UIMoveInput.Enable();
+        UIHeldMoveInput.Enable();
         UIEnter.Enable();
         AnyInput.Enable();
         //MenuInput.performed += OnMenuDebugPress;
 
         DebugColorChange.Enable();
-        DebugColorChange.performed += OnColorChangeDebugPress;
+        //DebugColorChange.performed += OnColorChangeDebugPress;
 
 
 
@@ -79,17 +83,17 @@ public class InputManager : MonoBehaviour
         MenuInput.Disable();
         AnyInput.Disable();
         UIMoveInput.Disable();
-        UIMoveInput.Disable();
-        //MenuInput.performed -= OnMenuDebugPress;
+        UIHeldMoveInput.Disable();
+        UIEnter.Disable();
 
         DebugColorChange.Disable();
-        DebugColorChange.performed -= OnColorChangeDebugPress;
+        DebugColorChange.performed -= OnMenuDebugPress;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //MenuInput.performed += OnMenuDebugPress;
+        DebugColorChange.performed += OnMenuDebugPress;
 
     }
 
@@ -127,16 +131,24 @@ public class InputManager : MonoBehaviour
         //    SceneManager.LoadScene("MainMenu");
         //}
 
-        if(testpause == false)
+        //if(testpause == false)
+        //{
+        //    Time.timeScale = 0;
+        //    testpause = true;
+        //}
+        //else
+        //{
+        //    Time.timeScale = 1;
+        //    testpause = false;
+        //}
+        GameManager.Instance.hatIndex++;
+        if (GameManager.Instance.hatIndex >= GameManager.Instance.Hats.Length)
         {
-            Time.timeScale = 0;
-            testpause = true;
+            GameManager.Instance.hatIndex = 0;
         }
-        else
-        {
-            Time.timeScale = 1;
-            testpause = false;
-        }
+
+        GameManager.Instance.CurrentHat = GameManager.Instance.Hats[GameManager.Instance.hatIndex];
+
     }
 
     void OnColorChangeDebugPress(InputAction.CallbackContext context)

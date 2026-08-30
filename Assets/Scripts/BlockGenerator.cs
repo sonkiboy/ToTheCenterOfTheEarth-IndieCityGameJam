@@ -485,6 +485,8 @@ public class BlockGenerator : MonoBehaviour
             CurrentLayerData = 0;
         }
 
+        GameManager.Instance.StatTracker.DisplayTitleCard(Layers[CurrentLayerData].Name);
+
         if(GameManager.Instance.GameOptions.IsStaticColorsOn == false)
         {
             GameManager.Instance.PaletteManager.ChangePalette(1.5f, Layers[CurrentLayerData].LayerPallete[0], Layers[CurrentLayerData].LayerPallete[1], Layers[CurrentLayerData].LayerPallete[2], Layers[CurrentLayerData].LayerPallete[3]);

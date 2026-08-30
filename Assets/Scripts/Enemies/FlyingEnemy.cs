@@ -12,6 +12,7 @@ public class FlyingEnemy : MonoBehaviour
     public Transform Target;
     [SerializeField] Vector2 targetPosition;
     public float OffsetDistance = 0f;
+    public float MaxVelocity = 4f;
 
 
     private void Awake()
@@ -37,22 +38,24 @@ public class FlyingEnemy : MonoBehaviour
         {
             Vector2 dir = (Target.position - transform.position).normalized;
             targetPosition = (Vector2)Target.position - (dir * OffsetDistance);
-            if(spriteRenderer != null)
-            {
-                if(targetPosition.x > this.transform.position.x && spriteRenderer.flipX == true)
-                {
-                    spriteRenderer.flipX = false;
-                }
-                else if (targetPosition.x < this.transform.position.x && spriteRenderer.flipX == false)
-                {
-                    spriteRenderer.flipX = true;
-
-                }
-            }
+            
         }
         else
         {
             targetPosition = Target.position;
+        }
+
+        if (spriteRenderer != null)
+        {
+            if (targetPosition.x > this.transform.position.x && spriteRenderer.flipX == true)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (targetPosition.x < this.transform.position.x && spriteRenderer.flipX == false)
+            {
+                spriteRenderer.flipX = true;
+
+            }
         }
     }
 
@@ -63,5 +66,7 @@ public class FlyingEnemy : MonoBehaviour
             Vector2 dir = (targetPosition - (Vector2)rb.position).normalized;
             rb.AddForce(dir * Speed2D) ;
         }
+
+        rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, MaxVelocity);
     }
 }

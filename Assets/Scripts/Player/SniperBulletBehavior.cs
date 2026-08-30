@@ -99,7 +99,7 @@ public class SniperBulletBehavior : Bullet
 
                     case "Tile":
                         TileBehavior tile = hitCollider.transform.GetComponent<TileBehavior>();
-                        if (tile != null) tile.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
+                        if (tile != null) tile.DamageTile(true ,GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount]);
 
 
 

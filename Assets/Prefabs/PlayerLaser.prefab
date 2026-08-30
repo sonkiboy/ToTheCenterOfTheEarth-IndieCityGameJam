@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BasicCurvedLineController
   Line: {fileID: 2055307251953031922}
   Origin: {x: 0, y: 0}
-  Target: {x: 5, y: 2}
+  Target: {x: 6, y: 2}
   RelativeBezPoint: {x: 0, y: 0}
   JointCount: 5
 --- !u!114 &2682215330448508296
@@ -242,7 +242,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2112
   HitArea: {x: 5, y: 2}
-  DamageRate: 0.05
   target: {fileID: 0}
 --- !u!1 &1259952730795764769
 GameObject:

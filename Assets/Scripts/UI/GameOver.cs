@@ -103,7 +103,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
     private void RestartGame(InputAction.CallbackContext contex)
     {
-        Debug.LogAssertion("HIT IN GAMEOVER");
+        //Debug.LogAssertion("HIT IN GAMEOVER");
 
         GameManager.Instance.InputManager.MenuInput.started -= RestartGame;
 

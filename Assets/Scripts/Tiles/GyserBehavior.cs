@@ -51,7 +51,7 @@ public class GyserBehavior : MonoBehaviour
                 while(activeTile != null && activeTile.Health > 0)
                 {
 
-                    activeTile.Health -= TileDamage;
+                    activeTile.DamageTile(true,TileDamage);
                     yield return new WaitForSeconds(DamageRate);
                 }
             

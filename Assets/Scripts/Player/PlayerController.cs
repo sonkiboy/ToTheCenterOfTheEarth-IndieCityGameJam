@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
+    SpriteRenderer hatRenderer;
     Animator animator;
 
-    Renderer damageFlash;
+    [SerializeField]Renderer[] damageFlash;
 
     GameObject gunObj;
     SpriteRenderer gunSprite;
@@ -91,7 +92,11 @@ public class PlayerController : MonoBehaviour
                 case PlayerState.Dead:
 
                     // make sure the sprite is the flashing damage color
-                    damageFlash.material.SetFloat("_Intensity", 1f);
+                    foreach(Renderer rend in damageFlash) 
+                    {
+                        rend.material.SetFloat("_Intensity", 1f);
+
+                    }
 
                     // set the RB to no constraints so the player can roll around on death
                     rb.constraints = RigidbodyConstraints2D.None;
@@ -103,8 +108,11 @@ public class PlayerController : MonoBehaviour
                 case PlayerState.NoJet:
 
                     // make sure the sprite isn't flashing damage (Because of Dead Player State)
-                    damageFlash.material.SetFloat("_Intensity", 0f);
+                    foreach (Renderer rend in damageFlash)
+                    {
+                        rend.material.SetFloat("_Intensity", 0f);
 
+                    }
                     // freeze the rotation constraints of the RB and make the player rotation back to 0
                     rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                     transform.rotation = Quaternion.identity;
@@ -119,8 +127,11 @@ public class PlayerController : MonoBehaviour
                 case PlayerState.NoMove:
 
                     // make sure the sprite isn't flashing damage (Because of Dead Player State)
-                    damageFlash.material.SetFloat("_Intensity", 0f);
+                    foreach (Renderer rend in damageFlash)
+                    {
+                        rend.material.SetFloat("_Intensity", 0f);
 
+                    }
                     // freeze the rotation constraints of the RB and make the player rotation back to 0
                     rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                     transform.rotation = Quaternion.identity;
@@ -135,8 +146,11 @@ public class PlayerController : MonoBehaviour
                 default:
 
                     // make sure the sprite isn't flashing damage (Because of Dead Player State)
-                    damageFlash.material.SetFloat("_Intensity", 0f);
-                    // set the animator to not be dead
+                    foreach (Renderer rend in damageFlash)
+                    {
+                        rend.material.SetFloat("_Intensity", 0f);
+
+                    }                    // set the animator to not be dead
                     animator.SetBool("IsDead", false);
 
                     break;
@@ -152,8 +166,9 @@ public class PlayerController : MonoBehaviour
         gunSprite = gunObj.GetComponent<SpriteRenderer>();
 
         // Get the player material renderer and sprite renderer
-        damageFlash = transform.Find("Sprite").GetComponent<Renderer>();
+        //damageFlash = transform.Find("Sprite").GetComponent<Renderer>();
         spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        hatRenderer = spriteRenderer.transform.Find("Hat").Find("Sprite").GetComponent<SpriteRenderer>();
         animator = spriteRenderer.gameObject.GetComponent<Animator>();
 
         // Get the Rigidbody
@@ -167,14 +182,29 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         aimDirection = Vector3.right;
+        GameManager.Instance.HatChanged += OnHatChanged;
+
     }
 
     private void OnDisable()
     {
         GameManager.Instance.SoundManager.PlaySoundOnObject("JetPackOff", this.gameObject);
+        GameManager.Instance.HatChanged -= OnHatChanged;
+    }
+    private void OnEnable()
+    {
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.HatChanged += OnHatChanged;
+
+        }
 
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.HatChanged -= OnHatChanged;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -204,16 +234,18 @@ public class PlayerController : MonoBehaviour
         }
 
         // if the player is aiming to the left of the character, flip the gun and player sprite if they aren't already facing left 
-        if (aimDirection.x < 0 && spriteRenderer.flipX == true)
+        if (aimDirection.x < 0 && (spriteRenderer.flipX != false || hatRenderer.flipX != true))
         {
             spriteRenderer.flipX = false;
+            hatRenderer.flipX = false;
             gunSprite.flipY = true;
         }
 
         // if the player is aiming to the right, flip the gun and player sprite if they aren't already facing right
-        else if (aimDirection.x > 0 && spriteRenderer.flipX == false)
+        else if (aimDirection.x > 0 && (spriteRenderer.flipX != true || hatRenderer.flipX != true))
         {
             spriteRenderer.flipX = true;
+            hatRenderer.flipX = true;
             gunSprite.flipY = false;
         }
 
@@ -369,7 +401,11 @@ public class PlayerController : MonoBehaviour
             // while the player is invincible, the player might have died from the platfrom between counts. If so, set the flash to on and break out of the loop
             if (GameManager.Instance.CurrentHealth <= 0)
             {
-                damageFlash.material.SetFloat("_Intensity", 1f);
+                foreach (Renderer rend in damageFlash)
+                {
+                    rend.material.SetFloat("_Intensity", 1f);
+
+                }
                 break;
             }
 
@@ -377,12 +413,20 @@ public class PlayerController : MonoBehaviour
             if (flashOn)
             {
                 flashOn = false;
-                damageFlash.material.SetFloat("_Intensity", 0f);
+                foreach (Renderer rend in damageFlash)
+                {
+                    rend.material.SetFloat("_Intensity", 0f);
+
+                }
             }
             else
             {
                 flashOn = true;
-                damageFlash.material.SetFloat("_Intensity", 1f);
+                foreach (Renderer rend in damageFlash)
+                {
+                    rend.material.SetFloat("_Intensity", 1f);
+
+                }
             }
 
             // subtract the flash rate time from the count and wait for the rate time to pass
@@ -397,7 +441,11 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance.CurrentHealth > 0)
         {
             isInvincible = false;
-            damageFlash.material.SetFloat("_Intensity", 0f);
+            foreach (Renderer rend in damageFlash)
+            {
+                rend.material.SetFloat("_Intensity", 0f);
+
+            }
         }
     }
 
@@ -421,6 +469,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OnHatChanged(object sender, HatSerializedObj hat)
+    {
+        Debug.Log($"Settomg new hat to: {hat}");
+
+        hatRenderer.sprite = hat.HatSprite;
     }
 
     

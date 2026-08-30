@@ -12,13 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b660dfd90e08f644db5577090e5a6c90, type: 3}
   m_Name: FoundryLayer
   m_EditorClassIdentifier: Assembly-CSharp::LayerSerializedObject
+  Name: 
   LayerPallete:
-  - {r: 0, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
-  BaseBlockPallet: []
-  CommonFeatures: []
-  CommonFeatureSpawnRange: {x: 1, y: 1}
-  RareFeatures: []
-  RareFeatureSpawnRange: {x: 1, y: 1}
+  - {r: 0.16862746, g: 0.16470589, b: 0.16470589, a: 0}
+  - {r: 1, g: 0.51552796, b: 0, a: 0}
+  - {r: 0.25, g: 0.45882356, b: 1, a: 0}
+  - {r: 0.9607843, g: 0.9490196, b: 0.9490196, a: 0}
+  BaseBlockPallet:
+  - {fileID: 4798846638758500855, guid: e83ef899b5e9ca4449dde1dc45580b6f, type: 3}
+  - {fileID: 4798846638758500855, guid: 1b305436b4a5e2e419508f2f7f41ad48, type: 3}
+  - {fileID: 4798846638758500855, guid: 5f027b9caccd4274e98246689b32f549, type: 3}
+  - {fileID: 3607952535885782065, guid: cc4f2c0b6c7951642bada0a57300f441, type: 3}
+  - {fileID: 2367659171985610297, guid: 2f58c6aa2aeb73043b569d1ab914dc9a, type: 3}
+  - {fileID: 1821350957607104515, guid: 6055a1ad6f6378348a5ce1ce7dee96e2, type: 3}
+  - {fileID: 4895144140992902381, guid: 0b046473e593a3c429012b8706657cd8, type: 3}
+  - {fileID: 2530426479615380877, guid: 822c0a02c5c67ba419c7a8ccadb389aa, type: 3}
+  - {fileID: 4798846638758500855, guid: 92f78e70e73eefb4aac4954d2193e0e4, type: 3}
+  CommonFeatures:
+  - {fileID: 2163494120345482535, guid: ec877df537989c44e880a1ddd045dbae, type: 3}
+  - {fileID: 2163494120345482535, guid: 6acb20c9392caa64988750f202b54267, type: 3}
+  - {fileID: 4959592619365724177, guid: 09b3d56f75a27c84582133402596ee37, type: 3}
+  - {fileID: 1969568219695917701, guid: 9f6004c65f0c1ee4fac027f50cef97a1, type: 3}
+  - {fileID: 2163494120345482535, guid: 0f21390153a4a6b4c8a33d53f6c78acc, type: 3}
+  - {fileID: 2163494120345482535, guid: 63f46a3f04c826744b6fda6bc2e0d4a2, type: 3}
+  - {fileID: 2163494120345482535, guid: b2c00a79afb21a247ac69b88c59bf150, type: 3}
+  - {fileID: 2163494120345482535, guid: 874a8a08a7318a544924ef29f9f4438d, type: 3}
+  - {fileID: 2163494120345482535, guid: 88132cd056f20fc4dbf66adc84d19235, type: 3}
+  - {fileID: 2163494120345482535, guid: f24d92beae7b899488d9c0bb734af467, type: 3}
+  CommonFeatureSpawnRange: 120
+  RareFeatures:
+  - {fileID: 7795167321983646521, guid: f1583c459f3248e408f84b1e81304ed9, type: 3}
+  - {fileID: 6245839323528266023, guid: 57ef3e154d7d97448aa7c717e56283a4, type: 3}
+  - {fileID: 2163494120345482535, guid: f24d92beae7b899488d9c0bb734af467, type: 3}
+  - {fileID: 1969568219695917701, guid: 3e4dcf15ef2d8d6438529d5a08f67cae, type: 3}
+  - {fileID: 1969568219695917701, guid: c6ae8edc993ec8340828389ef5422e1b, type: 3}
+  RareFeatureSpawnRange: 10
+  SpawnedEnemies: []
+  NumberOfEnemies: 0
+  LayerBoss: 0

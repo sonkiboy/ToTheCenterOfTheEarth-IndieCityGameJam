@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SonarBulletBehavior : BulletBehavior
 {
-    Rigidbody2D rb;
+    //Rigidbody2D rb;
     public float MaxScaleSize = 2f;
     public AnimationCurve MovementCurve;
     public float MaxDistance = 3f;

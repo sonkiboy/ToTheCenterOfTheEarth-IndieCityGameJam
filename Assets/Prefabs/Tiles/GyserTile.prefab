@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79b9dba8cc45f4086dba0d9e4271aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionFX: {fileID: 0}
+  explosionFX: {fileID: 7419567945701673913, guid: d33019f8ff31be24aaa2f72997f464f9, type: 3}
   gemDrop: {fileID: 7721911675991746013, guid: acd4b42a372784341b8d3946d05a7dd7, type: 3}
   fuelDrop: {fileID: 514592976782679714, guid: d556e07c57d6c304baea8998e0e52694, type: 3}
   Config: {fileID: 11400000, guid: 431618fbbdb85e343811f9e8e579c599, type: 2}

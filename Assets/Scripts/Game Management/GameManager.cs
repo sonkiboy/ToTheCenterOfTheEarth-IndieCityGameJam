@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public Transform ScoreAnchor;
     [HideInInspector] public StatTracker StatTracker;
     [HideInInspector] public HealthTracker HealthTracker;
+
+    [HideInInspector] public BlockGenerator BlockGenerator;
     
     // ------------ DEPTH LEVEL ------------
 
@@ -109,7 +111,8 @@ public class GameManager : MonoBehaviour
                 if (treasure >= nextGemHeal)
                 {
                     if (CurrentHealth < 3) CurrentHealth++;
-                    nextGemHeal += GemHealRate;
+                    nextGemHeal = Mathf.RoundToInt(Mathf.Pow((float)GemHealRate, 1+(float)gemHealCount *GemHealIncreaseRate));
+                    gemHealCount++;
                     StatTracker.SetGemHealScore(nextGemHeal);
                 }
             }
@@ -138,6 +141,10 @@ public class GameManager : MonoBehaviour
                     if (health > value)
                     {
                         StartCoroutine(Player.Invincibility(Player.InvincibilityDurration));
+                        if(OnPlayerDamaged != null)
+                        {
+                            OnPlayerDamaged.Invoke(this, value);
+                        }
                     }
 
                     // save the value to _health
@@ -164,6 +171,34 @@ public class GameManager : MonoBehaviour
 
     public int GemHealRate = 15000;
     private int nextGemHeal = 0;
+    private int gemHealCount = 0;
+    public float GemHealIncreaseRate = .2f;
+
+    public EventHandler<int> OnPlayerDamaged;
+
+    // ------------ HATS ------------ 
+
+    public HatSerializedObj[] Hats;
+
+    [SerializeField] private HatSerializedObj _hat;
+    [HideInInspector] public int hatIndex = 0;
+    public HatSerializedObj CurrentHat
+    {
+        get { return _hat; }
+        set
+        {
+            _hat = value;
+
+            if (HatChanged != null)
+            {
+                Debug.Log($"DEBUG HIt Settomg new hat to: {_hat}");
+
+                HatChanged.Invoke(this,_hat);
+            }
+            
+        }
+    }
+    public event EventHandler<HatSerializedObj> HatChanged;
 
     // ------------ GAME STATE ------------ 
 
@@ -312,6 +347,7 @@ public class GameManager : MonoBehaviour
                 Platform = GameObject.FindGameObjectWithTag("Platform").GetComponent<PlatformBehavior>();
                 StatTracker = GameObject.FindAnyObjectByType<StatTracker>();
                 HealthTracker = GameObject.FindAnyObjectByType<HealthTracker>();
+                BlockGenerator =  GameObject.FindAnyObjectByType<BlockGenerator>();
 
                 ScoreAnchor = StatTracker.gameObject.transform.Find("ScoreAnchor");
                 Overlay = GameObject.FindAnyObjectByType<OverlayUI>();
@@ -327,7 +363,7 @@ public class GameManager : MonoBehaviour
 
                 StatTracker.SetGemHealScore(nextGemHeal);
                 nextGemHeal = GemHealRate;
-
+                gemHealCount = 0;
                 StartNormalGame();
 
                 break;
@@ -338,6 +374,8 @@ public class GameManager : MonoBehaviour
                 Platform = GameObject.FindGameObjectWithTag("Platform").GetComponent<PlatformBehavior>();
                 StatTracker = GameObject.FindAnyObjectByType<StatTracker>();
                 HealthTracker = GameObject.FindAnyObjectByType<HealthTracker>();
+                BlockGenerator = GameObject.FindAnyObjectByType<BlockGenerator>();
+
 
                 ScoreAnchor = StatTracker.gameObject.transform.Find("ScoreAnchor");
                 Overlay = GameObject.FindAnyObjectByType<OverlayUI>();
@@ -350,7 +388,10 @@ public class GameManager : MonoBehaviour
                 ScoreAnchor = Player.transform;
                 ScoreAnchor = Player.transform;
 
-                
+
+                nextGemHeal = GemHealRate;
+                gemHealCount = 0;
+
 
                 break;
 
@@ -389,19 +430,20 @@ public class GameManager : MonoBehaviour
     IEnumerator StartGameSequence()
     {
         yield return null;
-        GameManager.Instance.Player.enabled = false;
+        Player.enabled = false;
 
         
         
         Overlay.StartCountdown();
         yield return new WaitForSeconds(3);
-        GameManager.Instance.Player.enabled = true;
+        Player.enabled = true;
 
         Platform.StartDrilling();
 
 
-        yield return new WaitForSeconds(7);
-        Overlay.ShowLevelTitle(1);
-        
+        yield return new WaitForSeconds(3);
+        Debug.Log($"Setting title to {BlockGenerator.Layers[BlockGenerator.CurrentLayerData].Name}");
+        StatTracker.DisplayTitleCard(BlockGenerator.Layers[BlockGenerator.CurrentLayerData].Name);
+
     }
 }

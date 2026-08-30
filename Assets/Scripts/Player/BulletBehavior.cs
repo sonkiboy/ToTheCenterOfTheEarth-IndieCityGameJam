@@ -10,7 +10,7 @@ public class BulletBehavior : Bullet
     public bool IsEnemyBullet = false;
 
     
-    [SerializeField]private Rigidbody2D rb;
+    [SerializeField]protected Rigidbody2D rb;
     public float Speed = 1;
 
     public bool DoesIgnite = false;
@@ -54,8 +54,8 @@ public class BulletBehavior : Bullet
 
             if (tb != null)
             {
-                if(GameManager.Instance.PowerManager != null) tb.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
-                else tb.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
+                if(GameManager.Instance.PowerManager != null) tb.DamageTile(true,GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount]);
+                else tb.DamageTile(true, GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount]);
 
 
             }
@@ -71,7 +71,11 @@ public class BulletBehavior : Bullet
         }
         else
         {
-            
+            if (collision.tag == "Player")
+            {
+                GameManager.Instance.Player.TakeDamage(1);
+                Destroy(gameObject);
+            }
         }
             
 

@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: GyzerTile
   m_EditorClassIdentifier: 
   Health: 10
-  SpawnChance: 3
+  SpawnChance: 10
   PointsGiven: 15
   GemsDropped: 0
   FuelDrop: 0
-  ExplodeOnBreak: 0
+  ExplodeOnBreak: 1
   LayersDected:
     serializedVersion: 2
-    m_Bits: 0
-  ExplosionRange: 0
-  ExplosionDamage: 0
+    m_Bits: 4416
+  ExplosionRange: 3
+  ExplosionDamage: 20
   BlastForce: 1
   SpawnedEnemies: []
   SpawnedPowerUps: []

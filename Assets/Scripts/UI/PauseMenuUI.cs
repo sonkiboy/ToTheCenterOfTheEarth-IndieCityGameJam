@@ -160,13 +160,16 @@ public class PauseMenuUI : MonoBehaviour
             selectorArrows.SetActive(false);
             uiInputModule.enabled = true;
 
+            options.SaveSettingsToFile();
+
         }
         else if(PauseMenuObj.activeSelf == false && GameManager.Instance.CurrentState != GameManager.GameStates.GameOver) 
         {
             Time.timeScale = 0;
 
             PauseMenuObj.SetActive(true);
-            
+            options.SaveSettingsToFile();
+
             OpenMainPause();
         }
     }
@@ -238,6 +241,7 @@ public class PauseMenuUI : MonoBehaviour
         Debug.Log("Hit open options");
         OptionsMenu.SetActive(true);
         _system.SetSelectedGameObject(gamePlayButton);
+        options.SaveSettingsToFile();
 
         gamePlayPage.SetActive(true);
         displayPage.SetActive(false);
@@ -249,6 +253,8 @@ public class PauseMenuUI : MonoBehaviour
 
     public void CloseOptionsMenu()
     {
+        options.SaveSettingsToFile();
+
         OptionsMenu.SetActive(false);
     }
 
@@ -277,6 +283,7 @@ public class PauseMenuUI : MonoBehaviour
     public void OpenGamePlayPage()
     {
         UpdateOptions();
+        options.SaveSettingsToFile();
 
         gamePlayPage.SetActive(true);
         displayPage.SetActive(false);
@@ -287,6 +294,7 @@ public class PauseMenuUI : MonoBehaviour
     {
 
         UpdateOptions();
+        options.SaveSettingsToFile();
 
         gamePlayPage.SetActive(false);
         displayPage.SetActive(true);

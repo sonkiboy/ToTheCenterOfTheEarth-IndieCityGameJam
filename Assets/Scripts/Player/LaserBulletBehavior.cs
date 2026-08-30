@@ -110,23 +110,23 @@ public class LaserBulletBehavior : Bullet
                         TileBehavior tile = target.GetComponent<TileBehavior>();
                         if (tile != null)
                         {
-                            //'Debug.Log($"Locked into mining tile {tile.name}");
+                            Debug.Log($"Locked into mining tile {tile.name}");
                             //Debug.Log($"Initial variables read as: {tile.Health > 0} {GameManager.Instance.InputManager.FireInput.IsPressed()} && {target == tile.transform}");
 
                             while (tile.Health > 0 && GameManager.Instance.InputManager.FireInput.IsPressed() && target == tile.transform)
                             {
                                 //Debug.Log($"Frame check variables read as: {tile.Health > 0} {GameManager.Instance.InputManager.FireInput.IsPressed()} && {target == tile.transform}");
-                                // Debug.Log($"Tile health is {tile.Health}");
+                                Debug.Log($"Tile health is {tile.Health}");
 
-                                if (GameManager.Instance.PowerManager != null) tile.Health -= GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount];
-                                else tile.Health -= (Damage + ExtraDamage);
+                                if (GameManager.Instance.PowerManager != null) tile.DamageTile(true,GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount]);
+                                else tile.DamageTile(true,(Damage + ExtraDamage));
 
 
                                 //yield return new WaitForSeconds(DamageRate - (DamageRate * (GameManager.Instance.PowerManager.ReloadSpeedDown * GameManager.Instance.PowerManager.ReloadPowerCount)));
                                 yield return new WaitForSeconds(GameManager.Instance.CurrentGun.ReloadSpeedLevels[GameManager.Instance.PowerManager.ReloadPowerCount]);
 
                             }
-                            Debug.Log($"No More Tile");
+                            //Debug.Log($"No More Tile");
                         }
 
 

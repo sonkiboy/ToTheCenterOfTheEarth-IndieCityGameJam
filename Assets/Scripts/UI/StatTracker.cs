@@ -20,6 +20,8 @@ public class StatTracker : MonoBehaviour
     public GameObject LevelBossText;
     public GameObject BossWinText;
 
+    public Animator TitleAnimator;
+
     #endregion
 
     // Sprites for the large and small variants of the score digits
@@ -175,6 +177,11 @@ public class StatTracker : MonoBehaviour
                 levelDigits[i].GetComponent<Image>().sprite = bigNumbers[number];
             }
         }
+    }
+
+    public void DisplayTitleCard(string title)
+    {
+        TitleAnimator.SetTrigger(title);
     }
 
     public void TurnOnBoss()

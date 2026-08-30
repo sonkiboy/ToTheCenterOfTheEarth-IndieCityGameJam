@@ -77,6 +77,8 @@ public class OverlayUI : MonoBehaviour
         two.SetActive(false);
         one.SetActive(false);
         go.SetActive(false);
+
+
     }
 
     public void ShowLevelTitle(int stage)

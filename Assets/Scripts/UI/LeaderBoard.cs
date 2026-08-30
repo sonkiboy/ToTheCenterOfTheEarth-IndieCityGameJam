@@ -14,6 +14,8 @@ public class LeaderBoard : MonoBehaviour
     [SerializeField] Sprite[] FontSprites;
     [SerializeField] GameObject[] PlayerNames;
     [SerializeField] GameObject[] Scores;
+    [SerializeField] LBLineItemUI[] Lines;
+    [SerializeField] LBLineItemUI RoundScoreLine;
 
     [HideInInspector]
     public GameObject Board;
@@ -81,72 +83,90 @@ public class LeaderBoard : MonoBehaviour
     {
         ReadDataFromFile();
 
-        for (int i = 0; i < Scores.Length; i++)
+        RoundScoreLine.ScoreText = GameManager.Instance.CurrentTreasure.ToString();
+
+        for (int i = 0; i < Lines.Length; i++)
         {
-
-            if (i < textScores.Length)
+            if(textNames.Length > i)
             {
-                char[] charArray = textScores[i].ToCharArray();
-
-                int digitOffset = Scores[i].transform.childCount - charArray.Length;
-
-                for (int k = 0; k < Scores[i].transform.childCount; k++)
-                {
-                    if (k < digitOffset)
-                    {
-                        Scores[i].transform.GetChild(k).GetComponent<Image>().sprite = GetFontSprite("null");
-                    }
-                    else
-                    {
-                        Scores[i].transform.GetChild(k).GetComponent<Image>().sprite = GetFontSprite(charArray[k - digitOffset].ToString());
-                    }
-
-
-
-                }
+                Lines[i].NameText = textNames[i];
+                Lines[i].ScoreText = textScores[i];
             }
             else
             {
-                for (int k = 0; k < Scores[i].transform.childCount; k++)
-                {
-                    
-                        Scores[i].transform.GetChild(k).GetComponent<Image>().sprite = GetFontSprite("null");
-                    
-                }
+                Lines[i].NameText = "";
+                Lines[i].ScoreText = "";
             }
-
-
+            
         }
 
-        for (int i = 0; i < PlayerNames.Length; i++)
-        {
 
-            if (i < textNames.Length)
-            {
-                char[] charArray = textNames[i].ToCharArray();
+        //for (int i = 0; i < Scores.Length; i++)
+        //{
 
-                //Debug.Log($"Setting Player name {i} to {textArray[i]}");
+        //    if (i < textScores.Length)
+        //    {
+        //        char[] charArray = textScores[i].ToCharArray();
 
-                for (int j = 0; j < charArray.Length; j++)
-                {
+        //        int digitOffset = Scores[i].transform.childCount - charArray.Length;
+
+        //        for (int k = 0; k < Scores[i].transform.childCount; k++)
+        //        {
+        //            if (k < digitOffset)
+        //            {
+        //                Scores[i].transform.GetChild(k).GetComponent<Image>().sprite = GetFontSprite("null");
+        //            }
+        //            else
+        //            {
+        //                Scores[i].transform.GetChild(k).GetComponent<Image>().sprite = GetFontSprite(charArray[k - digitOffset].ToString());
+        //            }
+
+
+
+        //        }
+        //    }
+        //    else
+        //    {
+        //        for (int k = 0; k < Scores[i].transform.childCount; k++)
+        //        {
                     
-                    Image image = PlayerNames[i].transform.GetChild(j).GetComponent<Image>();
-                    image.sprite = GetFontSprite(charArray[j].ToString());
+        //                Scores[i].transform.GetChild(k).GetComponent<Image>().sprite = GetFontSprite("null");
+                    
+        //        }
+        //    }
 
 
-                }
-            }
-            else
-            {
-                for (int j = 0; j < PlayerNames[i].transform.childCount; j++)
-                {
-                    Image image = PlayerNames[i].transform.GetChild(j).GetComponent<Image>();
-                    image.sprite = GetFontSprite("null");
+        //}
+
+        //for (int i = 0; i < PlayerNames.Length; i++)
+        //{
+
+        //    if (i < textNames.Length)
+        //    {
+        //        char[] charArray = textNames[i].ToCharArray();
+
+        //        //Debug.Log($"Setting Player name {i} to {textArray[i]}");
+
+        //        for (int j = 0; j < charArray.Length; j++)
+        //        {
+                    
+        //            Image image = PlayerNames[i].transform.GetChild(j).GetComponent<Image>();
+        //            image.sprite = GetFontSprite(charArray[j].ToString());
 
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        for (int j = 0; j < PlayerNames[i].transform.childCount; j++)
+        //        {
+        //            Image image = PlayerNames[i].transform.GetChild(j).GetComponent<Image>();
+        //            image.sprite = GetFontSprite("null");
+
+
+        //        }
+        //    }
+        //}
     }
 
     

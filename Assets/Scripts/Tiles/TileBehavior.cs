@@ -43,7 +43,7 @@ public class TileBehavior : MonoBehaviour
 
                 if (hp <= 0)
                 {
-                    BreakTile(true);
+                    BreakTile(isDamagedByPlayer);
                 }
 
                 else if (Config.BrokenOverlays.Length > 0 && OverlayRenderer != null)
@@ -68,7 +68,7 @@ public class TileBehavior : MonoBehaviour
 
         }
     }
-
+    [SerializeField]bool isDamagedByPlayer = false;
     private void Awake()
     {
         hp = Config.Health;
@@ -90,14 +90,28 @@ public class TileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(GameManager.Instance.Platform != null)
+        {
+            if (transform.position.y > GameManager.Instance.Platform.transform.position.y + 30)
+            {
+                Destroy(gameObject);
+            }
+        }
+        
     }
 
     public void BreakTile(bool isBrokenByPlayer)
     {
-        StartCoroutine(BreakTileSequence(isBrokenByPlayer));
+        isDamagedByPlayer = isBrokenByPlayer;
+        StartCoroutine(BreakTileSequence());
     }
-    IEnumerator BreakTileSequence(bool isBrokenByPlayer)
+
+    public void DamageTile(bool isPlayer, int damage)
+    {
+        isDamagedByPlayer = isPlayer;
+        Health -= damage;
+    }
+    IEnumerator BreakTileSequence()
     {
         // call the event 
         if (OnTileBreak != null)
@@ -110,15 +124,26 @@ public class TileBehavior : MonoBehaviour
         {
             Instantiate(Config.breakParticles, this.transform.position + (Vector3.one * .5f), Quaternion.identity);
         }
-
-        // these are events to happen if this this tile was only broken by the player
-        if (isBrokenByPlayer)
+        // if the config of this tile dicates it explodes on destruction, call the Explode() method
+        if (Config.ExplodeOnBreak)
         {
-            // if the config of this tile dicates it explodes on destruction, call the Explode() method
-            if (Config.ExplodeOnBreak)
-            {
-                Explode();
-            }
+            Explode();
+        }
+
+        // if the conifg spawns a power up, pick a random power up from the config list
+        if (Config.SpawnedPowerUps.Length > 0)
+        {
+            int random = Random.Range(0, Config.SpawnedPowerUps.Length);
+
+            GameObject powerUp = Config.SpawnedPowerUps[random];
+
+            Instantiate(powerUp, this.transform.position + (Vector3.one * .5f), powerUp.transform.rotation);
+
+        }
+        // these are events to happen if this this tile was only broken by the player
+        if (isDamagedByPlayer)
+        {
+            Debug.Log($"Tile was broken by player is {isDamagedByPlayer}");
 
             // if the config of the tile has gems to be dropped, then call DropObject(gemDrop) for each gem to be dropped
             if (Config.GemsDropped > 0)
@@ -141,16 +166,7 @@ public class TileBehavior : MonoBehaviour
 
 
 
-            // if the conifg spawns a power up, pick a random power up from the config list
-            if (Config.SpawnedPowerUps.Length > 0)
-            {
-                int random = Random.Range(0, Config.SpawnedPowerUps.Length);
-
-                GameObject powerUp = Config.SpawnedPowerUps[random];
-
-                Instantiate(powerUp, this.transform.position + (Vector3.one * .5f), powerUp.transform.rotation);
-
-            }
+            
         }
 
         // if the config has enemies to spawn, spawn all the enemies in the config list

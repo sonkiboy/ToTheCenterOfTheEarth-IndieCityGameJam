@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -72,6 +73,11 @@ public class PlatformBehavior : MonoBehaviour
 
 
                 isDrainingHealth = false;
+                if (OnLowFuel != null)
+                {
+                    OnLowFuel.Invoke(this, false);
+                }
+
                 StopCoroutine(DrainPlayer());
 
                 if (blockGenerator.Layers[blockGenerator.CurrentLayerData].Name == "The Crust")
@@ -114,6 +120,8 @@ public class PlatformBehavior : MonoBehaviour
 
     // tracks if the platform is currently out of fuel and draining health from the player
     bool isDrainingHealth = false;
+
+    public EventHandler<bool> OnLowFuel;
 
     // Start is called before the first frame update
     void Start()
@@ -161,6 +169,8 @@ public class PlatformBehavior : MonoBehaviour
         // stop all sounds tied to this game object
         GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOff");
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -216,7 +226,7 @@ public class PlatformBehavior : MonoBehaviour
                         if (collision.gameObject.tag == "Tile")
                         {
                             TileBehavior tileBehavior = collision.GetComponent<TileBehavior>();
-                            tileBehavior.Health -= DrillDamage;
+                            tileBehavior.DamageTile(false,DrillDamage);
                         }
 
                         // if the collider was instead an Enemy, deal damage to its Enemy component
@@ -281,7 +291,16 @@ public class PlatformBehavior : MonoBehaviour
     {
         while (true)
         {
-            CurrentFuel -= Mathf.RoundToInt(FuelPerSecond / 4);
+            if(GameManager.Instance.CurrentState == GameManager.GameStates.Boss)
+            {
+                CurrentFuel -= Mathf.RoundToInt(FuelPerSecond / 8);
+
+            }
+            else
+            {
+                CurrentFuel -= Mathf.RoundToInt(FuelPerSecond / 8);
+
+            }
             yield return new WaitForSeconds(.25f);
         }
     }
@@ -297,6 +316,11 @@ public class PlatformBehavior : MonoBehaviour
 
         // set is Draining Health to true
         isDrainingHealth = true;
+
+        if(OnLowFuel != null)
+        {
+            OnLowFuel.Invoke(this, true);
+        }
 
         // wait HealthDrainRate seconds to give the player time to react 
         yield return new WaitForSeconds(HealthDrainRate);
@@ -320,6 +344,7 @@ public class PlatformBehavior : MonoBehaviour
     {
         if (e == GameManager.GameStates.GameOver)
         {
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("AlarmOff");
 
             StopAllCoroutines();
             StopCoroutine(Decend());

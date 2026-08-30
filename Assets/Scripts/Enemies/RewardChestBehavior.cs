@@ -5,6 +5,7 @@ public class RewardChestBehavior : Enemy
 
     public GameObject SmallGemPrefab;
     public GameObject BigGemPrefab;
+    public GameObject DroppedPowerPrefab;
 
     public int SmallGemsOnHit = 3;
     public float SmallGemFlingForce = 4f;
@@ -48,6 +49,9 @@ public class RewardChestBehavior : Enemy
         {
             Instantiate(BigGemPrefab, this.transform.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f),0), Quaternion.identity);
         }
+
+        Instantiate(DroppedPowerPrefab, this.transform.position, Quaternion.identity);
+
         Destroy(this.gameObject);
     }
 }

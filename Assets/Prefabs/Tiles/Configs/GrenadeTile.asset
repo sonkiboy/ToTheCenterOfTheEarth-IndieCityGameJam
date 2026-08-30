@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GrenadeTile
   m_EditorClassIdentifier: 
   Health: 1
-  SpawnChance: 1
+  SpawnChance: 2
   PointsGiven: 50
   GemsDropped: 0
   FuelDrop: 0

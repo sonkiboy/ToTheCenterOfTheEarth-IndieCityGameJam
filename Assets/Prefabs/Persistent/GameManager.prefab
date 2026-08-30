@@ -71,13 +71,25 @@ MonoBehaviour:
   ScoreAnchor: {fileID: 0}
   StatTracker: {fileID: 0}
   HealthTracker: {fileID: 0}
+  BlockGenerator: {fileID: 0}
   level: 0
   IsGameOver: 0
   ActuallDepth: 0
   treasure: 0
   IsInvinible: 0
   health: 3
-  GemHealRate: 50000
+  GemHealRate: 30000
+  GemHealIncreaseRate: 0.04
+  Hats:
+  - {fileID: 11400000, guid: a2f585f87a63faf498e591b7555a6067, type: 2}
+  - {fileID: 11400000, guid: c0db4f803c36bcc4ebc4df1d2a00c30c, type: 2}
+  - {fileID: 11400000, guid: ab69a2e6966f2cc40922eb4ae0f47a3d, type: 2}
+  - {fileID: 11400000, guid: bdfd7d44e29530d48a3747bbb09ab0c3, type: 2}
+  - {fileID: 11400000, guid: 50277a4eb1e9a8345908e519e669b2a0, type: 2}
+  - {fileID: 11400000, guid: f42c0e9d081650a46a53ccc609f048af, type: 2}
+  - {fileID: 11400000, guid: 45d57b5d6bb3d51468ebf794296deeb1, type: 2}
+  _hat: {fileID: 11400000, guid: a2f585f87a63faf498e591b7555a6067, type: 2}
+  hatIndex: 0
   _state: 0
 --- !u!114 &1817808975515444347
 MonoBehaviour:
@@ -327,7 +339,7 @@ MonoBehaviour:
   MasterVolume: 50
   SoundVolume: 50
   MusicVolume: 50
-  LastHighscoreName: sink
+  LastHighscoreName: sonk
 --- !u!114 &1007105145765103074
 MonoBehaviour:
   m_ObjectHideFlags: 0
