@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
                         break;
 
                     case GameStates.Boss:
-                        GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStop");
+                        GameManager.Instance.SoundManager.PlayNonDiageticSound(GameManager.Instance.BlockGenerator.Layers[GameManager.Instance.BlockGenerator.CurrentLayerData].ThemeMusic + "Stop");
                         GameManager.Instance.SoundManager.PlayNonDiageticSound("BossThemeStart");
                         break;
                 }

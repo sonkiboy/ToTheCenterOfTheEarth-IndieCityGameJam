@@ -6,6 +6,7 @@
 				<SoundBank Name="UrMom" ID="{C9312189-E98E-479F-8DC9-2A2FF1ED4AE5}">
 					<ObjectInclusionList>
 						<ObjectRef Name="EndThemeStart" ID="{1643940E-0703-4050-9EC9-6DBBC722AB4A}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="JungleThemeStop" ID="{880C160D-B106-40BC-A82B-864933E9E090}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayerHit" ID="{83264411-28C0-417D-8834-4E6926408214}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayerShoot" ID="{0D127B5A-DB36-421E-B422-D0B126A50B5A}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AlarmOff" ID="{1F85B488-E946-428E-B1CD-9737DBD32DC4}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
@@ -30,6 +31,7 @@
 						<ObjectRef Name="BulletHit" ID="{04EE6E36-7D28-4DA2-94F3-B4740373F98F}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Blip" ID="{2178CFEE-A6E8-4DF1-9994-EDF618E9A841}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AlarmOn" ID="{2EF17D4D-2C71-4EEA-9838-1D23CDBB7AFB}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="JungleThemeStart" ID="{A263702F-1343-4F5A-8040-8BEC6880ED8A}" WorkUnitID="{2AA0025E-D27C-49F5-A036-B2CE223A358C}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

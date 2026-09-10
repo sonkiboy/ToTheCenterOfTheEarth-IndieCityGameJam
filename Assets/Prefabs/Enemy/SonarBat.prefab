@@ -115,8 +115,8 @@ MonoBehaviour:
   Speed2D: {x: 4, y: 3}
   Target: {fileID: 0}
   targetPosition: {x: 0, y: 0}
-  OffsetDistance: 2
-  MaxVelocity: 4
+  OffsetDistance: 2.5
+  MaxVelocity: 3.5
 --- !u!212 &8550990731769158859
 SpriteRenderer:
   serializedVersion: 2

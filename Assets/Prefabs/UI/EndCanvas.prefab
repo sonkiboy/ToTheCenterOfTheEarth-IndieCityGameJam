@@ -6239,7 +6239,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 78, y: 50}
+  m_SizeDelta: {x: 90, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4441176060810054766
 CanvasRenderer:
@@ -6838,7 +6838,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -8, y: 0}
-  m_SizeDelta: {x: 78, y: 50}
+  m_SizeDelta: {x: 90, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &2247892482904871115
 CanvasRenderer:
@@ -8867,7 +8867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3070085414234735254
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9647,6 +9647,7 @@ MonoBehaviour:
   - collecting enough treasure will heal you, but gets costly overtime
   - power ups max at 4 levels, but collecting more will keep the timer full
   - 'Fire bullets will ignite tiles they pass '
+  - Fuel consumption is reduced durring boss battles
 --- !u!1 &7023099171256357680
 GameObject:
   m_ObjectHideFlags: 0

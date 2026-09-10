@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: JungleLayer
   m_EditorClassIdentifier: Assembly-CSharp::LayerSerializedObject
   Name: The Jungle
+  ThemeMusic: JungleTheme
   LayerPallete:
   - {r: 0.0627451, g: 0.078431375, b: 0.2, a: 0.21176471}
   - {r: 0.80784315, g: 0.08627451, b: 0.38039216, a: 0}

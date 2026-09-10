@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
-    SpriteRenderer hatRenderer;
+    [SerializeField]SpriteRenderer hatRenderer;
     Animator animator;
 
     [SerializeField]Renderer[] damageFlash;
@@ -181,8 +181,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         aimDirection = Vector3.right;
         GameManager.Instance.HatChanged += OnHatChanged;
+        OnHatChanged(this, GameManager.Instance.CurrentHat);
 
     }
 
@@ -234,18 +236,21 @@ public class PlayerController : MonoBehaviour
         }
 
         // if the player is aiming to the left of the character, flip the gun and player sprite if they aren't already facing left 
-        if (aimDirection.x < 0 && (spriteRenderer.flipX != false || hatRenderer.flipX != true))
+        if (aimDirection.x < 0)
         {
-            spriteRenderer.flipX = false;
-            hatRenderer.flipX = false;
+            Debug.Log($"Aim direction {aimDirection} read as left, setting sprites to flip false ({spriteRenderer.flipX},{hatRenderer.flipX})");
+            if (spriteRenderer.flipX == true) spriteRenderer.flipX = false;
+            if (hatRenderer.flipX == true) {hatRenderer.flipX = false; Debug.Log($"(supposed to be false) Setting hat to {hatRenderer.flipX}"); }
             gunSprite.flipY = true;
         }
 
         // if the player is aiming to the right, flip the gun and player sprite if they aren't already facing right
-        else if (aimDirection.x > 0 && (spriteRenderer.flipX != true || hatRenderer.flipX != true))
+        else if (aimDirection.x > 0 )
         {
-            spriteRenderer.flipX = true;
-            hatRenderer.flipX = true;
+            Debug.Log($"Aim direction {aimDirection} read as right, setting sprites to flip true ({spriteRenderer.flipX},{hatRenderer.flipX})");
+
+            if (spriteRenderer.flipX == false) spriteRenderer.flipX = true;
+            if (hatRenderer.flipX == false) { hatRenderer.flipX = true; Debug.Log($"(supposed to be true) Setting hat to {hatRenderer.flipX}"); }
             gunSprite.flipY = false;
         }
 

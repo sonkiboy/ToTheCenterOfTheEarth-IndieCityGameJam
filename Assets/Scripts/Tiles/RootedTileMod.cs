@@ -39,7 +39,16 @@ public class RootedTileMod : MonoBehaviour
         animator = rootOverlay.GetComponent<Animator>();
 
     }
-
+    private void Update()
+    {
+        if (GameManager.Instance.Platform != null)
+        {
+            if (transform.position.y > GameManager.Instance.Platform.transform.position.y + 30)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
     void OnRootDamaged(object sender, EventArgs e)
     {
         if(tile.Health <= originalTileHealth)

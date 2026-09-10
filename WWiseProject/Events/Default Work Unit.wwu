@@ -322,6 +322,41 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="JungleThemeStart" ID="{A263702F-1343-4F5A-8040-8BEC6880ED8A}">
+					<ChildrenList>
+						<Action Name="" ID="{6DB66055-CD09-4CB3-91BB-14CA5515CB70}" ShortID="756181238">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="JungleTheme" ID="{96C0458A-75EA-4910-B5EB-25C3EB4E2355}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A8EFF76E-A0A9-4862-84AC-C9368A2F5E39}" ShortID="531299402">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="JungleTheme" ID="{96C0458A-75EA-4910-B5EB-25C3EB4E2355}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="JungleThemeStop" ID="{880C160D-B106-40BC-A82B-864933E9E090}">
+					<ChildrenList>
+						<Action Name="" ID="{79E7FCBC-B769-404A-BE8A-E9772E11A6F0}" ShortID="877158133">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="JungleTheme" ID="{96C0458A-75EA-4910-B5EB-25C3EB4E2355}" WorkUnitID="{6106F826-6F8D-4D92-A7BA-13E0DCDA64C1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

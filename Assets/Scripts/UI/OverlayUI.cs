@@ -69,7 +69,7 @@ public class OverlayUI : MonoBehaviour
         go.SetActive(true);
         GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
-        GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStart");
+        GameManager.Instance.SoundManager.PlayNonDiageticSound(GameManager.Instance.BlockGenerator.Layers[GameManager.Instance.BlockGenerator.CurrentLayerData].ThemeMusic + "Start");
 
 
         yield return new WaitForSeconds(3); 

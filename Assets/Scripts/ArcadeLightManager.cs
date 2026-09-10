@@ -11,7 +11,7 @@ public class ArcadeLightManager : MonoBehaviour
         alert,
         off
     }
-    SerialPort serial = new SerialPort("COM6",9600);
+    SerialPort serial = new SerialPort("COM5",9600);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()

@@ -194,8 +194,11 @@ public class PlatformBehavior : MonoBehaviour
             // if the player or an emeny leaves the platform, make sure its parent object is set to nothing
             if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
             {
+                if(collision.gameObject != null)
+                {
+                    collision.transform.parent = null;
 
-                collision.transform.parent = null;
+                }
             }
 
         }

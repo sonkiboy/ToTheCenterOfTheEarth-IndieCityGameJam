@@ -87,7 +87,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bdfd7d44e29530d48a3747bbb09ab0c3, type: 2}
   - {fileID: 11400000, guid: 50277a4eb1e9a8345908e519e669b2a0, type: 2}
   - {fileID: 11400000, guid: f42c0e9d081650a46a53ccc609f048af, type: 2}
-  - {fileID: 11400000, guid: 45d57b5d6bb3d51468ebf794296deeb1, type: 2}
   _hat: {fileID: 11400000, guid: a2f585f87a63faf498e591b7555a6067, type: 2}
   hatIndex: 0
   _state: 0
@@ -189,6 +188,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  UIHeldMoveInput:
+    m_Name: UI Held Move Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6d3b8c31-e7a7-48ee-97c9-3e77aa283d3b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   UIEnter:
     m_Name: UI Enter
     m_Type: 0
@@ -218,6 +226,7 @@ MonoBehaviour:
     m_Flags: 0
   isController: 1
   isKeyboard: 0
+  isArcade: 0
 --- !u!114 &12273638454663181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
       propertyPath: SoundEvents.Array.size
-      value: 25
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
       propertyPath: SoundEvents.Array.data[21].WwiseObjectReference
@@ -420,6 +429,14 @@ PrefabInstance:
       propertyPath: SoundEvents.Array.data[24].WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: 2b33d05e6c467994daaa974ab246ad23, type: 2}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: SoundEvents.Array.data[25].WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d7abc77a52d7f24ebfed6fd7d027ddc, type: 2}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: SoundEvents.Array.data[26].WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: adf5882c45b472d42b5cd9c8b331e0f4, type: 2}
     - target: {fileID: 9023265390000644445, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
       propertyPath: m_Name
       value: PersistentSoundPlayer

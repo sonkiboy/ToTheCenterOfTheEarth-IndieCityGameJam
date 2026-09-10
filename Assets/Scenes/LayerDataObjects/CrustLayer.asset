@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CrustLayer
   m_EditorClassIdentifier: Assembly-CSharp::LayerSerializedObject
   Name: The Crust
+  ThemeMusic: MainTheme
   LayerPallete:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 0.9960785, g: 0.33333334, b: 0.33333334, a: 1}
@@ -43,5 +44,5 @@ MonoBehaviour:
   RareFeatureSpawnRange: 10
   SpawnedEnemies:
   - {fileID: 2210593898646789075, guid: 54794689216a5084fa45ecdd7e7e50e7, type: 3}
-  NumberOfEnemies: 5
+  NumberOfEnemies: 4
   LayerBoss: 0

@@ -6,6 +6,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	391172934	EnemyHit			\Default Work Unit\EnemyHit	
 	410514551	BossThemeStart			\Default Work Unit\BossThemeStart	
 	524425647	MainThemeStart			\Default Work Unit\MainThemeStart	
+	692648785	JungleThemeStop			\Default Work Unit\JungleThemeStop	
 	846198821	PlayerLand			\Default Work Unit\PlayerLand	
 	920629373	BatScreech			\Default Work Unit\BatScreech	
 	1383918998	JetPackOn			\Default Work Unit\JetPackOn	
@@ -13,6 +14,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1483571575	TreasureCollected			\Default Work Unit\TreasureCollected	
 	1661379832	Blip			\Default Work Unit\Blip	
 	1730891881	EndThemeStart			\Default Work Unit\EndThemeStart	
+	1758772883	JungleThemeStart			\Default Work Unit\JungleThemeStart	
 	1768459107	AlarmOff			\Default Work Unit\AlarmOff	
 	2024411100	JetPackOff			\Default Work Unit\JetPackOff	
 	2455228597	MainThemeStop			\Default Work Unit\MainThemeStop	
@@ -35,6 +37,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	139858927	V2GunFire_04	.cache\17\{17735E17-7EC1-9D20-16FF-38AB9488EC95}.wem		\Containers\Default Work Unit\GunFire\V2GunFire_04		155572
 	145726937	Explosion_03	.cache\79\{79491FD7-2294-01BF-4BD2-688CCFF94B34}.wem		\Containers\Default Work Unit\BasicExplosion\Explosion_03		152698
 	189741029	Bat_03	.cache\8E\{8EDD253D-C5B3-C67D-0D7F-A79FA4CA8C78}.wem		\Containers\Default Work Unit\Screech\Bat_03		312156
+	214169250	ttcote_jungle_pass1	.cache\20\{207E5FA4-EDCD-1A6C-D910-236E93E8F276}.wem		\Containers\Music (Migrated)\Default Work Unit\JungleTheme\ttcote_jungle_pass1\ttcote_jungle_pass1		20318836
 	292878991	EngineStart	.cache\A3\{A300E561-B311-6CC0-80A9-BDEB4B015C39}.wem		\Containers\Default Work Unit\EngineStart		936160
 	318650182	Bat_01	.cache\62\{627F0353-7437-FBAF-657C-88C6626A2FBC}.wem		\Containers\Default Work Unit\Screech\Bat_01		285484
 	418977169	TTCOTE_GameOver	.cache\0B\{0B098FDD-97F6-377B-150C-15831CF296FE}.wem		\Containers\Music (Migrated)\Default Work Unit\EndTheme\TTCOTE_GameOver\TTCOTE_GameOver		3921928

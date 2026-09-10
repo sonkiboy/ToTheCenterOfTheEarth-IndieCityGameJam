@@ -479,6 +479,8 @@ public class BlockGenerator : MonoBehaviour
 
     public void NextLayer()
     {
+        GameManager.Instance.SoundManager.PlayNonDiageticSound(Layers[CurrentLayerData].ThemeMusic + "Stop");
+
         CurrentLayerData++;
         if(CurrentLayerData >= Layers.Length)
         {
@@ -487,7 +489,10 @@ public class BlockGenerator : MonoBehaviour
 
         GameManager.Instance.StatTracker.DisplayTitleCard(Layers[CurrentLayerData].Name);
 
-        if(GameManager.Instance.GameOptions.IsStaticColorsOn == false)
+        GameManager.Instance.SoundManager.PlayNonDiageticSound(Layers[CurrentLayerData].ThemeMusic + "Start");
+
+
+        if (GameManager.Instance.GameOptions.IsStaticColorsOn == false)
         {
             GameManager.Instance.PaletteManager.ChangePalette(1.5f, Layers[CurrentLayerData].LayerPallete[0], Layers[CurrentLayerData].LayerPallete[1], Layers[CurrentLayerData].LayerPallete[2], Layers[CurrentLayerData].LayerPallete[3]);
         }

@@ -687,6 +687,28 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2da0faa8-1e73-4dc4-b38c-c66f52335f2d"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 1>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Joystick"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eccb0a24-91cf-4ddc-a029-729813ec9887"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 2>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Joystick"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""88001d3d-779b-45e2-a64b-a39661ab5c95"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
@@ -733,6 +755,61 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
                     ""name"": """",
                     ""id"": ""8a80e9e7-b150-4ad2-8a98-8844fd74b365"",
                     ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17262b62-191f-429d-81cb-3a0dfcece0cc"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00ff18a8-6b08-4b4e-b633-5999ec80c425"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 2>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfd5febf-0d48-4259-b808-f70a00444607"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 2>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""846a8942-88ec-4b5e-9846-ac16b6dbb180"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 1>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f9cf4a9c-4c40-4fe8-8184-f00ab5ca2bb3"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 1>/button2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1124,6 +1201,28 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
                     ""action"": ""MoveHeld"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f489b48b-180b-4c4a-b868-77b2ac24ff30"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 2>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Joystick"",
+                    ""action"": ""MoveHeld"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""734651f4-cf78-4288-bec5-cf798f98e689"",
+                    ""path"": ""<HID::Ultimarc UltraStik Ultimarc Ultra-Stik Player 1>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Joystick"",
+                    ""action"": ""MoveHeld"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },

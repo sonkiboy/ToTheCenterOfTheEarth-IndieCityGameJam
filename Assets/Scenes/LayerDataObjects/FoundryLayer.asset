@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FoundryLayer
   m_EditorClassIdentifier: Assembly-CSharp::LayerSerializedObject
   Name: 
+  ThemeMusic: MainTheme
   LayerPallete:
   - {r: 0.16862746, g: 0.16470589, b: 0.16470589, a: 0}
   - {r: 1, g: 0.51552796, b: 0, a: 0}

@@ -64,7 +64,7 @@
     "Type": "User",
     "GUID": "{C9312189-E98E-479F-8DC9-2A2FF1ED4AE5}",
     "Language": "SFX",
-    "Hash": "{31D6241C-4CA2-0C25-53BD-8F11A97A5C27}",
+    "Hash": "{2D9BE0CE-83E7-1004-8AAC-B1319FEEDF5E}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\UrMom",
     "ShortName": "UrMom",
     "Path": "UrMom.bnk",
@@ -116,6 +116,14 @@
       "Location": "Memory",
       "ShortName": "Bat_03.wav",
       "CachePath": "8E/{8EDD253D-C5B3-C67D-0D7F-A79FA4CA8C78}.wem"
+     },
+     {
+      "Id": "214169250",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ttcote_jungle_pass1.wav",
+      "CachePath": "20/{207E5FA4-EDCD-1A6C-D910-236E93E8F276}.wem"
      },
      {
       "Id": "292878991",
@@ -480,6 +488,28 @@
       ]
      },
      {
+      "Id": "1758772883",
+      "Name": "JungleThemeStart",
+      "ObjectPath": "\\Events\\Default Work Unit\\JungleThemeStart",
+      "GUID": "{A263702F-1343-4F5A-8040-8BEC6880ED8A}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "214169250"
+       }
+      ]
+     },
+     {
+      "Id": "692648785",
+      "Name": "JungleThemeStop",
+      "ObjectPath": "\\Events\\Default Work Unit\\JungleThemeStop",
+      "GUID": "{880C160D-B106-40BC-A82B-864933E9E090}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
       "Id": "524425647",
       "Name": "MainThemeStart",
       "ObjectPath": "\\Events\\Default Work Unit\\MainThemeStart",
@@ -666,6 +696,6 @@
     ]
    }
   ],
-  "FileHash": "{E728CD4C-9D03-0EA3-488C-264735AB3101}"
+  "FileHash": "{2B606FA5-FF9E-87D9-3DFE-9B261634BF17}"
  }
 }

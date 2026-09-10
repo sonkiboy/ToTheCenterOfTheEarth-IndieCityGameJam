@@ -25,6 +25,7 @@ public class InputManager : MonoBehaviour
 
     public bool isController = false;
     public bool isKeyboard = false;
+    public bool isArcade = false;
 
     #endregion
 
@@ -100,25 +101,35 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current != null)
+        if (isArcade == false)
         {
-            if ((Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame) && !isKeyboard)
+            if (Keyboard.current != null)
             {
-                //Debug.Log($"Switching to Keyboard, found as {Keyboard.current}");
-                isController = false;
-                isKeyboard = true;
+                if ((Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame) && !isKeyboard)
+                {
+                    //Debug.Log($"Switching to Keyboard, found as {Keyboard.current}");
+                    isController = false;
+                    isKeyboard = true;
+                }
+            }
+            if (Gamepad.current != null)
+            {
+                //Debug.Log("Found but nothing pressed");
+                if ((Gamepad.current.aButton.wasPressedThisFrame || Gamepad.current.leftTrigger.wasPressedThisFrame || Gamepad.current.rightTrigger.wasPressedThisFrame) && !isController)
+                {
+                    //Debug.Log("Switching to Controller");
+                    isController = true;
+                    isKeyboard = false;
+                }
+
             }
         }
-        if (Gamepad.current != null)
+        else
         {
-            //Debug.Log("Found but nothing pressed");
-            if ((Gamepad.current.aButton.wasPressedThisFrame || Gamepad.current.leftTrigger.wasPressedThisFrame || Gamepad.current.rightTrigger.wasPressedThisFrame) && !isController)
+            if(isController == false)
             {
-                //Debug.Log("Switching to Controller");
-                isController = true;
-                isKeyboard = false;
+                isController= true;
             }
-
         }
     }
 

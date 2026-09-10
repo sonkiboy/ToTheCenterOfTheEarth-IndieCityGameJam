@@ -222,7 +222,11 @@ public class PauseMenuUI : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "MainMenu")
         {
-            Application.Quit();
+            if(GameManager.Instance.InputManager.isArcade == false)
+            {
+                Application.Quit();
+            }
+            
         }
         else
         {

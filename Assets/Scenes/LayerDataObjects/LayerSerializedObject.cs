@@ -4,6 +4,7 @@ using UnityEngine;
 public class LayerSerializedObject : ScriptableObject
 {
     public string Name;
+    public string ThemeMusic;
     public Color[] LayerPallete = new Color[4] {Color.black,Color.red ,Color.blue ,Color.white};
 
     public GameObject[] BaseBlockPallet;

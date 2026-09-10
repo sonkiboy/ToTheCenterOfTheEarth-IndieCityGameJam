@@ -68,7 +68,6 @@ public class BossManager : MonoBehaviour
         GameManager.Instance.StatTracker.TurnOffBoss(true);
         GameManager.Instance.Platform.IncreaseFuelRate(.1f);
         blockGenerator.NextLayer();
-        GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStart");
         if (RewardChest != null) { Instantiate(RewardChest, GameManager.Instance.Platform.transform.position + (Vector3.up * 15), Quaternion.identity); }
 
     }
