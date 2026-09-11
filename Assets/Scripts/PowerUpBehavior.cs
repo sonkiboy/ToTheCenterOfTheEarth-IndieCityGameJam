@@ -68,6 +68,11 @@ public class PowerUpBehavior : MonoBehaviour
                 GameManager.Instance.PowerManager.DamagePowerCount++;
                 break;
 
+            case PowerUpManager.PowerUpTypes.Heal:
+
+                if (GameManager.Instance.CurrentHealth < 3) GameManager.Instance.CurrentHealth++;
+                break;
+
 
         }
 
