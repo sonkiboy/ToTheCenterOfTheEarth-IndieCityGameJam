@@ -8,6 +8,13 @@
 						<Property Name="InitialValue" Type="Real64" Value="0"/>
 					</PropertyList>
 				</GameParameter>
+				<GameParameter Name="MasterSoundVolume" ID="{1FFCEC58-53CF-4C20-AAD5-CB9E6906DF94}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="100"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="SoundVolume" ID="{D52BF2EE-CB62-4DC7-85F5-1EAA9BCC60BE}"/>
+				<GameParameter Name="MusicVolume" ID="{0E197579-4F79-4559-A625-E0C14892C36E}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

@@ -25,12 +25,12 @@ public class WwiseAuxBusRefArray
         bDeletesManually = cMemoryOwn;
         ownerPtr = cPtr;
     }
-    
+
     ~WwiseAuxBusRefArray()
     {
         Dispose(false);
     }
-    
+
     protected virtual void Dispose(bool disposing)
     {
         lock (this)
@@ -49,7 +49,7 @@ public class WwiseAuxBusRefArray
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseAuxBusRefArray() : this(WwiseProjectDatabase.GetAllAuxBusRef(), true)
     {
     }

@@ -16,7 +16,7 @@ Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
 #if UNITY_EDITOR
 
-public class WwiseStateGroupRef: global::System.IDisposable
+public class WwiseStateGroupRef : global::System.IDisposable
 {
     private global::System.IntPtr projectDatabasePtr;
     protected bool bDeletesManually;
@@ -67,7 +67,7 @@ public class WwiseStateGroupRef: global::System.IDisposable
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseStateGroupRef(global::System.IntPtr cPtr) : this(cPtr, true)
     {
     }
@@ -75,14 +75,14 @@ public class WwiseStateGroupRef: global::System.IDisposable
     public WwiseStateGroupRef(string StateName) : this(WwiseProjectDatabase.GetStateGroupRefString(StateName), true)
     {
     }
-    
+
     public string Name => WwiseProjectDatabase.GetStateGroupName(projectDatabasePtr);
     public string Path => WwiseProjectDatabase.GetStateGroupPath(projectDatabasePtr);
     public System.Guid Guid => WwiseProjectDatabase.GetStateGroupGuid(projectDatabasePtr);
-    public uint ShortId =>WwiseProjectDatabase.GetStateGroupShortId(projectDatabasePtr);
+    public uint ShortId => WwiseProjectDatabase.GetStateGroupShortId(projectDatabasePtr);
 }
 
-public class WwiseStateRef: global::System.IDisposable
+public class WwiseStateRef : global::System.IDisposable
 {
     private global::System.IntPtr projectDatabasePtr;
     protected bool bDeletesManually;
@@ -133,7 +133,7 @@ public class WwiseStateRef: global::System.IDisposable
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseStateRef(global::System.IntPtr cPtr) : this(cPtr, true)
     {
     }
@@ -141,11 +141,11 @@ public class WwiseStateRef: global::System.IDisposable
     public WwiseStateRef(string StateName) : this(WwiseProjectDatabase.GetStateRefString(StateName), true)
     {
     }
-    
+
     public string Name => WwiseProjectDatabase.GetStateName(projectDatabasePtr);
     public string Path => WwiseProjectDatabase.GetStatePath(projectDatabasePtr);
     public System.Guid Guid => WwiseProjectDatabase.GetStateGuid(projectDatabasePtr);
-    public uint ShortId =>WwiseProjectDatabase.GetStateShortId(projectDatabasePtr);
+    public uint ShortId => WwiseProjectDatabase.GetStateShortId(projectDatabasePtr);
     public uint GroupId => WwiseProjectDatabase.GetStateGroupId(projectDatabasePtr);
 }
 #endif

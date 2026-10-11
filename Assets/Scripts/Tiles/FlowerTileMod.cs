@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -73,7 +72,7 @@ public class FlowerTileMod : MonoBehaviour
 
                 }
 
-                if(targetTile != null)
+                if (targetTile != null)
                 {
                     // see if the closest object already has a rooted component
                     foundRootMod = targetTile.GetComponent<RootedTileMod>();

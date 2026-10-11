@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
-using UnityEditor.TerrainTools;
+using UnityEngine;
 
 [CustomEditor(typeof(BlockGenerator))]
 public class BlockGeneratorInspector : Editor
@@ -23,7 +20,7 @@ public class BlockGeneratorInspector : Editor
         if (GUILayout.Button("Generate Flat Layout"))
         {
             generator.ResetGeneration();
-            
+
             generator.GenerateChunk(1, 1);
         }
 
@@ -32,7 +29,7 @@ public class BlockGeneratorInspector : Editor
             //generator.GenerateNextLevel();
             generator.ResetGeneration();
 
-            generator.GenerateChunk(0,0);
+            generator.GenerateChunk(0, 0);
         }
 
         if (GUILayout.Button("Reset"))

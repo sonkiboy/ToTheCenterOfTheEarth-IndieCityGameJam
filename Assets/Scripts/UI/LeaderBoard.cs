@@ -1,12 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
-using UnityEngine;
-using UnityEngine.UI;
 using System.IO;
-using System;
-using Unity.VisualScripting;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class LeaderBoard : MonoBehaviour
 {
@@ -27,6 +25,8 @@ public class LeaderBoard : MonoBehaviour
 
     string path;
 
+    [SerializeField] bool isMenuLB = false;
+
     private void OnEnable()
     {
 
@@ -41,14 +41,21 @@ public class LeaderBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Board.SetActive(false);
+        if(isMenuLB == false) Board.SetActive(false);
+        GameManager.Instance.GameOptions.OnSettingsChanged += OnSettingsChanged;
         UpdateScoreBoard();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    void OnSettingsChanged(object sender, OptionsSettings e)
+    {
+        UpdateScoreBoard();
+
     }
 
     // reads the data from the score board txt file and updates the textNames and textScores
@@ -83,11 +90,12 @@ public class LeaderBoard : MonoBehaviour
     {
         ReadDataFromFile();
 
-        RoundScoreLine.ScoreText = GameManager.Instance.CurrentTreasure.ToString();
+        if(RoundScoreLine != null) RoundScoreLine.ScoreText = GameManager.Instance.CurrentTreasure.ToString();
+
 
         for (int i = 0; i < Lines.Length; i++)
         {
-            if(textNames.Length > i)
+            if (textNames.Length > i)
             {
                 Lines[i].NameText = textNames[i];
                 Lines[i].ScoreText = textScores[i];
@@ -97,7 +105,7 @@ public class LeaderBoard : MonoBehaviour
                 Lines[i].NameText = "";
                 Lines[i].ScoreText = "";
             }
-            
+
         }
 
 
@@ -129,9 +137,9 @@ public class LeaderBoard : MonoBehaviour
         //    {
         //        for (int k = 0; k < Scores[i].transform.childCount; k++)
         //        {
-                    
+
         //                Scores[i].transform.GetChild(k).GetComponent<Image>().sprite = GetFontSprite("null");
-                    
+
         //        }
         //    }
 
@@ -149,7 +157,7 @@ public class LeaderBoard : MonoBehaviour
 
         //        for (int j = 0; j < charArray.Length; j++)
         //        {
-                    
+
         //            Image image = PlayerNames[i].transform.GetChild(j).GetComponent<Image>();
         //            image.sprite = GetFontSprite(charArray[j].ToString());
 
@@ -169,18 +177,18 @@ public class LeaderBoard : MonoBehaviour
         //}
     }
 
-    
+
 
     Sprite GetFontSprite(string character)
     {
         string pathName = "LB_" + character;
 
-        foreach(Sprite sprite in FontSprites)
+        foreach (Sprite sprite in FontSprites)
         {
             if (sprite.name == pathName)
             {
                 return sprite;
-                
+
             }
         }
 
@@ -196,7 +204,7 @@ public class LeaderBoard : MonoBehaviour
         {
             return true;
         }
-        else if(textScores.Length >= 10)
+        else if (textScores.Length >= 10)
         {
             int lowestScore = Convert.ToInt32(textScores[9]);
 
@@ -223,7 +231,7 @@ public class LeaderBoard : MonoBehaviour
             }
         }
 
-        
+
 
     }
 
@@ -242,14 +250,14 @@ public class LeaderBoard : MonoBehaviour
         {
             int convertedScore = Convert.ToInt32(textScores[i]);
 
-            if(score > convertedScore)
+            if (score > convertedScore)
             {
                 insertIndex = i * 2;
                 break;
             }
         }
 
-        if(insertIndex == -1 && textArray.Length < 20)
+        if (insertIndex == -1 && textArray.Length < 20)
         {
             insertIndex = textArray.Length;
         }
@@ -257,7 +265,7 @@ public class LeaderBoard : MonoBehaviour
 
         List<string> oldList = textArray.ToList<string>();
 
-        if(insertIndex >= 0)
+        if (insertIndex >= 0)
         {
             //Debug.Log($"Inserting: {name}, into index {insertIndex} with score {score}");
 
@@ -280,15 +288,15 @@ public class LeaderBoard : MonoBehaviour
             }
         }
 
-        
+
 
         File.WriteAllText(path, newSave);
-        
+
 
         yield return new WaitForFixedUpdate();
 
         UpdateScoreBoard();
     }
 
-    
+
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class PowerDialUI : MonoBehaviour
@@ -26,8 +25,8 @@ public class PowerDialUI : MonoBehaviour
             if (perc > 100) perc = 100;
             else if (perc < 0) perc = 0;
 
-            Dial.fillAmount = perc/100f;
-            
+            Dial.fillAmount = perc / 100f;
+
         }
     }
     private int cnt = 0;
@@ -40,7 +39,7 @@ public class PowerDialUI : MonoBehaviour
         set
         {
             cnt = value;
-            if(cnt < 0)
+            if (cnt < 0)
             {
                 cnt = 0;
                 Counter.sprite = NumberSprites[0];
@@ -49,7 +48,7 @@ public class PowerDialUI : MonoBehaviour
                     plus.gameObject.SetActive(false);
                 }
             }
-            else if(cnt > 9)
+            else if (cnt > 9)
             {
                 Counter.sprite = NumberSprites[9];
                 if (plus.gameObject.activeSelf == false)
@@ -72,12 +71,12 @@ public class PowerDialUI : MonoBehaviour
     void Start()
     {
         Dial = transform.Find("Dial").GetComponent<Image>();
-        Counter = transform.Find("Count").GetComponent<Image>(); 
+        Counter = transform.Find("Count").GetComponent<Image>();
         plus = transform.Find("Plus").GetComponent<Image>();
 
         Percentage = 0;
         Count = 0;
     }
 
-    
+
 }

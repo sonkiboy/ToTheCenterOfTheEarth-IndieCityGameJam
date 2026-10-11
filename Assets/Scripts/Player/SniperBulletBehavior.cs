@@ -1,7 +1,4 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class SniperBulletBehavior : Bullet
 {
@@ -99,7 +96,7 @@ public class SniperBulletBehavior : Bullet
 
                     case "Tile":
                         TileBehavior tile = hitCollider.transform.GetComponent<TileBehavior>();
-                        if (tile != null) tile.DamageTile(true ,GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount]);
+                        if (tile != null) tile.DamageTile(true, GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount]);
 
 
 
@@ -124,7 +121,7 @@ public class SniperBulletBehavior : Bullet
         else
         {
             //Debug.Log("Sniper Bullet missed");
-            SpriteRend.size = new Vector2 (25f, .0625f);
+            SpriteRend.size = new Vector2(25f, .0625f);
         }
 
 

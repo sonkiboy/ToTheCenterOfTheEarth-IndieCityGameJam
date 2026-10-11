@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -9,23 +8,23 @@ public class GameOver : MonoBehaviour, ISceneUpdate
     #region Obj and Comp
     GameObject EndUi;
     GameObject LeaderBoard;
-    
+
     public GameObject BlackBG;
 
     LeaderBoard boardComponent;
 
     [SerializeField] GameObject highScore;
 
-    #endregion 
+    #endregion
 
-    
+
     public AK.Wwise.Event EndMusicOn;
     public AK.Wwise.Event EndMusicOff;
 
-    
+
     public float waitTime = 3;
 
-    
+
 
 
 
@@ -40,23 +39,23 @@ public class GameOver : MonoBehaviour, ISceneUpdate
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
+
         SceneManager.activeSceneChanged += OnSceneChanged;
         OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void StartGameOver(int score)
     {
         StartCoroutine(GameOverSequence(score));
-        
+
 
     }
 
@@ -71,7 +70,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
         GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
-        foreach(GameObject enemy in enemyArray)
+        foreach (GameObject enemy in enemyArray)
         {
             Destroy(enemy);
         }
@@ -84,12 +83,13 @@ public class GameOver : MonoBehaviour, ISceneUpdate
 
         GameManager.Instance.SoundManager.PlayNonDiageticSound("EndThemeStart");
 
+
         yield return new WaitForSeconds(.5f);
 
         if (boardComponent.CheckNewScore(score))
         {
             highScore.SetActive(true);
-            
+
         }
         else
         {
@@ -98,7 +98,7 @@ public class GameOver : MonoBehaviour, ISceneUpdate
         }
 
 
-        
+
     }
 
     private void RestartGame(InputAction.CallbackContext contex)
@@ -108,15 +108,15 @@ public class GameOver : MonoBehaviour, ISceneUpdate
         GameManager.Instance.InputManager.MenuInput.started -= RestartGame;
 
 
-        
 
-        
+
+
         SceneManager.LoadScene("MainMenu");
     }
 
     public void OnSceneChanged(Scene Current, Scene Next)
     {
-        if(Next.name != "MainMenu")
+        if (Next.name != "MainMenu" && Next.name != "ShowcaseScene" && Next.name != "TestScene")
         {
             EndUi = GameObject.Find("EndCanvas").gameObject;
             LeaderBoard = EndUi.transform.Find("LeaderBoard").gameObject;
@@ -129,9 +129,9 @@ public class GameOver : MonoBehaviour, ISceneUpdate
             EndUi = null;
             LeaderBoard = null;
             boardComponent = null;
-            BlackBG= null;
+            BlackBG = null;
             highScore = null;
         }
-        
+
     }
 }

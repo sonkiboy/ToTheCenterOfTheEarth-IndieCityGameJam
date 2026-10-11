@@ -15,7 +15,7 @@ in a written agreement between you and Audiokinetic Inc.
 Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
 #if UNITY_EDITOR
-public class WwiseGameParameterRef: global::System.IDisposable
+public class WwiseGameParameterRef : global::System.IDisposable
 {
     private global::System.IntPtr projectDatabasePtr;
     protected bool bDeletesManually;
@@ -66,7 +66,7 @@ public class WwiseGameParameterRef: global::System.IDisposable
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseGameParameterRef(global::System.IntPtr cPtr) : this(cPtr, true)
     {
     }
@@ -74,10 +74,10 @@ public class WwiseGameParameterRef: global::System.IDisposable
     public WwiseGameParameterRef(string GameParameterName) : this(WwiseProjectDatabase.GetGameParameterRefString(GameParameterName), true)
     {
     }
-    
+
     public string Name => WwiseProjectDatabase.GetGameParameterName(projectDatabasePtr);
     public string Path => WwiseProjectDatabase.GetGameParameterPath(projectDatabasePtr);
     public System.Guid Guid => WwiseProjectDatabase.GetGameParameterGuid(projectDatabasePtr);
-    public uint ShortId =>WwiseProjectDatabase.GetGameParameterShortId(projectDatabasePtr);
+    public uint ShortId => WwiseProjectDatabase.GetGameParameterShortId(projectDatabasePtr);
 }
 #endif

@@ -1,23 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PeristentSoundPlayer : MonoBehaviour
 {
 
-    
+
     public AK.Wwise.Event[] SoundEvents;
 
     AK.Wwise.Event PlayerShoot;
     AK.Wwise.Event PlayerJet;
 
+    public AK.Wwise.RTPC MasterVolumeParam;
+    public AK.Wwise.RTPC SoundVolumeParam;
+    public AK.Wwise.RTPC MusicVolumeParam;
+
     // Start is called before the first frame update
     void Start()
     {
 
-        
+
     }
 
     private void Update()
@@ -61,9 +61,9 @@ public class PeristentSoundPlayer : MonoBehaviour
 
     private AK.Wwise.Event SearchForSoundByName(string EventName)
     {
-        foreach(AK.Wwise.Event SoundEvent in SoundEvents)
+        foreach (AK.Wwise.Event SoundEvent in SoundEvents)
         {
-            if(SoundEvent.Name == EventName)
+            if (SoundEvent.Name == EventName)
             {
                 return SoundEvent;
             }
@@ -75,7 +75,7 @@ public class PeristentSoundPlayer : MonoBehaviour
 
 
     }
-    
+
 
 
 }

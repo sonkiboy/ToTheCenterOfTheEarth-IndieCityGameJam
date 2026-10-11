@@ -21,7 +21,7 @@ public class GunInfoDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnGunChanges(object sender, GunSettings settings)
@@ -31,7 +31,7 @@ public class GunInfoDisplay : MonoBehaviour
         switch (settings.name)
         {
 
-            
+
             case "Pistol":
 
                 laserText.SetActive(false);

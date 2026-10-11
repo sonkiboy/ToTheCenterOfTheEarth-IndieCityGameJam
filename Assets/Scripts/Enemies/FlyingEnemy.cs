@@ -25,7 +25,7 @@ public class FlyingEnemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if(Target  == null)
+        if (Target == null)
         {
             Target = GameManager.Instance.Player.transform;
         }
@@ -34,11 +34,11 @@ public class FlyingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(OffsetDistance != 0f)
+        if (OffsetDistance != 0f)
         {
             Vector2 dir = (Target.position - transform.position).normalized;
             targetPosition = (Vector2)Target.position - (dir * OffsetDistance);
-            
+
         }
         else
         {
@@ -61,10 +61,10 @@ public class FlyingEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Vector3.Distance(rb.position, targetPosition) > OffsetDistance)
+        if (Vector3.Distance(rb.position, targetPosition) > OffsetDistance)
         {
             Vector2 dir = (targetPosition - (Vector2)rb.position).normalized;
-            rb.AddForce(dir * Speed2D) ;
+            rb.AddForce(dir * Speed2D);
         }
 
         rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, MaxVelocity);

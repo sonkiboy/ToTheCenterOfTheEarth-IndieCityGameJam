@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AdaptivePerformance.Provider;
-using UnityEngine.Audio;
-using static Unity.Collections.AllocatorManager;
 
 public class BlockGenerator : MonoBehaviour
 {
@@ -23,14 +20,14 @@ public class BlockGenerator : MonoBehaviour
     //[SerializeField] int GenerateWidth = 10;
     //[SerializeField] int GenerateHeight = 10;
 
-    [SerializeField]public Vector2Int chunkSize = new Vector2Int(17, 17);
+    [SerializeField] public Vector2Int chunkSize = new Vector2Int(17, 17);
     public Vector2 OffScreenEnemySpawn = Vector2.right * 10;
 
 
     public int CurrentLayerData = 0;
 
     public LayerSerializedObject[] Layers;
-    
+
 
     [SerializeField] float ScrollDownSpeed = .5f;
 
@@ -167,13 +164,13 @@ public class BlockGenerator : MonoBehaviour
         //Debug.Log($"Starting Next Chunk Level: {nextSpawnLevel}");
         while (this.isActiveAndEnabled)
         {
-            
+
             //Debug.Log($"next spawn level is {nextSpawnLevel} current: {GameManager.Instance.ActuallDepth}");
             if (GameManager.Instance.ActuallDepth > nextSpawnLevel)
             {
                 GenerateChunk(-(nextSpawnLevel + (chunkSize.y / 2)), -GameManager.Instance.ActuallDepth - 1);
                 nextSpawnLevel += chunkSize.y;
-                
+
                 //Debug.Log("Generating Chunk, next will be at: " +  nextSpawnLevel);
 
 
@@ -185,7 +182,7 @@ public class BlockGenerator : MonoBehaviour
 
     public void OnLevelUpdated(object sender, int level)
     {
-        while(level > 100)
+        while (level > 100)
         {
             level -= 100;
         }
@@ -201,11 +198,11 @@ public class BlockGenerator : MonoBehaviour
             GameManager.Instance.BossManager.StartBossFight(Layers[CurrentLayerData].LayerBoss);
         }
     }
-    public void GenerateChunk(int depth,int platformlevel)
+    public void GenerateChunk(int depth, int platformlevel)
     {
         //chunkSize = new Vector2Int(17, 17);
         Vector2 chunkStartPos = depth * Vector2.up;
-        
+
 
         bool[,] tileArray = new bool[chunkSize.x, chunkSize.y];
 
@@ -213,11 +210,11 @@ public class BlockGenerator : MonoBehaviour
         {
             for (int y = 0; y < chunkSize.y; y++)
             {
-                if(y < platformlevel)
+                if (y < platformlevel)
                 {
-                    if(x >= 7 && x < chunkSize.x - 7)
+                    if (x >= 7 && x < chunkSize.x - 7)
                     {
-                        tileArray[x,y] = true;
+                        tileArray[x, y] = true;
                     }
                 }
             }
@@ -236,7 +233,7 @@ public class BlockGenerator : MonoBehaviour
                 // find a suitable place in the array
 
                 // choose a random position in the array offset from the, if this position is found to be invalid in the check process, change it to -Vector2Int.one
-                
+
                 Vector2Int evalStartIndex = new Vector2Int(Random.Range(0, chunkSize.x - featureData.Size.x), Random.Range(0 + featureData.Size.y, chunkSize.y));
                 Vector2Int validOriginIndex = evalStartIndex;
                 Vector2Int finalOrigin = -Vector2Int.one;
@@ -282,7 +279,7 @@ public class BlockGenerator : MonoBehaviour
                         {
                             break;
                         }
-                        
+
 
                     }
                     //Debug.Log($"incrimenting origin index from {validOriginIndex} to {validOriginIndex + Vector2Int.right}");
@@ -293,7 +290,7 @@ public class BlockGenerator : MonoBehaviour
                         //Debug.Log($"origin index ({validOriginIndex}) overflowed X max {chunkSize.x - featureData.Size.x}, incirmenting Y");
 
                         validOriginIndex = new Vector2Int(0, validOriginIndex.y + 1);
-                        if (validOriginIndex.y > chunkSize.y -1)
+                        if (validOriginIndex.y > chunkSize.y - 1)
                         {
                             //Debug.Log($"origin index ({validOriginIndex}) overflowed U max {chunkSize.y}, incirmenting to first possible indext {Vector2Int.up * featureData.Size.y}");
 
@@ -310,7 +307,7 @@ public class BlockGenerator : MonoBehaviour
                     int maxX = finalOrigin.x + featureData.Size.x;
                     int maxY = finalOrigin.y - featureData.Size.y;
 
-                    
+
 
                     Vector2Int xIndexRange = new Vector2Int(finalOrigin.x, maxX);
                     Vector2Int yIndexRange = new Vector2Int(maxY, finalOrigin.y);
@@ -331,7 +328,7 @@ public class BlockGenerator : MonoBehaviour
             }
         }
 
-        int numOfRareFeatures = Mathf.RoundToInt((chunkSize.y/100f) * Layers[CurrentLayerData].RareFeatureSpawnRange);
+        int numOfRareFeatures = Mathf.RoundToInt((chunkSize.y / 100f) * Layers[CurrentLayerData].RareFeatureSpawnRange);
 
         for (int i = 0; i < numOfFeatures; i++)
         {
@@ -391,7 +388,7 @@ public class BlockGenerator : MonoBehaviour
                     //Debug.Log($"incrimenting origin index from {validOriginIndex} to {validOriginIndex + Vector2Int.right}");
 
                     validOriginIndex += Vector2Int.right;
-                    if (validOriginIndex.x > chunkSize.x - featureData.Size.x -1)
+                    if (validOriginIndex.x > chunkSize.x - featureData.Size.x - 1)
                     {
                         //Debug.Log($"origin index ({validOriginIndex}) overflowed X max {chunkSize.x - featureData.Size.x}, incirmenting Y");
 
@@ -400,7 +397,7 @@ public class BlockGenerator : MonoBehaviour
                         {
                             //Debug.Log($"origin index ({validOriginIndex}) overflowed U max {chunkSize.y}, incirmenting to first possible indext {Vector2Int.up * featureData.Size.y}");
 
-                            validOriginIndex = new Vector2Int (0 ,featureData.Size.y);
+                            validOriginIndex = new Vector2Int(0, featureData.Size.y);
                         }
                     }
 
@@ -434,35 +431,35 @@ public class BlockGenerator : MonoBehaviour
             }
         }
 
-            //debug
-            //string print = "Array post features:\n";
-            //for (int y = 0; y < chunkSize.y; y++)
-            //{
-            //    for (int x = 0; x < chunkSize.x; x++)
-            //    {
-            //        if (tileArray[x, y])
-            //        {
-            //            print += "■, ";
+        //debug
+        //string print = "Array post features:\n";
+        //for (int y = 0; y < chunkSize.y; y++)
+        //{
+        //    for (int x = 0; x < chunkSize.x; x++)
+        //    {
+        //        if (tileArray[x, y])
+        //        {
+        //            print += "■, ";
 
-            //        }
-            //        else
-            //        {
-            //            print += "□, ";
+        //        }
+        //        else
+        //        {
+        //            print += "□, ";
 
-            //        }
-            //    }
-            //    print += "\n";
-            //}
-            //Debug.Log(print);
+        //        }
+        //    }
+        //    print += "\n";
+        //}
+        //Debug.Log(print);
 
-            // fill the rest of the chunk with random blocks
-            for (int x = 0; x < chunkSize.x; x++)
+        // fill the rest of the chunk with random blocks
+        for (int x = 0; x < chunkSize.x; x++)
         {
             for (int y = 0; y < chunkSize.y; y++)
             {
                 if (tileArray[x, y] == false)
                 {
-                    
+
                     GameObject spawnedTile = Instantiate(RandomizeBlock(), chunkStartPos + new Vector2(x, -y), RandomizeBlock().transform.rotation, ground.transform);
                     tileArray[x, y] = true;
                 }
@@ -470,10 +467,10 @@ public class BlockGenerator : MonoBehaviour
         }
 
         // spawn a left edge at -1x and chunksize.x+1 as deep as chunksize.y
-        for(int y = 0; y < chunkSize.y; y++)
+        for (int y = 0; y < chunkSize.y; y++)
         {
-            Instantiate(Edges[0], chunkStartPos +new Vector2(-1,-y), RandomizeBlock().transform.rotation, ground.transform);
-            Instantiate(Edges[1], chunkStartPos + new Vector2(chunkSize.x,-y), RandomizeBlock().transform.rotation, ground.transform);
+            Instantiate(Edges[0], chunkStartPos + new Vector2(-1, -y), RandomizeBlock().transform.rotation, ground.transform);
+            Instantiate(Edges[1], chunkStartPos + new Vector2(chunkSize.x, -y), RandomizeBlock().transform.rotation, ground.transform);
         }
     }
 
@@ -482,7 +479,7 @@ public class BlockGenerator : MonoBehaviour
         GameManager.Instance.SoundManager.PlayNonDiageticSound(Layers[CurrentLayerData].ThemeMusic + "Stop");
 
         CurrentLayerData++;
-        if(CurrentLayerData >= Layers.Length)
+        if (CurrentLayerData >= Layers.Length)
         {
             CurrentLayerData = 0;
         }
@@ -501,7 +498,7 @@ public class BlockGenerator : MonoBehaviour
         {
             GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 0);
         }
-        else if(Layers[CurrentLayerData].Name == "The Jungle")
+        else if (Layers[CurrentLayerData].Name == "The Jungle")
         {
             GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 1);
 

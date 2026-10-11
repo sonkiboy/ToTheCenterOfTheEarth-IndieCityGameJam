@@ -14,17 +14,15 @@ software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
 Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
+using AK.Wwise.Unity.Logging;
 using System;
-using UnityEditor;
-using UnityEditor.PackageManager.Requests;
-using UnityEditor.PackageManager;
-using UnityEngine;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using UnityEditor.Callbacks;
-using AK.Wwise.Unity.Logging;
-using PackageInfo = UnityEditor.PackageManager.PackageInfo;
+using UnityEditor;
+using UnityEditor.PackageManager;
+using UnityEditor.PackageManager.Requests;
+using UnityEngine;
 
 #if AK_WWISE_ADDRESSABLES
 using UnityEditor.AddressableAssets;
@@ -66,9 +64,9 @@ public static class AddressableInstaller
         }
 #endif
     }
-    
+
     private static string Name = nameof(AddressableInstaller);
-    
+
     // Local value of the settings used to determine whether to use command line arguments or settings from the xml file.
     private static string _addressableBankFolder = "";
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
@@ -79,7 +77,7 @@ public static class AddressableInstaller
 #else
     private static string _packageSource = "";
 #endif
-    
+
     private static void ReadSettings()
     {
         string[] args = System.Environment.GetCommandLineArgs();
@@ -143,7 +141,7 @@ public static class AddressableInstaller
         }
 #endif
     }
-    
+
     /// <summary>
     /// Toogle the AkInitializer On or Off
     /// </summary>
@@ -156,11 +154,11 @@ public static class AddressableInstaller
             AkInitializer script = targetObject.GetComponent<AkInitializer>();
             if (script != null)
             {
-                script.enabled = value; 
+                script.enabled = value;
             }
         }
     }
-    
+
     /// <summary>
     /// Simple Debug Log formatter
     /// </summary>
@@ -199,7 +197,7 @@ public static class AddressableInstaller
         {
             string missingSettings = (installationPathIsEmpty ? "WwiseApplicationPath, " : string.Empty) + (waapiPortIsEmpty ? "Waapi Port, " : string.Empty) + (waapiIPIsEmpty ? "Waapi IP, " : string.Empty);
             missingSettings = missingSettings.TrimEnd(new char[] { ',', ' ' });
-            
+
             EditorUtility.DisplayDialog("Wwise Addressables installation aborted", $"The installation process was aborted as the following setting(s) were not set:\n{missingSettings}.\nAdjust your Wwise integration settings and try again.", "OK");
             return;
         }
@@ -303,7 +301,7 @@ public static class AddressableInstaller
         return true;
 #endif
     }
-  
+
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
     /// <summary>
     /// Setup the Wwise Addressable Package
@@ -355,7 +353,7 @@ public static class AddressableInstaller
 #endif
         if (!AkUtilities.IsSoundbankGenerationAvailable(wwiseInstallationPath))
         {
-            LogWarning(Name,$"Sound bank generation is not available. Make sure that the Wwise Project is opened in the Wwise Authoring and please edit the Wwise Settings to ensure the the ip and port are set properly. If it's still not working, ensure that the Wwise Application Path is properly set.");;
+            LogWarning(Name, $"Sound bank generation is not available. Make sure that the Wwise Project is opened in the Wwise Authoring and please edit the Wwise Settings to ensure the the ip and port are set properly. If it's still not working, ensure that the Wwise Application Path is properly set."); ;
         }
         else
         {
@@ -384,7 +382,7 @@ public static class AddressableInstaller
             WwiseLogger.Error("Package source not provided. Use -packageSource=<url_or_path> in the command line.");
             return false;
         }
-        
+
         packageSource = packageSource.Replace('\\', '/');
 
         if (IsGitUrl(packageSource))
@@ -432,7 +430,7 @@ public static class AddressableInstaller
         _addRequest = Client.Add(pathUri);
         EditorApplication.update += Progress;
     }
-    
+
     /// <summary>
     /// Extracts the package name from a package.json file content.
     /// </summary>
@@ -483,7 +481,7 @@ public static class AddressableInstaller
             EditorApplication.update -= Progress;
         }
     }
-    
+
 #if AK_WWISE_ADDRESSABLES
     /*
      *  Uninstall

@@ -16,7 +16,7 @@ public class LookInMoveDirection : MonoBehaviour
         if (rb.linearVelocity != Vector2.zero)
         {
             Debug.Log($"Linear velocity: {rb.linearVelocity}");
-            this.transform.rotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.normalized) * Quaternion.Euler(0,0,90);
+            this.transform.rotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.normalized) * Quaternion.Euler(0, 0, 90);
         }
     }
 

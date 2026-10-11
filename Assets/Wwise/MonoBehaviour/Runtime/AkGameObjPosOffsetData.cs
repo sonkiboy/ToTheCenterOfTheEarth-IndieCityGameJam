@@ -22,7 +22,7 @@ Copyright (c) 2026 Audiokinetic Inc.
 // DEPRECATED
 public class AkGameObjPosOffsetData : UnityEngine.ScriptableObject
 {
-	public UnityEngine.Vector3 positionOffset;
+    public UnityEngine.Vector3 positionOffset;
 }
 
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

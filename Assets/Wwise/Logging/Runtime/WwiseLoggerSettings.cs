@@ -35,33 +35,33 @@ namespace AK.Wwise.Unity.Logging
         /// Very Verbose Logging
         VeryVerbose
     }
-    
-    public class WwiseLoggerSettings: ScriptableObject
+
+    public class WwiseLoggerSettings : ScriptableObject
     {
         [UnityEngine.SerializeField]
         private LogLevel m_logLevel = LogLevel.Log;
-        
+
         private static WwiseLoggerSettings _instance;
-        
+
         private static string WwiseResources
         {
             get { return System.IO.Path.Combine(System.IO.Path.Combine("Assets", "Wwise"), "Resources"); }
         }
-        
+
         private static string path = System.IO.Path.Combine(WwiseResources, "WwiseLoggerSettings.asset");
 
         public static WwiseLoggerSettings Instance
         {
             get
             {
-                
+
                 if (_instance == null)
                 {
                     _instance = Resources.Load<WwiseLoggerSettings>("WwiseLoggerSettings");
 
                     if (_instance == null)
                     {
-                        
+
                         _instance = CreateInstance<WwiseLoggerSettings>();
 #if UNITY_EDITOR
                         if (!AssetDatabase.IsValidFolder(WwiseResources))

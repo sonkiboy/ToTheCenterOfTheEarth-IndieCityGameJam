@@ -1,6 +1,5 @@
-using UnityEngine;
-using System;
 using System.Collections;
+using UnityEngine;
 public class GyserBehavior : MonoBehaviour
 {
 
@@ -46,15 +45,15 @@ public class GyserBehavior : MonoBehaviour
     {
         while (isActiveAndEnabled)
         {
-            if(activeTile != null)
-            { 
-                while(activeTile != null && activeTile.Health > 0)
+            if (activeTile != null)
+            {
+                while (activeTile != null && activeTile.Health > 0)
                 {
 
-                    activeTile.DamageTile(true,TileDamage);
+                    activeTile.DamageTile(true, TileDamage);
                     yield return new WaitForSeconds(DamageRate);
                 }
-            
+
             }
             yield return new WaitForFixedUpdate();
         }
@@ -93,7 +92,7 @@ public class GyserBehavior : MonoBehaviour
                 {
                     Debug.Log($"Gyser hit {rayOut.collider} which is {rayOut.distance}");
 
-                    if(activeTile != null)
+                    if (activeTile != null)
                     {
                         if (rayOut.collider.gameObject != activeTile.gameObject)
                         {
@@ -106,10 +105,10 @@ public class GyserBehavior : MonoBehaviour
                         activeTile = rayOut.collider.gameObject.GetComponent<TileBehavior>();
                         Debug.Log($"Setting active tile to : {activeTile.name}");
                     }
-                    
+
 
                     // take the length of the raycast and use to adjust the position and size of the wind collider
-                    windCollider.transform.position = (Vector2)this.transform.position +(Vector2.up)+ (Vector2.right / 2) + (Vector2.up * (rayOut.distance / 2));
+                    windCollider.transform.position = (Vector2)this.transform.position + (Vector2.up) + (Vector2.right / 2) + (Vector2.up * (rayOut.distance / 2));
                     windCollider.size = Vector2.right + (Vector2.up * rayOut.distance);
                     //Debug.Log($"Setting force collider to positon: {windCollider.transform.position} and size {windCollider.size} based on distance {rayOut.distance}");
 
@@ -143,6 +142,6 @@ public class GyserBehavior : MonoBehaviour
 
             yield return null;
         }
-        
+
     }
 }

@@ -26,66 +26,66 @@ using AK.Wwise.Unity.WwiseAddressables;
 
 public class AkSoundEngineController
 {
-	private static AkSoundEngineController ms_Instance;
+    private static AkSoundEngineController ms_Instance;
 
-	public static AkSoundEngineController Instance
-	{
-		get
-		{
-			if (ms_Instance == null)
-			{
-				ms_Instance = new AkSoundEngineController();
-			}
+    public static AkSoundEngineController Instance
+    {
+        get
+        {
+            if (ms_Instance == null)
+            {
+                ms_Instance = new AkSoundEngineController();
+            }
 
-			return ms_Instance;
-		}
-	}
+            return ms_Instance;
+        }
+    }
 
-	private AkSoundEngineController()
-	{
+    private AkSoundEngineController()
+    {
 #if UNITY_EDITOR
-		UnityEditor.EditorApplication.pauseStateChanged += OnPauseStateChanged;
-		UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-		AkUnitySoundEngineInitialization.Instance.terminationDelegate += OnDisableEditorListener;
-		AkUnitySoundEngineInitialization.Instance.initializationDelegate += OnEnableEditorListener;
+        UnityEditor.EditorApplication.pauseStateChanged += OnPauseStateChanged;
+        UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+        AkUnitySoundEngineInitialization.Instance.terminationDelegate += OnDisableEditorListener;
+        AkUnitySoundEngineInitialization.Instance.initializationDelegate += OnEnableEditorListener;
 #endif
-	}
+    }
 
-	~AkSoundEngineController()
-	{
-		if (ms_Instance == this)
-		{
+    ~AkSoundEngineController()
+    {
+        if (ms_Instance == this)
+        {
 #if UNITY_EDITOR
-			UnityEditor.EditorApplication.pauseStateChanged -= OnPauseStateChanged;
-			UnityEditor.EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
-			AkUnitySoundEngineInitialization.Instance.terminationDelegate -= OnDisableEditorListener;
-			AkUnitySoundEngineInitialization.Instance.initializationDelegate -= OnEnableEditorListener;
-			DisableEditorLateUpdate();
+            UnityEditor.EditorApplication.pauseStateChanged -= OnPauseStateChanged;
+            UnityEditor.EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+            AkUnitySoundEngineInitialization.Instance.terminationDelegate -= OnDisableEditorListener;
+            AkUnitySoundEngineInitialization.Instance.initializationDelegate -= OnEnableEditorListener;
+            DisableEditorLateUpdate();
 #endif
-			ms_Instance = null;
-		}
-	}
+            ms_Instance = null;
+        }
+    }
 
 #if UNITY_EDITOR
-	public void EnableEditorLateUpdate()
-	{
-		UnityEditor.EditorApplication.update += LateUpdate;
-	}
+    public void EnableEditorLateUpdate()
+    {
+        UnityEditor.EditorApplication.update += LateUpdate;
+    }
 
-	public void DisableEditorLateUpdate()
-	{
-		UnityEditor.EditorApplication.update -= LateUpdate;
-	}
+    public void DisableEditorLateUpdate()
+    {
+        UnityEditor.EditorApplication.update -= LateUpdate;
+    }
 #endif
 
-	public void LateUpdate()
-	{
-		//Execute callbacks that occurred in last frame (not the current update)
-		AkRoomManager.Update();
-		AkRoomAwareManager.UpdateRoomAwareObjects();
-		AkCallbackManager.PostCallbacks();
+    public void LateUpdate()
+    {
+        //Execute callbacks that occurred in last frame (not the current update)
+        AkRoomManager.Update();
+        AkRoomAwareManager.UpdateRoomAwareObjects();
+        AkCallbackManager.PostCallbacks();
 #if !(AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES)
-		AkBankManager.DoUnloadBanks();
+        AkBankManager.DoUnloadBanks();
 #elif WWISE_ADDRESSABLES_24_1_OR_LATER
 		if (AkAddressableBankManager.Instance != null) ;
 		{
@@ -95,8 +95,8 @@ public class AkSoundEngineController
 #if UNITY_WEBGL && !UNITY_EDITOR
 		AkUnitySoundEngine.PerformStreamMgrIO();
 #endif
-		AkUnitySoundEngine.RenderAudio();
-	}
+        AkUnitySoundEngine.RenderAudio();
+    }
 
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
 	private AkWwiseAddressablesInitializationSettings GetInitSettingsInstance()
@@ -104,121 +104,121 @@ public class AkSoundEngineController
 		return AkWwiseAddressablesInitializationSettings.Instance;
 	}
 #else
-	private AkWwiseInitializationSettings GetInitSettingsInstance()
-	{
-		return AkWwiseInitializationSettings.Instance;
-	}
+    private AkWwiseInitializationSettings GetInitSettingsInstance()
+    {
+        return AkWwiseInitializationSettings.Instance;
+    }
 #endif
 
-	public void Init(AkInitializer akInitializer)
-	{
-		AkUnitySoundEngine.SetErrorLogger(AkLogger.WwiseInternalLogError);
-		
+    public void Init(AkInitializer akInitializer)
+    {
+        AkUnitySoundEngine.SetErrorLogger(AkLogger.WwiseInternalLogError);
+
 #if UNITY_EDITOR
-		var arguments = System.Environment.GetCommandLineArgs();
-		if (UnityEngine.Application.isBatchMode && System.Array.IndexOf(arguments, "-wwiseEnableWithNoGraphics") < 0)
-		{
-			WwiseLogger.Log("Sound engine will not be initialized in batch/nographics mode. To override, specify -wwiseEnableWithNoGraphics");
-			return;
-		}
+        var arguments = System.Environment.GetCommandLineArgs();
+        if (UnityEngine.Application.isBatchMode && System.Array.IndexOf(arguments, "-wwiseEnableWithNoGraphics") < 0)
+        {
+            WwiseLogger.Log("Sound engine will not be initialized in batch/nographics mode. To override, specify -wwiseEnableWithNoGraphics");
+            return;
+        }
 #endif
 
-		// Only initialize the room manager during play.
-		bool initRoomManager = true;
+        // Only initialize the room manager during play.
+        bool initRoomManager = true;
 #if UNITY_EDITOR
-		if (!UnityEditor.EditorApplication.isPlaying)
-		{
-			initRoomManager = false;
-		}
+        if (!UnityEditor.EditorApplication.isPlaying)
+        {
+            initRoomManager = false;
+        }
 #endif
-		if (initRoomManager)
-		{
-			AkRoomManager.Init();
-		}
+        if (initRoomManager)
+        {
+            AkRoomManager.Init();
+        }
 
-		if (akInitializer == null)
-		{
-			WwiseLogger.Error("AkInitializer must not be null. Sound engine will not be initialized.");
-			return;
-		}
+        if (akInitializer == null)
+        {
+            WwiseLogger.Error("AkInitializer must not be null. Sound engine will not be initialized.");
+            return;
+        }
 
-		var isInitialized = AkUnitySoundEngine.IsInitialized();
+        var isInitialized = AkUnitySoundEngine.IsInitialized();
 
-		if (isInitialized)
-		{
+        if (isInitialized)
+        {
 #if UNITY_EDITOR
-			if (!UnityEditor.EditorApplication.isPlaying)
-			{
-				OnEnableEditorListener(akInitializer.gameObject);
-			}
-			if (AkUnitySoundEngineInitialization.Instance.ResetSoundEngine(UnityEngine.Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer))
-			{
-				EnableEditorLateUpdate();
-			}
+            if (!UnityEditor.EditorApplication.isPlaying)
+            {
+                OnEnableEditorListener(akInitializer.gameObject);
+            }
+            if (AkUnitySoundEngineInitialization.Instance.ResetSoundEngine(UnityEngine.Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer))
+            {
+                EnableEditorLateUpdate();
+            }
 
-			if (UnityEditor.EditorApplication.isPaused && UnityEngine.Application.isPlaying)
-			{
-				AkUnitySoundEngine.Suspend(true);
-			}
+            if (UnityEditor.EditorApplication.isPaused && UnityEngine.Application.isPlaying)
+            {
+                AkUnitySoundEngine.Suspend(true);
+            }
 #else
 			WwiseLogger.Error("Sound engine is already initialized.");
 #endif
-			return;
-		}
+            return;
+        }
 
 #if UNITY_EDITOR
-		if (UnityEditor.BuildPipeline.isBuildingPlayer)
-		{
-			return;
-		}
+        if (UnityEditor.BuildPipeline.isBuildingPlayer)
+        {
+            return;
+        }
 #endif
-		if (!AkUnitySoundEngineInitialization.Instance.InitializeSoundEngine())
-		{
-			return;
-		}
+        if (!AkUnitySoundEngineInitialization.Instance.InitializeSoundEngine())
+        {
+            return;
+        }
 #if UNITY_EDITOR
-		if (!UnityEditor.EditorApplication.isPlaying)
-		{
-			OnEnableEditorListener(akInitializer.gameObject);
-		}
-		EnableEditorLateUpdate();
+        if (!UnityEditor.EditorApplication.isPlaying)
+        {
+            OnEnableEditorListener(akInitializer.gameObject);
+        }
+        EnableEditorLateUpdate();
 #endif
-	}
+    }
 
-	public void OnDisable()
-	{
+    public void OnDisable()
+    {
 #if UNITY_EDITOR
-		if(UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
-		{
-			OnDisableEditorListener();
-		}
-		if(!AkUnitySoundEngineInitialization.Instance.ShouldKeepSoundEngineEnabled())
-		{
-			Terminate();
-		}
+        if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
+        {
+            OnDisableEditorListener();
+        }
+        if (!AkUnitySoundEngineInitialization.Instance.ShouldKeepSoundEngineEnabled())
+        {
+            Terminate();
+        }
 #endif
-	}
+    }
 
-	public void Terminate()
-	{
-		AkUnitySoundEngine.SetErrorLogger();
-		AkUnitySoundEngineInitialization.Instance.TerminateSoundEngine();
-		AkRoomManager.Terminate();
-	}
+    public void Terminate()
+    {
+        AkUnitySoundEngine.SetErrorLogger();
+        AkUnitySoundEngineInitialization.Instance.TerminateSoundEngine();
+        AkRoomManager.Terminate();
+    }
 
-	// In the Editor, the sound needs to keep playing when switching windows (remote debugging in Wwise, for example).
-	// On iOS, application interruptions are handled in the sound engine already.
+    // In the Editor, the sound needs to keep playing when switching windows (remote debugging in Wwise, for example).
+    // On iOS, application interruptions are handled in the sound engine already.
 #if UNITY_EDITOR || UNITY_IOS
-	public void OnApplicationPause(bool pauseStatus)
-	{
-	}
+    public void OnApplicationPause(bool pauseStatus)
+    {
+    }
 
-	public void OnApplicationFocus(bool focus)
-	{
+    public void OnApplicationFocus(bool focus)
+    {
 #if UNITY_EDITOR
-		ActivateAudio(focus,AkWwiseInitializationSettings.Instance.RenderDuringFocusLoss);
+        ActivateAudio(focus, AkWwiseInitializationSettings.Instance.RenderDuringFocusLoss);
 #endif
-	}
+    }
 #elif UNITY_WEBGL
 	// On WebGL, allow background audio when browser is un-focused in development builds to make the Wwise Profiler usable.
 	public void OnApplicationPause(bool pauseStatus) 
@@ -250,144 +250,144 @@ public class AkSoundEngineController
 #endif
 
 #if UNITY_EDITOR
-	// Enable/Disable the audio when pressing play/pause in the editor.
-	private void OnPauseStateChanged(UnityEditor.PauseState pauseState)
-	{
-		if (UnityEngine.Application.isPlaying)
-		{
-			ActivateAudio(pauseState != UnityEditor.PauseState.Paused);
-		}
-	}
-
-	private void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange state)
+    // Enable/Disable the audio when pressing play/pause in the editor.
+    private void OnPauseStateChanged(UnityEditor.PauseState pauseState)
     {
-		if(state.HasFlag(UnityEditor.PlayModeStateChange.ExitingEditMode) || state.HasFlag(UnityEditor.PlayModeStateChange.ExitingPlayMode))
-		{
-			AkUnitySoundEngine.StopAll();
-		}
+        if (UnityEngine.Application.isPlaying)
+        {
+            ActivateAudio(pauseState != UnityEditor.PauseState.Paused);
+        }
+    }
+
+    private void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange state)
+    {
+        if (state.HasFlag(UnityEditor.PlayModeStateChange.ExitingEditMode) || state.HasFlag(UnityEditor.PlayModeStateChange.ExitingPlayMode))
+        {
+            AkUnitySoundEngine.StopAll();
+        }
     }
 #endif
 
 #if UNITY_EDITOR || !UNITY_IOS
-	private void ActivateAudio(bool activate, bool renderAnyway = false)
-	{
-		if (AkUnitySoundEngine.IsInitialized() && AkWwiseInitializationSettings.Instance.SuspendAudioDuringFocusLoss)
-		{
-			if (activate)
-			{
-				AkUnitySoundEngine.WakeupFromSuspend();
-			}
-			else
-			{
-				AkUnitySoundEngine.Suspend(renderAnyway);
-			}
+    private void ActivateAudio(bool activate, bool renderAnyway = false)
+    {
+        if (AkUnitySoundEngine.IsInitialized() && AkWwiseInitializationSettings.Instance.SuspendAudioDuringFocusLoss)
+        {
+            if (activate)
+            {
+                AkUnitySoundEngine.WakeupFromSuspend();
+            }
+            else
+            {
+                AkUnitySoundEngine.Suspend(renderAnyway);
+            }
 
-			AkUnitySoundEngine.RenderAudio();
-		}
-	}
+            AkUnitySoundEngine.RenderAudio();
+        }
+    }
 #endif
 
 #if UNITY_EDITOR
-#region Editor Listener
-	private UnityEngine.GameObject editorListenerGameObject;
+    #region Editor Listener
+    private UnityEngine.GameObject editorListenerGameObject;
 
-	private bool IsPlayingOrIsNotInitialized
-	{
-		get { return UnityEngine.Application.isPlaying || !AkUnitySoundEngine.IsInitialized(); }
-	}
+    private bool IsPlayingOrIsNotInitialized
+    {
+        get { return UnityEngine.Application.isPlaying || !AkUnitySoundEngine.IsInitialized(); }
+    }
 
-	public bool EditorListenerIsInitialized()
-	{
-		return editorListenerGameObject != null;
-	}
+    public bool EditorListenerIsInitialized()
+    {
+        return editorListenerGameObject != null;
+    }
 
-	private void OnEnableEditorListener()
-	{
-		OnEnableEditorListener(AkInitializer.GetAkInitializerGameObject());
-	}
+    private void OnEnableEditorListener()
+    {
+        OnEnableEditorListener(AkInitializer.GetAkInitializerGameObject());
+    }
 
-	private void OnEnableEditorListener(UnityEngine.GameObject gameObject)
-	{
-		if (editorListenerGameObject != null || IsPlayingOrIsNotInitialized)
-		{
-			return;
-		}
+    private void OnEnableEditorListener(UnityEngine.GameObject gameObject)
+    {
+        if (editorListenerGameObject != null || IsPlayingOrIsNotInitialized)
+        {
+            return;
+        }
 
-		if(gameObject == null)
-		{
-			return;
-		}
+        if (gameObject == null)
+        {
+            return;
+        }
 
-		editorListenerGameObject = gameObject;
-		AkUnitySoundEngine.RegisterGameObj(editorListenerGameObject, editorListenerGameObject.name);
+        editorListenerGameObject = gameObject;
+        AkUnitySoundEngine.RegisterGameObj(editorListenerGameObject, editorListenerGameObject.name);
 
-		// Do not create AkGameObj component when adding this listener
-		var id = AkUnitySoundEngine.GetAkGameObjectID(editorListenerGameObject);
-		AkUnitySoundEngine.AddDefaultListener(id);
-		UnityEditor.EditorApplication.update += UpdateEditorListenerPosition;
-	}
+        // Do not create AkGameObj component when adding this listener
+        var id = AkUnitySoundEngine.GetAkGameObjectID(editorListenerGameObject);
+        AkUnitySoundEngine.AddDefaultListener(id);
+        UnityEditor.EditorApplication.update += UpdateEditorListenerPosition;
+    }
 
-	private void OnDisableEditorListener()
-	{
-		if (IsPlayingOrIsNotInitialized || editorListenerGameObject == null)
-		{
-			return;
-		}
+    private void OnDisableEditorListener()
+    {
+        if (IsPlayingOrIsNotInitialized || editorListenerGameObject == null)
+        {
+            return;
+        }
 
-		UnityEditor.EditorApplication.update -= UpdateEditorListenerPosition;
+        UnityEditor.EditorApplication.update -= UpdateEditorListenerPosition;
 
-		var id = AkUnitySoundEngine.GetAkGameObjectID(editorListenerGameObject);
-		AkUnitySoundEngine.RemoveDefaultListener(id);
+        var id = AkUnitySoundEngine.GetAkGameObjectID(editorListenerGameObject);
+        AkUnitySoundEngine.RemoveDefaultListener(id);
 
-		AkUnitySoundEngine.UnregisterGameObj(editorListenerGameObject);
-		editorListenerGameObject = null;
-		editorListenerForward = UnityEngine.Vector3.zero;
-		editorListenerPosition = UnityEngine.Vector3.zero;
-		editorListenerUp = UnityEngine.Vector3.zero;
-	}
+        AkUnitySoundEngine.UnregisterGameObj(editorListenerGameObject);
+        editorListenerGameObject = null;
+        editorListenerForward = UnityEngine.Vector3.zero;
+        editorListenerPosition = UnityEngine.Vector3.zero;
+        editorListenerUp = UnityEngine.Vector3.zero;
+    }
 
-	private UnityEngine.Vector3 editorListenerPosition = UnityEngine.Vector3.zero;
-	private UnityEngine.Vector3 editorListenerForward = UnityEngine.Vector3.zero;
-	private UnityEngine.Vector3 editorListenerUp = UnityEngine.Vector3.zero;
+    private UnityEngine.Vector3 editorListenerPosition = UnityEngine.Vector3.zero;
+    private UnityEngine.Vector3 editorListenerForward = UnityEngine.Vector3.zero;
+    private UnityEngine.Vector3 editorListenerUp = UnityEngine.Vector3.zero;
 
-	private void UpdateEditorListenerPosition()
-	{
-		if (IsPlayingOrIsNotInitialized || editorListenerGameObject == null)
-		{
-			return;
-		}
+    private void UpdateEditorListenerPosition()
+    {
+        if (IsPlayingOrIsNotInitialized || editorListenerGameObject == null)
+        {
+            return;
+        }
 
-		if (UnityEditor.SceneView.lastActiveSceneView == null)
-		{
-			return;
-		}
+        if (UnityEditor.SceneView.lastActiveSceneView == null)
+        {
+            return;
+        }
 
-		var sceneViewCamera = UnityEditor.SceneView.lastActiveSceneView.camera;
-		if (sceneViewCamera == null)
-		{
-			return;
-		}
+        var sceneViewCamera = UnityEditor.SceneView.lastActiveSceneView.camera;
+        if (sceneViewCamera == null)
+        {
+            return;
+        }
 
-		var sceneViewTransform = sceneViewCamera.transform;
-		if (sceneViewTransform == null)
-		{
-			return;
-		}
+        var sceneViewTransform = sceneViewCamera.transform;
+        if (sceneViewTransform == null)
+        {
+            return;
+        }
 
-		if (editorListenerPosition == sceneViewTransform.position &&
-			editorListenerForward == sceneViewTransform.forward &&
-			editorListenerUp == sceneViewTransform.up)
-		{
-			return;
-		}
+        if (editorListenerPosition == sceneViewTransform.position &&
+            editorListenerForward == sceneViewTransform.forward &&
+            editorListenerUp == sceneViewTransform.up)
+        {
+            return;
+        }
 
-		AkUnitySoundEngine.SetObjectPosition(editorListenerGameObject, sceneViewTransform);
+        AkUnitySoundEngine.SetObjectPosition(editorListenerGameObject, sceneViewTransform);
 
-		editorListenerPosition = sceneViewTransform.position;
-		editorListenerForward = sceneViewTransform.forward;
-		editorListenerUp = sceneViewTransform.up;
-	}
-#endregion
+        editorListenerPosition = sceneViewTransform.position;
+        editorListenerForward = sceneViewTransform.forward;
+        editorListenerUp = sceneViewTransform.up;
+    }
+    #endregion
 #endif // UNITY_EDITOR
 }
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

@@ -19,12 +19,12 @@ public class BossManager : MonoBehaviour
     [SerializeField] GameObject InsectQueenPrefab;
     [SerializeField] GameObject ViburnumPrefab;
 
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        blockGenerator = GetComponent<BlockGenerator>();    
+        blockGenerator = GetComponent<BlockGenerator>();
         //StartBossFight(Bosses.InsectQueen);
     }
 
@@ -46,15 +46,15 @@ public class BossManager : MonoBehaviour
         {
             case Bosses.InsectQueen:
 
-                 spawnedBoss = Instantiate(InsectQueenPrefab,new Vector3(0,2.5f,1),Quaternion.identity,Camera.main.transform);
+                spawnedBoss = Instantiate(InsectQueenPrefab, new Vector3(0, 2.5f, 1), Quaternion.identity, Camera.main.transform);
                 spawnedBoss.GetComponent<Enemy>().OnEnemyDeath += OnBossFightEnd;
 
                 break;
 
-                case Bosses.Viburnum:
+            case Bosses.Viburnum:
 
-                 spawnedBoss = Instantiate(ViburnumPrefab, GameManager.Instance.Platform.transform.position, Quaternion.identity, Camera.main.transform);
-                 spawnedBoss.GetComponentInChildren<Enemy>().OnEnemyDeath += OnBossFightEnd;
+                spawnedBoss = Instantiate(ViburnumPrefab, GameManager.Instance.Platform.transform.position, Quaternion.identity, Camera.main.transform);
+                spawnedBoss.GetComponentInChildren<Enemy>().OnEnemyDeath += OnBossFightEnd;
 
 
                 break;

@@ -28,10 +28,10 @@ public class ViburnumBehavior : Enemy
     // Update is called once per frame
     void Update()
     {
-        if(isEnranged ==  false && Health < startingHP / 2)
+        if (isEnranged == false && Health < startingHP / 2)
         {
             isEnranged = true;
-            animator.SetBool("IsAngry",true);
+            animator.SetBool("IsAngry", true);
         }
     }
 
@@ -60,7 +60,7 @@ public class ViburnumBehavior : Enemy
 
     private void FireOnePetal()
     {
-        Instantiate(PetalBulletPrefab,this.transform.position,head.rotation * Quaternion.Euler(0,0,90));
+        Instantiate(PetalBulletPrefab, this.transform.position, head.rotation * Quaternion.Euler(0, 0, 90));
     }
 
     private void FireBurstPetal()

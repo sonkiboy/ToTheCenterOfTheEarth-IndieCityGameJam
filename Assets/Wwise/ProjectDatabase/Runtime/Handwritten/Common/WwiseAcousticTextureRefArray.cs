@@ -25,12 +25,12 @@ public class WwiseAcousticTextureRefArray
         bDeletesManually = cMemoryOwn;
         ownerPtr = cPtr;
     }
-    
+
     ~WwiseAcousticTextureRefArray()
     {
         Dispose(false);
     }
-    
+
     protected virtual void Dispose(bool disposing)
     {
         lock (this)
@@ -49,7 +49,7 @@ public class WwiseAcousticTextureRefArray
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseAcousticTextureRefArray() : this(WwiseProjectDatabase.GetAllAcousticTextureRef(), true)
     {
     }

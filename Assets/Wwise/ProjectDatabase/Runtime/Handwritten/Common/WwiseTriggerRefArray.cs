@@ -25,12 +25,12 @@ public class WwiseTriggerRefArray
         bDeletesManually = cMemoryOwn;
         ownerPtr = cPtr;
     }
-    
+
     ~WwiseTriggerRefArray()
     {
         Dispose(false);
     }
-    
+
     protected virtual void Dispose(bool disposing)
     {
         lock (this)
@@ -49,7 +49,7 @@ public class WwiseTriggerRefArray
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseTriggerRefArray() : this(WwiseProjectDatabase.GetAllTriggerRef(), true)
     {
     }

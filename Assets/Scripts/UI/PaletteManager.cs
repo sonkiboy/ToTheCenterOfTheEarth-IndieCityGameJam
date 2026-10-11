@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PaletteManager : MonoBehaviour,ISceneUpdate
+public class PaletteManager : MonoBehaviour, ISceneUpdate
 {
     // the renderer component of the low screen resolution
     public RawImage ScreenRenderer;
@@ -22,6 +22,8 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        ScreenRenderer = GameObject.Find("LowResCamera/RendererCanvas/Screen").GetComponent<RawImage>();
+
         SceneManager.activeSceneChanged += OnSceneChanged;
         OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
         ResetColors();
@@ -40,16 +42,16 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ChangePalette(float time, Color color1, Color color2, Color color3, Color color4)
     {
-        if (GameManager.Instance.GameOptions.IsStaticColorsOn ==false)
+        if (GameManager.Instance.GameOptions.IsStaticColorsOn == false)
         {
             StartCoroutine(SwapPalette(time, color1, color2, color3, color4));
         }
-        
+
     }
     public void ChangePalette(float time, Color[] pallete)
     {
@@ -61,7 +63,7 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
 
     private IEnumerator SwapPalette(float time, Color color1, Color color2, Color color3, Color color4)
     {
-        currentColors = new Color[4] {color1, color2, color3, color4};
+        currentColors = new Color[4] { color1, color2, color3, color4 };
 
 
         int stepCount = 4;
@@ -78,7 +80,7 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
             ScreenRenderer.material.SetColor("_NEW3", Color.Lerp(og3, color3, (float)i / (float)stepCount));
             ScreenRenderer.material.SetColor("_NEW4", Color.Lerp(og4, color4, (float)i / (float)stepCount));
 
-            yield return new WaitForSeconds(time/stepCount);
+            yield return new WaitForSeconds(time / stepCount);
         }
 
         ScreenRenderer.material.SetColor("_NEW1", color1);
@@ -97,7 +99,7 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
             ScreenRenderer.material.SetColor("_NEW3", DefaultColors[2]);
             ScreenRenderer.material.SetColor("_NEW4", DefaultColors[3]);
         }
-        
+
     }
 
     public void RefreshCurrentColors()
@@ -164,5 +166,9 @@ public class PaletteManager : MonoBehaviour,ISceneUpdate
     public void OnSceneChanged(Scene Current, Scene Next)
     {
         ScreenRenderer = GameObject.Find("LowResCamera/RendererCanvas/Screen").GetComponent<RawImage>();
+        if (GameManager.Instance.GameOptions.IsStaticColorsOn)
+        {
+            SetToStaticColors();
+        }
     }
 }

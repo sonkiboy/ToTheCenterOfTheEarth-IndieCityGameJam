@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -21,7 +20,7 @@ public class DropItemsInVolume : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator SpawnItems()
@@ -32,10 +31,10 @@ public class DropItemsInVolume : MonoBehaviour
 
             int rand = Random.Range(0, SpawnedObjects.Length);
 
-            Instantiate(SpawnedObjects[rand], spawnPosition, Quaternion.Euler(0,Random.Range(0,180),0));
+            Instantiate(SpawnedObjects[rand], spawnPosition, Quaternion.Euler(0, Random.Range(0, 180), 0));
 
             yield return new WaitForSeconds(1 / SpawnRate);
         }
-        
+
     }
 }

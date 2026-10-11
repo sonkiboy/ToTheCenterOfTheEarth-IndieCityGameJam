@@ -15,9 +15,9 @@ in a written agreement between you and Audiokinetic Inc.
 Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
 
+using AK.Wwise.Unity.Logging;
 using System.IO;
 using System.Threading.Tasks;
-using AK.Wwise.Unity.Logging;
 
 public partial class WwiseProjectDatabase
 {
@@ -31,13 +31,13 @@ public partial class WwiseProjectDatabase
         string libraryName = index != -1 ? errorMessage.Substring(0, index) : errorMessage;
         string directory = "Assets/Wwise/ProjectDatabase/Runtime/Plugins";
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-        
+
         bool x86Architecture = System.IntPtr.Size == 4;
         directory += "/Windows/" + (x86Architecture ? "x86" : "x86_64");
 #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
         directory += "/Mac/DSP";
 #endif
-        
+
         WwiseLogger.Error($"{libraryName} could not be found. Please check the parent folder {directory}. If the {Path.GetExtension(libraryName)} is missing, try 1. Modifying the Wwise Project or 2. Copying the {libraryName} directly from the SDK\\platform_architecture\\Profile\\bin folder of your Wwise installation into {directory}.");
     }
 
@@ -49,7 +49,7 @@ public partial class WwiseProjectDatabase
         }
         else
         {
-            WwiseLogger.Error($"The project database dll encountered the following error: {e.Message}" );
+            WwiseLogger.Error($"The project database dll encountered the following error: {e.Message}");
         }
     }
     public static void InitCheckUp(string inDirectoryPath)
@@ -57,7 +57,7 @@ public partial class WwiseProjectDatabase
         var jsonFilename = Path.Combine(inDirectoryPath, "ProjectInfo.json");
         ProjectInfoExists = File.Exists(jsonFilename);
     }
-    
+
     public static void PostInitCallback()
     {
         SoundBankDirectoryUpdated?.InvokeUnitySafe();
@@ -69,7 +69,7 @@ public partial class WwiseProjectDatabase
         InitCheckUp(inDirectoryPath);
         if (!ProjectInfoExists)
             return false;
-        
+
         try
         {
             await Task.Run(() => WwiseProjectDataBasePINVOKE.Init(inDirectoryPath, inDirectoryPlatformName));
@@ -83,14 +83,14 @@ public partial class WwiseProjectDatabase
         IsInitialized = true;
         return ProjectInfoExists;
     }
-    
+
     public static void Init(string inDirectoryPath, string inDirectoryPlatformName, string language = null)
     {
         IsInitialized = false;
         InitCheckUp(inDirectoryPath);
         if (!ProjectInfoExists)
             return;
-        
+
         try
         {
             WwiseProjectDataBasePINVOKE.Init(inDirectoryPath, inDirectoryPlatformName);
@@ -107,7 +107,7 @@ public partial class WwiseProjectDatabase
         }
         IsInitialized = true;
     }
-    
+
     public static void SetCurrentPlatform(string inDirectoryPlatformName)
     {
         try
@@ -138,7 +138,7 @@ public partial class WwiseProjectDatabase
     {
         return System.Runtime.InteropServices.Marshal.PtrToStringAnsi(ptr);
     }
-    
+
     public static int GetGuidInt(global::System.IntPtr Guid, ref uint A, ref uint B, ref uint C, ref uint D)
     {
         try
@@ -151,7 +151,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * SoundBanks
      */
@@ -220,7 +220,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetSoundBankName(global::System.IntPtr soundBankRefPtr)
     {
         try
@@ -245,7 +245,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetSoundBankObjectPath(global::System.IntPtr soundBankRefPtr)
     {
         try
@@ -289,7 +289,7 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetSoundBankGuid(soundBankRefPtr), ref A, ref B, ref C, ref D);
             return GenerateGuidFromInts(A, B, C, D);
         }
@@ -303,7 +303,7 @@ public partial class WwiseProjectDatabase
     {
         try
         {
-           return WwiseProjectDataBasePINVOKE.GetSoundBankShortId(soundBankRefPtr);            
+            return WwiseProjectDataBasePINVOKE.GetSoundBankShortId(soundBankRefPtr);
         }
         catch (System.Exception e)
         {
@@ -315,7 +315,7 @@ public partial class WwiseProjectDatabase
     {
         try
         {
-           return WwiseProjectDataBasePINVOKE.IsUserBank(soundBankRefPtr); 
+            return WwiseProjectDataBasePINVOKE.IsUserBank(soundBankRefPtr);
         }
         catch (System.Exception e)
         {
@@ -327,7 +327,7 @@ public partial class WwiseProjectDatabase
     {
         try
         {
-           return WwiseProjectDataBasePINVOKE.IsInitBank(soundBankRefPtr); 
+            return WwiseProjectDataBasePINVOKE.IsInitBank(soundBankRefPtr);
         }
         catch (System.Exception e)
         {
@@ -352,7 +352,7 @@ public partial class WwiseProjectDatabase
     {
         try
         {
-                  return WwiseProjectDataBasePINVOKE.GetSoundBankMedia(soundBankRefPtr, index);  
+            return WwiseProjectDataBasePINVOKE.GetSoundBankMedia(soundBankRefPtr, index);
         }
         catch (System.Exception e)
         {
@@ -365,7 +365,7 @@ public partial class WwiseProjectDatabase
     {
         try
         {
-            return WwiseProjectDataBasePINVOKE.GetSoundBankMediasCount(soundBankRefPtr); 
+            return WwiseProjectDataBasePINVOKE.GetSoundBankMediasCount(soundBankRefPtr);
         }
         catch (System.Exception e)
         {
@@ -378,7 +378,7 @@ public partial class WwiseProjectDatabase
     {
         try
         {
-            return WwiseProjectDataBasePINVOKE.GetSoundBankEvent(soundBankRefPtr, index); 
+            return WwiseProjectDataBasePINVOKE.GetSoundBankEvent(soundBankRefPtr, index);
         }
         catch (System.Exception e)
         {
@@ -412,11 +412,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * Medias
     */
-    
+
     public static string GetMediaName(global::System.IntPtr mediaRefPtr)
     {
         try
@@ -513,11 +513,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * Events
     */
-    
+
     public static global::System.IntPtr GetAllEventsRef()
     {
         try
@@ -604,11 +604,11 @@ public partial class WwiseProjectDatabase
     public static System.Guid GetEventGuid(global::System.IntPtr eventRefPtr)
     {
         try
-        { 
+        {
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             GetGuidInt(WwiseProjectDataBasePINVOKE.GetEventGuid(eventRefPtr), ref A, ref B, ref C, ref D);
             return GenerateGuidFromInts(A, B, C, D);
         }
@@ -678,7 +678,7 @@ public partial class WwiseProjectDatabase
             LogProjectDatabaseDLLException(e);
             throw;
         }
-    }    
+    }
     public static uint GetEventMediasCount(global::System.IntPtr soundBankRefPtr)
     {
         try
@@ -703,7 +703,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteEventArrayRef(global::System.IntPtr soundBankArrayRef)
     {
         try
@@ -716,7 +716,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetEventCount()
     {
         try
@@ -729,7 +729,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetEvent(global::System.IntPtr eventArrayRefPtr, int index)
     {
         try
@@ -742,11 +742,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * Platform
     */
-    
+
     public static global::System.IntPtr GetPlatformRef(string soundBankName)
     {
         try
@@ -778,9 +778,9 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             GetGuidInt(WwiseProjectDataBasePINVOKE.GetPlatformGuid(platformRefPtr), ref A, ref B, ref C, ref D);
-            return GenerateGuidFromInts(A, B, C, D);            
+            return GenerateGuidFromInts(A, B, C, D);
         }
         catch (System.Exception e)
         {
@@ -788,7 +788,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
 
-    }    
+    }
     public static void DeletePlatformRef(global::System.IntPtr platformRefPtr)
     {
         try
@@ -801,11 +801,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /**
      * Plugin
      */
-    
+
     public static global::System.IntPtr GetAllPluginRef()
     {
         try
@@ -818,7 +818,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetPluginCount()
     {
         try
@@ -868,7 +868,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetPluginDLL(global::System.IntPtr pluginRefPtr)
     {
         try
@@ -881,7 +881,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetPluginStaticLib(global::System.IntPtr pluginRefPtr)
     {
         try
@@ -906,7 +906,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeletePluginArrayRef(global::System.IntPtr pluginArrayRefPtr)
     {
         try
@@ -919,11 +919,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * Switch Group
      */
-    
+
     public static global::System.IntPtr GetSwitchGroupRefString(string switchName)
     {
         try
@@ -936,7 +936,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAllSwitchGroupRef()
     {
         try
@@ -949,7 +949,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetSwitchGroup(global::System.IntPtr switchArrayRefPtr, int index)
     {
         try
@@ -962,7 +962,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetSwitchGroupName(global::System.IntPtr switchRefPtr)
     {
         try
@@ -975,7 +975,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetSwitchGroupPath(global::System.IntPtr switchRefPtr)
     {
         try
@@ -995,7 +995,7 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetSwitchGuid(switchRefPtr), ref A, ref B, ref C, ref D);
             return GenerateGuidFromInts(A, B, C, D);
         }
@@ -1031,7 +1031,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteSwitchGroupArrayRef(global::System.IntPtr switchArrayRef)
     {
         try
@@ -1044,7 +1044,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetSwitchGroupCount()
     {
         try
@@ -1057,16 +1057,16 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * Switch
      */
-    
+
     public static global::System.IntPtr GetSwitchRefString(string switchName)
     {
         try
         {
-           return WwiseProjectDataBasePINVOKE.GetSwitchRefString(switchName); 
+            return WwiseProjectDataBasePINVOKE.GetSwitchRefString(switchName);
         }
         catch (System.Exception e)
         {
@@ -1074,7 +1074,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAllSwitchRef()
     {
         try
@@ -1087,7 +1087,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetSwitch(global::System.IntPtr switchArrayRefPtr, int index)
     {
         try
@@ -1100,7 +1100,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetSwitchName(global::System.IntPtr switchRefPtr)
     {
         try
@@ -1113,7 +1113,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetSwitchPath(global::System.IntPtr switchRefPtr)
     {
         try
@@ -1129,11 +1129,11 @@ public partial class WwiseProjectDatabase
     public static System.Guid GetSwitchGuid(global::System.IntPtr switchRefPtr)
     {
         try
-        { 
+        {
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetSwitchGuid(switchRefPtr), ref A, ref B, ref C, ref D);
             return GenerateGuidFromInts(A, B, C, D);
         }
@@ -1183,7 +1183,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteSwitchArrayRef(global::System.IntPtr switchArrayRef)
     {
         try
@@ -1196,7 +1196,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetSwitchCount()
     {
         try
@@ -1209,11 +1209,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * State Group
      */
-    
+
     public static global::System.IntPtr GetStateGroupRefString(string StateName)
     {
         try
@@ -1226,7 +1226,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAllStateGroupRef()
     {
         try
@@ -1239,7 +1239,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetStateGroup(global::System.IntPtr StateArrayRefPtr, int index)
     {
         try
@@ -1252,7 +1252,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetStateGroupName(global::System.IntPtr StateRefPtr)
     {
         try
@@ -1265,7 +1265,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetStateGroupPath(global::System.IntPtr StateRefPtr)
     {
         try
@@ -1285,7 +1285,7 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetStateGroupGuid(StateRefPtr), ref A, ref B, ref C, ref D);
             return GenerateGuidFromInts(A, B, C, D);
         }
@@ -1322,7 +1322,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteStateGroupArrayRef(global::System.IntPtr StateArrayRef)
     {
         try
@@ -1335,7 +1335,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetStateGroupCount()
     {
         try
@@ -1348,11 +1348,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * State
      */
-    
+
     public static global::System.IntPtr GetStateRefString(string StateName)
     {
         try
@@ -1365,7 +1365,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAllStateRef()
     {
         try
@@ -1378,7 +1378,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetState(global::System.IntPtr StateArrayRefPtr, int index)
     {
         try
@@ -1391,7 +1391,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetStateName(global::System.IntPtr StateRefPtr)
     {
         try
@@ -1404,7 +1404,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetStatePath(global::System.IntPtr StateRefPtr)
     {
         try
@@ -1424,7 +1424,7 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetStateGuid(StateRefPtr), ref A, ref B, ref C, ref D);
             return GenerateGuidFromInts(A, B, C, D);
         }
@@ -1473,7 +1473,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteStateArrayRef(global::System.IntPtr StateArrayRef)
     {
         try
@@ -1486,7 +1486,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetStateCount()
     {
         try
@@ -1499,11 +1499,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * AcousticTexture
      */
-    
+
     public static global::System.IntPtr GetAcousticTextureRefString(string AcousticTextureName)
     {
         try
@@ -1516,7 +1516,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAllAcousticTextureRef()
     {
         try
@@ -1529,7 +1529,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAcousticTexture(global::System.IntPtr AcousticTextureArrayRefPtr, int index)
     {
         try
@@ -1542,7 +1542,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetAcousticTextureName(global::System.IntPtr AcousticTextureRefPtr)
     {
         try
@@ -1555,7 +1555,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetAcousticTexturePath(global::System.IntPtr AcousticTextureRefPtr)
     {
         try
@@ -1575,9 +1575,9 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetAcousticTextureGuid(AcousticTextureRefPtr), ref A, ref B, ref C, ref D);
-            return GenerateGuidFromInts(A, B, C, D);    
+            return GenerateGuidFromInts(A, B, C, D);
         }
         catch (System.Exception e)
         {
@@ -1611,7 +1611,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteAcousticTextureArrayRef(global::System.IntPtr AcousticTextureArrayRef)
     {
         try
@@ -1624,7 +1624,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetAcousticTextureCount()
     {
         try
@@ -1637,11 +1637,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * GameParameter
      */
-    
+
     public static global::System.IntPtr GetGameParameterRefString(string GameParameterName)
     {
         try
@@ -1654,7 +1654,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAllGameParameterRef()
     {
         try
@@ -1667,7 +1667,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetGameParameter(global::System.IntPtr GameParameterArrayRefPtr, int index)
     {
         try
@@ -1680,7 +1680,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetGameParameterName(global::System.IntPtr GameParameterRefPtr)
     {
         try
@@ -1693,7 +1693,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetGameParameterPath(global::System.IntPtr GameParameterRefPtr)
     {
         try
@@ -1713,9 +1713,9 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetGameParameterGuid(GameParameterRefPtr), ref A, ref B, ref C, ref D);
-            return GenerateGuidFromInts(A, B, C, D);    
+            return GenerateGuidFromInts(A, B, C, D);
         }
         catch (System.Exception e)
         {
@@ -1749,7 +1749,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteGameParameterArrayRef(global::System.IntPtr GameParameterArrayRef)
     {
         try
@@ -1762,7 +1762,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetGameParameterCount()
     {
         try
@@ -1775,11 +1775,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * Trigger
      */
-    
+
     public static global::System.IntPtr GetTriggerRefString(string TriggerName)
     {
         try
@@ -1792,7 +1792,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAllTriggerRef()
     {
         try
@@ -1805,7 +1805,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetTrigger(global::System.IntPtr TriggerArrayRefPtr, int index)
     {
         try
@@ -1818,7 +1818,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetTriggerName(global::System.IntPtr TriggerRefPtr)
     {
         try
@@ -1831,7 +1831,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetTriggerPath(global::System.IntPtr TriggerRefPtr)
     {
         try
@@ -1851,9 +1851,9 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetTriggerGuid(TriggerRefPtr), ref A, ref B, ref C, ref D);
-            return GenerateGuidFromInts(A, B, C, D);        
+            return GenerateGuidFromInts(A, B, C, D);
         }
         catch (System.Exception e)
         {
@@ -1887,7 +1887,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteTriggerArrayRef(global::System.IntPtr TriggerArrayRef)
     {
         try
@@ -1900,7 +1900,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetTriggerCount()
     {
         try
@@ -1913,11 +1913,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * Bus
      */
-    
+
     public static global::System.IntPtr GetBusRefString(string BusName)
     {
         try
@@ -1930,7 +1930,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAllBusRef()
     {
         try
@@ -1943,7 +1943,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetBus(global::System.IntPtr BusArrayRefPtr, int index)
     {
         try
@@ -1956,7 +1956,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetBusName(global::System.IntPtr BusRefPtr)
     {
         try
@@ -1969,7 +1969,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetBusPath(global::System.IntPtr BusRefPtr)
     {
         try
@@ -1989,9 +1989,9 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetBusGuid(BusRefPtr), ref A, ref B, ref C, ref D);
-            return GenerateGuidFromInts(A, B, C, D);        
+            return GenerateGuidFromInts(A, B, C, D);
         }
         catch (System.Exception e)
         {
@@ -2025,7 +2025,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteBusArrayRef(global::System.IntPtr BusArrayRef)
     {
         try
@@ -2038,7 +2038,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetBusCount()
     {
         try
@@ -2051,11 +2051,11 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     /*
      * AuxBus
      */
-    
+
     public static global::System.IntPtr GetAuxBusRefString(string AuxBusName)
     {
         try
@@ -2068,7 +2068,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAllAuxBusRef()
     {
         try
@@ -2081,7 +2081,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static global::System.IntPtr GetAuxBus(global::System.IntPtr AuxBusArrayRefPtr, int index)
     {
         try
@@ -2094,7 +2094,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetAuxBusName(global::System.IntPtr AuxBusRefPtr)
     {
         try
@@ -2107,7 +2107,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static string GetAuxBusPath(global::System.IntPtr AuxBusRefPtr)
     {
         try
@@ -2127,9 +2127,9 @@ public partial class WwiseProjectDatabase
             uint A = 0;
             uint B = 0;
             uint C = 0;
-            uint D = 0; 
+            uint D = 0;
             WwiseProjectDatabase.GetGuidInt(WwiseProjectDataBasePINVOKE.GetAuxBusGuid(AuxBusRefPtr), ref A, ref B, ref C, ref D);
-            return GenerateGuidFromInts(A, B, C, D);        
+            return GenerateGuidFromInts(A, B, C, D);
         }
         catch (System.Exception e)
         {
@@ -2163,7 +2163,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static void DeleteAuxBusArrayRef(global::System.IntPtr AuxBusArrayRef)
     {
         try
@@ -2176,7 +2176,7 @@ public partial class WwiseProjectDatabase
             throw;
         }
     }
-    
+
     public static uint GetAuxBusCount()
     {
         try

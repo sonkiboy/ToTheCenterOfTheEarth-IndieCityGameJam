@@ -29,355 +29,356 @@ using WwiseTreeViewState = UnityEditor.IMGUI.Controls.TreeViewState;
 #if UNITY_EDITOR
 public class AkWwiseBrowser : UnityEditor.EditorWindow
 {
-	[UnityEngine.SerializeField] WwiseTreeViewState m_treeViewState;
+    [UnityEngine.SerializeField] WwiseTreeViewState m_treeViewState;
 
-	public static AkWwiseTreeView m_treeView;
-	UnityEditor.IMGUI.Controls.SearchField m_SearchField;
-	private Rect m_filterMenuRect;
+    public static AkWwiseTreeView m_treeView;
+    UnityEditor.IMGUI.Controls.SearchField m_SearchField;
+    private Rect m_filterMenuRect;
 
-	private static bool s_canRefresh = true;
-	private static bool s_controlKeyDown = false;
-	private static bool s_altKeyDown = false;
-	private static bool s_shiftKeyDown = false;
-	private bool isConnectedToWaapi = false;
-	
-	private static GUIStyle s_expansionButtonStyle;
-	private static Texture2D s_textureCollapseAllIcon;
-	private static Texture2D s_textureExpandAllIcon;
+    private static bool s_canRefresh = true;
+    private static bool s_controlKeyDown = false;
+    private static bool s_altKeyDown = false;
+    private static bool s_shiftKeyDown = false;
+    private bool isConnectedToWaapi = false;
 
-	[UnityEditor.MenuItem("Window/Wwise Browser", false, (int)AkWwiseWindowOrder.WwisePicker)]
-	public static void InitBrowserWindow()
-	{
-		AkWwiseBrowser window = (AkWwiseBrowser)EditorWindow.GetWindow(typeof(AkWwiseBrowser));
+    private static GUIStyle s_expansionButtonStyle;
+    private static Texture2D s_textureCollapseAllIcon;
+    private static Texture2D s_textureExpandAllIcon;
 
-		if (window == null)
-		{
-			window = GetWindow<AkWwiseBrowser>("Wwise Browser", true,typeof(EditorWindow).Assembly.GetType("UnityEditor.ConsoleWindow"));
-		}
+    [UnityEditor.MenuItem("Window/Wwise Browser", false, (int)AkWwiseWindowOrder.WwisePicker)]
+    public static void InitBrowserWindow()
+    {
+        AkWwiseBrowser window = (AkWwiseBrowser)EditorWindow.GetWindow(typeof(AkWwiseBrowser));
 
-		Texture2D originalIcon = EditorGUIUtility.Load("Assets/Wwise/API/Editor/WwiseWindows/BrowserIcon.png") as Texture2D;
+        if (window == null)
+        {
+            window = GetWindow<AkWwiseBrowser>("Wwise Browser", true, typeof(EditorWindow).Assembly.GetType("UnityEditor.ConsoleWindow"));
+        }
 
-		if (originalIcon != null)
-		{
-			int newWidth = 32;
-			int newHeight = 32;
-        
-			Texture2D scaledIcon = ScaleTexture(originalIcon, newWidth, newHeight); 
+        Texture2D originalIcon = EditorGUIUtility.Load("Assets/Wwise/API/Editor/WwiseWindows/BrowserIcon.png") as Texture2D;
 
-			window.titleContent = new GUIContent("Wwise Browser", scaledIcon);
-		}
-		else
-		{
-			window.titleContent = new GUIContent("Wwise Browser");
-		}
-    
-		window.Show();
-	}
-	
-	private static Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
-	{
-		RenderTexture rt = RenderTexture.GetTemporary(targetWidth, targetHeight);
-		RenderTexture.active = rt;
-		Graphics.Blit(source, rt);
-		Texture2D result = new Texture2D(targetWidth, targetHeight);
-		result.ReadPixels(new Rect(0, 0, targetWidth, targetHeight), 0, 0);
-		result.Apply();
-		RenderTexture.active = null; 
-		RenderTexture.ReleaseTemporary(rt);
-		return result;
-	}
+        if (originalIcon != null)
+        {
+            int newWidth = 32;
+            int newHeight = 32;
 
-	public void OnEnable()
-	{
-		if (m_treeViewState == null)
-		{
-			m_treeViewState = new WwiseTreeViewState();
-		}
+            Texture2D scaledIcon = ScaleTexture(originalIcon, newWidth, newHeight);
 
-		var multiColumnHeaderState = AkWwiseTreeView.CreateDefaultMultiColumnHeaderState();
-		var multiColumnHeader = new UnityEditor.IMGUI.Controls.MultiColumnHeader(multiColumnHeaderState);
-		m_treeView = new AkWwiseTreeView(m_treeViewState, multiColumnHeader, AkWwiseProjectInfo.GetTreeData());
-		m_treeView.SetDoubleClickFunction(OnDoubleClick);
+            window.titleContent = new GUIContent("Wwise Browser", scaledIcon);
+        }
+        else
+        {
+            window.titleContent = new GUIContent("Wwise Browser");
+        }
 
-		m_treeView.dirtyDelegate = RequestRepaint;
+        window.Show();
+    }
 
-		if (m_treeView.dataSource.Data.ItemDict.Count == 0)
-		{
-			Refresh();
-			RequestRepaint();
-		}
-		
-		m_SearchField = new UnityEditor.IMGUI.Controls.SearchField();
-		m_SearchField.downOrUpArrowKeyPressed += m_treeView.SetFocusAndEnsureSelectedItem;
-		m_SearchField.SetFocus();
+    private static Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
+    {
+        RenderTexture rt = RenderTexture.GetTemporary(targetWidth, targetHeight);
+        RenderTexture.active = rt;
+        Graphics.Blit(source, rt);
+        Texture2D result = new Texture2D(targetWidth, targetHeight);
+        result.ReadPixels(new Rect(0, 0, targetWidth, targetHeight), 0, 0);
+        result.Apply();
+        RenderTexture.active = null;
+        RenderTexture.ReleaseTemporary(rt);
+        return result;
+    }
 
-		LoadIcons();
-		AkWwiseEditorSettings.OnWaapiSettingsChanged += RefreshWaapi;
-	}
+    public void OnEnable()
+    {
+        if (m_treeViewState == null)
+        {
+            m_treeViewState = new WwiseTreeViewState();
+        }
+
+        var multiColumnHeaderState = AkWwiseTreeView.CreateDefaultMultiColumnHeaderState();
+        var multiColumnHeader = new UnityEditor.IMGUI.Controls.MultiColumnHeader(multiColumnHeaderState);
+        m_treeView = new AkWwiseTreeView(m_treeViewState, multiColumnHeader, AkWwiseProjectInfo.GetTreeData());
+        m_treeView.SetDoubleClickFunction(OnDoubleClick);
+
+        m_treeView.dirtyDelegate = RequestRepaint;
+
+        if (m_treeView.dataSource.Data.ItemDict.Count == 0)
+        {
+            Refresh();
+            RequestRepaint();
+        }
+
+        m_SearchField = new UnityEditor.IMGUI.Controls.SearchField();
+        m_SearchField.downOrUpArrowKeyPressed += m_treeView.SetFocusAndEnsureSelectedItem;
+        m_SearchField.SetFocus();
+
+        LoadIcons();
+        AkWwiseEditorSettings.OnWaapiSettingsChanged += RefreshWaapi;
+    }
 
     public void LoadIcons()
-	{
-		var tempBrowserPath = "Assets/Wwise/API/Editor/WwiseWindows/BrowserIcons/";
-		s_textureCollapseAllIcon = AkWwisePickerIcons.GetTexture(tempBrowserPath + "GraphNode_CollapseAll.png");
-		s_textureExpandAllIcon = AkWwisePickerIcons.GetTexture(tempBrowserPath + "GraphNode_ExpandAll.png");
-	}
+    {
+        var tempBrowserPath = "Assets/Wwise/API/Editor/WwiseWindows/BrowserIcons/";
+        s_textureCollapseAllIcon = AkWwisePickerIcons.GetTexture(tempBrowserPath + "GraphNode_CollapseAll.png");
+        s_textureExpandAllIcon = AkWwisePickerIcons.GetTexture(tempBrowserPath + "GraphNode_ExpandAll.png");
+    }
 
-	public void OnDisable()
-	{
-		m_treeView.SaveExpansionStatus();
-	}
+    public void OnDisable()
+    {
+        m_treeView.SaveExpansionStatus();
+    }
 
-	private void RefreshWaapi()
-	{
-		Refresh();
-	}
+    private void RefreshWaapi()
+    {
+        Refresh();
+    }
 
-	public static void Refresh(bool ignoreIfWaapi = false)
-	{
-		if (m_treeView != null)
-		{
-			m_treeView.dataSource.FetchData();
-		};
-	}
-	
-	private void OnDoubleClick(AkWwiseTreeViewItem item)
-	{
-		if (item == null)
-		{
-			return;
-		}
+    public static void Refresh(bool ignoreIfWaapi = false)
+    {
+        if (m_treeView != null)
+        {
+            m_treeView.dataSource.FetchData();
+        }
+        ;
+    }
 
-		if (item.objectType == WwiseObjectType.Event)
-		{
-			PlayPauseItem(item);
-			return;
-		}
+    private void OnDoubleClick(AkWwiseTreeViewItem item)
+    {
+        if (item == null)
+        {
+            return;
+        }
 
-		if (item.hasChildren)
-		{
-			m_treeView.SetExpanded(item.id, !m_treeView.IsExpanded(item.id));
-		}
-	}
+        if (item.objectType == WwiseObjectType.Event)
+        {
+            PlayPauseItem(item);
+            return;
+        }
 
-	private void SetItemAndChildrenExpansion(AkWwiseTreeViewItem item, bool expanded)
-	{
-		m_treeView.SetExpanded(item.id, expanded);
+        if (item.hasChildren)
+        {
+            m_treeView.SetExpanded(item.id, !m_treeView.IsExpanded(item.id));
+        }
+    }
 
-		foreach (AkWwiseTreeViewItem child in item.children)
-		{
-			SetItemAndChildrenExpansion(child, expanded);
-		}
-	}
+    private void SetItemAndChildrenExpansion(AkWwiseTreeViewItem item, bool expanded)
+    {
+        m_treeView.SetExpanded(item.id, expanded);
 
-	private void PlayPauseItem(AkWwiseTreeViewItem item)
-	{
-		if (m_treeView != null && m_treeView.CheckWaapi())
-		{
-			AkWaapiUtilities.TogglePlayEvent(item.objectType, item.objectGuid);
-		}
-	}
+        foreach (AkWwiseTreeViewItem child in item.children)
+        {
+            SetItemAndChildrenExpansion(child, expanded);
+        }
+    }
 
-	private bool isDirty;
-	public void RequestRepaint()
-	{
-		isDirty = true;
-	}
+    private void PlayPauseItem(AkWwiseTreeViewItem item)
+    {
+        if (m_treeView != null && m_treeView.CheckWaapi())
+        {
+            AkWaapiUtilities.TogglePlayEvent(item.objectType, item.objectGuid);
+        }
+    }
 
-	void Update()
-	{
-		if (isDirty)
-		{
-			Repaint();
-			m_treeView.Reload();
-			isDirty = false;
-		}
+    private bool isDirty;
+    public void RequestRepaint()
+    {
+        isDirty = true;
+    }
 
-		if (AkWwiseEditorSettings.Instance.UseWaapi)
-		{
-			AkWwiseProjectInfo.WaapiBrowserData.Update();
-		}
-	}
+    void Update()
+    {
+        if (isDirty)
+        {
+            Repaint();
+            m_treeView.Reload();
+            isDirty = false;
+        }
 
-	private void GenerateSoundbank(bool currentPlatformOnly = false)
-	{
-		System.Collections.Generic.List<string> platform = new System.Collections.Generic.List<string>();
-		if (currentPlatformOnly)
-		{
-			platform.Add(AkBasePathGetter.GetPlatformName());
-			platform.Add(AkBasePathGetter.GetTargetPlatformName(EditorUserBuildSettings.activeBuildTarget));
-		}
-		if (AkWaapiUtilities.IsConnected())
-		{
-			AkWaapiUtilities.GenerateSoundbank(platform.ToArray());
-		}
-		else
-		{
-			GenerateSoundbanks(platform);
-		}
-	}
-	
-	void OnLostFocus()
-	{
-		s_altKeyDown = false;
-		s_controlKeyDown = false;
-		s_shiftKeyDown = false;
-	}
+        if (AkWwiseEditorSettings.Instance.UseWaapi)
+        {
+            AkWwiseProjectInfo.WaapiBrowserData.Update();
+        }
+    }
 
-	public void OnGUI()
-	{
-		if (isConnectedToWaapi != AkWaapiUtilities.IsConnected())
-		{
-			isConnectedToWaapi = AkWaapiUtilities.IsConnected();
-			Refresh();
-		}
-		const int buttonWidth = 150;
-		const int iconButtonWidth = 30;
-		using (new UnityEngine.GUILayout.HorizontalScope("box"))
-		{
-			Event e = Event.current;
+    private void GenerateSoundbank(bool currentPlatformOnly = false)
+    {
+        System.Collections.Generic.List<string> platform = new System.Collections.Generic.List<string>();
+        if (currentPlatformOnly)
+        {
+            platform.Add(AkBasePathGetter.GetPlatformName());
+            platform.Add(AkBasePathGetter.GetTargetPlatformName(EditorUserBuildSettings.activeBuildTarget));
+        }
+        if (AkWaapiUtilities.IsConnected())
+        {
+            AkWaapiUtilities.GenerateSoundbank(platform.ToArray());
+        }
+        else
+        {
+            GenerateSoundbanks(platform);
+        }
+    }
 
-			if(e.isKey)
-			{
-				bool isKeyDown = e.type == EventType.KeyDown;
-				if (e.keyCode == KeyCode.LeftAlt || e.keyCode == KeyCode.RightAlt)
-				{
-					s_altKeyDown = isKeyDown;
-				}
-				else if (e.keyCode == KeyCode.LeftControl || e.keyCode == KeyCode.RightControl)
-				{
-					s_controlKeyDown = isKeyDown;
-				} 
-				else if (e.keyCode == KeyCode.LeftShift || e.keyCode == KeyCode.RightShift)
-				{
-					s_shiftKeyDown = isKeyDown;
-				}
-				else if (e.keyCode == KeyCode.F5)
-				{
-					if(isKeyDown)
-					{
-						if(s_canRefresh)
-						{
-							Refresh();
-							s_canRefresh = false;
-							Event.current.Use();
-						}
-					}
-					else
-					{
-						s_canRefresh = true;
-					}
-				}
-				else if (isKeyDown)
-				{
-					if (e.keyCode == KeyCode.F7)
-					{
-						if (s_controlKeyDown && s_altKeyDown)
-						{
-							GenerateSoundbank();
-                        } 
-						else if (s_controlKeyDown && s_shiftKeyDown)
-						{
-							GenerateSoundbank(true);
-						}
+    void OnLostFocus()
+    {
+        s_altKeyDown = false;
+        s_controlKeyDown = false;
+        s_shiftKeyDown = false;
+    }
+
+    public void OnGUI()
+    {
+        if (isConnectedToWaapi != AkWaapiUtilities.IsConnected())
+        {
+            isConnectedToWaapi = AkWaapiUtilities.IsConnected();
+            Refresh();
+        }
+        const int buttonWidth = 150;
+        const int iconButtonWidth = 30;
+        using (new UnityEngine.GUILayout.HorizontalScope("box"))
+        {
+            Event e = Event.current;
+
+            if (e.isKey)
+            {
+                bool isKeyDown = e.type == EventType.KeyDown;
+                if (e.keyCode == KeyCode.LeftAlt || e.keyCode == KeyCode.RightAlt)
+                {
+                    s_altKeyDown = isKeyDown;
+                }
+                else if (e.keyCode == KeyCode.LeftControl || e.keyCode == KeyCode.RightControl)
+                {
+                    s_controlKeyDown = isKeyDown;
+                }
+                else if (e.keyCode == KeyCode.LeftShift || e.keyCode == KeyCode.RightShift)
+                {
+                    s_shiftKeyDown = isKeyDown;
+                }
+                else if (e.keyCode == KeyCode.F5)
+                {
+                    if (isKeyDown)
+                    {
+                        if (s_canRefresh)
+                        {
+                            Refresh();
+                            s_canRefresh = false;
+                            Event.current.Use();
+                        }
+                    }
+                    else
+                    {
+                        s_canRefresh = true;
+                    }
+                }
+                else if (isKeyDown)
+                {
+                    if (e.keyCode == KeyCode.F7)
+                    {
+                        if (s_controlKeyDown && s_altKeyDown)
+                        {
+                            GenerateSoundbank();
+                        }
+                        else if (s_controlKeyDown && s_shiftKeyDown)
+                        {
+                            GenerateSoundbank(true);
+                        }
                         Event.current.Use();
                     }
                 }
             }
 
-			var buttonPressed = GUILayout.Button("Filters", new GUIStyle(GUI.skin.button));
-			if (Event.current.type == EventType.Repaint)
-			{
-				m_filterMenuRect = GUILayoutUtility.GetLastRect();
-				m_filterMenuRect.x += m_filterMenuRect.width - 25;
-			}
-			if (buttonPressed)
-			{
-				var screenRect = GUIUtility.GUIToScreenRect(m_filterMenuRect);
-				AkWwiseBrowserFilter.Init(screenRect);
-			}
+            var buttonPressed = GUILayout.Button("Filters", new GUIStyle(GUI.skin.button));
+            if (Event.current.type == EventType.Repaint)
+            {
+                m_filterMenuRect = GUILayoutUtility.GetLastRect();
+                m_filterMenuRect.x += m_filterMenuRect.width - 25;
+            }
+            if (buttonPressed)
+            {
+                var screenRect = GUIUtility.GUIToScreenRect(m_filterMenuRect);
+                AkWwiseBrowserFilter.Init(screenRect);
+            }
 
-			if (s_expansionButtonStyle == null)
-			{
-				s_expansionButtonStyle = new GUIStyle(GUI.skin.button);
-			s_expansionButtonStyle.padding = new RectOffset(2, 2, 2, 2);
-			}
+            if (s_expansionButtonStyle == null)
+            {
+                s_expansionButtonStyle = new GUIStyle(GUI.skin.button);
+                s_expansionButtonStyle.padding = new RectOffset(2, 2, 2, 2);
+            }
 
-			float expansionIconSize = 20.0f;
-			GUIContent expandAllButton = new GUIContent(s_textureExpandAllIcon);
-			expandAllButton.tooltip = "Expand All";
-			if (GUILayout.Button(expandAllButton, s_expansionButtonStyle, GUILayout.Height(expansionIconSize), GUILayout.Width(expansionIconSize)))
-			{
-				SetItemAndChildrenExpansion(m_treeView.dataSource.ProjectRoot, true);
-			}
-			GUIContent collapseAllButton = new GUIContent(s_textureCollapseAllIcon);
-			collapseAllButton.tooltip = "Collapse All";
-			if (GUILayout.Button(collapseAllButton, s_expansionButtonStyle, GUILayout.Height(expansionIconSize), GUILayout.Width(expansionIconSize)))
-			{
-				SetItemAndChildrenExpansion(m_treeView.dataSource.ProjectRoot, false);
-			}
+            float expansionIconSize = 20.0f;
+            GUIContent expandAllButton = new GUIContent(s_textureExpandAllIcon);
+            expandAllButton.tooltip = "Expand All";
+            if (GUILayout.Button(expandAllButton, s_expansionButtonStyle, GUILayout.Height(expansionIconSize), GUILayout.Width(expansionIconSize)))
+            {
+                SetItemAndChildrenExpansion(m_treeView.dataSource.ProjectRoot, true);
+            }
+            GUIContent collapseAllButton = new GUIContent(s_textureCollapseAllIcon);
+            collapseAllButton.tooltip = "Collapse All";
+            if (GUILayout.Button(collapseAllButton, s_expansionButtonStyle, GUILayout.Height(expansionIconSize), GUILayout.Width(expansionIconSize)))
+            {
+                SetItemAndChildrenExpansion(m_treeView.dataSource.ProjectRoot, false);
+            }
 
-			var search_width = System.Math.Max(position.width / 3, buttonWidth * 2);
+            var search_width = System.Math.Max(position.width / 3, buttonWidth * 2);
 
             m_treeView.StoredSearchString = m_SearchField.OnGUI(UnityEngine.GUILayoutUtility.GetRect(search_width, 30), m_treeView.StoredSearchString);
-			UnityEngine.GUILayout.FlexibleSpace();
+            UnityEngine.GUILayout.FlexibleSpace();
 
-			var RefreshContent = new GUIContent(EditorGUIUtility.IconContent("Refresh"));
-			RefreshContent.tooltip = "Refresh the Wwise Browser (F5)";
-			if (UnityEngine.GUILayout.Button(RefreshContent, UnityEngine.GUILayout.Width(iconButtonWidth)))
-			{
-				Refresh();
-			}
+            var RefreshContent = new GUIContent(EditorGUIUtility.IconContent("Refresh"));
+            RefreshContent.tooltip = "Refresh the Wwise Browser (F5)";
+            if (UnityEngine.GUILayout.Button(RefreshContent, UnityEngine.GUILayout.Width(iconButtonWidth)))
+            {
+                Refresh();
+            }
 
-			var GenerateContent = new GUIContent("Generate SoundBanks", "Generate all : Ctrl+Alt+F7\nGenerate for the current platform : Ctrl+Shift+F7");
-			if (UnityEngine.GUILayout.Button(GenerateContent, UnityEngine.GUILayout.Width(buttonWidth), UnityEngine.GUILayout.Height(20)))
-			{
-				GenerateSoundbank();
-			}
-		}
+            var GenerateContent = new GUIContent("Generate SoundBanks", "Generate all : Ctrl+Alt+F7\nGenerate for the current platform : Ctrl+Shift+F7");
+            if (UnityEngine.GUILayout.Button(GenerateContent, UnityEngine.GUILayout.Width(buttonWidth), UnityEngine.GUILayout.Height(20)))
+            {
+                GenerateSoundbank();
+            }
+        }
 
-		UnityEngine.GUILayout.Space(UnityEditor.EditorGUIUtility.standardVerticalSpacing);
+        UnityEngine.GUILayout.Space(UnityEditor.EditorGUIUtility.standardVerticalSpacing);
 
 
-		UnityEngine.GUILayout.FlexibleSpace();
-		UnityEngine.Rect lastRect = UnityEngine.GUILayoutUtility.GetLastRect();
-		
-		if (m_treeView.dataSource.isRefreshing)
-		{
-			GUILayout.Label("... LOADING WAAPI DATA ...", EditorStyles.boldLabel);
-		}
-		else
-		{
-			m_treeView.OnGUI(new UnityEngine.Rect(lastRect.x, lastRect.y, position.width, lastRect.height));
-		}
+        UnityEngine.GUILayout.FlexibleSpace();
+        UnityEngine.Rect lastRect = UnityEngine.GUILayoutUtility.GetLastRect();
 
-		using (new UnityEngine.GUILayout.HorizontalScope("box"))
-		{
-			bool bConnected;
-			string tooltip = AkWaapiUtilities.GetStatusString(out bConnected);
-			
-			var ConnectionContent = new GUIContent(EditorGUIUtility.IconContent(bConnected ? "Linked" : "Unlinked"));
-			ConnectionContent.tooltip = tooltip;
-			UnityEngine.GUILayout.Label(ConnectionContent, UnityEngine.GUILayout.Width(iconButtonWidth));
-			UnityEngine.GUILayout.Label("Root Output Path: " + AkWwiseEditorSettings.GetRootOutputPath());
+        if (m_treeView.dataSource.isRefreshing)
+        {
+            GUILayout.Label("... LOADING WAAPI DATA ...", EditorStyles.boldLabel);
+        }
+        else
+        {
+            m_treeView.OnGUI(new UnityEngine.Rect(lastRect.x, lastRect.y, position.width, lastRect.height));
+        }
 
-			var HelpContent = new GUIContent(EditorGUIUtility.IconContent("_Help"));
-			HelpContent.tooltip = "Open the Wwise Unity Integration Documentation";
-			if (UnityEngine.GUILayout.Button(HelpContent, UnityEngine.GUILayout.Width(iconButtonWidth)))
-			{
-				Application.OpenURL("https://www.audiokinetic.com/library/edge/?source=Unity&id=index.html");
-			}
-			
-			var ProjectSettingsContent = new GUIContent(EditorGUIUtility.IconContent("_Popup"));
-			ProjectSettingsContent.tooltip = $"Open the Wwise Unity Project Settings{Environment.NewLine}" + $"Integration Version : {AkUnitySoundEngine.IntegrationVersion}{Environment.NewLine}" + $"SoundEngine Version : {AkUnitySoundEngine.WwiseVersion}";
-			if (UnityEngine.GUILayout.Button(ProjectSettingsContent, UnityEngine.GUILayout.Width(iconButtonWidth)))
-			{
-				OpenProjectSettings();
-			}
-		}
-	}
+        using (new UnityEngine.GUILayout.HorizontalScope("box"))
+        {
+            bool bConnected;
+            string tooltip = AkWaapiUtilities.GetStatusString(out bConnected);
 
-	private void GenerateSoundbanks(System.Collections.Generic.List<string> platforms = null)
-	{
+            var ConnectionContent = new GUIContent(EditorGUIUtility.IconContent(bConnected ? "Linked" : "Unlinked"));
+            ConnectionContent.tooltip = tooltip;
+            UnityEngine.GUILayout.Label(ConnectionContent, UnityEngine.GUILayout.Width(iconButtonWidth));
+            UnityEngine.GUILayout.Label("Root Output Path: " + AkWwiseEditorSettings.GetRootOutputPath());
+
+            var HelpContent = new GUIContent(EditorGUIUtility.IconContent("_Help"));
+            HelpContent.tooltip = "Open the Wwise Unity Integration Documentation";
+            if (UnityEngine.GUILayout.Button(HelpContent, UnityEngine.GUILayout.Width(iconButtonWidth)))
+            {
+                Application.OpenURL("https://www.audiokinetic.com/library/edge/?source=Unity&id=index.html");
+            }
+
+            var ProjectSettingsContent = new GUIContent(EditorGUIUtility.IconContent("_Popup"));
+            ProjectSettingsContent.tooltip = $"Open the Wwise Unity Project Settings{Environment.NewLine}" + $"Integration Version : {AkUnitySoundEngine.IntegrationVersion}{Environment.NewLine}" + $"SoundEngine Version : {AkUnitySoundEngine.WwiseVersion}";
+            if (UnityEngine.GUILayout.Button(ProjectSettingsContent, UnityEngine.GUILayout.Width(iconButtonWidth)))
+            {
+                OpenProjectSettings();
+            }
+        }
+    }
+
+    private void GenerateSoundbanks(System.Collections.Generic.List<string> platforms = null)
+    {
         if (AkUtilities.IsSoundbankGenerationAvailable(AkWwiseEditorSettings.Instance.WwiseInstallationPath) && !AkUtilities.GeneratingSoundBanks)
         {
             AkUtilities.GenerateSoundbanks(AkWwiseEditorSettings.Instance.WwiseInstallationPath, AkWwiseEditorSettings.WwiseProjectAbsolutePath, platforms);
@@ -389,70 +390,70 @@ public class AkWwiseBrowser : UnityEditor.EditorWindow
     }
 
     void OpenProjectSettings()
-	{
-		SettingsService.OpenProjectSettings("Project/Wwise Integration");
-	}
+    {
+        SettingsService.OpenProjectSettings("Project/Wwise Integration");
+    }
 
-	static public void SelectInWwiseBrowser(System.Guid guid)
-	{
-		InitBrowserWindow();
-		m_treeView.SelectItem(guid);
-	}
+    static public void SelectInWwiseBrowser(System.Guid guid)
+    {
+        InitBrowserWindow();
+        m_treeView.SelectItem(guid);
+    }
 
-	[UnityEditor.MenuItem("CONTEXT/AkBank/Select in Wwise Browser")]
-	[UnityEditor.MenuItem("CONTEXT/AkAmbient/Select in Wwise Browser")]
-	[UnityEditor.MenuItem("CONTEXT/AkEvent/Select in Wwise Browser")]
-	[UnityEditor.MenuItem("CONTEXT/AkState/Select in Wwise Browser")]
-	[UnityEditor.MenuItem("CONTEXT/AkSwitch/Select in Wwise Browser")]
-	[UnityEditor.MenuItem("CONTEXT/AkWwiseTrigger/Select in Wwise Browser")]
-	static void SelectItemInWwiseBrowser(UnityEditor.MenuCommand command)
-	{
-		AkTriggerHandler component = (AkTriggerHandler)command.context;
-		try
-		{
-			var data = component.GetType().GetField("data");
-			var guid = (data.GetValue(component) as AK.Wwise.BaseType).ObjectReference.Guid;
-			SelectInWwiseBrowser(guid);
-		}
-		catch { }
-	}
+    [UnityEditor.MenuItem("CONTEXT/AkBank/Select in Wwise Browser")]
+    [UnityEditor.MenuItem("CONTEXT/AkAmbient/Select in Wwise Browser")]
+    [UnityEditor.MenuItem("CONTEXT/AkEvent/Select in Wwise Browser")]
+    [UnityEditor.MenuItem("CONTEXT/AkState/Select in Wwise Browser")]
+    [UnityEditor.MenuItem("CONTEXT/AkSwitch/Select in Wwise Browser")]
+    [UnityEditor.MenuItem("CONTEXT/AkWwiseTrigger/Select in Wwise Browser")]
+    static void SelectItemInWwiseBrowser(UnityEditor.MenuCommand command)
+    {
+        AkTriggerHandler component = (AkTriggerHandler)command.context;
+        try
+        {
+            var data = component.GetType().GetField("data");
+            var guid = (data.GetValue(component) as AK.Wwise.BaseType).ObjectReference.Guid;
+            SelectInWwiseBrowser(guid);
+        }
+        catch { }
+    }
 
-	[UnityEditor.MenuItem("CONTEXT/AkRoom/Select Aux Bus in Wwise Browser")]
-	static void SelectAkRoomAuxBusInWwiseBrowser(UnityEditor.MenuCommand command)
-	{
-		AkRoom component = (AkRoom)command.context;
-		SelectInWwiseBrowser(component.reverbAuxBus.ObjectReference.Guid);
-	}
+    [UnityEditor.MenuItem("CONTEXT/AkRoom/Select Aux Bus in Wwise Browser")]
+    static void SelectAkRoomAuxBusInWwiseBrowser(UnityEditor.MenuCommand command)
+    {
+        AkRoom component = (AkRoom)command.context;
+        SelectInWwiseBrowser(component.reverbAuxBus.ObjectReference.Guid);
+    }
 
-	[UnityEditor.MenuItem("CONTEXT/AkRoom/Select Event in Wwise Browser")]
-	static void SelectAkRoomEventInWwiseBrowser(UnityEditor.MenuCommand command)
-	{
-		AkRoom component = (AkRoom)command.context;
-		SelectInWwiseBrowser(component.roomToneEvent.ObjectReference.Guid);
-	}
+    [UnityEditor.MenuItem("CONTEXT/AkRoom/Select Event in Wwise Browser")]
+    static void SelectAkRoomEventInWwiseBrowser(UnityEditor.MenuCommand command)
+    {
+        AkRoom component = (AkRoom)command.context;
+        SelectInWwiseBrowser(component.roomToneEvent.ObjectReference.Guid);
+    }
 
-	[UnityEditor.MenuItem("CONTEXT/AkSurfaceReflector/Select in Wwise Browser")]
-	static void SelectReflectorTextureItemInWwiseBrowser(UnityEditor.MenuCommand command)
-	{
-		AkSurfaceReflector component = (AkSurfaceReflector)command.context;
-		if (component.AcousticTextures.Length >0 && component.AcousticTextures[0].ObjectReference !=null)
-		{
-			SelectInWwiseBrowser(component.AcousticTextures[0].ObjectReference.Guid);
-		}
-	}
+    [UnityEditor.MenuItem("CONTEXT/AkSurfaceReflector/Select in Wwise Browser")]
+    static void SelectReflectorTextureItemInWwiseBrowser(UnityEditor.MenuCommand command)
+    {
+        AkSurfaceReflector component = (AkSurfaceReflector)command.context;
+        if (component.AcousticTextures.Length > 0 && component.AcousticTextures[0].ObjectReference != null)
+        {
+            SelectInWwiseBrowser(component.AcousticTextures[0].ObjectReference.Guid);
+        }
+    }
 
-	[UnityEditor.MenuItem("CONTEXT/AkEnvironment/Select in Wwise Browser")]
-	static void SelectEnvironmentItemInWwiseBrowser(UnityEditor.MenuCommand command)
-	{
-		AkEnvironment component = (AkEnvironment)command.context;
-		SelectInWwiseBrowser(component.data.ObjectReference.Guid);
-	}
+    [UnityEditor.MenuItem("CONTEXT/AkEnvironment/Select in Wwise Browser")]
+    static void SelectEnvironmentItemInWwiseBrowser(UnityEditor.MenuCommand command)
+    {
+        AkEnvironment component = (AkEnvironment)command.context;
+        SelectInWwiseBrowser(component.data.ObjectReference.Guid);
+    }
 
-	[UnityEditor.MenuItem("CONTEXT/AkEarlyReflections/Select in Wwise Browser")]
-	static void SelectReflectionsItemInWwiseBrowser(UnityEditor.MenuCommand command)
-	{
-		AkEarlyReflections component = (AkEarlyReflections)command.context;
-		SelectInWwiseBrowser(component.reflectionsAuxBus.ObjectReference.Guid);
-	}
+    [UnityEditor.MenuItem("CONTEXT/AkEarlyReflections/Select in Wwise Browser")]
+    static void SelectReflectionsItemInWwiseBrowser(UnityEditor.MenuCommand command)
+    {
+        AkEarlyReflections component = (AkEarlyReflections)command.context;
+        SelectInWwiseBrowser(component.reflectionsAuxBus.ObjectReference.Guid);
+    }
 }
 #endif

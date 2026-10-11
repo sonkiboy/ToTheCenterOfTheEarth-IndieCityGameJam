@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,10 +8,10 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
-    [SerializeField]SpriteRenderer hatRenderer;
+    [SerializeField] SpriteRenderer hatRenderer;
     Animator animator;
 
-    [SerializeField]Renderer[] damageFlash;
+    [SerializeField] Renderer[] damageFlash;
 
     GameObject gunObj;
     SpriteRenderer gunSprite;
@@ -66,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     // Thurst Power, Move Direction, and Aim Direction are all used to keep track of the read input values for their respective action
     private float ThrustPower = 0f; // while we could read this as a bool button press, reading as a value give us the option to have a range when reading pressure sensitivity
-    private Vector2 moveDirection = Vector2.zero;
+    [SerializeField] private Vector2 moveDirection = Vector2.zero;
     private Vector2 aimDirection = Vector2.zero;
 
     // ------------- PLAYER STATE -------------
@@ -83,8 +79,8 @@ public class PlayerController : MonoBehaviour
     public PlayerState CurrentState
     {
         get { return _state; }
-        set 
-        { 
+        set
+        {
             _state = value;
 
             switch (_state)
@@ -92,7 +88,7 @@ public class PlayerController : MonoBehaviour
                 case PlayerState.Dead:
 
                     // make sure the sprite is the flashing damage color
-                    foreach(Renderer rend in damageFlash) 
+                    foreach (Renderer rend in damageFlash)
                     {
                         rend.material.SetFloat("_Intensity", 1f);
 
@@ -181,7 +177,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         aimDirection = Vector3.right;
         GameManager.Instance.HatChanged += OnHatChanged;
         OnHatChanged(this, GameManager.Instance.CurrentHat);
@@ -195,7 +191,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnEnable()
     {
-        if(GameManager.Instance != null)
+        if (GameManager.Instance != null)
         {
             GameManager.Instance.HatChanged += OnHatChanged;
 
@@ -213,6 +209,7 @@ public class PlayerController : MonoBehaviour
         // read the current move direction this frame
         moveDirection = GameManager.Instance.InputManager.MoveInput.ReadValue<Vector2>();
 
+
         // if the player is using a controller or other sort of joystick, we can use the thumb stick to get a direction input directly
         if (GameManager.Instance.InputManager.isController)
         {
@@ -224,7 +221,7 @@ public class PlayerController : MonoBehaviour
         {
             // first get the current position of the mouse on the screen as a 2d vector
             //aimDirection = GameManager.Instance.InputManager.MouseLookInput.ReadValue<Vector2>();
-            aimDirection = (Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()/5.2F);
+            aimDirection = (Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue() / 5.2F);
 
             // then figure out where that screen position would be in the game, and then calculate the direction in comparison from the player, and normalize
 
@@ -238,25 +235,35 @@ public class PlayerController : MonoBehaviour
         // if the player is aiming to the left of the character, flip the gun and player sprite if they aren't already facing left 
         if (aimDirection.x < 0)
         {
-            Debug.Log($"Aim direction {aimDirection} read as left, setting sprites to flip false ({spriteRenderer.flipX},{hatRenderer.flipX})");
+            //Debug.Log($"Aim direction {aimDirection} read as left, setting sprites to flip false ({spriteRenderer.flipX},{hatRenderer.flipX})");
             if (spriteRenderer.flipX == true) spriteRenderer.flipX = false;
-            if (hatRenderer.flipX == true) {hatRenderer.flipX = false; Debug.Log($"(supposed to be false) Setting hat to {hatRenderer.flipX}"); }
+            if (hatRenderer.flipX == true) { hatRenderer.flipX = false; //Debug.Log($"(supposed to be false) Setting hat to {hatRenderer.flipX}"); 
+            }
             gunSprite.flipY = true;
         }
 
         // if the player is aiming to the right, flip the gun and player sprite if they aren't already facing right
-        else if (aimDirection.x > 0 )
+        else if (aimDirection.x > 0)
         {
-            Debug.Log($"Aim direction {aimDirection} read as right, setting sprites to flip true ({spriteRenderer.flipX},{hatRenderer.flipX})");
+            //Debug.Log($"Aim direction {aimDirection} read as right, setting sprites to flip true ({spriteRenderer.flipX},{hatRenderer.flipX})");
 
             if (spriteRenderer.flipX == false) spriteRenderer.flipX = true;
-            if (hatRenderer.flipX == false) { hatRenderer.flipX = true; Debug.Log($"(supposed to be true) Setting hat to {hatRenderer.flipX}"); }
+            if (hatRenderer.flipX == false) { hatRenderer.flipX = true; //Debug.Log($"(supposed to be true) Setting hat to {hatRenderer.flipX}"); 
+            }
             gunSprite.flipY = false;
         }
 
         // read the Jetpack Thrust input this frame
         ThrustPower = GameManager.Instance.InputManager.JetInput.ReadValue<float>();
+        if (GameManager.Instance.GameOptions.IsJetOnMove)
+        {
+            if (moveDirection.y > .5f)
+            {
+                ThrustPower = 1;
+                //Debug.Log("HIT");
+            }
 
+        }
     }
 
     private void FixedUpdate()
@@ -310,7 +317,7 @@ public class PlayerController : MonoBehaviour
         {
             IsJeckpack = false;
 
-            GameManager.Instance.SoundManager.PlaySoundOnObject("JetPackOff",this.gameObject);
+            GameManager.Instance.SoundManager.PlaySoundOnObject("JetPackOff", this.gameObject);
 
             // tell the animator to play the jet animation
             animator.SetBool("IsJetting", false);
@@ -483,5 +490,5 @@ public class PlayerController : MonoBehaviour
         hatRenderer.sprite = hat.HatSprite;
     }
 
-    
+
 }

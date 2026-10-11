@@ -1,7 +1,6 @@
-using UnityEngine;
-using System.IO.Ports;
 using System.Collections;
-using System;
+using System.IO.Ports;
+using UnityEngine;
 
 public class ArcadeLightManager : MonoBehaviour
 {
@@ -11,18 +10,18 @@ public class ArcadeLightManager : MonoBehaviour
         alert,
         off
     }
-    SerialPort serial = new SerialPort("COM5",9600);
+    SerialPort serial = new SerialPort("COM5", 9600);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()
     {
-        try 
-        { 
+        try
+        {
             serial.Open();
             serial.ReadTimeout = 100;
         }
         catch { }
-        
+
     }
     void Start()
     {
@@ -35,7 +34,7 @@ public class ArcadeLightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnDisable()
     {
@@ -53,7 +52,7 @@ public class ArcadeLightManager : MonoBehaviour
             serial.Write("9");
             serial.Close();
         }
-        
+
     }
 
     public void SetCabinetLights(LightModes mode, int pallete)
@@ -118,7 +117,7 @@ public class ArcadeLightManager : MonoBehaviour
             SetCabinetLights(LightModes.off, 1);
             yield return new WaitForSeconds(5);
         }
-        
+
     }
 
 }

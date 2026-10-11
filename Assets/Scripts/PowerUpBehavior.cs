@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUpBehavior : MonoBehaviour
@@ -10,9 +9,9 @@ public class PowerUpBehavior : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
 
-    #endregion 
+    #endregion
 
-    
+
 
     public PowerUpManager.PowerUpTypes Type;
     public float Durration = 10f;
@@ -33,7 +32,7 @@ public class PowerUpBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -90,7 +89,7 @@ public class PowerUpBehavior : MonoBehaviour
 
         //gun.AdditionalDamage += DamageUp;
         //gun.ReloadModifier += GunSpeedDown;
-        
+
         //GameManager.Instance.CurrentHealth += HealDamage;
 
         //if(GameManager.Instance.Platform != null)

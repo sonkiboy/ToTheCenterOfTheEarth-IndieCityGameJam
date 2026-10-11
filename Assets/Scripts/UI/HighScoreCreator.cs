@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class HighScoreCreator : MonoBehaviour
@@ -43,7 +41,7 @@ public class HighScoreCreator : MonoBehaviour
             scoreBackText.text = value;
             scoreFrontText.text = value;
         }
-        get {  return _score; }
+        get { return _score; }
     }
 
     private void Awake()
@@ -58,11 +56,11 @@ public class HighScoreCreator : MonoBehaviour
 
     private void Start()
     {
-        
+
         score = GameManager.Instance.CurrentTreasure;
         HighScoreText = score.ToString();
 
-        
+
 
         char[] nameArray = GameManager.Instance.GameOptions.LastHighscoreName.ToCharArray();
         for (int i = 0; i < LetterRenderers.Length; i++)
@@ -281,7 +279,7 @@ public class HighScoreCreator : MonoBehaviour
             if (nameArray[nameArray.Length - 1].ToString().ToLower() == letter.ToLower())
             {
                 return LetterSprites[i];
-                
+
             }
 
 

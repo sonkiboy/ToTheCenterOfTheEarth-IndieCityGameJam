@@ -12,7 +12,7 @@ public class LaserBulletBehavior : Bullet
 
     [SerializeField] Transform target;
 
-    
+
     private void Start()
     {
         lineController = GetComponent<BasicCurvedLineController>();
@@ -25,13 +25,13 @@ public class LaserBulletBehavior : Bullet
     {
         lineController.Origin = this.transform.position;
 
-        if(target != null )
+        if (target != null)
         {
             lineController.Target = (Vector2)target.transform.position + (Vector2.one / 2);
             lineController.RelativeBezPoint = lineController.Origin + ((Vector2)this.transform.right * Vector2.Distance(lineController.Origin, lineController.Target));
         }
 
-        hitPoint.transform.position = lineController.Line.GetPosition(lineController.Line.positionCount-1) ;
+        hitPoint.transform.position = lineController.Line.GetPosition(lineController.Line.positionCount - 1);
 
 
     }
@@ -118,8 +118,8 @@ public class LaserBulletBehavior : Bullet
                                 //Debug.Log($"Frame check variables read as: {tile.Health > 0} {GameManager.Instance.InputManager.FireInput.IsPressed()} && {target == tile.transform}");
                                 Debug.Log($"Tile health is {tile.Health}");
 
-                                if (GameManager.Instance.PowerManager != null) tile.DamageTile(true,GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount]);
-                                else tile.DamageTile(true,(Damage + ExtraDamage));
+                                if (GameManager.Instance.PowerManager != null) tile.DamageTile(true, GameManager.Instance.CurrentGun.DamageLevels[GameManager.Instance.PowerManager.DamagePowerCount]);
+                                else tile.DamageTile(true, (Damage + ExtraDamage));
 
 
                                 //yield return new WaitForSeconds(DamageRate - (DamageRate * (GameManager.Instance.PowerManager.ReloadSpeedDown * GameManager.Instance.PowerManager.ReloadPowerCount)));

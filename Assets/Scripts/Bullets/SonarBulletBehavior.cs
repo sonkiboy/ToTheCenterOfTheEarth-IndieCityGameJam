@@ -18,17 +18,17 @@ public class SonarBulletBehavior : BulletBehavior
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator MoveOverCurve()
     {
-        int incriments = Mathf.RoundToInt(60/Speed);
+        int incriments = Mathf.RoundToInt(60 / Speed);
         float timeIncriment = DestroyTime / (float)incriments;
 
         Vector2 origin = this.transform.position;
-        
-        
+
+
         Vector2 target = origin + ((Vector2)this.transform.right * MaxDistance);
         Debug.Log($"Origin: {origin}  Target: {target} Dir: {(Vector2)this.transform.forward}");
 
@@ -46,11 +46,11 @@ public class SonarBulletBehavior : BulletBehavior
     IEnumerator GrowOverLifetime()
     {
         int incriments = Mathf.RoundToInt(60 / Speed);
-        float timeIncriment = DestroyTime/(float)incriments;
+        float timeIncriment = DestroyTime / (float)incriments;
 
         for (int i = 0; i < incriments; i++)
         {
-            
+
             this.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * MaxScaleSize, (float)i / (float)incriments);
             yield return new WaitForSeconds(timeIncriment);
         }
@@ -59,8 +59,8 @@ public class SonarBulletBehavior : BulletBehavior
     private void FixedUpdate()
     {
 
-        
+
     }
-    
+
 
 }

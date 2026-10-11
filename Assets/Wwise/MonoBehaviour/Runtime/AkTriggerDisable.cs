@@ -18,11 +18,11 @@ Copyright (c) 2026 Audiokinetic Inc.
 
 public class AkTriggerDisable : AkTriggerBase
 {
-	private void OnDisable()
-	{
-		if (triggerDelegate != null)
-			triggerDelegate(null);
-	}
+    private void OnDisable()
+    {
+        if (triggerDelegate != null)
+            triggerDelegate(null);
+    }
 }
 
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

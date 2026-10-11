@@ -3,11 +3,11 @@ using UnityEngine;
 public class FollowingEye : MonoBehaviour
 {
 
-    [SerializeField]Vector2 origin;
+    [SerializeField] Vector2 origin;
     public GameObject TrackingTarget;
     public float MovementRange = 1f;
     public bool IsLocalScale = true;
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,13 +20,13 @@ public class FollowingEye : MonoBehaviour
         {
             origin = transform.position;
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(TrackingTarget != null)
+        if (TrackingTarget != null)
         {
             if (IsLocalScale)
             {
@@ -40,7 +40,7 @@ public class FollowingEye : MonoBehaviour
 
                 this.transform.position = origin + (dir * MovementRange);
             }
-            
+
         }
     }
 }

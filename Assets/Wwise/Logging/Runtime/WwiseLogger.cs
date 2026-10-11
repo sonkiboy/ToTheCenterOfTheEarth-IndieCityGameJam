@@ -88,7 +88,7 @@ namespace AK.Wwise.Unity.Logging
         {
             Log(LogLevel.Verbose, message);
         }
-        
+
         /// <summary>
         /// Log a WwiseUnity very verbose message.
         /// </summary>
@@ -127,7 +127,7 @@ namespace AK.Wwise.Unity.Logging
         {
             LogFormat(LogLevel.Log, format, args);
         }
-        
+
         /// <summary>
         /// Log a formatted WwiseUnity verbose message.
         /// </summary>
@@ -137,7 +137,7 @@ namespace AK.Wwise.Unity.Logging
         {
             LogFormat(LogLevel.Verbose, format, args);
         }
-        
+
         /// <summary>
         /// Log a formatted WwiseUnity very verbose message.
         /// </summary>
@@ -163,19 +163,19 @@ namespace AK.Wwise.Unity.Logging
                     case LogLevel.None:
                         break;
                     case LogLevel.Error:
-                        UnityEngine.Debug.LogError(WwiseUnityMessagePrefix + "(ERROR) "+ message);
+                        UnityEngine.Debug.LogError(WwiseUnityMessagePrefix + "(ERROR) " + message);
                         break;
                     case LogLevel.Warning:
-                        UnityEngine.Debug.LogWarning(WwiseUnityMessagePrefix + "(WARNING) "+ message);
+                        UnityEngine.Debug.LogWarning(WwiseUnityMessagePrefix + "(WARNING) " + message);
                         break;
                     case LogLevel.Log:
-                        UnityEngine.Debug.Log(WwiseUnityMessagePrefix + "(LOG) "+ message);
+                        UnityEngine.Debug.Log(WwiseUnityMessagePrefix + "(LOG) " + message);
                         break;
                     case LogLevel.Verbose:
-                        UnityEngine.Debug.Log(WwiseUnityMessagePrefix + "(VERBOSE) "+ message);
+                        UnityEngine.Debug.Log(WwiseUnityMessagePrefix + "(VERBOSE) " + message);
                         break;
                     case LogLevel.VeryVerbose:
-                        UnityEngine.Debug.Log(WwiseUnityMessagePrefix + "(VERYVERBOSE) "+ message);
+                        UnityEngine.Debug.Log(WwiseUnityMessagePrefix + "(VERYVERBOSE) " + message);
                         break;
                 }
             }
@@ -198,19 +198,19 @@ namespace AK.Wwise.Unity.Logging
                     case LogLevel.None:
                         break;
                     case LogLevel.Error:
-                        UnityEngine.Debug.LogErrorFormat(WwiseUnityMessagePrefix + "(ERROR) "+ format, args);
+                        UnityEngine.Debug.LogErrorFormat(WwiseUnityMessagePrefix + "(ERROR) " + format, args);
                         break;
                     case LogLevel.Warning:
-                        UnityEngine.Debug.LogWarningFormat(WwiseUnityMessagePrefix + "(WARNING) "+ format, args);
+                        UnityEngine.Debug.LogWarningFormat(WwiseUnityMessagePrefix + "(WARNING) " + format, args);
                         break;
                     case LogLevel.Log:
-                        UnityEngine.Debug.LogFormat(WwiseUnityMessagePrefix + "(LOG) "+ format, args);
+                        UnityEngine.Debug.LogFormat(WwiseUnityMessagePrefix + "(LOG) " + format, args);
                         break;
                     case LogLevel.Verbose:
-                        UnityEngine.Debug.LogFormat(WwiseUnityMessagePrefix + "(VERBOSE) "+ format, args);
+                        UnityEngine.Debug.LogFormat(WwiseUnityMessagePrefix + "(VERBOSE) " + format, args);
                         break;
                     case LogLevel.VeryVerbose:
-                        UnityEngine.Debug.LogFormat(WwiseUnityMessagePrefix + "(VERYVERBOSE) "+ format, args);
+                        UnityEngine.Debug.LogFormat(WwiseUnityMessagePrefix + "(VERYVERBOSE) " + format, args);
                         break;
                 }
             }

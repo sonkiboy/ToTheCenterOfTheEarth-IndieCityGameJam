@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -6,19 +7,19 @@ using UnityEngine;
 public class OptionsSettings : MonoBehaviour
 {
     private string path;
-    
+
 
     // GAMEPLAY SETTINGS
-    private bool _fireAim = false;
+    [SerializeField] private bool _fireAim = false;
     public bool IsFireOnAim
     {
-        get { return _fireAim;}
-        set 
-        { 
+        get { return _fireAim; }
+        set
+        {
             _fireAim = value;
         }
     }
-    private bool _jetMove = false;
+    [SerializeField] private bool _jetMove = false;
     public bool IsJetOnMove
     {
         get { return _jetMove; }
@@ -50,14 +51,13 @@ public class OptionsSettings : MonoBehaviour
         "368x208",
     };
 
-
     public int CurrentResolutionIndex;
     public bool IsScreenShakeOn;
     public bool IsVSynchOn;
-    
+
     //public enum SupportedStaticColors
     //{
-        
+
     //    Aqua = 0x55ffff,
     //    Red = 0xff5555,
     //    Violet = 0xff55ff,
@@ -73,9 +73,9 @@ public class OptionsSettings : MonoBehaviour
     public Color[] SupportedStaticColors = new Color[]
     {
         //Aqua
-        new Color(85f/255f,255f/255f,255f/255f),
+        new Color(84f/255f,255f/255f,255f/255f),
         //Red
-       new Color(255f/255f,85f/255f,85f/255f),
+       new Color(255f/255f,84f/255f,85f/255f),
         //Violet
         new Color(255f/255f,85f/255f,255f / 255f),
         //Yellow
@@ -100,13 +100,22 @@ public class OptionsSettings : MonoBehaviour
     public int StaticHeartyColor;
 
     // SOUND SETTINGS
-    public float MasterVolume = 50;
-    public float SoundVolume = 50;
-    public float MusicVolume = 50;
+    public float MasterVolume = 5;
+    public float SoundVolume = 5;
+    public float MusicVolume = 5;
 
     // SAVE SETTINGS
 
     public string LastHighscoreName = "sink";
+
+
+    public event EventHandler<OptionsSettings> OnSettingsChanged;
+
+    private void Awake()
+    {
+        path = Application.persistentDataPath + "/OptionsSettings.txt";
+        LoadSettingsFromFile();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -114,8 +123,7 @@ public class OptionsSettings : MonoBehaviour
         //ColorUtility.TryParseHtmlString(SupportedStaticColors.Aqua.ToString(), out StaticVibrantColor);
         //ColorUtility.TryParseHtmlString(SupportedStaticColors.Red.ToString(), out StaticHeartyColor);
 
-        path = Application.persistentDataPath + "/OptionsSettings.txt";
-        LoadSettingsFromFile();
+        
 
 
     }
@@ -126,11 +134,19 @@ public class OptionsSettings : MonoBehaviour
 
     }
 
+    public void UpdateSettings()
+    {
+        if (OnSettingsChanged != null)
+        {
+            OnSettingsChanged.Invoke(this, this);
+        }
+    }
+
     private void LoadSettingsFromFile()
     {
         // if the file for the score board scores doesn't exist, then make a new one that has no text
 
-        if (File.Exists(path)) 
+        if (File.Exists(path))
         {
             string jsonstring = File.ReadAllText(path);
             OptionsSettings loadedSettings = new OptionsSettings();
@@ -155,24 +171,39 @@ public class OptionsSettings : MonoBehaviour
             MusicVolume = loadedSettings.MusicVolume;
 
             LastHighscoreName = loadedSettings.LastHighscoreName;
+            if(GameManager.Instance == null)
+            {
+                GameManager manager = GetComponent<GameManager>();
+
+                manager.SoundManager.MasterVolumeParam.SetGlobalValue(MasterVolume);
+                manager.SoundManager.SoundVolumeParam.SetGlobalValue(SoundVolume);
+                manager.SoundManager.MusicVolumeParam.SetGlobalValue(MusicVolume);
+            }
+            else
+            {
+                GameManager.Instance.SoundManager.MasterVolumeParam.SetGlobalValue(MasterVolume);
+                GameManager.Instance.SoundManager.SoundVolumeParam.SetGlobalValue(SoundVolume);
+                GameManager.Instance.SoundManager.MusicVolumeParam.SetGlobalValue(MusicVolume);
+            }
+            
 
         }
         else
         {
             SaveSettingsToFile();
         }
-        
 
-        
+
+
     }
 
     public void SaveSettingsToFile()
     {
-        
+
 
         string jsonstring = JsonUtility.ToJson((OptionsSettings)this);
-        File.WriteAllText(path,jsonstring);
+        File.WriteAllText(path, jsonstring);
 
-        
+
     }
 }

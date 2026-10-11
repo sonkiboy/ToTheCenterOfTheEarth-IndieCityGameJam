@@ -22,26 +22,26 @@ Copyright (c) 2026 Audiokinetic Inc.
 /// @details If no spatial audio listener has been registered, there will be no obstruction.
 public class AkRoomPortalObstruction : AkObstructionOcclusion
 {
-	private AkRoomPortal m_portal;
+    private AkRoomPortal m_portal;
 
-	private void Awake()
-	{
-		InitIntervalsAndFadeRates();
-		m_portal = GetComponent<AkRoomPortal>();
-	}
+    private void Awake()
+    {
+        InitIntervalsAndFadeRates();
+        m_portal = GetComponent<AkRoomPortal>();
+    }
 
-	protected override void UpdateCurrentListenerList()
-	{
-		currentListenerList.Add(AkSpatialAudioListener.TheSpatialAudioListener);
-	}
+    protected override void UpdateCurrentListenerList()
+    {
+        currentListenerList.Add(AkSpatialAudioListener.TheSpatialAudioListener);
+    }
 
-	protected override void SetObstructionOcclusion(
-		System.Collections.Generic.KeyValuePair<AkAudioListener, ObstructionOcclusionValue> ObsOccPair)
-	{
-		if (m_portal.IsValid && m_portal.isSetInWwise())
-		{
-			AkUnitySoundEngine.SetPortalObstructionAndOcclusion(m_portal.GetID(), ObsOccPair.Value.currentValue, 0.0f);
-		}
-	}
+    protected override void SetObstructionOcclusion(
+        System.Collections.Generic.KeyValuePair<AkAudioListener, ObstructionOcclusionValue> ObsOccPair)
+    {
+        if (m_portal.IsValid && m_portal.isSetInWwise())
+        {
+            AkUnitySoundEngine.SetPortalObstructionAndOcclusion(m_portal.GetID(), ObsOccPair.Value.currentValue, 0.0f);
+        }
+    }
 }
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

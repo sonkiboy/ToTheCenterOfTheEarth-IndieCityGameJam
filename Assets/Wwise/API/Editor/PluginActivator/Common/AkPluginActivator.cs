@@ -16,304 +16,303 @@ Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
 
 #if UNITY_EDITOR
+using AK.Wwise.Unity.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
-using UnityEngine;
-using AK.Wwise.Unity.Logging;
 
 [InitializeOnLoad]
 public class AkPluginActivator : UnityEditor.AssetPostprocessor
 {
-	private const string EditorConfiguration = AkPluginActivatorConstants.CONFIG_PROFILE;
-	private static bool bIsAlreadyActivating = false;
-	static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
-	{
-		if (UnityEditor.AssetDatabase.IsAssetImportWorkerProcess() || bIsAlreadyActivating)
-		{
-			return;
-		}
+    private const string EditorConfiguration = AkPluginActivatorConstants.CONFIG_PROFILE;
+    private static bool bIsAlreadyActivating = false;
+    static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
+    {
+        if (UnityEditor.AssetDatabase.IsAssetImportWorkerProcess() || bIsAlreadyActivating)
+        {
+            return;
+        }
 
-		if (didDomainReload)
-		{
-			ActivatePluginsForEditor();	
-		}
-	}
+        if (didDomainReload)
+        {
+            ActivatePluginsForEditor();
+        }
+    }
 
-	public static string GetCurrentConfig()
-	{
-		var CurrentConfig = AkWwiseProjectInfo.GetData().CurrentPluginConfig;
-		if (string.IsNullOrEmpty(CurrentConfig))
-		{
-			CurrentConfig = AkPluginActivatorConstants.CONFIG_PROFILE;
-		}
-		
-		return CurrentConfig;
-	}
+    public static string GetCurrentConfig()
+    {
+        var CurrentConfig = AkWwiseProjectInfo.GetData().CurrentPluginConfig;
+        if (string.IsNullOrEmpty(CurrentConfig))
+        {
+            CurrentConfig = AkPluginActivatorConstants.CONFIG_PROFILE;
+        }
 
-	public static Dictionary<BuildTarget, AkPlatformPluginActivator> BuildTargetToPlatformPluginActivator = new Dictionary<BuildTarget, AkPlatformPluginActivator>();
+        return CurrentConfig;
+    }
 
-	public static void RegisterPlatformPluginActivator(BuildTarget target, AkPlatformPluginActivator platformPluginActivator)
-	{
-		WwiseLogger.Verbose("Adding platform " + target.ToString() + " to PluginActivator");
-		BuildTargetToPlatformPluginActivator.Add(target, platformPluginActivator);
-	}
+    public static Dictionary<BuildTarget, AkPlatformPluginActivator> BuildTargetToPlatformPluginActivator = new Dictionary<BuildTarget, AkPlatformPluginActivator>();
 
-	internal static string GetPluginInfoPlatform(string path)
-	{
-		var indexOfPluginFolder = path.IndexOf(AkPluginActivatorConstants.WwisePluginFolder, StringComparison.OrdinalIgnoreCase);
-		if (indexOfPluginFolder == -1)
-		{
-			return null;
-		}
+    public static void RegisterPlatformPluginActivator(BuildTarget target, AkPlatformPluginActivator platformPluginActivator)
+    {
+        WwiseLogger.Verbose("Adding platform " + target.ToString() + " to PluginActivator");
+        BuildTargetToPlatformPluginActivator.Add(target, platformPluginActivator);
+    }
 
-		return path.Substring(indexOfPluginFolder + AkPluginActivatorConstants.WwisePluginFolder.Length + 1).Split('/')[0];
-	}
+    internal static string GetPluginInfoPlatform(string path)
+    {
+        var indexOfPluginFolder = path.IndexOf(AkPluginActivatorConstants.WwisePluginFolder, StringComparison.OrdinalIgnoreCase);
+        if (indexOfPluginFolder == -1)
+        {
+            return null;
+        }
 
-	internal static List<PluginImporter> GetWwisePluginImporters(string platformFilter = "")
-	{
-		PluginImporter[] pluginImporters = PluginImporter.GetAllImporters();
-		List<PluginImporter> wwisePlugins = new List<PluginImporter>();
-		foreach (var pluginImporter in pluginImporters)
-		{
-			if (pluginImporter.assetPath.Contains("Wwise/API/"))
-			{
-				if (string.IsNullOrEmpty(platformFilter) || platformFilter == GetPluginInfoPlatform(pluginImporter.assetPath))
-				{
-					wwisePlugins.Add(pluginImporter);
-				}
-			}
-		}
-		return wwisePlugins;
-	}
+        return path.Substring(indexOfPluginFolder + AkPluginActivatorConstants.WwisePluginFolder.Length + 1).Split('/')[0];
+    }
 
-	public class PluginImporterInformation
-	{
-		public string PluginName;
-		public string PluginArch;
-		public string PluginSDKVersion;
-		public string PluginConfig;
+    internal static List<PluginImporter> GetWwisePluginImporters(string platformFilter = "")
+    {
+        PluginImporter[] pluginImporters = PluginImporter.GetAllImporters();
+        List<PluginImporter> wwisePlugins = new List<PluginImporter>();
+        foreach (var pluginImporter in pluginImporters)
+        {
+            if (pluginImporter.assetPath.Contains("Wwise/API/"))
+            {
+                if (string.IsNullOrEmpty(platformFilter) || platformFilter == GetPluginInfoPlatform(pluginImporter.assetPath))
+                {
+                    wwisePlugins.Add(pluginImporter);
+                }
+            }
+        }
+        return wwisePlugins;
+    }
 
-		public string EditorOS;
-		public string EditorCPU;
+    public class PluginImporterInformation
+    {
+        public string PluginName;
+        public string PluginArch;
+        public string PluginSDKVersion;
+        public string PluginConfig;
 
-		public bool IsX86 => PluginArch == "x86";
-		public bool IsX64 => PluginArch == "x86_64";
+        public string EditorOS;
+        public string EditorCPU;
 
-		public bool IsSupportLibrary => AkPluginActivatorConstants.SupportLibraries.Contains(PluginName);
-	}
-	
-	public static void ActivatePluginsForDeployment(BuildTarget target, bool Activate)
-	{
-		if (!BuildTargetToPlatformPluginActivator.TryGetValue(target, out var platformPluginActivator))
-		{
-			WwiseLogger.Error("Unable to find Plugin Activator for Build Target " + target + ". Check that platform " + target +  " has been installed as part of your Wwise Integration.");
-			return;
-		}
+        public bool IsX86 => PluginArch == "x86";
+        public bool IsX64 => PluginArch == "x86_64";
 
-		if (!platformPluginActivator.IsBuildEnvironmentValid())
-		{
-			WwiseLogger.Error("Build Environment for platform " + platformPluginActivator.WwisePlatformName + " is not valid. Current BuildTarget is " + EditorUserBuildSettings.activeBuildTarget);
-			return;
-		}
+        public bool IsSupportLibrary => AkPluginActivatorConstants.SupportLibraries.Contains(PluginName);
+    }
 
-		bIsAlreadyActivating = true;
+    public static void ActivatePluginsForDeployment(BuildTarget target, bool Activate)
+    {
+        if (!BuildTargetToPlatformPluginActivator.TryGetValue(target, out var platformPluginActivator))
+        {
+            WwiseLogger.Error("Unable to find Plugin Activator for Build Target " + target + ". Check that platform " + target + " has been installed as part of your Wwise Integration.");
+            return;
+        }
 
-		if (Activate)
-		{
-			StaticPluginRegistration.Setup(target, platformPluginActivator);
-		}
+        if (!platformPluginActivator.IsBuildEnvironmentValid())
+        {
+            WwiseLogger.Error("Build Environment for platform " + platformPluginActivator.WwisePlatformName + " is not valid. Current BuildTarget is " + EditorUserBuildSettings.activeBuildTarget);
+            return;
+        }
 
-		var importers = GetWwisePluginImporters();
-		var assetChanged = false;
-		foreach (var pluginImporter in importers)
-		{
-			if (pluginImporter.GetCompatibleWithAnyPlatform())
-			{
-				WwiseLogger.Log("Plugin" + pluginImporter.assetPath + " was compatible with the \"any\" platform, deactivating.");
-				pluginImporter.SetCompatibleWithAnyPlatform(false);
-				assetChanged = true;
-			}
+        bIsAlreadyActivating = true;
 
-			var pluginPlatform = GetPluginInfoPlatform(pluginImporter.assetPath);
-			if (pluginPlatform != platformPluginActivator.PluginDirectoryName)
-			{
-				if (Activate)
-				{
-					platformPluginActivator.FilterOutPlatformIfNeeded(target, pluginImporter, pluginPlatform);
-				}
+        if (Activate)
+        {
+            StaticPluginRegistration.Setup(target, platformPluginActivator);
+        }
 
-				continue;
-			}
+        var importers = GetWwisePluginImporters();
+        var assetChanged = false;
+        foreach (var pluginImporter in importers)
+        {
+            if (pluginImporter.GetCompatibleWithAnyPlatform())
+            {
+                WwiseLogger.Log("Plugin" + pluginImporter.assetPath + " was compatible with the \"any\" platform, deactivating.");
+                pluginImporter.SetCompatibleWithAnyPlatform(false);
+                assetChanged = true;
+            }
 
-			var pluginInfo = platformPluginActivator.GetPluginImporterInformation(pluginImporter);
-			var bShouldActivatePlugin = platformPluginActivator.ConfigurePlugin(pluginImporter, pluginInfo);
+            var pluginPlatform = GetPluginInfoPlatform(pluginImporter.assetPath);
+            if (pluginPlatform != platformPluginActivator.PluginDirectoryName)
+            {
+                if (Activate)
+                {
+                    platformPluginActivator.FilterOutPlatformIfNeeded(target, pluginImporter, pluginPlatform);
+                }
 
-			if (pluginInfo.PluginConfig == "DSP")
-			{
-				if (!pluginInfo.IsSupportLibrary && !AkPlatformPluginList.IsPluginUsed(platformPluginActivator, pluginPlatform, Path.GetFileNameWithoutExtension(pluginImporter.assetPath)))
-				{
-					WwiseLogger.Verbose("Plugin" + pluginImporter.assetPath + " is not used, skipping.");
-					bShouldActivatePlugin = false;
-				}
-			}
-			else if (pluginInfo.PluginConfig != GetCurrentConfig())
-			{
-				WwiseLogger.Verbose("Plugin" + pluginImporter.assetPath + " does not match current config (" + GetCurrentConfig() + "). Skipping.");
-				bShouldActivatePlugin = false;
-			}
+                continue;
+            }
 
-			if (!string.IsNullOrEmpty(pluginInfo.PluginSDKVersion))
-			{
-				var sdkCompatible = platformPluginActivator.IsPluginSDKVersionCompatible(pluginInfo.PluginSDKVersion);
-				WwiseLogger.Verbose("Plugin " + pluginImporter.assetPath + " is " + (sdkCompatible ? "" : "NOT ") + "compatible with current platform SDK");
-				bShouldActivatePlugin &= sdkCompatible;
-			}
+            var pluginInfo = platformPluginActivator.GetPluginImporterInformation(pluginImporter);
+            var bShouldActivatePlugin = platformPluginActivator.ConfigurePlugin(pluginImporter, pluginInfo);
 
-			bool isCompatibleWithPlatform = bShouldActivatePlugin && Activate;
-			WwiseLogger.Verbose("Will set plugin " + pluginImporter.assetPath + " as " + (isCompatibleWithPlatform ? "" : "NOT ") + "compatible with platform.");
-			assetChanged |= pluginImporter.GetCompatibleWithPlatform(target) != isCompatibleWithPlatform;
+            if (pluginInfo.PluginConfig == "DSP")
+            {
+                if (!pluginInfo.IsSupportLibrary && !AkPlatformPluginList.IsPluginUsed(platformPluginActivator, pluginPlatform, Path.GetFileNameWithoutExtension(pluginImporter.assetPath)))
+                {
+                    WwiseLogger.Verbose("Plugin" + pluginImporter.assetPath + " is not used, skipping.");
+                    bShouldActivatePlugin = false;
+                }
+            }
+            else if (pluginInfo.PluginConfig != GetCurrentConfig())
+            {
+                WwiseLogger.Verbose("Plugin" + pluginImporter.assetPath + " does not match current config (" + GetCurrentConfig() + "). Skipping.");
+                bShouldActivatePlugin = false;
+            }
 
-			pluginImporter.SetCompatibleWithPlatform(target, isCompatibleWithPlatform);
+            if (!string.IsNullOrEmpty(pluginInfo.PluginSDKVersion))
+            {
+                var sdkCompatible = platformPluginActivator.IsPluginSDKVersionCompatible(pluginInfo.PluginSDKVersion);
+                WwiseLogger.Verbose("Plugin " + pluginImporter.assetPath + " is " + (sdkCompatible ? "" : "NOT ") + "compatible with current platform SDK");
+                bShouldActivatePlugin &= sdkCompatible;
+            }
 
-			if (assetChanged)
-			{
-				WwiseLogger.Verbose("Changed plugin " + pluginImporter.assetPath + ", saving and reimporting.");
-				pluginImporter.SaveAndReimport();
-			}
-		}
+            bool isCompatibleWithPlatform = bShouldActivatePlugin && Activate;
+            WwiseLogger.Verbose("Will set plugin " + pluginImporter.assetPath + " as " + (isCompatibleWithPlatform ? "" : "NOT ") + "compatible with platform.");
+            assetChanged |= pluginImporter.GetCompatibleWithPlatform(target) != isCompatibleWithPlatform;
 
-		bIsAlreadyActivating = false;
-	}
+            pluginImporter.SetCompatibleWithPlatform(target, isCompatibleWithPlatform);
 
-	public static void ActivatePluginsForEditor()
-	{
-		var importers = GetWwisePluginImporters();
-		var changedSomeAssets = false;
+            if (assetChanged)
+            {
+                WwiseLogger.Verbose("Changed plugin " + pluginImporter.assetPath + ", saving and reimporting.");
+                pluginImporter.SaveAndReimport();
+            }
+        }
 
-		bIsAlreadyActivating = true;
-		AssetDatabase.StartAssetEditing();
-		foreach (var pluginImporter in importers)
-		{
-			var pluginPlatform = GetPluginInfoPlatform(pluginImporter.assetPath);
-			if (string.IsNullOrEmpty(pluginPlatform) || (pluginPlatform != "Mac" && pluginPlatform != "Windows" && pluginPlatform != "Linux"))
-			{
-				pluginImporter.SetCompatibleWithEditor(false);
-				changedSomeAssets = true;
-				continue;
-			}
+        bIsAlreadyActivating = false;
+    }
 
-			BuildTarget pluginBuildTarget;
-			switch (pluginPlatform)
-			{
-				case "Windows":
-					pluginBuildTarget = BuildTarget.StandaloneWindows64;
-					break;
-				case "Mac":
-					pluginBuildTarget = BuildTarget.StandaloneOSX;
-					break;
-				case "Linux":
-					pluginBuildTarget = BuildTarget.StandaloneLinux64;
-					break;
-				default:
-					pluginBuildTarget = BuildTarget.StandaloneWindows64;
-					break;
-			}
+    public static void ActivatePluginsForEditor()
+    {
+        var importers = GetWwisePluginImporters();
+        var changedSomeAssets = false;
 
-			if (!BuildTargetToPlatformPluginActivator.TryGetValue(pluginBuildTarget, out var platformPluginActivator))
-			{
-				WwiseLogger.Log("Build Target " + pluginBuildTarget + " not supported.");
-				bIsAlreadyActivating = false;
-				AssetDatabase.StopAssetEditing();
-				return;
-			}
+        bIsAlreadyActivating = true;
+        AssetDatabase.StartAssetEditing();
+        foreach (var pluginImporter in importers)
+        {
+            var pluginPlatform = GetPluginInfoPlatform(pluginImporter.assetPath);
+            if (string.IsNullOrEmpty(pluginPlatform) || (pluginPlatform != "Mac" && pluginPlatform != "Windows" && pluginPlatform != "Linux"))
+            {
+                pluginImporter.SetCompatibleWithEditor(false);
+                changedSomeAssets = true;
+                continue;
+            }
 
-			var pluginInfo = platformPluginActivator.GetPluginImporterInformation(pluginImporter);
-			
-			var assetChanged = false;
-			if (pluginImporter.GetCompatibleWithAnyPlatform())
-			{
-				WwiseLogger.Verbose("ActivatePluginsForEditor: Plugin" + pluginImporter.assetPath + " was compatible with the \"any\" platform, deactivating.");
-				pluginImporter.SetCompatibleWithAnyPlatform(false);
-				assetChanged = true;
-			}
+            BuildTarget pluginBuildTarget;
+            switch (pluginPlatform)
+            {
+                case "Windows":
+                    pluginBuildTarget = BuildTarget.StandaloneWindows64;
+                    break;
+                case "Mac":
+                    pluginBuildTarget = BuildTarget.StandaloneOSX;
+                    break;
+                case "Linux":
+                    pluginBuildTarget = BuildTarget.StandaloneLinux64;
+                    break;
+                default:
+                    pluginBuildTarget = BuildTarget.StandaloneWindows64;
+                    break;
+            }
 
-			var bActivate = false;
-			if (!string.IsNullOrEmpty(pluginInfo.EditorOS))
-			{
-				if (pluginInfo.PluginConfig == "DSP")
-				{
-					if (!AkPlatformPluginList.ContainsPlatform(platformPluginActivator.WwisePlatformName))
-					{
-						continue;
-					}
+            if (!BuildTargetToPlatformPluginActivator.TryGetValue(pluginBuildTarget, out var platformPluginActivator))
+            {
+                WwiseLogger.Log("Build Target " + pluginBuildTarget + " not supported.");
+                bIsAlreadyActivating = false;
+                AssetDatabase.StopAssetEditing();
+                return;
+            }
 
-					bActivate = AkPlatformPluginList.IsPluginUsed(platformPluginActivator, pluginPlatform,
-						Path.GetFileNameWithoutExtension(pluginImporter.assetPath));
-				}
-				else
-				{
-					bActivate = pluginInfo.PluginConfig == EditorConfiguration;
-				}
+            var pluginInfo = platformPluginActivator.GetPluginImporterInformation(pluginImporter);
 
-				if (bActivate)
-				{
-					WwiseLogger.Verbose("ActivatePluginsForEditor: Activating " + pluginImporter.assetPath);
-					pluginImporter.SetEditorData("CPU", pluginInfo.EditorCPU);
-					pluginImporter.SetEditorData("OS", pluginInfo.EditorOS);
-				}
+            var assetChanged = false;
+            if (pluginImporter.GetCompatibleWithAnyPlatform())
+            {
+                WwiseLogger.Verbose("ActivatePluginsForEditor: Plugin" + pluginImporter.assetPath + " was compatible with the \"any\" platform, deactivating.");
+                pluginImporter.SetCompatibleWithAnyPlatform(false);
+                assetChanged = true;
+            }
 
-				assetChanged |= pluginImporter.GetCompatibleWithEditor() != bActivate;
-				pluginImporter.SetCompatibleWithEditor(bActivate);
-			}
-			else
-			{
-				WwiseLogger.Verbose("ActivatePluginsForEditor: Could not determine EditorOS for " + pluginImporter.assetPath);
-			}
+            var bActivate = false;
+            if (!string.IsNullOrEmpty(pluginInfo.EditorOS))
+            {
+                if (pluginInfo.PluginConfig == "DSP")
+                {
+                    if (!AkPlatformPluginList.ContainsPlatform(platformPluginActivator.WwisePlatformName))
+                    {
+                        continue;
+                    }
 
-			if (assetChanged)
-			{
-				changedSomeAssets = true;
-				WwiseLogger.Verbose("ActivatePluginsForEditor: Changed plugin " + pluginImporter.assetPath + ", saving and reimporting.");
-			}
-		}
-		
-		AssetDatabase.StopAssetEditing();
-		if (changedSomeAssets)
-		{
-			WwiseLogger.Log("Plugins successfully activated for " + EditorConfiguration + " in Editor.");
-			AssetDatabase.Refresh();
-		}
+                    bActivate = AkPlatformPluginList.IsPluginUsed(platformPluginActivator, pluginPlatform,
+                        Path.GetFileNameWithoutExtension(pluginImporter.assetPath));
+                }
+                else
+                {
+                    bActivate = pluginInfo.PluginConfig == EditorConfiguration;
+                }
 
-		bIsAlreadyActivating = false;
-	}
+                if (bActivate)
+                {
+                    WwiseLogger.Verbose("ActivatePluginsForEditor: Activating " + pluginImporter.assetPath);
+                    pluginImporter.SetEditorData("CPU", pluginInfo.EditorCPU);
+                    pluginImporter.SetEditorData("OS", pluginInfo.EditorOS);
+                }
 
-	public static void DeactivateAllPlugins()
-	{
-		var importers = GetWwisePluginImporters();
-		foreach (var pluginImporter in importers)
-		{
-			if (pluginImporter.assetPath.IndexOf(AkPluginActivatorConstants.WwisePluginFolder, StringComparison.OrdinalIgnoreCase) == -1)
-			{
-				continue;
-			}
+                assetChanged |= pluginImporter.GetCompatibleWithEditor() != bActivate;
+                pluginImporter.SetCompatibleWithEditor(bActivate);
+            }
+            else
+            {
+                WwiseLogger.Verbose("ActivatePluginsForEditor: Could not determine EditorOS for " + pluginImporter.assetPath);
+            }
 
-			pluginImporter.SetCompatibleWithAnyPlatform(false);
-			pluginImporter.SaveAndReimport();
-		}
-	}
+            if (assetChanged)
+            {
+                changedSomeAssets = true;
+                WwiseLogger.Verbose("ActivatePluginsForEditor: Changed plugin " + pluginImporter.assetPath + ", saving and reimporting.");
+            }
+        }
 
-	public static void ForceUpdate()
-	{
-		AkPlatformPluginList.Update(true);
-		Update();
-	}
+        AssetDatabase.StopAssetEditing();
+        if (changedSomeAssets)
+        {
+            WwiseLogger.Log("Plugins successfully activated for " + EditorConfiguration + " in Editor.");
+            AssetDatabase.Refresh();
+        }
 
-	public static void Update()
-	{
-		AkPluginActivatorMenus.CheckMenuItems(GetCurrentConfig());
-	}
+        bIsAlreadyActivating = false;
+    }
+
+    public static void DeactivateAllPlugins()
+    {
+        var importers = GetWwisePluginImporters();
+        foreach (var pluginImporter in importers)
+        {
+            if (pluginImporter.assetPath.IndexOf(AkPluginActivatorConstants.WwisePluginFolder, StringComparison.OrdinalIgnoreCase) == -1)
+            {
+                continue;
+            }
+
+            pluginImporter.SetCompatibleWithAnyPlatform(false);
+            pluginImporter.SaveAndReimport();
+        }
+    }
+
+    public static void ForceUpdate()
+    {
+        AkPlatformPluginList.Update(true);
+        Update();
+    }
+
+    public static void Update()
+    {
+        AkPluginActivatorMenus.CheckMenuItems(GetCurrentConfig());
+    }
 
 }
 #endif

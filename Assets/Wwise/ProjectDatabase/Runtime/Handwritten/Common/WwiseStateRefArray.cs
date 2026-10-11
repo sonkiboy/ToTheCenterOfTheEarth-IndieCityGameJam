@@ -25,12 +25,12 @@ public class WwiseStateRefArray
         bDeletesManually = cMemoryOwn;
         ownerPtr = cPtr;
     }
-    
+
     ~WwiseStateRefArray()
     {
         Dispose(false);
     }
-    
+
     protected virtual void Dispose(bool disposing)
     {
         lock (this)
@@ -49,7 +49,7 @@ public class WwiseStateRefArray
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseStateRefArray() : this(WwiseProjectDatabase.GetAllStateRef(), true)
     {
     }
@@ -70,12 +70,12 @@ public class WwiseStateGroupRefArray
         bDeletesManually = cMemoryOwn;
         ownerPtr = cPtr;
     }
-    
+
     ~WwiseStateGroupRefArray()
     {
         Dispose(false);
     }
-    
+
     protected virtual void Dispose(bool disposing)
     {
         lock (this)
@@ -94,7 +94,7 @@ public class WwiseStateGroupRefArray
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseStateGroupRefArray() : this(WwiseProjectDatabase.GetAllStateGroupRef(), true)
     {
     }

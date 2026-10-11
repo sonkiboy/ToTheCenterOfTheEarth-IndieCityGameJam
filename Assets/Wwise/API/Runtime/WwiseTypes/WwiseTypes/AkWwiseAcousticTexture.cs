@@ -19,19 +19,19 @@ Copyright (c) 2026 Audiokinetic Inc.
 
 namespace AK.Wwise
 {
-	[System.Serializable]
-	///@brief This type represents an Acoustic Texture.
-	public class AcousticTexture : BaseType
-	{
-		public WwiseAcousticTextureReference WwiseObjectReference;
+    [System.Serializable]
+    ///@brief This type represents an Acoustic Texture.
+    public class AcousticTexture : BaseType
+    {
+        public WwiseAcousticTextureReference WwiseObjectReference;
 
-		public override WwiseObjectReference ObjectReference
-		{
-			get { return WwiseObjectReference; }
-			set { WwiseObjectReference = value as WwiseAcousticTextureReference; }
-		}
+        public override WwiseObjectReference ObjectReference
+        {
+            get { return WwiseObjectReference; }
+            set { WwiseObjectReference = value as WwiseAcousticTextureReference; }
+        }
 
-		public override WwiseObjectType WwiseObjectType { get { return WwiseObjectType.AcousticTexture; } }
-	}
+        public override WwiseObjectType WwiseObjectType { get { return WwiseObjectType.AcousticTexture; } }
+    }
 }
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

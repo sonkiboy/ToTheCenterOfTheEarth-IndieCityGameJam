@@ -66,7 +66,7 @@ MonoBehaviour:
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 75817b2374816e34e8477a9ae2bc4c4c, type: 3}
   m_PointAction: {fileID: -3442817568638396313, guid: 75817b2374816e34e8477a9ae2bc4c4c, type: 3}
-  m_MoveAction: {fileID: -5848300498399077299, guid: 75817b2374816e34e8477a9ae2bc4c4c, type: 3}
+  m_MoveAction: {fileID: 1959104457575684757, guid: 75817b2374816e34e8477a9ae2bc4c4c, type: 3}
   m_SubmitAction: {fileID: -3853329859900426486, guid: 75817b2374816e34e8477a9ae2bc4c4c, type: 3}
   m_CancelAction: {fileID: 0}
   m_LeftClickAction: {fileID: -3853329859900426486, guid: 75817b2374816e34e8477a9ae2bc4c4c, type: 3}

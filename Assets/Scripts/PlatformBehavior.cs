@@ -194,7 +194,7 @@ public class PlatformBehavior : MonoBehaviour
             // if the player or an emeny leaves the platform, make sure its parent object is set to nothing
             if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
             {
-                if(collision.gameObject != null)
+                if (collision.gameObject != null)
                 {
                     collision.transform.parent = null;
 
@@ -229,7 +229,7 @@ public class PlatformBehavior : MonoBehaviour
                         if (collision.gameObject.tag == "Tile")
                         {
                             TileBehavior tileBehavior = collision.GetComponent<TileBehavior>();
-                            tileBehavior.DamageTile(false,DrillDamage);
+                            tileBehavior.DamageTile(false, DrillDamage);
                         }
 
                         // if the collider was instead an Enemy, deal damage to its Enemy component
@@ -294,7 +294,7 @@ public class PlatformBehavior : MonoBehaviour
     {
         while (true)
         {
-            if(GameManager.Instance.CurrentState == GameManager.GameStates.Boss)
+            if (GameManager.Instance.CurrentState == GameManager.GameStates.Boss)
             {
                 CurrentFuel -= Mathf.RoundToInt(FuelPerSecond / 8);
 
@@ -320,7 +320,7 @@ public class PlatformBehavior : MonoBehaviour
         // set is Draining Health to true
         isDrainingHealth = true;
 
-        if(OnLowFuel != null)
+        if (OnLowFuel != null)
         {
             OnLowFuel.Invoke(this, true);
         }

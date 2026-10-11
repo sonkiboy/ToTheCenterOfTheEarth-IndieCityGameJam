@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,14 +59,14 @@ public class StatTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Sets the Treasure UI Number to the passed in score value
@@ -87,10 +84,10 @@ public class StatTracker : MonoBehaviour
         for (int i = 0; i < treasureDigits.Length; i++)
         {
             // if the current digit is less than the digit offset, then the number is to small to use this digit, so set it to 0
-            if(i < digitOffset)
+            if (i < digitOffset)
             {
 
-                if(treasureDigits[i] != null)
+                if (treasureDigits[i] != null)
                 {
                     treasureDigits[i].GetComponent<Image>().sprite = blueSmallNumbers[0];
 
@@ -189,7 +186,7 @@ public class StatTracker : MonoBehaviour
         LevelBossText.SetActive(true);
         BossWinText.SetActive(false);
 
-        foreach(GameObject numRender in levelDigits)
+        foreach (GameObject numRender in levelDigits)
         {
             numRender.SetActive(false);
         }

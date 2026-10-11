@@ -720,17 +720,6 @@ public partial class @PlayerControllerInput: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
-                    ""id"": ""995b19b8-afdf-46cd-9aee-361cdcac4bdb"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Enter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""22ec9d3a-3cd8-4520-bd8d-f28b2aead5b7"",
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",

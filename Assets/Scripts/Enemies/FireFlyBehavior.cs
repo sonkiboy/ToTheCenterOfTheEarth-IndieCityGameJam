@@ -23,7 +23,7 @@ public class FireFlyBehavior : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator FireRoutine()
@@ -40,7 +40,7 @@ public class FireFlyBehavior : Enemy
             Instantiate(BulletPrefab, this.transform.position, Quaternion.LookRotation(Vector3.forward, dir) * Quaternion.Euler(0, 0, 90));
             Instantiate(BulletPrefab, this.transform.position, Quaternion.LookRotation(Vector3.forward, dir) * Quaternion.Euler(0, 0, 90 - FanAngle));
             Instantiate(BulletPrefab, this.transform.position, Quaternion.LookRotation(Vector3.forward, dir) * Quaternion.Euler(0, 0, 90 + FanAngle));
-            
+
 
             yield return new WaitForSeconds(ChargeTime / 2);
             flyingComp.enabled = true;

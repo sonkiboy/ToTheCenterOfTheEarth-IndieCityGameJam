@@ -15,13 +15,13 @@ public class RewardChestBehavior : Enemy
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public override void OnTakenDamage()
@@ -40,14 +40,14 @@ public class RewardChestBehavior : Enemy
             gemRb = null;
             randDir = Vector2.zero;
         }
-        
+
     }
 
     public override void Die()
     {
-        for (int i = 0;i < BigGemsOnOpen;i++)
+        for (int i = 0; i < BigGemsOnOpen; i++)
         {
-            Instantiate(BigGemPrefab, this.transform.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f),0), Quaternion.identity);
+            Instantiate(BigGemPrefab, this.transform.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), 0), Quaternion.identity);
         }
 
         Instantiate(DroppedPowerPrefab, this.transform.position, Quaternion.identity);

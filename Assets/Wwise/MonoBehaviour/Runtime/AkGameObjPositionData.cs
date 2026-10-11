@@ -18,9 +18,9 @@ Copyright (c) 2026 Audiokinetic Inc.
 
 public class AkGameObjPositionData
 {
-	public UnityEngine.Vector3 forward;
-	public UnityEngine.Vector3 position;
-	public UnityEngine.Vector3 up;
+    public UnityEngine.Vector3 forward;
+    public UnityEngine.Vector3 position;
+    public UnityEngine.Vector3 up;
 }
 
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

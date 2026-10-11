@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,14 +19,14 @@ public class HealthTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     public void SetHealthUi(int health)
     {
         for (int i = 0; i < Hearts.Length; i++)
         {
-            if(i < health)
+            if (i < health)
             {
                 Hearts[i].sprite = Icons[1];
 
@@ -37,11 +35,11 @@ public class HealthTracker : MonoBehaviour
             {
                 Hearts[i].sprite = Icons[0];
             }
-            
+
         }
 
 
     }
 
-    
+
 }

@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy: MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] protected Renderer[] damageFlash;
 
@@ -19,7 +18,7 @@ public class Enemy: MonoBehaviour
         set
         {
             // if the hp is decreasing, call the method for any On Damage Taken behavior and flash for damage
-            if(value < hp)
+            if (value < hp)
             {
                 if (OnEnemyDamaged != null)
                 {
@@ -33,13 +32,13 @@ public class Enemy: MonoBehaviour
             // save the new value 
             hp = value;
 
-            
-            
+
+
 
             if (hp <= 0 && isDead == false)
             {
                 GameManager.Instance.CurrentTreasure += TreasureReward;
-                if(GameManager.Instance.Platform != null)
+                if (GameManager.Instance.Platform != null)
                 {
                     GameManager.Instance.Platform.CurrentFuel += FuelReward;
 
@@ -47,7 +46,7 @@ public class Enemy: MonoBehaviour
 
                 isDead = true;
 
-                
+
 
                 Die();
             }
@@ -59,7 +58,7 @@ public class Enemy: MonoBehaviour
 
     public void Awake()
     {
-        if(GameManager.Instance != null) GameManager.Instance.StateChanged += OnGameOver;
+        if (GameManager.Instance != null) GameManager.Instance.StateChanged += OnGameOver;
         else
         {
             GameObject.FindAnyObjectByType<GameManager>().StateChanged += OnGameOver;
@@ -71,7 +70,7 @@ public class Enemy: MonoBehaviour
     {
         if (damageFlash.Length > 0 && damageFlash != null)
         {
-            
+
 
             foreach (Renderer rend in damageFlash)
             {
@@ -99,7 +98,7 @@ public class Enemy: MonoBehaviour
 
     public virtual void OnGameOver(object sender, GameManager.GameStates e)
     {
-        if(e == GameManager.GameStates.GameOver)
+        if (e == GameManager.GameStates.GameOver)
         {
             Destroy(this.gameObject);
 
@@ -119,7 +118,7 @@ public class Enemy: MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             GameManager.Instance.Player.TakeDamage(1);
         }

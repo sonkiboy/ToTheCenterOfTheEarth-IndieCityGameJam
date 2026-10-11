@@ -19,15 +19,15 @@ Copyright (c) 2026 Audiokinetic Inc.
 [System.Serializable]
 public class AkGameObjPositionOffsetData
 {
-	public bool KeepMe;
-	public UnityEngine.Vector3 positionOffset;
+    public bool KeepMe;
+    public UnityEngine.Vector3 positionOffset;
 
-	// Unity tries to construct a AkGameObjPositionOffsetData all the time. Need this ugly workaround
-	// to prevent it from doing this.
-	public AkGameObjPositionOffsetData(bool IReallyWantToBeConstructed = false)
-	{
-		KeepMe = IReallyWantToBeConstructed;
-	}
+    // Unity tries to construct a AkGameObjPositionOffsetData all the time. Need this ugly workaround
+    // to prevent it from doing this.
+    public AkGameObjPositionOffsetData(bool IReallyWantToBeConstructed = false)
+    {
+        KeepMe = IReallyWantToBeConstructed;
+    }
 }
 
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

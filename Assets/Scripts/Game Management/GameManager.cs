@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,24 +23,24 @@ public class GameManager : MonoBehaviour
     public ArcadeLightManager ArcadeLEDs;
 
     // GUN MANAGMENET
-    [SerializeField]private GunSettings gun;
+    [SerializeField] private GunSettings gun;
     public GunSettings CurrentGun
     {
         get { return gun; }
         set
         {
             gun = value;
-            if(OnGunChanged != null)
+            if (OnGunChanged != null)
             {
-                OnGunChanged.Invoke(this, value);   
+                OnGunChanged.Invoke(this, value);
             }
 
         }
     }
     public EventHandler<GunSettings> OnGunChanged;
-     
+
     public GameObject CenterScreen;
-        
+
     // ------------ SCENE REFS ------------
 
     // NEED TO REFRENCE IN EVERY SCENE
@@ -54,11 +53,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public HealthTracker HealthTracker;
 
     [HideInInspector] public BlockGenerator BlockGenerator;
-    
+
     // ------------ DEPTH LEVEL ------------
 
     // tracks the level the player is on, USE "CurrentDepth" INSTEAD TO ACCESS
-    [SerializeField]private int level = 0;
+    [SerializeField] private int level = 0;
     public bool IsGameOver = false;
 
     // used to refrence the depth the player is on
@@ -70,7 +69,7 @@ public class GameManager : MonoBehaviour
             // save the passed in value to "level"
             level = value;
 
-            if(OnDepthChanged != null)
+            if (OnDepthChanged != null)
             {
                 OnDepthChanged.Invoke(this, level);
             }
@@ -82,19 +81,19 @@ public class GameManager : MonoBehaviour
             //{
             //    BossManager.StartBossFight(BossManager.Bosses.InsectQueen);
             //}
-            
+
         }
     }
 
     public int ActuallDepth = 0;
 
     public EventHandler<int> OnDepthChanged;
-    
+
 
     // ------------ TREASURE ------------
 
     // tracks the current treasure collected by the player 
-    [SerializeField]private int treasure = 0;
+    [SerializeField] private int treasure = 0;
     public int CurrentTreasure
     {
         get { return treasure; }
@@ -106,14 +105,17 @@ public class GameManager : MonoBehaviour
                 treasure = value;
 
                 // set the Treasure UI counter to the current score
-                if (StatTracker != null) StatTracker.SetTreasureScore(treasure);
-
-                if (treasure >= nextGemHeal)
+                if (StatTracker != null)
                 {
-                    if (CurrentHealth < 3) CurrentHealth++;
-                    nextGemHeal = Mathf.RoundToInt(Mathf.Pow((float)GemHealRate, 1+(float)gemHealCount *GemHealIncreaseRate));
-                    gemHealCount++;
-                    StatTracker.SetGemHealScore(nextGemHeal);
+                    StatTracker.SetTreasureScore(treasure);
+
+                    if (treasure >= nextGemHeal)
+                    {
+                        if (CurrentHealth < 3) CurrentHealth++;
+                        nextGemHeal = Mathf.RoundToInt(Mathf.Pow((float)GemHealRate, 1 + (float)gemHealCount * GemHealIncreaseRate));
+                        gemHealCount++;
+                        StatTracker.SetGemHealScore(nextGemHeal);
+                    }
                 }
             }
         }
@@ -124,7 +126,7 @@ public class GameManager : MonoBehaviour
     public bool IsInvinible = false;
 
     // current health of the player
-    [SerializeField]private int health = 3;
+    [SerializeField] private int health = 3;
     public int CurrentHealth
     {
         get { return health; }
@@ -141,7 +143,7 @@ public class GameManager : MonoBehaviour
                     if (health > value)
                     {
                         StartCoroutine(Player.Invincibility(Player.InvincibilityDurration));
-                        if(OnPlayerDamaged != null)
+                        if (OnPlayerDamaged != null)
                         {
                             OnPlayerDamaged.Invoke(this, value);
                         }
@@ -193,9 +195,9 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log($"DEBUG HIt Settomg new hat to: {_hat}");
 
-                HatChanged.Invoke(this,_hat);
+                HatChanged.Invoke(this, _hat);
             }
-            
+
         }
     }
     public event EventHandler<HatSerializedObj> HatChanged;
@@ -211,7 +213,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    [SerializeField]private GameStates _state;
+    [SerializeField] private GameStates _state;
     public GameStates CurrentState
     {
         get { return _state; }
@@ -247,7 +249,7 @@ public class GameManager : MonoBehaviour
 
                 if (StateChanged != null)
                 {
-                    StateChanged.Invoke(this,_state);
+                    StateChanged.Invoke(this, _state);
                 }
             }
         }
@@ -274,13 +276,14 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.activeSceneChanged += OnSceneChanged;
+        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
     }
 
-    
+
 
     void Start()
     {
-        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+
 
 
         //// TO DO: make this change based on the starting Game State
@@ -304,7 +307,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Starts the GameOver sequence 
@@ -318,8 +321,9 @@ public class GameManager : MonoBehaviour
 
         // stop the main game music
         GameManager.Instance.SoundManager.PlayNonDiageticSound("MainThemeStop");
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("JungleThemeStop");
 
-        
+
         GameManager.Instance.SoundManager.PlayNonDiageticSound("BossThemeStop");
 
 
@@ -336,7 +340,7 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         LowResCamera = GameObject.Find("LowResCamera").GetComponent<Camera>();
-        LowResCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         switch (Next.name)
         {
             case ("RegularGame"):
@@ -347,13 +351,13 @@ public class GameManager : MonoBehaviour
                 Platform = GameObject.FindGameObjectWithTag("Platform").GetComponent<PlatformBehavior>();
                 StatTracker = GameObject.FindAnyObjectByType<StatTracker>();
                 HealthTracker = GameObject.FindAnyObjectByType<HealthTracker>();
-                BlockGenerator =  GameObject.FindAnyObjectByType<BlockGenerator>();
+                BlockGenerator = GameObject.FindAnyObjectByType<BlockGenerator>();
 
                 ScoreAnchor = StatTracker.gameObject.transform.Find("ScoreAnchor");
                 Overlay = GameObject.FindAnyObjectByType<OverlayUI>();
 
                 BossManager = GameObject.Find("Cavern").GetComponent<BossManager>();
-                
+
                 CurrentTreasure = 0;
                 CurrentDepth = 0;
                 ActuallDepth = 0;
@@ -405,9 +409,9 @@ public class GameManager : MonoBehaviour
                 break;
 
 
-        
 
-            
+
+
         }
     }
 
@@ -415,14 +419,14 @@ public class GameManager : MonoBehaviour
     {
         CurrentState = GameStates.Boss;
 
-        
+
     }
 
     public void StartNormalGame()
     {
         CurrentState = GameStates.RegularGame;
 
-        
+
         StartCoroutine(StartGameSequence());
 
     }
@@ -432,8 +436,8 @@ public class GameManager : MonoBehaviour
         yield return null;
         Player.enabled = false;
 
-        
-        
+
+
         Overlay.StartCountdown();
         yield return new WaitForSeconds(3);
         Player.enabled = true;

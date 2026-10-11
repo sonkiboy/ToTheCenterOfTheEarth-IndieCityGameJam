@@ -21,7 +21,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -129,7 +129,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -165,7 +165,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -200,7 +200,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -328,7 +328,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -376,7 +376,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -488,7 +488,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -527,7 +527,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -556,7 +556,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -627,7 +627,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -670,7 +670,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -704,7 +704,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -740,7 +740,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -782,7 +782,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -928,7 +928,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9042C3A8-D615-498B-BBCF-35971FF88B50}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
+							<ObjectRef Name="SFX" ID="{2A80BECB-0A9A-487C-A999-0568EA18D4D2}" WorkUnitID="{A2331CEE-1E81-466E-8E95-B6DEA016AE42}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>

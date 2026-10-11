@@ -15,90 +15,87 @@ software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
 Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
-using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEditor;
 using AK.Wwise.Unity.Logging;
 
 public static class AkWwiseProjectInfo
 {
-	public static AkWwiseProjectData ProjectData;
-	private static AkWwiseTreeWAAPIDataSource _waapiBrowserData = new AkWwiseTreeWAAPIDataSource();
-	private static AkWwiseTreeProjectDataSource _projectPickerData = new AkWwiseTreeProjectDataSource();
+    public static AkWwiseProjectData ProjectData;
+    private static AkWwiseTreeWAAPIDataSource _waapiBrowserData = new AkWwiseTreeWAAPIDataSource();
+    private static AkWwiseTreeProjectDataSource _projectPickerData = new AkWwiseTreeProjectDataSource();
 
-	public static AkWwiseTreeWAAPIDataSource WaapiBrowserData
-	{
-		get
-		{
-			return _waapiBrowserData;
-		}
-	}
+    public static AkWwiseTreeWAAPIDataSource WaapiBrowserData
+    {
+        get
+        {
+            return _waapiBrowserData;
+        }
+    }
 
-	public static AkWwiseTreeProjectDataSource ProjectPickerData
-	{
-		get
-		{
-			return _projectPickerData;
-		}
-	}
-	
-	public static AkWwiseTreeDataSource GetCurrentTreeData()
-	{
-		AkWwiseTreeMergedDataSource treeData = new AkWwiseTreeMergedDataSource();
-		treeData.MergeDataSources();
-		return treeData;
-	}
+    public static AkWwiseTreeProjectDataSource ProjectPickerData
+    {
+        get
+        {
+            return _projectPickerData;
+        }
+    }
 
-	public static AkWwiseTreeDataSource GetTreeData()
-	{
-		GetData().Reset();
-		AkWwiseTreeMergedDataSource treeData = new AkWwiseTreeMergedDataSource();
-		treeData.FetchData();
-		return treeData;
-	}
+    public static AkWwiseTreeDataSource GetCurrentTreeData()
+    {
+        AkWwiseTreeMergedDataSource treeData = new AkWwiseTreeMergedDataSource();
+        treeData.MergeDataSources();
+        return treeData;
+    }
 
-	private static bool WwiseFolderExists()
-	{
-		return System.IO.Directory.Exists(System.IO.Path.Combine(UnityEngine.Application.dataPath, "Wwise"));
-	}
+    public static AkWwiseTreeDataSource GetTreeData()
+    {
+        GetData().Reset();
+        AkWwiseTreeMergedDataSource treeData = new AkWwiseTreeMergedDataSource();
+        treeData.FetchData();
+        return treeData;
+    }
 
-	public static AkWwiseProjectData GetData()
-	{
-		if (ProjectData == null && WwiseFolderExists())
-		{
-			try
-			{
-				CreateWwiseProjectData();
-			}
-			catch (System.Exception e)
-			{
-				WwiseLogger.Error("Unable to load Wwise Data: " + e);
-			}
-		}
+    private static bool WwiseFolderExists()
+    {
+        return System.IO.Directory.Exists(System.IO.Path.Combine(UnityEngine.Application.dataPath, "Wwise"));
+    }
 
-		return ProjectData;
-	}
+    public static AkWwiseProjectData GetData()
+    {
+        if (ProjectData == null && WwiseFolderExists())
+        {
+            try
+            {
+                CreateWwiseProjectData();
+            }
+            catch (System.Exception e)
+            {
+                WwiseLogger.Error("Unable to load Wwise Data: " + e);
+            }
+        }
 
-	private static void CreateWwiseProjectData()
-	{
-		ProjectData = new AkWwiseProjectData();
-	}
+        return ProjectData;
+    }
 
-	public static bool Populate()
-	{
-		var bDirty = false;
-		if (AkUtilities.IsWwiseProjectAvailable)
-		{
-			AkWwiseProjectInfo.GetData().Reset();
-			bDirty |= AkWwiseJSONBuilder.Populate();
-		}
+    private static void CreateWwiseProjectData()
+    {
+        ProjectData = new AkWwiseProjectData();
+    }
 
-		if (AkWaapiUtilities.IsConnected())
-		{
-			_waapiBrowserData.FetchData();
-		}
+    public static bool Populate()
+    {
+        var bDirty = false;
+        if (AkUtilities.IsWwiseProjectAvailable)
+        {
+            AkWwiseProjectInfo.GetData().Reset();
+            bDirty |= AkWwiseJSONBuilder.Populate();
+        }
 
-		return bDirty;
-	}
+        if (AkWaapiUtilities.IsConnected())
+        {
+            _waapiBrowserData.FetchData();
+        }
+
+        return bDirty;
+    }
 }
 #endif

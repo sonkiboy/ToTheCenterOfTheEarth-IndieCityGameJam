@@ -16,7 +16,7 @@ Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
 #if UNITY_EDITOR
 
-public class WwiseSwitchGroupRef: global::System.IDisposable
+public class WwiseSwitchGroupRef : global::System.IDisposable
 {
     private global::System.IntPtr projectDatabasePtr;
     protected bool bDeletesManually;
@@ -67,7 +67,7 @@ public class WwiseSwitchGroupRef: global::System.IDisposable
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseSwitchGroupRef(global::System.IntPtr cPtr) : this(cPtr, true)
     {
     }
@@ -75,14 +75,14 @@ public class WwiseSwitchGroupRef: global::System.IDisposable
     public WwiseSwitchGroupRef(string switchName) : this(WwiseProjectDatabase.GetSwitchGroupRefString(switchName), true)
     {
     }
-    
+
     public string Name => WwiseProjectDatabase.GetSwitchGroupName(projectDatabasePtr);
     public string Path => WwiseProjectDatabase.GetSwitchGroupPath(projectDatabasePtr);
-    public System.Guid Guid =>WwiseProjectDatabase.GetSwitchGroupGuid(projectDatabasePtr);
-    public uint ShortId =>WwiseProjectDatabase.GetSwitchGroupShortId(projectDatabasePtr);
+    public System.Guid Guid => WwiseProjectDatabase.GetSwitchGroupGuid(projectDatabasePtr);
+    public uint ShortId => WwiseProjectDatabase.GetSwitchGroupShortId(projectDatabasePtr);
 }
 
-public class WwiseSwitchRef: global::System.IDisposable
+public class WwiseSwitchRef : global::System.IDisposable
 {
     private global::System.IntPtr projectDatabasePtr;
     protected bool bDeletesManually;
@@ -133,7 +133,7 @@ public class WwiseSwitchRef: global::System.IDisposable
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseSwitchRef(global::System.IntPtr cPtr) : this(cPtr, true)
     {
     }
@@ -141,11 +141,11 @@ public class WwiseSwitchRef: global::System.IDisposable
     public WwiseSwitchRef(string switchName) : this(WwiseProjectDatabase.GetSwitchRefString(switchName), true)
     {
     }
-    
+
     public string Name => WwiseProjectDatabase.GetSwitchName(projectDatabasePtr);
     public string Path => WwiseProjectDatabase.GetSwitchPath(projectDatabasePtr);
     public System.Guid Guid => WwiseProjectDatabase.GetSwitchGuid(projectDatabasePtr);
-    public uint ShortId =>WwiseProjectDatabase.GetSwitchShortId(projectDatabasePtr);
+    public uint ShortId => WwiseProjectDatabase.GetSwitchShortId(projectDatabasePtr);
     public uint GroupId => WwiseProjectDatabase.GetSwitchGroupId(projectDatabasePtr);
 }
 #endif

@@ -18,13 +18,13 @@ public class BulbTileMod : MonoBehaviour
         animator = GetComponent<Animator>();
         selfConduitMod = GetComponent<ConductiveTileMod>();
 
-        StartCoroutine(FlashRoutine()); 
+        StartCoroutine(FlashRoutine());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator FlashRoutine()

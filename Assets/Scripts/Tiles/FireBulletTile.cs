@@ -27,7 +27,7 @@ public class FireBulletTile : MonoBehaviour
 
             yield return new WaitForSeconds(chargeAnimTime);
 
-            
+
 
             yield return null;
         }

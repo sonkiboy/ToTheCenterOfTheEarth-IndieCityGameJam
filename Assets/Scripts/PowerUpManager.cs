@@ -19,10 +19,10 @@ public class PowerUpManager : MonoBehaviour
     private int _dmgCnt = 0;
     public int DamagePowerCount
     {
-        get {return _dmgCnt;}
-        set 
+        get { return _dmgCnt; }
+        set
         {
-            if(value < MaxPowers)
+            if (value < MaxPowers)
             {
                 _dmgCnt = value;
             }
@@ -166,8 +166,8 @@ public class PowerUpManager : MonoBehaviour
     public void OnSceneChanged(Scene Current, Scene Next)
     {
         dmgDial = GameObject.Find("DmgPower").GetComponent<PowerDialUI>();
-        reloadDial = GameObject.Find("ReloadPower").GetComponent<PowerDialUI>(); 
-        drillDial = GameObject.Find("DrillPower").GetComponent<PowerDialUI>(); 
+        reloadDial = GameObject.Find("ReloadPower").GetComponent<PowerDialUI>();
+        drillDial = GameObject.Find("DrillPower").GetComponent<PowerDialUI>();
 
 
         DrillPowerCount = 0;

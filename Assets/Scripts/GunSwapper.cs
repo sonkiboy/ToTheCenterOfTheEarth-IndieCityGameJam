@@ -18,7 +18,7 @@ public class GunSwapper : MonoBehaviour
         EmptyBubble = transform.Find("EmptyBubble").gameObject;
 
         BubbleAnimator = GetComponent<Animator>();
-        BubbleAnimator.Play(0,-1, Random.Range(0f, 1f));
+        BubbleAnimator.Play(0, -1, Random.Range(0f, 1f));
 
         CheckIfAlreadyEquiped();
         GameManager.Instance.OnGunChanged += CheckIfAlreadyEquiped;
@@ -44,16 +44,16 @@ public class GunSwapper : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.tag == "Player")
         {
             GameManager.Instance.CurrentGun = Gun;
-            CheckIfAlreadyEquiped() ;
+            CheckIfAlreadyEquiped();
         }
     }
 
     void CheckIfAlreadyEquiped()
     {
-        if(GameManager.Instance.CurrentGun == Gun)
+        if (GameManager.Instance.CurrentGun == Gun)
         {
             Bubble.SetActive(false);
             EmptyBubble.SetActive(true);

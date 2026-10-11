@@ -1,5 +1,3 @@
-using NUnit.Framework;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -126,9 +124,9 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            if(isController == false)
+            if (isController == false)
             {
-                isController= true;
+                isController = true;
             }
         }
     }
@@ -164,7 +162,7 @@ public class InputManager : MonoBehaviour
 
     void OnColorChangeDebugPress(InputAction.CallbackContext context)
     {
-        if(SceneManager.GetActiveScene().name == "MainMenu" && GameManager.Instance.PaletteManager != null)
+        if (SceneManager.GetActiveScene().name == "MainMenu" && GameManager.Instance.PaletteManager != null)
         {
             GameManager.Instance.PaletteManager.IncrimentPallete(.25f);
         }

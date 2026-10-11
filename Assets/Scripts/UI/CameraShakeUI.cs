@@ -20,7 +20,7 @@ public class CameraShakeUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnDisable()
@@ -31,9 +31,9 @@ public class CameraShakeUI : MonoBehaviour
 
     public void OnPlayerDamaged(object sender, int health)
     {
-        if(health >  0 && GameManager.Instance.GameOptions.IsScreenShakeOn == true)
+        if (health > 0 && GameManager.Instance.GameOptions.IsScreenShakeOn == true)
         {
-            if(isShaking == false)
+            if (isShaking == false)
             {
                 StartCoroutine(ShakeCameraFocus());
             }
@@ -45,7 +45,7 @@ public class CameraShakeUI : MonoBehaviour
         isShaking = true;
         for (int i = 0; i < 3; i++)
         {
-            transform.localPosition = originLocalPos + (Vector3.right *ShakeAmount);
+            transform.localPosition = originLocalPos + (Vector3.right * ShakeAmount);
             yield return new WaitForSeconds(ShakeRate);
             transform.localPosition = originLocalPos - (Vector3.right * ShakeAmount);
             yield return new WaitForSeconds(ShakeRate);

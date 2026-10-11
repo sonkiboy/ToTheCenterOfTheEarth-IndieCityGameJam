@@ -8,8 +8,8 @@ public class SonarBatBehavior : Enemy
 
     public GameObject BulletPrefab;
     public float ChargeTime = .5f;
-    public float CoolDownTime = 3f; 
-    public float FireRate = 1f; 
+    public float CoolDownTime = 3f;
+    public float FireRate = 1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +22,7 @@ public class SonarBatBehavior : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator FireRoutine()
@@ -36,14 +36,14 @@ public class SonarBatBehavior : Enemy
             yield return new WaitForSeconds(ChargeTime);
             animator.SetTrigger("Fire");
 
-            Instantiate(BulletPrefab, this.transform.position, Quaternion.LookRotation(Vector3.forward, (flyingComp.Target.transform.position - this.transform.position).normalized) * Quaternion.Euler(0,0,90));
+            Instantiate(BulletPrefab, this.transform.position, Quaternion.LookRotation(Vector3.forward, (flyingComp.Target.transform.position - this.transform.position).normalized) * Quaternion.Euler(0, 0, 90));
             yield return new WaitForSeconds(FireRate);
-            Instantiate(BulletPrefab, this.transform.position, Quaternion.LookRotation(Vector3.forward, (flyingComp.Target.transform.position - this.transform.position).normalized) * Quaternion.Euler(0,0,90));
+            Instantiate(BulletPrefab, this.transform.position, Quaternion.LookRotation(Vector3.forward, (flyingComp.Target.transform.position - this.transform.position).normalized) * Quaternion.Euler(0, 0, 90));
             yield return new WaitForSeconds(FireRate);
-            Instantiate(BulletPrefab, this.transform.position, Quaternion.LookRotation(Vector3.forward, (flyingComp.Target.transform.position - this.transform.position).normalized) * Quaternion.Euler(0,0,90));
+            Instantiate(BulletPrefab, this.transform.position, Quaternion.LookRotation(Vector3.forward, (flyingComp.Target.transform.position - this.transform.position).normalized) * Quaternion.Euler(0, 0, 90));
             yield return new WaitForSeconds(FireRate);
 
-            yield return new WaitForSeconds(ChargeTime/2);
+            yield return new WaitForSeconds(ChargeTime / 2);
             flyingComp.enabled = true;
 
             //animator.SetTrigger("Idle");

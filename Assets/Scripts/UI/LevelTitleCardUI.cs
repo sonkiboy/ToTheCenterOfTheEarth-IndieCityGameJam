@@ -1,14 +1,12 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LevelTitleCardUI : MonoBehaviour
 {
-    TextMeshProUGUI nextLevelTxt; 
+    TextMeshProUGUI nextLevelTxt;
     TextMeshProUGUI titleTxt;
 
-    [SerializeField]private float textSpeed = .2f;
+    [SerializeField] private float textSpeed = .2f;
 
     Animator animator;
 
@@ -25,7 +23,7 @@ public class LevelTitleCardUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void DisplayLayerTitle(string title)

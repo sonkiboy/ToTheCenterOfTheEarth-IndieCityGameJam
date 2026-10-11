@@ -11,7 +11,7 @@ public class WindForceArea : MonoBehaviour
     public float MaxVelocity = 20;
     public LayerMask ForceMask;
 
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,17 +22,17 @@ public class WindForceArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
     {
         Collider2D[] foundEntities = Physics2D.OverlapBoxAll((Vector2)boxCollider.transform.position + boxCollider.offset, boxCollider.size, 0f, ForceMask);
-        if(foundEntities.Length > 0 )
+        if (foundEntities.Length > 0)
         {
-            foreach(Collider2D entity in foundEntities)
+            foreach (Collider2D entity in foundEntities)
             {
-                if(Mathf.Abs(entity.attachedRigidbody.linearVelocity.magnitude) < MaxVelocity)
+                if (Mathf.Abs(entity.attachedRigidbody.linearVelocity.magnitude) < MaxVelocity)
                 {
                     entity.attachedRigidbody.AddForce(Direciton * ForceStrength);
 
@@ -45,14 +45,14 @@ public class WindForceArea : MonoBehaviour
 
 
 
-    
+
     IEnumerator PushEntity()
     {
         Collider2D foundPlayer = Physics2D.OverlapBox((Vector2)boxCollider.transform.position + boxCollider.offset, boxCollider.size, 0f, LayerMask.GetMask("Player"));
 
         while (foundPlayer != null)
         {
-            
+
             yield return new WaitForFixedUpdate();
         }
 

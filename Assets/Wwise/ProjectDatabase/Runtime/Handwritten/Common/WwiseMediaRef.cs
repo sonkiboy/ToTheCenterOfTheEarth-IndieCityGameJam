@@ -15,7 +15,7 @@ in a written agreement between you and Audiokinetic Inc.
 Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
 #if UNITY_EDITOR
-public class WwiseMediaRef: global::System.IDisposable
+public class WwiseMediaRef : global::System.IDisposable
 {
     private global::System.IntPtr projectDatabasePtr;
     protected bool bDeletesManually;
@@ -66,7 +66,7 @@ public class WwiseMediaRef: global::System.IDisposable
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseMediaRef(global::System.IntPtr cPtr) : this(cPtr, true)
     {
     }

@@ -21,60 +21,60 @@ Copyright (c) 2026 Audiokinetic Inc.
 
 public class AkLogger
 {
-	// @todo sjl: Have SWIG specify the delegate's signature (possibly in AkSoundEngine) so that we can automatically determine the appropriate string marshaling.
-	[System.Runtime.InteropServices.UnmanagedFunctionPointer(System.Runtime.InteropServices.CallingConvention.StdCall)]
-	public delegate void ErrorLoggerInteropDelegate(
-		[System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPStr)]
-		string message);
+    // @todo sjl: Have SWIG specify the delegate's signature (possibly in AkSoundEngine) so that we can automatically determine the appropriate string marshaling.
+    [System.Runtime.InteropServices.UnmanagedFunctionPointer(System.Runtime.InteropServices.CallingConvention.StdCall)]
+    public delegate void ErrorLoggerInteropDelegate(
+        [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPStr)]
+        string message);
 
-	private static AkLogger ms_Instance = new AkLogger();
-	private ErrorLoggerInteropDelegate errorLoggerDelegate = WwiseInternalLogError;
+    private static AkLogger ms_Instance = new AkLogger();
+    private ErrorLoggerInteropDelegate errorLoggerDelegate = WwiseInternalLogError;
 
-	private AkLogger()
-	{
-		if (ms_Instance == null)
-		{
-			ms_Instance = this;
-			AkUnitySoundEngine.SetErrorLogger(errorLoggerDelegate);
-		}
-	}
+    private AkLogger()
+    {
+        if (ms_Instance == null)
+        {
+            ms_Instance = this;
+            AkUnitySoundEngine.SetErrorLogger(errorLoggerDelegate);
+        }
+    }
 
-	public static AkLogger Instance { get { return ms_Instance; } }
+    public static AkLogger Instance { get { return ms_Instance; } }
 
-	~AkLogger()
-	{
-		if (ms_Instance == this)
-		{
-			ms_Instance = null;
-			errorLoggerDelegate = null;
-			AkUnitySoundEngine.SetErrorLogger();
-		}
-	}
+    ~AkLogger()
+    {
+        if (ms_Instance == this)
+        {
+            ms_Instance = null;
+            errorLoggerDelegate = null;
+            AkUnitySoundEngine.SetErrorLogger();
+        }
+    }
 
-	public void Init()
-	{
-		// used to force instantiation of this singleton
-	}
+    public void Init()
+    {
+        // used to force instantiation of this singleton
+    }
 
-	[AOT.MonoPInvokeCallback(typeof(ErrorLoggerInteropDelegate))]
-	public static void WwiseInternalLogError(string message)
-	{
-		WwiseLogger.Error(message);
-	}
+    [AOT.MonoPInvokeCallback(typeof(ErrorLoggerInteropDelegate))]
+    public static void WwiseInternalLogError(string message)
+    {
+        WwiseLogger.Error(message);
+    }
 
-	public static void Message(string message)
-	{
-		WwiseLogger.LogFormat(message);
-	}
+    public static void Message(string message)
+    {
+        WwiseLogger.LogFormat(message);
+    }
 
-	public static void Warning(string message)
-	{
-		WwiseLogger.Warning(message);
-	}
+    public static void Warning(string message)
+    {
+        WwiseLogger.Warning(message);
+    }
 
-	public static void Error(string message)
-	{
-		WwiseLogger.Error(message);
-	}
+    public static void Error(string message)
+    {
+        WwiseLogger.Error(message);
+    }
 }
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

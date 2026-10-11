@@ -19,7 +19,7 @@ public class WarningBarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ShowWarning(float durration)

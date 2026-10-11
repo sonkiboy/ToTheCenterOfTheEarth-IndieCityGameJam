@@ -6,12 +6,12 @@ public class VibArmBehavior : MonoBehaviour
     public LineRenderer lineRenderer;
     public Transform TargetPosition;
     public GameObject ArmEnd;
-    
+
     private Vector2 handPosition = Vector2.zero;
     public float InitialSearchRadius = 2f;
     public float Speed = 5f;
 
-    public Vector2 MoveTimeRange = Vector2.one *2;
+    public Vector2 MoveTimeRange = Vector2.one * 2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,7 +32,7 @@ public class VibArmBehavior : MonoBehaviour
         {
             MoveArm();
 
-            yield return new WaitForSeconds(Random.Range(MoveTimeRange.x,MoveTimeRange.y));
+            yield return new WaitForSeconds(Random.Range(MoveTimeRange.x, MoveTimeRange.y));
         }
     }
 
@@ -46,17 +46,17 @@ public class VibArmBehavior : MonoBehaviour
             foundTileCollider = Physics2D.OverlapCircle(TargetPosition.position, InitialSearchRadius * (float)i, LayerMask.GetMask("Tile"));
 
             // if we found a tile break out of the loop
-            if(foundTileCollider != null )
+            if (foundTileCollider != null)
             {
                 break;
             }
         }
 
         // if there was a tile found, move the arm to that tiles center
-        if( foundTileCollider != null )
+        if (foundTileCollider != null)
         {
             //Debug.Log($"Moving Arm to Tile at {foundTileCollider.transform.position + foundTileCollider.bounds.size / 2}");
-            StartCoroutine(MoveArmToPoint(foundTileCollider.transform.position + foundTileCollider.bounds.size/2));
+            StartCoroutine(MoveArmToPoint(foundTileCollider.transform.position + foundTileCollider.bounds.size / 2));
         }
 
         // if no tile was found, move the arm to the exact target position regardless if there is a tile there

@@ -314,8 +314,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f972d1c805387845a6c34c6c11c3fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OptionsSettings
+  _fireAim: 0
+  _jetMove: 0
   IsFullScreen: 0
   SupportedResolutions:
+  - 5760x2400
   - 2560x1440
   - 1920x1080
   - 1366x768
@@ -413,6 +416,18 @@ PrefabInstance:
       propertyPath: SoundEvents.Array.size
       value: 27
       objectReference: {fileID: 0}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: MusicVolumeParam.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: ad3b850a1e70db7428f3c78bc3224570, type: 2}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: SoundVolumeParam.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: ece94b5b6bef2f244ab6693803684470, type: 2}
+    - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
+      propertyPath: MasterVolumeParam.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bd91d34a9177ae489c459952b48d9b6, type: 2}
     - target: {fileID: 6658814660032758846, guid: 9c444b55e17bb2d41aad71427d78435e, type: 3}
       propertyPath: SoundEvents.Array.data[21].WwiseObjectReference
       value: 

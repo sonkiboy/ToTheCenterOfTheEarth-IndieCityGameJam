@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -68,7 +66,7 @@ public class TileBehavior : MonoBehaviour
 
         }
     }
-    [SerializeField]bool isDamagedByPlayer = false;
+    [SerializeField] bool isDamagedByPlayer = false;
     private void Awake()
     {
         hp = Config.Health;
@@ -90,14 +88,14 @@ public class TileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.Instance.Platform != null)
+        if (GameManager.Instance.Platform != null)
         {
             if (transform.position.y > GameManager.Instance.Platform.transform.position.y + 30)
             {
                 Destroy(gameObject);
             }
         }
-        
+
     }
 
     public void BreakTile(bool isBrokenByPlayer)
@@ -166,7 +164,7 @@ public class TileBehavior : MonoBehaviour
 
 
 
-            
+
         }
 
         // if the config has enemies to spawn, spawn all the enemies in the config list
@@ -234,7 +232,7 @@ public class TileBehavior : MonoBehaviour
 
 
                 RootedTileMod rootMod = collider.GetComponent<RootedTileMod>();
-                if(rootMod != null)
+                if (rootMod != null)
                 {
                     rootMod.IgniteRoot();
                 }

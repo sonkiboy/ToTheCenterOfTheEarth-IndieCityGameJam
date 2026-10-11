@@ -19,7 +19,7 @@ public class RandomLetterShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator ShakeRoutine()
@@ -27,14 +27,14 @@ public class RandomLetterShake : MonoBehaviour
         int randY;
         int randX;
 
-        while(true)
+        while (true)
         {
 
             randX = Random.Range(XRange.x, XRange.y);
             randY = Random.Range(YRange.x, YRange.y);
-            this.transform.position = startingPos + new Vector2(randX,randY);
+            this.transform.position = startingPos + new Vector2(randX, randY);
 
-            yield return new WaitForSeconds(1f/ShakeRate);
+            yield return new WaitForSeconds(1f / ShakeRate);
         }
     }
 }

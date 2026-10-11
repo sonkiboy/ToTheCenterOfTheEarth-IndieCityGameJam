@@ -1,5 +1,13 @@
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	2346531308	MusicVolume			\Default Work Unit\MusicVolume	
+	3725851010	MasterSoundVolume			\Default Work Unit\MasterSoundVolume	
+	3873835272	SoundVolume			\Default Work Unit\SoundVolume	
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	393239870	SFX			\Default Work Unit\MasterAudioBus\SFX	
+	812255631	MasterAudioBus			\Default Work Unit\MasterAudioBus	
 	2246998526	Main Audio Bus			\Default Work Unit\Main Audio Bus	
+	3991942870	Music			\Default Work Unit\MasterAudioBus\Music	
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

@@ -16,64 +16,64 @@ Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
 
 #if UNITY_EDITOR
-using UnityEditor;
 using AK.Wwise.Unity.Logging;
+using UnityEditor;
 
 [UnityEditor.InitializeOnLoad]
 public class AkWindowsPluginActivator : AkPlatformPluginActivator
 {
-	public override string WwisePlatformName => "Windows";
-	public override string PluginDirectoryName => "Windows";
-	
-	
+    public override string WwisePlatformName => "Windows";
+    public override string PluginDirectoryName => "Windows";
 
-	static AkWindowsPluginActivator()
-	{
-		if (UnityEditor.AssetDatabase.IsAssetImportWorkerProcess())
-		{
-			return;
-		}
 
-		AkPluginActivator.RegisterPlatformPluginActivator(BuildTarget.StandaloneWindows, new AkWindowsPluginActivator());
-		AkPluginActivator.RegisterPlatformPluginActivator(BuildTarget.StandaloneWindows64, new AkWindowsPluginActivator());
-	}
-	
-	private const int ARCH_INDEX = 1;
-	private const int CONFIG_INDEX = 2;
 
-	private const int EDITOR_CPU_INDEX = 1;
-	public override AkPluginActivator.PluginImporterInformation GetPluginImporterInformation(PluginImporter pluginImporter)
-	{
-		var parts = GetPluginPathParts(pluginImporter.assetPath);
-		return new AkPluginActivator.PluginImporterInformation
-		{
-			PluginConfig = parts[CONFIG_INDEX],
-			PluginArch = parts[ARCH_INDEX],
-			
-			EditorOS = "Windows",
-			EditorCPU = parts[EDITOR_CPU_INDEX]
-		};
-	}
+    static AkWindowsPluginActivator()
+    {
+        if (UnityEditor.AssetDatabase.IsAssetImportWorkerProcess())
+        {
+            return;
+        }
 
-	internal override bool ConfigurePlugin(PluginImporter pluginImporter, AkPluginActivator.PluginImporterInformation pluginImporterInformation)
-	{
-		if (pluginImporterInformation.PluginArch != "x86" && pluginImporterInformation.PluginArch != "x86_64")
-		{
-			WwiseLogger.Log("Architecture not found: " + pluginImporterInformation.PluginArch);
-			return false;
-		}
+        AkPluginActivator.RegisterPlatformPluginActivator(BuildTarget.StandaloneWindows, new AkWindowsPluginActivator());
+        AkPluginActivator.RegisterPlatformPluginActivator(BuildTarget.StandaloneWindows64, new AkWindowsPluginActivator());
+    }
 
-		pluginImporter.SetPlatformData(BuildTarget.StandaloneLinux64, "CPU", "None");
-		pluginImporter.SetPlatformData(BuildTarget.StandaloneWindows, "CPU", pluginImporterInformation.IsX86 ? "AnyCPU" : "None");
-		pluginImporter.SetPlatformData(BuildTarget.StandaloneWindows64, "CPU", pluginImporterInformation.IsX64 ? "AnyCPU" : "None");
-		pluginImporter.SetPlatformData(BuildTarget.StandaloneOSX, "CPU", "None");
-		return true;
-	}
-	
-	public override void FilterOutPlatformIfNeeded(BuildTarget target, PluginImporter pluginImporter,
-		string pluginPlatform)
-	{
-		pluginImporter.SetCompatibleWithPlatform(target, false);
-	}
+    private const int ARCH_INDEX = 1;
+    private const int CONFIG_INDEX = 2;
+
+    private const int EDITOR_CPU_INDEX = 1;
+    public override AkPluginActivator.PluginImporterInformation GetPluginImporterInformation(PluginImporter pluginImporter)
+    {
+        var parts = GetPluginPathParts(pluginImporter.assetPath);
+        return new AkPluginActivator.PluginImporterInformation
+        {
+            PluginConfig = parts[CONFIG_INDEX],
+            PluginArch = parts[ARCH_INDEX],
+
+            EditorOS = "Windows",
+            EditorCPU = parts[EDITOR_CPU_INDEX]
+        };
+    }
+
+    internal override bool ConfigurePlugin(PluginImporter pluginImporter, AkPluginActivator.PluginImporterInformation pluginImporterInformation)
+    {
+        if (pluginImporterInformation.PluginArch != "x86" && pluginImporterInformation.PluginArch != "x86_64")
+        {
+            WwiseLogger.Log("Architecture not found: " + pluginImporterInformation.PluginArch);
+            return false;
+        }
+
+        pluginImporter.SetPlatformData(BuildTarget.StandaloneLinux64, "CPU", "None");
+        pluginImporter.SetPlatformData(BuildTarget.StandaloneWindows, "CPU", pluginImporterInformation.IsX86 ? "AnyCPU" : "None");
+        pluginImporter.SetPlatformData(BuildTarget.StandaloneWindows64, "CPU", pluginImporterInformation.IsX64 ? "AnyCPU" : "None");
+        pluginImporter.SetPlatformData(BuildTarget.StandaloneOSX, "CPU", "None");
+        return true;
+    }
+
+    public override void FilterOutPlatformIfNeeded(BuildTarget target, PluginImporter pluginImporter,
+        string pluginPlatform)
+    {
+        pluginImporter.SetCompatibleWithPlatform(target, false);
+    }
 }
 #endif

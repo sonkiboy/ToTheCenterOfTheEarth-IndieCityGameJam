@@ -18,11 +18,11 @@ Copyright (c) 2026 Audiokinetic Inc.
 
 public class AkTriggerMouseDown : AkTriggerBase
 {
-	private void OnMouseDown()
-	{
-		if (triggerDelegate != null)
-			triggerDelegate(null);
-	}
+    private void OnMouseDown()
+    {
+        if (triggerDelegate != null)
+            triggerDelegate(null);
+    }
 }
 
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

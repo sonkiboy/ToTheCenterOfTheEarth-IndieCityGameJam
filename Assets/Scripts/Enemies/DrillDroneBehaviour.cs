@@ -53,7 +53,7 @@ public class DrillDroneBehaviour : Enemy
 
     IEnumerator DrillRoutine()
     {
-        Collider2D foundCollisions =  Physics2D.OverlapBox(drillCollider.bounds.center, drillCollider.size, 0f, ~drillCollider.excludeLayers); ;
+        Collider2D foundCollisions = Physics2D.OverlapBox(drillCollider.bounds.center, drillCollider.size, 0f, ~drillCollider.excludeLayers); ;
         while (isActiveAndEnabled)
         {
             foundCollisions = Physics2D.OverlapBox(drillCollider.bounds.center, drillCollider.size, drillCollider.transform.rotation.eulerAngles.z, ~drillCollider.excludeLayers);
@@ -71,7 +71,7 @@ public class DrillDroneBehaviour : Enemy
                     if (foundCollisions.gameObject.tag == "Tile")
                     {
                         TileBehavior tileBehavior = foundCollisions.GetComponent<TileBehavior>();
-                        tileBehavior.DamageTile(true,DrillDamage);
+                        tileBehavior.DamageTile(true, DrillDamage);
                     }
 
                     // if the collider was instead an Enemy, deal damage to its Enemy component

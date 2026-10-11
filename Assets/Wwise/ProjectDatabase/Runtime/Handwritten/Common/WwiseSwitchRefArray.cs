@@ -25,12 +25,12 @@ public class WwiseSwitchRefArray
         bDeletesManually = cMemoryOwn;
         ownerPtr = cPtr;
     }
-    
+
     ~WwiseSwitchRefArray()
     {
         Dispose(false);
     }
-    
+
     protected virtual void Dispose(bool disposing)
     {
         lock (this)
@@ -49,7 +49,7 @@ public class WwiseSwitchRefArray
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseSwitchRefArray() : this(WwiseProjectDatabase.GetAllSwitchRef(), true)
     {
     }
@@ -70,12 +70,12 @@ public class WwiseSwitchGroupRefArray
         bDeletesManually = cMemoryOwn;
         ownerPtr = cPtr;
     }
-    
+
     ~WwiseSwitchGroupRefArray()
     {
         Dispose(false);
     }
-    
+
     protected virtual void Dispose(bool disposing)
     {
         lock (this)
@@ -94,7 +94,7 @@ public class WwiseSwitchGroupRefArray
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseSwitchGroupRefArray() : this(WwiseProjectDatabase.GetAllSwitchGroupRef(), true)
     {
     }

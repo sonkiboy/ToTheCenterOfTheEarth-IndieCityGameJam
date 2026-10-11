@@ -60,36 +60,36 @@ public class TankArmBehavior : MonoBehaviour
                     {
                         stepTargetPos = (Vector2)TargetTrans.position + InvalidLocalBounds / 2;
                     }
-                        Debug.Log("Leg distance strained, breaking from cool down");
+                    Debug.Log("Leg distance strained, breaking from cool down");
                     break;
                 }
 
-                if (FootObj.transform.position.y > TargetTrans.position.y + InvalidLocalBounds.y )
+                if (FootObj.transform.position.y > TargetTrans.position.y + InvalidLocalBounds.y)
                 {
                     Debug.Log($"Leg is too far Up from the target. Moving to {(Vector2)TargetTrans.position - InvalidLocalBounds / 2} (Target Pos: {(Vector2)TargetTrans.position})");
-                    stepTargetPos = (Vector2)TargetTrans.position - InvalidLocalBounds/2;
+                    stepTargetPos = (Vector2)TargetTrans.position - InvalidLocalBounds / 2;
                     break;
                 }
                 else if (FootObj.transform.position.y < TargetTrans.position.y - InvalidLocalBounds.y)
                 {
                     Debug.Log($"Leg is too far Down from the target. Moving to {(Vector2)TargetTrans.position + InvalidLocalBounds / 2} (Target Pos: {(Vector2)TargetTrans.position})");
 
-                    stepTargetPos = (Vector2)TargetTrans.position + InvalidLocalBounds/2;
+                    stepTargetPos = (Vector2)TargetTrans.position + InvalidLocalBounds / 2;
 
                     break;
                 }
 
-                    yield return new WaitForSeconds(stepTime);
+                yield return new WaitForSeconds(stepTime);
             }
 
-            if(stepTargetPos == Vector2.zero)
+            if (stepTargetPos == Vector2.zero)
             {
                 stepTargetPos = (Vector2)TargetTrans.position + new Vector2(Random.Range(RandomStepPositionOffset.x, RandomStepPositionOffset.y), Random.Range(RandomStepPositionOffset.x, RandomStepPositionOffset.y));
             }
-            
+
             Vector2 startPos = targetPos;
-            
-            float durration = Mathf.Clamp( Vector3.Distance(targetPos, TargetTrans.position), 10, 20);
+
+            float durration = Mathf.Clamp(Vector3.Distance(targetPos, TargetTrans.position), 10, 20);
             float count = 0;
             Vector2 newPos;
             //Debug.Log("hit");

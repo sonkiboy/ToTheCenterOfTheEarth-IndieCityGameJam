@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class InsectQueenBehavior : Enemy
@@ -17,7 +15,7 @@ public class InsectQueenBehavior : Enemy
 
     #endregion
 
-    
+
 
     public float Downtime = 11f;
     public float ChargeTime = 4f;
@@ -43,17 +41,17 @@ public class InsectQueenBehavior : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator EntranceSequence()
     {
         // move off screen
         queenAnimator.SetTrigger("MoveOnScreen");
- 
+
         yield return new WaitForSeconds(2f);
 
-        StartCoroutine(BattleSequence()); 
+        StartCoroutine(BattleSequence());
 
         yield return null;
     }
@@ -121,7 +119,7 @@ public class InsectQueenBehavior : Enemy
         // start the death animator
         queenAnimator.SetTrigger("TriggerDeath");
 
-        
+
 
         // play the explosion particle 
         explosionParticle.Play();
@@ -133,7 +131,7 @@ public class InsectQueenBehavior : Enemy
 
         yield return new WaitForSeconds(3f);
 
-        
+
 
 
         // destroy the boss object
@@ -148,17 +146,17 @@ public class InsectQueenBehavior : Enemy
 
         while (isDead == false)
         {
-            Collider2D[] foundColliders = Physics2D.OverlapBoxAll(bossCollider.bounds.center, bossCollider.size, 0f,LayerMask.GetMask("Tiles"));
+            Collider2D[] foundColliders = Physics2D.OverlapBoxAll(bossCollider.bounds.center, bossCollider.size, 0f, LayerMask.GetMask("Tiles"));
 
             //Debug.Log($"Found: {foundColliders.Length} tiles at position {bossCollider.bounds.center} size {bossCollider.size}");
 
-            if(foundColliders.Length > 0 )
+            if (foundColliders.Length > 0)
             {
-                foreach(Collider2D col in foundColliders)
+                foreach (Collider2D col in foundColliders)
                 {
                     TileBehavior tile = col.GetComponent<TileBehavior>();
 
-                    if(tile != null )
+                    if (tile != null)
                     {
                         //Debug.Log("Boss breaking tile");
 

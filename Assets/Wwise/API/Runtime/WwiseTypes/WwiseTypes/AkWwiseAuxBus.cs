@@ -19,19 +19,19 @@ Copyright (c) 2026 Audiokinetic Inc.
 
 namespace AK.Wwise
 {
-	[System.Serializable]
-	///@brief This type represents an auxiliary send in the Busses.
-	public class AuxBus : BaseType
-	{
-		public WwiseAuxBusReference WwiseObjectReference;
+    [System.Serializable]
+    ///@brief This type represents an auxiliary send in the Busses.
+    public class AuxBus : BaseType
+    {
+        public WwiseAuxBusReference WwiseObjectReference;
 
-		public override WwiseObjectReference ObjectReference
-		{
-			get { return WwiseObjectReference; }
-			set { WwiseObjectReference = value as WwiseAuxBusReference; }
-		}
+        public override WwiseObjectReference ObjectReference
+        {
+            get { return WwiseObjectReference; }
+            set { WwiseObjectReference = value as WwiseAuxBusReference; }
+        }
 
-		public override WwiseObjectType WwiseObjectType { get { return WwiseObjectType.AuxBus; } }
-	}
+        public override WwiseObjectType WwiseObjectType { get { return WwiseObjectType.AuxBus; } }
+    }
 }
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

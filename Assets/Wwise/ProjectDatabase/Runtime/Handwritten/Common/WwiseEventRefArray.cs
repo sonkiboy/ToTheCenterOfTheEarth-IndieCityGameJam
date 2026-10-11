@@ -25,12 +25,12 @@ public class WwiseEventRefArray
         bDeletesManually = cMemoryOwn;
         ownerPtr = cPtr;
     }
-    
+
     ~WwiseEventRefArray()
     {
         Dispose(false);
     }
-    
+
     protected virtual void Dispose(bool disposing)
     {
         lock (this)
@@ -49,7 +49,7 @@ public class WwiseEventRefArray
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseEventRefArray() : this(WwiseProjectDatabase.GetAllEventsRef(), true)
     {
     }

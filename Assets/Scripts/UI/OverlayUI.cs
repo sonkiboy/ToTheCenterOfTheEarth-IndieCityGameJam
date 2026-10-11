@@ -30,7 +30,7 @@ public class OverlayUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnDisable()
@@ -46,15 +46,15 @@ public class OverlayUI : MonoBehaviour
 
     IEnumerator RunCountdown()
     {
-        GameObject three = CountdownParent.transform.GetChild(0).gameObject; 
-        GameObject two = CountdownParent.transform.GetChild(1).gameObject; 
-        GameObject one = CountdownParent.transform.GetChild(2).gameObject; 
+        GameObject three = CountdownParent.transform.GetChild(0).gameObject;
+        GameObject two = CountdownParent.transform.GetChild(1).gameObject;
+        GameObject one = CountdownParent.transform.GetChild(2).gameObject;
         GameObject go = CountdownParent.transform.GetChild(3).gameObject;
 
         three.SetActive(true);
         GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
-        yield return new WaitForSeconds(1); 
+        yield return new WaitForSeconds(1);
         three.SetActive(false);
         two.SetActive(true);
         GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
@@ -72,7 +72,7 @@ public class OverlayUI : MonoBehaviour
         GameManager.Instance.SoundManager.PlayNonDiageticSound(GameManager.Instance.BlockGenerator.Layers[GameManager.Instance.BlockGenerator.CurrentLayerData].ThemeMusic + "Start");
 
 
-        yield return new WaitForSeconds(3); 
+        yield return new WaitForSeconds(3);
         three.SetActive(false);
         two.SetActive(false);
         one.SetActive(false);
@@ -88,7 +88,7 @@ public class OverlayUI : MonoBehaviour
 
     public void GameOverCheck(object sender, GameManager.GameStates state)
     {
-        if(state == GameManager.GameStates.GameOver)
+        if (state == GameManager.GameStates.GameOver)
         {
             PowerUpDials.SetActive(false);
         }

@@ -18,11 +18,11 @@ Copyright (c) 2026 Audiokinetic Inc.
 
 public class AkTriggerMouseEnter : AkTriggerBase
 {
-	private void OnMouseEnter()
-	{
-		if (triggerDelegate != null)
-			triggerDelegate(null);
-	}
+    private void OnMouseEnter()
+    {
+        if (triggerDelegate != null)
+            triggerDelegate(null);
+    }
 }
 
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

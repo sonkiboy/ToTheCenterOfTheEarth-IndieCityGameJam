@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class PillBugBehavior : Enemy
@@ -11,16 +9,16 @@ public class PillBugBehavior : Enemy
     Rigidbody2D rb;
     [SerializeField] BoxCollider2D wallCheck;
 
-    
+
 
     #endregion
 
-    
+
 
     [Range(0f, 5f)]
     public float Speed = .15f;
 
-    
+
 
     Vector2 currentDirection = Vector2.left;
 
@@ -29,13 +27,13 @@ public class PillBugBehavior : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         damageFlash[0] = transform.Find("Sprite").GetComponent<Renderer>();
-        StartCoroutine(ContinuousWallCheck());  
+        StartCoroutine(ContinuousWallCheck());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -46,7 +44,7 @@ public class PillBugBehavior : Enemy
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
         WallCheck();
 
         if (collision.gameObject.tag == "Player")
@@ -86,11 +84,11 @@ public class PillBugBehavior : Enemy
 
         }
     }
-    
 
-    
 
-    
 
-    
+
+
+
+
 }

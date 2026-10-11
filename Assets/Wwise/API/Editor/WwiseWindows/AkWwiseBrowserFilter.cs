@@ -20,236 +20,236 @@ using UnityEngine;
 
 public class AkWwiseBrowserFilter : EditorWindow
 {
-	private BrowserFilter Filters;
+    private BrowserFilter Filters;
 
-	class BrowserFilterInfo
-	{
-		public bool Checked;
-		public string Label;
-		public BrowserFilter Filter;
+    class BrowserFilterInfo
+    {
+        public bool Checked;
+        public string Label;
+        public BrowserFilter Filter;
 
-		public BrowserFilterInfo(string in_Label, BrowserFilter in_Filter)
-		{
-			Checked = false;
-			Label = in_Label;
-			Filter = in_Filter;
-		}
-	}
-	BrowserFilterInfo [] statusInfos = new BrowserFilterInfo[6];
-	BrowserFilterInfo [] typeInfos = new BrowserFilterInfo[8];
+        public BrowserFilterInfo(string in_Label, BrowserFilter in_Filter)
+        {
+            Checked = false;
+            Label = in_Label;
+            Filter = in_Filter;
+        }
+    }
+    BrowserFilterInfo[] statusInfos = new BrowserFilterInfo[6];
+    BrowserFilterInfo[] typeInfos = new BrowserFilterInfo[8];
 
-	private bool allStatusSelected = false;
-	private bool allTypeSelected = false;
-	
-	private bool m_close = false;
+    private bool allStatusSelected = false;
+    private bool allTypeSelected = false;
 
-	void InitBrowserFilterInfos()
-	{
-		statusInfos[0] = new BrowserFilterInfo("New in Wwise", BrowserFilter.NewInWwise);
-		statusInfos[1] = new BrowserFilterInfo("Deleted in Wwise", BrowserFilter.DeletedInWwise);
-		statusInfos[2] = new BrowserFilterInfo("Renamed in Wwise", BrowserFilter.RenamedInWwise);
-		statusInfos[3] = new BrowserFilterInfo("Moved in Wwise", BrowserFilter.MovedInWwise);
-		statusInfos[4] = new BrowserFilterInfo("SoundBanks need Update", BrowserFilter.SoundBankNeedsUpdate);
-		statusInfos[5] = new BrowserFilterInfo("SoundBanks Up to Date", BrowserFilter.SoundBanksUpToDate);
-		
-		typeInfos[0] = new BrowserFilterInfo("Event", BrowserFilter.Event);
-		typeInfos[1] = new BrowserFilterInfo("Bus", BrowserFilter.Bus);
-		typeInfos[2] = new BrowserFilterInfo("Switch", BrowserFilter.Switch);
-		typeInfos[3] = new BrowserFilterInfo("State", BrowserFilter.State);
-		typeInfos[4] = new BrowserFilterInfo("Game Parameter", BrowserFilter.GameParameter);
-		typeInfos[5] = new BrowserFilterInfo("SoundBank", BrowserFilter.SoundBank);
-		typeInfos[6] = new BrowserFilterInfo("Trigger", BrowserFilter.Trigger);
-		typeInfos[7] = new BrowserFilterInfo("Acoustic Texture", BrowserFilter.AcousticTexture);
-	}
+    private bool m_close = false;
 
-	AkWwiseBrowserFilter()
-	{
-		InitBrowserFilterInfos();
-		SetCheckboxes();
-	}
+    void InitBrowserFilterInfos()
+    {
+        statusInfos[0] = new BrowserFilterInfo("New in Wwise", BrowserFilter.NewInWwise);
+        statusInfos[1] = new BrowserFilterInfo("Deleted in Wwise", BrowserFilter.DeletedInWwise);
+        statusInfos[2] = new BrowserFilterInfo("Renamed in Wwise", BrowserFilter.RenamedInWwise);
+        statusInfos[3] = new BrowserFilterInfo("Moved in Wwise", BrowserFilter.MovedInWwise);
+        statusInfos[4] = new BrowserFilterInfo("SoundBanks need Update", BrowserFilter.SoundBankNeedsUpdate);
+        statusInfos[5] = new BrowserFilterInfo("SoundBanks Up to Date", BrowserFilter.SoundBanksUpToDate);
 
-	public static void Init(Rect position)
-	{
-		EditorWindow window = CreateInstance<AkWwiseBrowserFilter>();
-		Vector2 windowSize = new Vector2(225, 390);
-		window.minSize = windowSize;
-		window.maxSize = windowSize;
-		window.ShowAsDropDown(position, windowSize);
-	}
+        typeInfos[0] = new BrowserFilterInfo("Event", BrowserFilter.Event);
+        typeInfos[1] = new BrowserFilterInfo("Bus", BrowserFilter.Bus);
+        typeInfos[2] = new BrowserFilterInfo("Switch", BrowserFilter.Switch);
+        typeInfos[3] = new BrowserFilterInfo("State", BrowserFilter.State);
+        typeInfos[4] = new BrowserFilterInfo("Game Parameter", BrowserFilter.GameParameter);
+        typeInfos[5] = new BrowserFilterInfo("SoundBank", BrowserFilter.SoundBank);
+        typeInfos[6] = new BrowserFilterInfo("Trigger", BrowserFilter.Trigger);
+        typeInfos[7] = new BrowserFilterInfo("Acoustic Texture", BrowserFilter.AcousticTexture);
+    }
 
-	void AllSelectedCheck()
-	{
-		allStatusSelected = true;
-		foreach (var status in statusInfos)
-		{
-			if (!status.Checked)
-			{
-				allStatusSelected = false;
-			}
-		}
+    AkWwiseBrowserFilter()
+    {
+        InitBrowserFilterInfos();
+        SetCheckboxes();
+    }
 
-		allTypeSelected = true;
-		foreach (var type in typeInfos)
-		{
-			if (!type.Checked)
-			{
-				allTypeSelected = false;
-			}
-		}
-		ApplyFilters();
-	}
-	
-	private void Update()
-	{
-		//Unity sometimes generates an error when the window is closed from the OnGUI function.
-		//So We close it here
-		if (m_close)
-		{
-			Close();
-		}
-	}
+    public static void Init(Rect position)
+    {
+        EditorWindow window = CreateInstance<AkWwiseBrowserFilter>();
+        Vector2 windowSize = new Vector2(225, 390);
+        window.minSize = windowSize;
+        window.maxSize = windowSize;
+        window.ShowAsDropDown(position, windowSize);
+    }
 
-	bool DisplayFilter(bool value, string Name)
-	{
-		const int iconButtonWidth = 20;
-		using (new UnityEngine.GUILayout.HorizontalScope())
-		{
-			EditorGUILayout.Space(5);
-			bool prev = value;
-			value = EditorGUILayout.Toggle(value, UnityEngine.GUILayout.Width(iconButtonWidth));
-			EditorGUILayout.LabelField(Name);
-			if (value != prev)
-			{
-				ApplyFilters();				
-			}
-		}
-		return value;
-	}
+    void AllSelectedCheck()
+    {
+        allStatusSelected = true;
+        foreach (var status in statusInfos)
+        {
+            if (!status.Checked)
+            {
+                allStatusSelected = false;
+            }
+        }
 
-	void ApplyFilters()
-	{
-		if (AkWwiseBrowser.m_treeView == null)
-		{
-			return;
-		}
-		BrowserFilter newFilter = BrowserFilter.None;
-		foreach (var status in statusInfos)
-		{
-			if (status.Checked)
-			{
-				newFilter |= status.Filter;
-			}
-		}
-		
-		foreach (var type in typeInfos)
-		{
-			if (type.Checked)
-			{
-				newFilter |= type.Filter;
-			}
-		}
-		
-		if (AkWwiseBrowser.m_treeView.Filters != newFilter)
-		{
-			AkWwiseBrowser.m_treeView.Filters = newFilter;
-			AkWwiseBrowser.m_treeView.FiltersChanged = true;
-			AkWwiseBrowser.m_treeView.Repaint();
-		}
-	}
+        allTypeSelected = true;
+        foreach (var type in typeInfos)
+        {
+            if (!type.Checked)
+            {
+                allTypeSelected = false;
+            }
+        }
+        ApplyFilters();
+    }
 
-	void SetCheckboxes()
-	{
-		if (AkWwiseBrowser.m_treeView == null)
-		{
-			return;
-		}
-		BrowserFilter Filter = AkWwiseBrowser.m_treeView.Filters;
-		foreach (var status in statusInfos)
-		{
-			if ((Filter & status.Filter) != 0)
-			{
-				status.Checked = true;
-			}
-		}
-		
-		foreach (var type in typeInfos)
-		{
-			if ((Filter & type.Filter) != 0)
-			{
-				type.Checked = true;
-			}
-		}
-	}
+    private void Update()
+    {
+        //Unity sometimes generates an error when the window is closed from the OnGUI function.
+        //So We close it here
+        if (m_close)
+        {
+            Close();
+        }
+    }
 
-	void OnGUI()
-	{
-		const string SOUNDBANK_STATUS = "SoundBanks Status:";
-		const string OBJECT_TYPE = "Object Type:";
-		using (new UnityEngine.GUILayout.VerticalScope("box"))
-		{
-			using (new UnityEngine.GUILayout.VerticalScope("box"))
-			{
-				using (new UnityEngine.GUILayout.HorizontalScope("box"))
-				{
-					EditorGUILayout.LabelField(SOUNDBANK_STATUS);
-				}
+    bool DisplayFilter(bool value, string Name)
+    {
+        const int iconButtonWidth = 20;
+        using (new UnityEngine.GUILayout.HorizontalScope())
+        {
+            EditorGUILayout.Space(5);
+            bool prev = value;
+            value = EditorGUILayout.Toggle(value, UnityEngine.GUILayout.Width(iconButtonWidth));
+            EditorGUILayout.LabelField(Name);
+            if (value != prev)
+            {
+                ApplyFilters();
+            }
+        }
+        return value;
+    }
 
-				foreach (var status in statusInfos)
-				{
-					status.Checked = DisplayFilter(status.Checked, status.Label);
-					AllSelectedCheck();
-				}
+    void ApplyFilters()
+    {
+        if (AkWwiseBrowser.m_treeView == null)
+        {
+            return;
+        }
+        BrowserFilter newFilter = BrowserFilter.None;
+        foreach (var status in statusInfos)
+        {
+            if (status.Checked)
+            {
+                newFilter |= status.Filter;
+            }
+        }
 
-				var Style = new GUIStyle();
-				var content = new GUIContent("SoundBank Not Up to Date");
-				content.tooltip = "Checks every filters in SoundBank Status except for \"SoundBanks Up to Date\"";
-				Style.normal.textColor = GUI.skin.button.normal.textColor;
-				Style.contentOffset = new Vector2(32, 5);
-				if (GUILayout.Button(content, Style, GUILayout.Height(20)))
-				{
-					allStatusSelected = true;
-					foreach (var status in statusInfos)
-					{
-						if (status.Filter != BrowserFilter.SoundBanksUpToDate)
-						{
-							status.Checked = true;
-						}
-					}
-				}		
-			}
+        foreach (var type in typeInfos)
+        {
+            if (type.Checked)
+            {
+                newFilter |= type.Filter;
+            }
+        }
 
-			using (new UnityEngine.GUILayout.VerticalScope("box"))
-			{
-				using (new UnityEngine.GUILayout.HorizontalScope("box"))
-				{
-					EditorGUILayout.LabelField(OBJECT_TYPE);
-				}
-				foreach (var type in typeInfos)
-				{
-					type.Checked = DisplayFilter(type.Checked, type.Label);
-					AllSelectedCheck();
-				}
-			}
-			using (new UnityEngine.GUILayout.HorizontalScope("box"))
-			{
-				if (UnityEngine.GUILayout.Button("Reset"))
-				{
-					foreach (var status in statusInfos)
-					{
-						status.Checked = false;
-					}
-					foreach (var type in typeInfos)
-					{
-						type.Checked = false;
-					}
-				}
+        if (AkWwiseBrowser.m_treeView.Filters != newFilter)
+        {
+            AkWwiseBrowser.m_treeView.Filters = newFilter;
+            AkWwiseBrowser.m_treeView.FiltersChanged = true;
+            AkWwiseBrowser.m_treeView.Repaint();
+        }
+    }
 
-				if (UnityEngine.GUILayout.Button("Close"))
-				{
-					m_close = true;					
-				}
+    void SetCheckboxes()
+    {
+        if (AkWwiseBrowser.m_treeView == null)
+        {
+            return;
+        }
+        BrowserFilter Filter = AkWwiseBrowser.m_treeView.Filters;
+        foreach (var status in statusInfos)
+        {
+            if ((Filter & status.Filter) != 0)
+            {
+                status.Checked = true;
+            }
+        }
 
-			}
-		}
-	}
+        foreach (var type in typeInfos)
+        {
+            if ((Filter & type.Filter) != 0)
+            {
+                type.Checked = true;
+            }
+        }
+    }
+
+    void OnGUI()
+    {
+        const string SOUNDBANK_STATUS = "SoundBanks Status:";
+        const string OBJECT_TYPE = "Object Type:";
+        using (new UnityEngine.GUILayout.VerticalScope("box"))
+        {
+            using (new UnityEngine.GUILayout.VerticalScope("box"))
+            {
+                using (new UnityEngine.GUILayout.HorizontalScope("box"))
+                {
+                    EditorGUILayout.LabelField(SOUNDBANK_STATUS);
+                }
+
+                foreach (var status in statusInfos)
+                {
+                    status.Checked = DisplayFilter(status.Checked, status.Label);
+                    AllSelectedCheck();
+                }
+
+                var Style = new GUIStyle();
+                var content = new GUIContent("SoundBank Not Up to Date");
+                content.tooltip = "Checks every filters in SoundBank Status except for \"SoundBanks Up to Date\"";
+                Style.normal.textColor = GUI.skin.button.normal.textColor;
+                Style.contentOffset = new Vector2(32, 5);
+                if (GUILayout.Button(content, Style, GUILayout.Height(20)))
+                {
+                    allStatusSelected = true;
+                    foreach (var status in statusInfos)
+                    {
+                        if (status.Filter != BrowserFilter.SoundBanksUpToDate)
+                        {
+                            status.Checked = true;
+                        }
+                    }
+                }
+            }
+
+            using (new UnityEngine.GUILayout.VerticalScope("box"))
+            {
+                using (new UnityEngine.GUILayout.HorizontalScope("box"))
+                {
+                    EditorGUILayout.LabelField(OBJECT_TYPE);
+                }
+                foreach (var type in typeInfos)
+                {
+                    type.Checked = DisplayFilter(type.Checked, type.Label);
+                    AllSelectedCheck();
+                }
+            }
+            using (new UnityEngine.GUILayout.HorizontalScope("box"))
+            {
+                if (UnityEngine.GUILayout.Button("Reset"))
+                {
+                    foreach (var status in statusInfos)
+                    {
+                        status.Checked = false;
+                    }
+                    foreach (var type in typeInfos)
+                    {
+                        type.Checked = false;
+                    }
+                }
+
+                if (UnityEngine.GUILayout.Button("Close"))
+                {
+                    m_close = true;
+                }
+
+            }
+        }
+    }
 }

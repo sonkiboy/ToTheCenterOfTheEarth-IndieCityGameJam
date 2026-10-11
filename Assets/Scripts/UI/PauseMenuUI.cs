@@ -1,12 +1,11 @@
-using System;
+using System.IO;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenuUI : MonoBehaviour
 {
@@ -15,9 +14,10 @@ public class PauseMenuUI : MonoBehaviour
 
     OptionsSettings options;
 
+    CanvasScaler screenScaler;
 
     [SerializeField]
-    Sprite[] boxSprites; 
+    Sprite[] boxSprites;
 
     #region Obj and Component
 
@@ -32,7 +32,7 @@ public class PauseMenuUI : MonoBehaviour
     [SerializeField] GameObject OptionsMenu;
     GameObject gamePlayButton;
 
-   
+
     GameObject gamePlayPage;
     GameObject displayPage;
     GameObject soundPage;
@@ -53,13 +53,22 @@ public class PauseMenuUI : MonoBehaviour
     Image heartyColorBox;
 
     // SOUND
-    GameObject masterSoundBar;
-    GameObject soundBar;
-    GameObject musicBar;
+    RectTransform masterSoundBar;
+    RectTransform soundBar;
+    RectTransform musicBar;
+
+    GameObject DeleteLBDataButton;
+    GameObject LBDataConfirmPage;
+    GameObject CancelLBDataButton;
+    GameObject DeleteGameDataButton;
+    GameObject GameDataConfirmPage;
+    GameObject CancelGameDataButton;
+
 
     #endregion
 
     GameObject currentSelectedOption;
+
 
 
     private void Awake()
@@ -67,7 +76,7 @@ public class PauseMenuUI : MonoBehaviour
         _system = GameObject.FindAnyObjectByType<EventSystem>();
         uiInputModule = _system.GetComponent<InputSystemUIInputModule>();
 
-        
+
 
         PauseMenuObj = transform.Find("Menu").gameObject;
         MainPauseMenu = PauseMenuObj.transform.Find("MainPauseMenu").gameObject;
@@ -93,11 +102,24 @@ public class PauseMenuUI : MonoBehaviour
         staticColorBox = displayPage.transform.Find("StaticColorsCheckBox").GetComponent<Image>();
         vibrantColorBox = displayPage.transform.Find("VibrantColorBox").GetComponent<Image>();
         heartyColorBox = displayPage.transform.Find("HeartyColorBox").GetComponent<Image>();
+
+        masterSoundBar = soundPage.transform.Find("MasterSoundBar").Find("Bar").GetComponent<RectTransform>();
+        soundBar = soundPage.transform.Find("SoundBar").Find("Bar").GetComponent<RectTransform>();
+        musicBar = soundPage.transform.Find("MusicBar").Find("Bar").GetComponent<RectTransform>();
+
+        DeleteLBDataButton = savePage.transform.Find("ResetLBBox").gameObject;
+        LBDataConfirmPage = savePage.transform.Find("LeaderBoardUSure").gameObject;
+        CancelLBDataButton = LBDataConfirmPage.transform.Find("CancelButton").gameObject;
+
+        DeleteGameDataButton = savePage.transform.Find("ResetGameData").gameObject;
+        GameDataConfirmPage = savePage.transform.Find("SaveDataUSure").gameObject;
+        CancelGameDataButton = GameDataConfirmPage.transform.Find("CancelButton").gameObject;
+
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        screenScaler = GameManager.Instance.LowResCamera.transform.Find("RendererCanvas").GetComponent<CanvasScaler>();
 
         PauseMenuObj.SetActive(false);
         GameManager.Instance.InputManager.MenuInput.performed += TogglePauseMenu;
@@ -108,20 +130,20 @@ public class PauseMenuUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PauseMenuObj.activeSelf == true)
+        if (PauseMenuObj.activeSelf == true)
         {
             if (currentSelectedOption != _system.currentSelectedGameObject)
             {
                 Debug.Log($"Setting Pause Current Selection from {currentSelectedOption} to {_system.currentSelectedGameObject}");
                 currentSelectedOption = _system.currentSelectedGameObject;
                 Selector.transform.position = currentSelectedOption.transform.position;
-                Selector.sizeDelta = currentSelectedOption.GetComponent<RectTransform>().sizeDelta * (currentSelectedOption.transform.localScale.x/ Selector.localScale.x) * 2;
+                Selector.sizeDelta = currentSelectedOption.GetComponent<RectTransform>().sizeDelta * (currentSelectedOption.transform.localScale.x / Selector.localScale.x) * 2;
             }
-           
 
-            
+
+
         }
-        
+
     }
 
     private void OnDisable()
@@ -163,7 +185,7 @@ public class PauseMenuUI : MonoBehaviour
             options.SaveSettingsToFile();
 
         }
-        else if(PauseMenuObj.activeSelf == false && GameManager.Instance.CurrentState != GameManager.GameStates.GameOver) 
+        else if (PauseMenuObj.activeSelf == false && GameManager.Instance.CurrentState != GameManager.GameStates.GameOver)
         {
             Time.timeScale = 0;
 
@@ -186,16 +208,16 @@ public class PauseMenuUI : MonoBehaviour
 
         bool isLeft;
 
-        if(readInput.x > 0)
+        if (readInput.x > 0)
         {
             isLeft = false;
         }
-        else 
+        else
         {
             isLeft = true;
         }
 
-        
+
     }
 
 
@@ -220,13 +242,13 @@ public class PauseMenuUI : MonoBehaviour
 
     public void QuitGame()
     {
-        if(SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().name == "MainMenu")
         {
-            if(GameManager.Instance.InputManager.isArcade == false)
+            if (GameManager.Instance.InputManager.isArcade == false)
             {
                 Application.Quit();
             }
-            
+
         }
         else
         {
@@ -282,6 +304,17 @@ public class PauseMenuUI : MonoBehaviour
         if (options.IsStaticColorsOn) staticColorBox.sprite = boxSprites[1];
         else staticColorBox.sprite = boxSprites[0];
 
+        resolutionSettingTxt.text = options.SupportedResolutions[options.CurrentResolutionIndex];
+
+        masterSoundBar.sizeDelta = new Vector2(options.MasterVolume, 10);
+        soundBar.sizeDelta = new Vector2(options.SoundVolume, 10);
+        musicBar.sizeDelta = new Vector2(options.MusicVolume, 10);
+
+        GameManager.Instance.SoundManager.MasterVolumeParam.SetGlobalValue(options.MasterVolume);
+        GameManager.Instance.SoundManager.SoundVolumeParam.SetGlobalValue(options.SoundVolume);
+        GameManager.Instance.SoundManager.MusicVolumeParam.SetGlobalValue(options.MusicVolume);
+
+
     }
 
     public void OpenGamePlayPage()
@@ -293,6 +326,8 @@ public class PauseMenuUI : MonoBehaviour
         displayPage.SetActive(false);
         soundPage.SetActive(false);
         savePage.SetActive(false);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
     }
     public void OpenDisplayPage()
     {
@@ -305,9 +340,12 @@ public class PauseMenuUI : MonoBehaviour
         soundPage.SetActive(false);
         savePage.SetActive(false);
 
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+
         if (options.IsStaticColorsOn)
         {
-            
+
             vibrantColorBox.gameObject.SetActive(true);
             heartyColorBox.gameObject.SetActive(true);
         }
@@ -325,6 +363,8 @@ public class PauseMenuUI : MonoBehaviour
         displayPage.SetActive(false);
         soundPage.SetActive(true);
         savePage.SetActive(false);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
     }
     public void OpenSavePage()
     {
@@ -333,11 +373,55 @@ public class PauseMenuUI : MonoBehaviour
         displayPage.SetActive(false);
         soundPage.SetActive(false);
         savePage.SetActive(true);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
     }
 
     #endregion
 
     #region Gameplay Option Functions
+
+    public void OnFireWithStickClick()
+    {
+        if (options.IsFireOnAim)
+        {
+            options.IsFireOnAim = false;
+            options.UpdateSettings();
+            fireAimBox.sprite = boxSprites[0];
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+        }
+        else
+        {
+            options.IsFireOnAim = true;
+            fireAimBox.sprite = boxSprites[1];
+
+            options.UpdateSettings();
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+        }
+    }
+
+    public void OnJetWithStickClick()
+    {
+        if (options.IsJetOnMove)
+        {
+            options.IsJetOnMove = false;
+            options.UpdateSettings();
+            jetMoveBox.sprite = boxSprites[0];
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+        }
+        else
+        {
+            options.IsJetOnMove = true;
+            jetMoveBox.sprite = boxSprites[1];
+
+            options.UpdateSettings();
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+        }
+    }
 
     #endregion
 
@@ -352,6 +436,8 @@ public class PauseMenuUI : MonoBehaviour
 
             Screen.fullScreen = false;
 
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
         }
         else
         {
@@ -359,6 +445,17 @@ public class PauseMenuUI : MonoBehaviour
             fullscreenBox.sprite = boxSprites[1];
 
             Screen.fullScreen = true;
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+        }
+        if ((float)Screen.width / (float)Screen.height < 1.777f)
+        {
+            screenScaler.matchWidthOrHeight = 0;
+        }
+        else
+        {
+            screenScaler.matchWidthOrHeight = 1;
+
         }
     }
 
@@ -369,6 +466,7 @@ public class PauseMenuUI : MonoBehaviour
         GameManager.Instance.InputManager.UIMoveInput.performed += ChangeResBox;
         selectorArrows.SetActive(true);
         uiInputModule.enabled = false;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
     }
     public void OnScreenShakeClick()
@@ -378,15 +476,17 @@ public class PauseMenuUI : MonoBehaviour
             options.IsScreenShakeOn = false;
             screenShakeBox.sprite = boxSprites[0];
 
-            
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
 
         }
         else
         {
             options.IsScreenShakeOn = true;
             screenShakeBox.sprite = boxSprites[1];
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
-            
+
         }
     }
 
@@ -398,6 +498,7 @@ public class PauseMenuUI : MonoBehaviour
             vsynchBox.sprite = boxSprites[0];
 
             QualitySettings.vSyncCount = 0;
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
         }
         else
@@ -406,6 +507,7 @@ public class PauseMenuUI : MonoBehaviour
             vsynchBox.sprite = boxSprites[1];
 
             QualitySettings.vSyncCount = 1;
+            GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
         }
     }
@@ -415,28 +517,29 @@ public class PauseMenuUI : MonoBehaviour
         GameManager.Instance.InputManager.UIMoveInput.performed -= ChangeResBox;
         selectorArrows.SetActive(false);
         uiInputModule.enabled = true;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
     }
 
     public void ChangeResBox(InputAction.CallbackContext context)
     {
         // incriment up
-        if(context.ReadValue<Vector2>().x > 0f)
+        if (context.ReadValue<Vector2>().x > 0f)
         {
             options.CurrentResolutionIndex++;
-            if(options.CurrentResolutionIndex >= options.SupportedResolutions.Length)
+            if (options.CurrentResolutionIndex >= options.SupportedResolutions.Length)
             {
                 options.CurrentResolutionIndex = 0;
             }
-            
-            
+
+
         }
-        else if(context.ReadValue<Vector2>().x < 0f)
+        else if (context.ReadValue<Vector2>().x < 0f)
         {
             options.CurrentResolutionIndex--;
             if (options.CurrentResolutionIndex < 0)
             {
-                options.CurrentResolutionIndex = options.SupportedResolutions.Length-1;
+                options.CurrentResolutionIndex = options.SupportedResolutions.Length - 1;
             }
         }
 
@@ -445,12 +548,24 @@ public class PauseMenuUI : MonoBehaviour
         int width = int.Parse(resolutionSettingTxt.text.Split("x")[0]);
         int height = int.Parse(resolutionSettingTxt.text.Split("x")[1]);
 
-        Screen.SetResolution(width,height,GameManager.Instance.GameOptions.IsFullScreen);
+        Screen.SetResolution(width, height, GameManager.Instance.GameOptions.IsFullScreen);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+        if ((float)width / (float)height < 1.777f)
+        {
+            screenScaler.matchWidthOrHeight = 0;
+        }
+        else
+        {
+            screenScaler.matchWidthOrHeight = 1;
+
+        }
+
     }
 
     public void StaticColorButton()
     {
-        if(options.IsStaticColorsOn == true)
+        if (options.IsStaticColorsOn == true)
         {
             options.IsStaticColorsOn = false;
             staticColorBox.sprite = boxSprites[0];
@@ -469,6 +584,8 @@ public class PauseMenuUI : MonoBehaviour
             GameManager.Instance.PaletteManager.SetToStaticColors();
 
         }
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
     }
 
     public void OnHeartyColorClick()
@@ -477,6 +594,7 @@ public class PauseMenuUI : MonoBehaviour
         GameManager.Instance.InputManager.UIMoveInput.performed += ChangeHeartyBox;
         selectorArrows.SetActive(true);
         uiInputModule.enabled = false;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
     }
 
@@ -486,6 +604,7 @@ public class PauseMenuUI : MonoBehaviour
         GameManager.Instance.InputManager.UIMoveInput.performed -= ChangeHeartyBox;
         selectorArrows.SetActive(false);
         uiInputModule.enabled = true;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
     }
 
@@ -512,6 +631,7 @@ public class PauseMenuUI : MonoBehaviour
         }
 
         GameManager.Instance.PaletteManager.SetToStaticColors();
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
     }
 
@@ -521,6 +641,7 @@ public class PauseMenuUI : MonoBehaviour
         GameManager.Instance.InputManager.UIMoveInput.performed += ChangeVibrantBox;
         selectorArrows.SetActive(true);
         uiInputModule.enabled = false;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
     }
 
@@ -530,6 +651,7 @@ public class PauseMenuUI : MonoBehaviour
         GameManager.Instance.InputManager.UIMoveInput.performed -= ChangeVibrantBox;
         selectorArrows.SetActive(false);
         uiInputModule.enabled = true;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
     }
 
@@ -554,8 +676,210 @@ public class PauseMenuUI : MonoBehaviour
                 options.StaticVibrantColor = options.SupportedStaticColors.Length - 1;
             }
         }
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
         GameManager.Instance.PaletteManager.SetToStaticColors();
+
+    }
+
+    #endregion
+
+    #region Sound Option Functions
+
+    public void OnMasterSoundClick()
+    {
+        GameManager.Instance.InputManager.UIEnter.performed += ExitMasterSoundBox;
+        GameManager.Instance.InputManager.UIMoveInput.performed += ChangeMasterSoundBox;
+        selectorArrows.SetActive(true);
+        uiInputModule.enabled = false;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void ExitMasterSoundBox(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.InputManager.UIEnter.performed -= ExitMasterSoundBox;
+        GameManager.Instance.InputManager.UIMoveInput.performed -= ChangeMasterSoundBox;
+        selectorArrows.SetActive(false);
+        uiInputModule.enabled = true;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void ChangeMasterSoundBox(InputAction.CallbackContext context)
+    {
+        // incriment up
+        if (context.ReadValue<Vector2>().x > 0f)
+        {
+
+            if (options.MasterVolume < 100)
+            {
+                options.MasterVolume += 5;
+            }
+
+
+        }
+        else if (context.ReadValue<Vector2>().x < 0f)
+        {
+            if (options.MasterVolume > 0)
+            {
+                options.MasterVolume -= 5;
+            }
+        }
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+        masterSoundBar.sizeDelta = new Vector2(options.MasterVolume, 10);
+        GameManager.Instance.SoundManager.MasterVolumeParam.SetGlobalValue(options.MasterVolume);
+    }
+
+    public void OnSoundClick()
+    {
+        GameManager.Instance.InputManager.UIEnter.performed += ExitSoundBox;
+        GameManager.Instance.InputManager.UIMoveInput.performed += ChangeSoundBox;
+        selectorArrows.SetActive(true);
+        uiInputModule.enabled = false;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void ExitSoundBox(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.InputManager.UIEnter.performed -= ExitSoundBox;
+        GameManager.Instance.InputManager.UIMoveInput.performed -= ChangeSoundBox;
+        selectorArrows.SetActive(false);
+        uiInputModule.enabled = true;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void ChangeSoundBox(InputAction.CallbackContext context)
+    {
+        // incriment up
+        if (context.ReadValue<Vector2>().x > 0f)
+        {
+
+            if (options.SoundVolume < 100)
+            {
+                options.SoundVolume += 5;
+            }
+
+
+        }
+        else if (context.ReadValue<Vector2>().x < 0f)
+        {
+            if (options.SoundVolume > 0)
+            {
+                options.SoundVolume -= 5;
+            }
+        }
+
+        soundBar.sizeDelta = new Vector2(options.SoundVolume, 10);
+        GameManager.Instance.SoundManager.SoundVolumeParam.SetGlobalValue(options.SoundVolume);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void OnMusicClick()
+    {
+        GameManager.Instance.InputManager.UIEnter.performed += ExitMusicBox;
+        GameManager.Instance.InputManager.UIMoveInput.performed += ChangeMusicBox;
+        selectorArrows.SetActive(true);
+        uiInputModule.enabled = false;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void ExitMusicBox(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.InputManager.UIEnter.performed -= ExitMusicBox;
+        GameManager.Instance.InputManager.UIMoveInput.performed -= ChangeMusicBox;
+        selectorArrows.SetActive(false);
+        uiInputModule.enabled = true;
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void ChangeMusicBox(InputAction.CallbackContext context)
+    {
+        // incriment up
+        if (context.ReadValue<Vector2>().x > 0f)
+        {
+
+            if (options.MusicVolume < 100)
+            {
+                options.MusicVolume += 5;
+            }
+
+
+        }
+        else if (context.ReadValue<Vector2>().x < 0f)
+        {
+            if (options.MusicVolume > 0)
+            {
+                options.MusicVolume -= 5;
+            }
+        }
+
+        musicBar.sizeDelta = new Vector2(options.MusicVolume, 10);
+        GameManager.Instance.SoundManager.MusicVolumeParam.SetGlobalValue(options.MusicVolume);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+
+    }
+
+    #endregion
+
+    #region Save Option Functions
+
+    public void OnDeleteLeaderBoardClick()
+    {
+        LBDataConfirmPage.SetActive(true);
+        _system.SetSelectedGameObject(CancelLBDataButton);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void OnConfirmLBDelete()
+    {
+        LBDataConfirmPage.SetActive(false);
+        _system.SetSelectedGameObject(DeleteLBDataButton);
+        File.WriteAllText(Application.persistentDataPath + "/LeaderBoard.txt", "");
+
+        options.UpdateSettings();
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void OnCancelLBDelete()
+    {
+        LBDataConfirmPage.SetActive(false);
+        _system.SetSelectedGameObject(DeleteLBDataButton);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void OnDeleteSaveDataClick()
+    {
+        GameDataConfirmPage.SetActive(true);
+        _system.SetSelectedGameObject(CancelGameDataButton);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void OnConfirmSaveDataDelete()
+    {
+        GameDataConfirmPage.SetActive(false);
+        _system.SetSelectedGameObject(DeleteGameDataButton);
+        options.UpdateSettings();
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
+
+    }
+
+    public void OnCancelSaveDataDelete()
+    {
+        GameDataConfirmPage.SetActive(false);
+        _system.SetSelectedGameObject(DeleteGameDataButton);
+        GameManager.Instance.SoundManager.PlayNonDiageticSound("Blip");
 
     }
 

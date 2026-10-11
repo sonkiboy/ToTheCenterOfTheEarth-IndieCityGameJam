@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AreaOfEffectDamage : MonoBehaviour
@@ -23,7 +22,7 @@ public class AreaOfEffectDamage : MonoBehaviour
         StartCoroutine(DealDamage());
     }
 
-    
+
     IEnumerator DealDamage()
     {
         while (true)
@@ -33,9 +32,9 @@ public class AreaOfEffectDamage : MonoBehaviour
 
             if (foundCollisions.Length != 0)
             {
-                foreach(Collider2D collision in foundCollisions)
+                foreach (Collider2D collision in foundCollisions)
                 {
-                    if(collision.tag == "Player")
+                    if (collision.tag == "Player")
                     {
                         collision.GetComponent<PlayerController>().TakeDamage(1);
                     }

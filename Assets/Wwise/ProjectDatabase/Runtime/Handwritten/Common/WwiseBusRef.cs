@@ -15,7 +15,7 @@ in a written agreement between you and Audiokinetic Inc.
 Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
 #if UNITY_EDITOR
-public class WwiseBusRef: global::System.IDisposable
+public class WwiseBusRef : global::System.IDisposable
 {
     private global::System.IntPtr projectDatabasePtr;
     protected bool bDeletesManually;
@@ -66,7 +66,7 @@ public class WwiseBusRef: global::System.IDisposable
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseBusRef(global::System.IntPtr cPtr) : this(cPtr, true)
     {
     }
@@ -74,10 +74,10 @@ public class WwiseBusRef: global::System.IDisposable
     public WwiseBusRef(string BusName) : this(WwiseProjectDatabase.GetBusRefString(BusName), true)
     {
     }
-    
+
     public string Name => WwiseProjectDatabase.GetBusName(projectDatabasePtr);
     public string Path => WwiseProjectDatabase.GetBusPath(projectDatabasePtr);
     public System.Guid Guid => WwiseProjectDatabase.GetBusGuid(projectDatabasePtr);
-    public uint ShortId =>WwiseProjectDatabase.GetBusShortId(projectDatabasePtr);
+    public uint ShortId => WwiseProjectDatabase.GetBusShortId(projectDatabasePtr);
 }
 #endif

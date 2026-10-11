@@ -18,7 +18,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{6FB7E17F-D06C-C12B-B759-F0E8EBDC7A3C}",
+    "Hash": "{719A329E-9A89-A438-EC31-F517E100314B}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -44,18 +44,54 @@
     },
     "Busses": [
      {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Busses\\Default Work Unit\\MasterAudioBus\\SFX",
+      "GUID": "{2A80BECB-0A9A-487C-A999-0568EA18D4D2}"
+     },
+     {
+      "Id": "812255631",
+      "Name": "MasterAudioBus",
+      "ObjectPath": "\\Busses\\Default Work Unit\\MasterAudioBus",
+      "GUID": "{B9D3309D-B8BF-4DAC-A7F8-D160866B7D91}"
+     },
+     {
       "Id": "2246998526",
       "Name": "Main Audio Bus",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus",
       "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     },
+     {
+      "Id": "3991942870",
+      "Name": "Music",
+      "ObjectPath": "\\Busses\\Default Work Unit\\MasterAudioBus\\Music",
+      "GUID": "{7A88C85E-0856-4952-9D02-550E92471CBD}"
      }
     ],
     "GameParameters": [
+     {
+      "Id": "2346531308",
+      "Name": "MusicVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\MusicVolume",
+      "GUID": "{0E197579-4F79-4559-A625-E0C14892C36E}"
+     },
      {
       "Id": "3550022565",
       "Name": "CollectedTreasure",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\CollectedTreasure",
       "GUID": "{97BC4986-C6C4-4F33-B204-FBC4F5928C2A}"
+     },
+     {
+      "Id": "3725851010",
+      "Name": "MasterSoundVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\MasterSoundVolume",
+      "GUID": "{1FFCEC58-53CF-4C20-AAD5-CB9E6906DF94}"
+     },
+     {
+      "Id": "3873835272",
+      "Name": "SoundVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SoundVolume",
+      "GUID": "{D52BF2EE-CB62-4DC7-85F5-1EAA9BCC60BE}"
      }
     ]
    },
@@ -64,7 +100,7 @@
     "Type": "User",
     "GUID": "{C9312189-E98E-479F-8DC9-2A2FF1ED4AE5}",
     "Language": "SFX",
-    "Hash": "{2D9BE0CE-83E7-1004-8AAC-B1319FEEDF5E}",
+    "Hash": "{B48F39C1-8036-56E7-BC7A-26FD170BB764}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\UrMom",
     "ShortName": "UrMom",
     "Path": "UrMom.bnk",
@@ -696,6 +732,6 @@
     ]
    }
   ],
-  "FileHash": "{4682F277-1093-7198-4F86-E42F8425948E}"
+  "FileHash": "{16F8D6E0-5436-CDD6-E521-E1C3D5B0C2A2}"
  }
 }

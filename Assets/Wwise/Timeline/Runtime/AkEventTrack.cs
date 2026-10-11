@@ -35,20 +35,20 @@ Copyright (c) 2026 Audiokinetic Inc.
 /// - \ref AkEventPlayableBehavior
 public class AkEventTrack : UnityEngine.Timeline.TrackAsset
 {
-	public override UnityEngine.Playables.Playable CreateTrackMixer(UnityEngine.Playables.PlayableGraph graph, UnityEngine.GameObject go, int inputCount)
-	{
-		var playable = UnityEngine.Playables.ScriptPlayable<AkEventPlayableBehavior>.Create(graph);
-		UnityEngine.Playables.PlayableExtensions.SetInputCount(playable, inputCount);
+    public override UnityEngine.Playables.Playable CreateTrackMixer(UnityEngine.Playables.PlayableGraph graph, UnityEngine.GameObject go, int inputCount)
+    {
+        var playable = UnityEngine.Playables.ScriptPlayable<AkEventPlayableBehavior>.Create(graph);
+        UnityEngine.Playables.PlayableExtensions.SetInputCount(playable, inputCount);
 
-		var clips = GetClips();
-		foreach (var clip in clips)
-		{
-			var akEventPlayable = clip.asset as AkEventPlayable;
-			akEventPlayable.owningClip = clip;
-		}
+        var clips = GetClips();
+        foreach (var clip in clips)
+        {
+            var akEventPlayable = clip.asset as AkEventPlayable;
+            akEventPlayable.owningClip = clip;
+        }
 
-		return playable;
-	}
+        return playable;
+    }
 }
 #endif // AK_ENABLE_TIMELINE
 #endif // #if !(UNITY_QNX) // Disable under unsupported platforms.

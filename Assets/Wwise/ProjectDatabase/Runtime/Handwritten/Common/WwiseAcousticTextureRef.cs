@@ -15,7 +15,7 @@ in a written agreement between you and Audiokinetic Inc.
 Copyright (c) 2026 Audiokinetic Inc.
 *******************************************************************************/
 #if UNITY_EDITOR
-public class WwiseAcousticTextureRef: global::System.IDisposable
+public class WwiseAcousticTextureRef : global::System.IDisposable
 {
     private global::System.IntPtr projectDatabasePtr;
     protected bool bDeletesManually;
@@ -66,7 +66,7 @@ public class WwiseAcousticTextureRef: global::System.IDisposable
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseAcousticTextureRef(global::System.IntPtr cPtr) : this(cPtr, true)
     {
     }
@@ -74,10 +74,10 @@ public class WwiseAcousticTextureRef: global::System.IDisposable
     public WwiseAcousticTextureRef(string AcousticTextureName) : this(WwiseProjectDatabase.GetAcousticTextureRefString(AcousticTextureName), true)
     {
     }
-    
+
     public string Name => WwiseProjectDatabase.GetAcousticTextureName(projectDatabasePtr);
     public string Path => WwiseProjectDatabase.GetAcousticTexturePath(projectDatabasePtr);
     public System.Guid Guid => WwiseProjectDatabase.GetAcousticTextureGuid(projectDatabasePtr);
-    public uint ShortId =>WwiseProjectDatabase.GetAcousticTextureShortId(projectDatabasePtr);
+    public uint ShortId => WwiseProjectDatabase.GetAcousticTextureShortId(projectDatabasePtr);
 }
 #endif

@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,7 +33,7 @@ public class RootedTileMod : MonoBehaviour
         tile.Health = tile.Health + TileHealthBonus;
         tile.OnTileHealthChange += OnRootDamaged;
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-        rootOverlay = Instantiate(rootPrefab, boxCollider.bounds.center,quaternion.identity);
+        rootOverlay = Instantiate(rootPrefab, boxCollider.bounds.center, quaternion.identity);
         rootOverlay.transform.localScale = boxCollider.size;
         animator = rootOverlay.GetComponent<Animator>();
 
@@ -51,7 +50,7 @@ public class RootedTileMod : MonoBehaviour
     }
     void OnRootDamaged(object sender, EventArgs e)
     {
-        if(tile.Health <= originalTileHealth)
+        if (tile.Health <= originalTileHealth)
         {
             // unsub the event so this only ever triggers once
             tile.OnTileHealthChange -= OnRootDamaged;
@@ -73,11 +72,11 @@ public class RootedTileMod : MonoBehaviour
 
     public void IgniteRoot()
     {
-        if(isIgnited == false)
+        if (isIgnited == false)
         {
             isIgnited = true;
 
-            
+
 
             // start the coroutine
             StartCoroutine(SpreadFire());
@@ -92,28 +91,28 @@ public class RootedTileMod : MonoBehaviour
         List<RootedTileMod> foundRoots = new List<RootedTileMod>();
         Collider2D foundTile;
         RootedTileMod foundMod;
-        foreach(Vector2 checkDir in SonkUtilities.FourDirections)
+        foreach (Vector2 checkDir in SonkUtilities.FourDirections)
         {
 
-            foundTile = Physics2D.OverlapPoint((Vector2)this.transform.position + (((Vector2.one / 2) + checkDir)*tile.GetComponent<BoxCollider2D>().size), LayerMask.GetMask("Tiles"));
-            if(foundTile != null)
+            foundTile = Physics2D.OverlapPoint((Vector2)this.transform.position + (((Vector2.one / 2) + checkDir) * tile.GetComponent<BoxCollider2D>().size), LayerMask.GetMask("Tiles"));
+            if (foundTile != null)
             {
                 foundMod = foundTile.GetComponent<RootedTileMod>();
                 if (foundMod != null) foundRoots.Add(foundMod);
             }
-            
+
         }
 
 
-        foreach(RootedTileMod root in foundRoots)
+        foreach (RootedTileMod root in foundRoots)
         {
-            if(root != null) root.IgniteRoot();
+            if (root != null) root.IgniteRoot();
         }
 
         yield return new WaitForSeconds(BurnTime / 2f);
 
 
-        tile.Health = originalTileHealth/2;   
+        tile.Health = originalTileHealth / 2;
 
 
     }

@@ -1,10 +1,9 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LBLineItemUI : MonoBehaviour
 {
-    [SerializeField]TextMeshProUGUI nameForeTxt;
+    [SerializeField] TextMeshProUGUI nameForeTxt;
     [SerializeField] TextMeshProUGUI nameBackTxt;
     [SerializeField] TextMeshProUGUI scoreForeTxt;
     [SerializeField] TextMeshProUGUI scoreBackTxt;
@@ -37,12 +36,12 @@ public class LBLineItemUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

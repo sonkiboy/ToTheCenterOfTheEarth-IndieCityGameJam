@@ -25,12 +25,12 @@ public class WwiseGameParameterRefArray
         bDeletesManually = cMemoryOwn;
         ownerPtr = cPtr;
     }
-    
+
     ~WwiseGameParameterRefArray()
     {
         Dispose(false);
     }
-    
+
     protected virtual void Dispose(bool disposing)
     {
         lock (this)
@@ -49,7 +49,7 @@ public class WwiseGameParameterRefArray
             global::System.GC.SuppressFinalize(this);
         }
     }
-    
+
     public WwiseGameParameterRefArray() : this(WwiseProjectDatabase.GetAllGameParameterRef(), true)
     {
     }
