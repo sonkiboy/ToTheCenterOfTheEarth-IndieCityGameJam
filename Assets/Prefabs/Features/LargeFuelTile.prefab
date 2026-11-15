@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -879296729
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 0}
@@ -100,7 +100,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8684970511694618891}
-  - component: {fileID: 6420378100519740276}
   - component: {fileID: 7268355826331914804}
   - component: {fileID: 5672202326049098199}
   - component: {fileID: 1521183169365103277}
@@ -127,19 +126,6 @@ Transform:
   - {fileID: 4725436453654827029}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6420378100519740276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7795167321983646521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d54851da3b6cf44683ea340e20b9032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelFeatureData
-  Size: {x: 2, y: 2}
 --- !u!114 &7268355826331914804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,11 +138,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79b9dba8cc45f4086dba0d9e4271aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileBehavior
+  Size: {x: 2, y: 2}
   explosionFX: {fileID: 7419567945701673913, guid: d33019f8ff31be24aaa2f72997f464f9, type: 3}
   gemDrop: {fileID: 7721911675991746013, guid: b82ae55bff5a71d46885aa347416238c, type: 3}
   fuelDrop: {fileID: 514592976782679714, guid: 146df37cca8032c49b02ce156fdeb671, type: 3}
   Config: {fileID: 11400000, guid: c14efb5deea6e0e4bad03f925d759d51, type: 2}
   hp: 20
+  isDamagedByPlayer: 0
 --- !u!212 &5672202326049098199
 SpriteRenderer:
   serializedVersion: 2
@@ -203,7 +191,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -742802839
-  m_SortingLayer: -2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4220793602140648105, guid: 3da4281ad23a01b4ca94cc7bffaa6b19, type: 3}

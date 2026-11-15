@@ -318,8 +318,6 @@ MonoBehaviour:
   _jetMove: 0
   IsFullScreen: 0
   SupportedResolutions:
-  - 5760x2400
-  - 2560x1440
   - 1920x1080
   - 1366x768
   - 1280x720
@@ -331,6 +329,8 @@ MonoBehaviour:
   - 800x600
   - 640x480
   - 368x208
+  - 2560x1440
+  - 5760x2400
   CurrentResolutionIndex: 0
   IsScreenShakeOn: 0
   IsVSynchOn: 0

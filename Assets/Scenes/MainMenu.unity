@@ -14076,6 +14076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverlayCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4021750049227781454, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40
+      objectReference: {fileID: 0}
     - target: {fileID: 4114439211914113024, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -14106,6 +14110,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4114439211914113024, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114439211914113024, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114439211914113024, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114439211914113024, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4114439211914113024, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
@@ -14160,6 +14176,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1703962174}
+    - target: {fileID: 5522026557435675207, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247704675881967787, guid: fcb07e4062ca4e64f9568f2a2bcdd539, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

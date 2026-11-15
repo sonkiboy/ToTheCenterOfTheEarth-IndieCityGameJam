@@ -84,11 +84,12 @@ public class PowerUpManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SceneManager.activeSceneChanged += OnSceneChanged;
+        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
         StartCoroutine(ReloadRoutine());
         StartCoroutine(DamageRoutine());
         StartCoroutine(DrillSpeedRoutine());
-        SceneManager.activeSceneChanged += OnSceneChanged;
-        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        
     }
 
     // Update is called once per frame

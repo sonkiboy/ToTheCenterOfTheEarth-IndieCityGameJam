@@ -1984,9 +1984,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6441736339451813590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 266, y: 41}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -70, y: -48.5}
   m_SizeDelta: {x: 62, y: 97}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2258781652747436978
@@ -2384,6 +2384,7 @@ GameObject:
   - component: {fileID: 6247704675881967787}
   - component: {fileID: 6263707891919827332}
   - component: {fileID: 6234061300597460858}
+  - component: {fileID: 2740222083350050641}
   m_Layer: 0
   m_Name: OverlayCanvas
   m_TagString: Untagged
@@ -2400,7 +2401,7 @@ RectTransform:
   m_GameObject: {fileID: 1793871242177238624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.0625, y: 0.0625, z: 0.0625}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7995206929932228652}
@@ -2425,10 +2426,10 @@ Canvas:
   m_GameObject: {fileID: 1793871242177238624}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -2455,14 +2456,14 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 3
-  m_ReferenceResolution: {x: 320, y: 180}
+  m_ReferenceResolution: {x: 368, y: 208}
   m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 1
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6263707891919827332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,6 +2498,20 @@ MonoBehaviour:
   MachinaStageTitle: {fileID: 0}
   CountdownParent: {fileID: 5633770653203429432}
   PowerUpDials: {fileID: 6018256250751122543}
+--- !u!114 &2740222083350050641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793871242177238624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b92407ff7f9e840955ea8a0bbb3b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PixelPerfectUICameraTracker
+  TargetCamera: {fileID: 0}
+  ZDistance: 100
 --- !u!1 &1827802964702644395
 GameObject:
   m_ObjectHideFlags: 0
@@ -7437,7 +7452,7 @@ RectTransform:
   m_GameObject: {fileID: 6018256250751122543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.86956525, y: 0.86956525, z: 0.86956525}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1000331188888677597}
@@ -7447,7 +7462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -41.739136, y: -41.739136}
+  m_AnchoredPosition: {x: 0, y: -42}
   m_SizeDelta: {x: 368, y: 208}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &6260290347260545723
@@ -10830,7 +10845,7 @@ RectTransform:
   m_GameObject: {fileID: 8711209202915400077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8695652, y: 0.8695652, z: 0.8695652}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6441736339451813590}

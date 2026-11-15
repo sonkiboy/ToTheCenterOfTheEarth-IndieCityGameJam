@@ -7,6 +7,7 @@ public class LayerSerializedObject : ScriptableObject
     public string ThemeMusic;
     public Color[] LayerPallete = new Color[4] { Color.black, Color.red, Color.blue, Color.white };
 
+    public ChunkStageData[] Stages;
     public GameObject[] BaseBlockPallet;
 
     public GameObject[] CommonFeatures;
@@ -20,3 +21,6 @@ public class LayerSerializedObject : ScriptableObject
 
     public BossManager.Bosses LayerBoss;
 }
+
+
+

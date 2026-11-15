@@ -19,6 +19,10 @@ MonoBehaviour:
   - {r: 0.9960785, g: 0.33333334, b: 0.33333334, a: 1}
   - {r: 0.33333334, g: 0.9960785, b: 0.9960785, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
+  Stages:
+  - {fileID: 11400000, guid: 6db0fffefea01c94891c2f2bce5f9f18, type: 2}
+  - {fileID: 11400000, guid: 7cba157d7e82d3f4183ee3560d393218, type: 2}
+  - {fileID: 11400000, guid: 280af19d7d965b243950e17e7dd12d0c, type: 2}
   BaseBlockPallet:
   - {fileID: 4798846638758500855, guid: 5f027b9caccd4274e98246689b32f549, type: 3}
   - {fileID: 4798846638758500855, guid: e83ef899b5e9ca4449dde1dc45580b6f, type: 3}

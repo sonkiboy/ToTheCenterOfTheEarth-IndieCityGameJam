@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5541c33889964114e98a4b756bbf7ec4, type: 3}
+  m_Name: Jungle_S2
+  m_EditorClassIdentifier: Assembly-CSharp::ChunkStageData
+  BaseBlockPallet:
+  - {fileID: 4798846638758500855, guid: 5f027b9caccd4274e98246689b32f549, type: 3}
+  - {fileID: 4798846638758500855, guid: 1b305436b4a5e2e419508f2f7f41ad48, type: 3}
+  - {fileID: 4798846638758500855, guid: e83ef899b5e9ca4449dde1dc45580b6f, type: 3}
+  - {fileID: 4798846638758500855, guid: 458abdb814ad0374c8f933bdb1eb4038, type: 3}
+  - {fileID: 886337191729954254, guid: 51ed92e6e6bf65a49ba5de69b17287c1, type: 3}
+  NumOfPowerUps: 8
+  PowerupFeatures:
+  - {fileID: 2163494120345482535, guid: f24d92beae7b899488d9c0bb734af467, type: 3}
+  - {fileID: 4798846638758500855, guid: 92f78e70e73eefb4aac4954d2193e0e4, type: 3}
+  NumOfFeatures: 20
+  StageFeatures:
+  - {fileID: 2163494120345482535, guid: 88132cd056f20fc4dbf66adc84d19235, type: 3}
+  - {fileID: 1969568219695917701, guid: 9f6004c65f0c1ee4fac027f50cef97a1, type: 3}
+  - {fileID: 2163494120345482535, guid: 846a0898766539648a5fa0717011302a, type: 3}
+  - {fileID: 4959592619365724177, guid: 09b3d56f75a27c84582133402596ee37, type: 3}
+  - {fileID: 646387717767332898, guid: 8fc60ba7d57fd9c41b408c95c9a5e1e8, type: 3}
+  - {fileID: 5574620536172851613, guid: 12be4af054ec1e848a748b0d5b40a2b3, type: 3}
+  NumOfHostileFeatures: 8
+  HostileFeatures:
+  - {fileID: 5995631081246457305, guid: 63a51d890beb44a4bab8a2efb5b196d8, type: 3}

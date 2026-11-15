@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
 
     public ArcadeLightManager ArcadeLEDs;
 
+
+
+
+    public bool DEBUGMASTERTOGGLE = false;
+
     // GUN MANAGMENET
     [SerializeField] private GunSettings gun;
     public GunSettings CurrentGun
@@ -108,14 +113,17 @@ public class GameManager : MonoBehaviour
                 if (StatTracker != null)
                 {
                     StatTracker.SetTreasureScore(treasure);
+                    
 
                     if (treasure >= nextGemHeal)
                     {
                         if (CurrentHealth < 3) CurrentHealth++;
+                        previousGemHeal = nextGemHeal;
                         nextGemHeal = Mathf.RoundToInt(Mathf.Pow((float)GemHealRate, 1 + (float)gemHealCount * GemHealIncreaseRate));
                         gemHealCount++;
-                        StatTracker.SetGemHealScore(nextGemHeal);
+                        //StatTracker.SetGemHealScore(nextGemHeal);
                     }
+                    StatTracker.SetGemHealBar((float)(treasure - previousGemHeal) / (float)(nextGemHeal - previousGemHeal));
                 }
             }
         }
@@ -172,6 +180,7 @@ public class GameManager : MonoBehaviour
     }
 
     public int GemHealRate = 15000;
+    private int previousGemHeal = 0;
     private int nextGemHeal = 0;
     private int gemHealCount = 0;
     public float GemHealIncreaseRate = .2f;
@@ -241,7 +250,7 @@ public class GameManager : MonoBehaviour
                         break;
 
                     case GameStates.Boss:
-                        GameManager.Instance.SoundManager.PlayNonDiageticSound(GameManager.Instance.BlockGenerator.Layers[GameManager.Instance.BlockGenerator.CurrentLayerData].ThemeMusic + "Stop");
+                        GameManager.Instance.SoundManager.PlayNonDiageticSound(GameManager.Instance.BlockGenerator.Layers[GameManager.Instance.BlockGenerator.CurrentLayerIndex].ThemeMusic + "Stop");
                         GameManager.Instance.SoundManager.PlayNonDiageticSound("BossThemeStart");
                         break;
                 }
@@ -276,14 +285,14 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.activeSceneChanged += OnSceneChanged;
-        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        
     }
 
 
 
     void Start()
     {
-
+        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
 
 
         //// TO DO: make this change based on the starting Game State
@@ -366,7 +375,8 @@ public class GameManager : MonoBehaviour
 
 
                 StatTracker.SetGemHealScore(nextGemHeal);
-                nextGemHeal = GemHealRate;
+                previousGemHeal = 0;
+                nextGemHeal = GemHealRate/2;
                 gemHealCount = 0;
                 StartNormalGame();
 
@@ -446,8 +456,8 @@ public class GameManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(3);
-        Debug.Log($"Setting title to {BlockGenerator.Layers[BlockGenerator.CurrentLayerData].Name}");
-        StatTracker.DisplayTitleCard(BlockGenerator.Layers[BlockGenerator.CurrentLayerData].Name);
+        Debug.Log($"Setting title to {BlockGenerator.Layers[BlockGenerator.CurrentLayerIndex].Name}");
+        StatTracker.DisplayTitleCard(BlockGenerator.Layers[BlockGenerator.CurrentLayerIndex].Name);
 
     }
 }

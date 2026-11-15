@@ -50,11 +50,11 @@ public class PlatformBehavior : MonoBehaviour
 
                     StartCoroutine(DrainPlayer());
 
-                    if (blockGenerator.Layers[blockGenerator.CurrentLayerData].Name == "The Crust")
+                    if (blockGenerator.Layers[blockGenerator.CurrentLayerIndex].Name == "The Crust")
                     {
                         GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.alert, 0);
                     }
-                    else if (blockGenerator.Layers[blockGenerator.CurrentLayerData].Name == "The Jungle")
+                    else if (blockGenerator.Layers[blockGenerator.CurrentLayerIndex].Name == "The Jungle")
                     {
                         GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.alert, 1);
                     }
@@ -80,11 +80,11 @@ public class PlatformBehavior : MonoBehaviour
 
                 StopCoroutine(DrainPlayer());
 
-                if (blockGenerator.Layers[blockGenerator.CurrentLayerData].Name == "The Crust")
+                if (blockGenerator.Layers[blockGenerator.CurrentLayerIndex].Name == "The Crust")
                 {
                     GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 0);
                 }
-                else if (blockGenerator.Layers[blockGenerator.CurrentLayerData].Name == "The Jungle")
+                else if (blockGenerator.Layers[blockGenerator.CurrentLayerIndex].Name == "The Jungle")
                 {
                     GameManager.Instance.ArcadeLEDs.SetCabinetLights(ArcadeLightManager.LightModes.fade, 1);
                 }
@@ -229,7 +229,9 @@ public class PlatformBehavior : MonoBehaviour
                         if (collision.gameObject.tag == "Tile")
                         {
                             TileBehavior tileBehavior = collision.GetComponent<TileBehavior>();
-                            tileBehavior.DamageTile(false, DrillDamage);
+                            
+                            if(GameManager.Instance.DEBUGMASTERTOGGLE == true) tileBehavior.DamageTile(false, 99999);
+                            else tileBehavior.DamageTile(false, DrillDamage);
                         }
 
                         // if the collider was instead an Enemy, deal damage to its Enemy component
@@ -267,8 +269,9 @@ public class PlatformBehavior : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 transform.position = (Vector2)transform.position + Vector2.down * .25f;
+                if (GameManager.Instance.DEBUGMASTERTOGGLE == true) yield return new WaitForSeconds(.01f);
 
-                yield return new WaitForSeconds(1 / (DecentSpeed + (GameManager.Instance.PowerManager.DrillSpeed * GameManager.Instance.PowerManager.DrillPowerCount)));
+                else yield return new WaitForSeconds(1 / (DecentSpeed + (GameManager.Instance.PowerManager.DrillSpeed * GameManager.Instance.PowerManager.DrillPowerCount)));
                 yield return new WaitForFixedUpdate();
             }
 
@@ -296,12 +299,14 @@ public class PlatformBehavior : MonoBehaviour
         {
             if (GameManager.Instance.CurrentState == GameManager.GameStates.Boss)
             {
+                if(GameManager.Instance.DEBUGMASTERTOGGLE == false)
                 CurrentFuel -= Mathf.RoundToInt(FuelPerSecond / 8);
 
             }
             else
             {
-                CurrentFuel -= Mathf.RoundToInt(FuelPerSecond / 8);
+                if (GameManager.Instance.DEBUGMASTERTOGGLE == false)
+                    CurrentFuel -= Mathf.RoundToInt(FuelPerSecond / 8);
 
             }
             yield return new WaitForSeconds(.25f);

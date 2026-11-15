@@ -32,6 +32,13 @@ public class BlockGeneratorInspector : Editor
             generator.GenerateChunk(0, 0);
         }
 
+        if(GUILayout.Button("New Generation Layout"))
+        {
+            generator.ResetGeneration();
+
+            generator.MultiStageBlockGeneration(0, 0);
+        }
+
         if (GUILayout.Button("Reset"))
         {
             generator.ResetGeneration();

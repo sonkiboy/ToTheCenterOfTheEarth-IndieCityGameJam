@@ -48,6 +48,18 @@ public class RootedTileMod : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        // unsub the event so this only ever triggers once
+        tile.OnTileHealthChange -= OnRootDamaged;
+
+        // destory the overlay sprite
+        Destroy(rootOverlay);
+
+        // start the destroy sequence
+        StartCoroutine(RootBreakDelay(destroyDelayTime));
+    }
     void OnRootDamaged(object sender, EventArgs e)
     {
         if (tile.Health <= originalTileHealth)

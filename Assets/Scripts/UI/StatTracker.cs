@@ -12,6 +12,7 @@ public class StatTracker : MonoBehaviour
     public GameObject TreasureNumbers;
     private GameObject[] treasureDigits;
     public GameObject GemHealNumbers;
+    public RectTransform GemHealBar;
     private GameObject[] healDigits;
 
     public GameObject LevelBossText;
@@ -105,6 +106,11 @@ public class StatTracker : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetGemHealBar(float percentage)
+    {
+        GemHealBar.sizeDelta = new Vector2(Mathf.Lerp(.1f, 29, percentage), 3);
     }
 
     public void SetGemHealScore(int score)

@@ -38,6 +38,11 @@ public class AreaOfEffectDamage : MonoBehaviour
                     {
                         collision.GetComponent<PlayerController>().TakeDamage(1);
                     }
+
+                    else if(collision.tag == "Enemy")
+                    {
+                        collision.GetComponent<Enemy>().Health -= 10;
+                    }
                 }
             }
 

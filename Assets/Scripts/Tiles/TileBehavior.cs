@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class TileBehavior : MonoBehaviour
+public class TileBehavior : LevelFeatureData
 {
     #region Obj and Components
 
